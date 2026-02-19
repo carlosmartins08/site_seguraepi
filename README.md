@@ -1,20 +1,22 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Site Segura EPI
 
-# Run and deploy your AI Studio app
+Projeto institucional em Next.js 16 (App Router) com React 19.
 
-This contains everything you need to run your app locally.
+## Requisitos
+- Node.js 18+
+- npm
 
-View your app in AI Studio: https://ai.studio/apps/drive/1cJi-LUdnM8a7WmRuAvkuy0WTLh2AOseG
+## Scripts
+- `npm install` — instala dependências.
+- `npm run dev` — desenvolvimento (Next).
+- `npm run build` — build de produção.
+- `npm run start` — serve o build.
 
-## Run Locally
+## Estrutura
+- `app/` — rotas e layouts do App Router.
+- `components/`, `lib/`, `styles/` — UI, helpers e estilos.
+- `next.config.js`, `tsconfig.json`, `next-env.d.ts` — configuração do Next/TypeScript.
 
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Observações
+- Idiomas PT/EN via `hooks/useI18n.tsx` e `components/actions/LocaleSwitcher.tsx`.
+- Consentimento LGPD pronto em `components/trust/CookieConsent.tsx`.
