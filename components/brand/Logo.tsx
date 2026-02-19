@@ -14,9 +14,9 @@ export const Logo: React.FC<LogoProps> = ({
   theme = 'colored' 
 }) => {
   const getLogoSrc = () => {
-    if (variant === 'icon') return '/logo-icon.png';
-    if (theme === 'white') return '/logo-white.png';
-    return '/logo-colored.png';
+    if (variant === 'icon') return '/logo-icon.svg';
+    if (theme === 'white') return '/logo-white.svg';
+    return '/logo-colored.svg';
   };
 
   return (
