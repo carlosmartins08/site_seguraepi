@@ -174,6 +174,92 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* Potência Logística */}
+      <Section id="logistica" variant="dark" className="reveal">
+        <Container>
+          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-slate-950">
+            <div className="absolute inset-0 opacity-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_10%,transparent_10%),linear-gradient(45deg,rgba(255,255,255,0.05)_10%,transparent_10%)] bg-[length:14px_14px]" />
+            <div className="relative z-10 p-8 md:p-12 space-y-10">
+              <div className="max-w-3xl space-y-3">
+                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Potência Logística</p>
+                <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Logística que Honra o seu Cronograma.</h2>
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  Sabemos que no canteiro de obras ou no chão de fábrica, “esperar” não é opção. Criamos um ecossistema logístico para que o EPI esteja na mão do seu colaborador no menor tempo possível.
+                </p>
+              </div>
+
+              <div className="grid md:grid-cols-3 gap-6">
+                {[
+                  {
+                    title: 'Retirada Expressa (3h)',
+                    desc: 'Compre via WhatsApp e retire em nossa recepção otimizada. Sem filas, sem burocracia.',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                    ),
+                  },
+                  {
+                    title: 'Frota Própria Segura',
+                    desc: 'Entrega gratuita na Grande João Pessoa para pedidos acima de R$ 500,00. Segurança de ponta a ponta.',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
+                    ),
+                  },
+                  {
+                    title: 'Distribuição Nordeste',
+                    desc: 'Parcerias com transportadoras líderes para grandes pedidos com rastreabilidade total.',
+                    icon: (
+                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                    ),
+                  },
+                ].map((item) => (
+                  <div key={item.title} className="p-6 rounded-3xl bg-white/5 border border-white/10 text-white shadow-segura-soft hover:shadow-segura-glow transition-all">
+                    <div className="w-12 h-12 rounded-2xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary mb-4">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-xl font-display font-bold uppercase tracking-tight mb-3">{item.title}</h3>
+                    <p className="text-slate-300 leading-relaxed text-sm">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="grid lg:grid-cols-2 gap-8 items-center">
+                <div className="bg-slate-900/70 border border-segura-primary/20 rounded-3xl p-6 md:p-8 shadow-segura-soft backdrop-blur">
+                  <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Horários de Corte</p>
+                  <div className="space-y-4 text-white">
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary font-display font-black">AM</div>
+                      <div>
+                        <p className="font-display font-bold uppercase tracking-[0.2em]">Pedido até 12h</p>
+                        <p className="text-slate-300">Retirada às 14h do mesmo dia.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="w-10 h-10 rounded-xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary font-display font-black">PM</div>
+                      <div>
+                        <p className="font-display font-bold uppercase tracking-[0.2em]">Pedido após 12h</p>
+                        <p className="text-slate-300">Retirada às 9h do dia seguinte.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-4">
+                  <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-segura-soft">
+                    <div className="h-48 bg-[url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center" />
+                  </div>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <Button href="/chat?intent=frete" variant="outline" className="text-white border-white/30 hover:border-segura-primary hover:text-segura-primary">
+                      Consultar Frete para minha Região
+                    </Button>
+                    <p className="text-slate-400 text-sm">Grande João Pessoa: frete grátis acima de R$ 500,00 com frota própria.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Hub de Inteligência e Atalhos */}
       <Section id="hub-inteligencia" variant="offwhite" className="-mt-16 md:-mt-24 relative z-20">
         <Container>
