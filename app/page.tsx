@@ -563,6 +563,49 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* Autoridade Humana - Mentoria Técnica */}
+      <Section id="mentoria" variant="default" className="reveal">
+        <Container>
+          <div className="grid lg:grid-cols-12 gap-10 items-center bg-slate-950 rounded-4xl border border-white/10 overflow-hidden">
+            <div className="lg:col-span-5 relative h-full">
+              <div className="h-full min-h-[320px] bg-[url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center grayscale-[15%]" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+            </div>
+            <div className="lg:col-span-7 p-8 md:p-12 space-y-6">
+              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Autoridade Humana</p>
+              <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">
+                Não apenas vendemos EPIs. Mentoramos a sua Segurança.
+              </h2>
+              <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur">
+                <p className="text-slate-200 text-lg leading-relaxed">
+                  Entendemos que por trás de cada capacete existe uma história, um sonho e uma família esperando em casa. Nossa equipe não apenas “tira pedidos”; nós validamos riscos e entregamos soluções.
+                </p>
+                <div className="grid md:grid-cols-3 gap-4 mt-6">
+                  {[
+                    { title: 'Consultoria Ativa', desc: 'Especificamos C.A. correto para evitar multas e acidentes.' },
+                    { title: 'Olhar Humano', desc: 'Empatia em cada atendimento, respeitando a responsabilidade do gestor.' },
+                    { title: 'Ecossistema de Soluções', desc: 'Tecnologia (Neo Evolution) + conhecimento das NRs.' },
+                  ].map((item) => (
+                    <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white">
+                      <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-1 text-segura-primary">{item.title}</p>
+                      <p className="text-slate-200 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+                <p className="mt-6 text-segura-primary italic text-sm font-sans">
+                  “Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.”
+                </p>
+              </div>
+              <div className="flex flex-wrap items-center gap-4">
+                <Button href="/chat?intent=mentoria" variant="primary" className="px-8 py-4 shadow-segura-glow">
+                  Falar com um Mentor Técnico
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Objeções */}
       <Section id="objecoes" variant="offwhite" className="reveal">
         <Container>
