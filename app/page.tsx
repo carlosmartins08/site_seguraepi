@@ -362,11 +362,52 @@ export default function HomePage() {
       {/* Segmentos */}
       <Section id="segmentos" variant="default" className="reveal">
         <Container>
-          <SectionTitle subtitle="Onde atuamos" title="EPI para diferentes operações de trabalho" />
+          <SectionTitle
+            subtitle="Segmentação por dor"
+            title="Soluções integradas por nicho"
+            description="Escolha o cenário e veja o conjunto de EPIs e normas que eliminam suas objeções."
+            alignment="center"
+          />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-            <DecisionCard title="Construção e obras" description="Proteção para obra, altura e impacto." href="/chat?intent=setor&setor=obras" actionText="Falar sobre obra" />
-            <DecisionCard title="Indústria" description="EPI para operação e risco mecânico." href="/chat?intent=setor&setor=industria" actionText="Validar cenário" />
-            <DecisionCard title="Logística" description="Conforto e padronização para equipes." href="/chat?intent=setor&setor=logistica" actionText="Organizar time" />
+            {/* Construção Civil & Infra */}
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="relative p-8 space-y-4 text-white">
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-18 • NR-35</span>
+                <h3 className="text-2xl font-display font-black uppercase tracking-tight">Construção Civil & Infra</h3>
+                <p className="text-slate-200 text-sm leading-relaxed">Sua obra não pode parar. Equipamentos testados para o rigor da NR-18 e NR-35, antiqueda e botinas de alta resistência com pronta entrega.</p>
+                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Soluções para Obra <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <a href="/catalogo?setor=construcao" className="sr-only">Ir para catálogo de construção</a>
+              </div>
+            </div>
+
+            {/* Setor Elétrico */}
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="relative p-8 space-y-4 text-white">
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-10 • 1000V</span>
+                <h3 className="text-2xl font-display font-black uppercase tracking-tight">Setor Elétrico</h3>
+                <p className="text-slate-200 text-sm leading-relaxed">Risco zero em alta tensão. Linha Metal-Free com isolamento térmico e elétrico, proteção rigorosa conforme NR-10 para quem lida com o invisível.</p>
+                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Linha Técnica <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <a href="/catalogo?setor=eletrico" className="sr-only">Ver linha técnica elétrica</a>
+              </div>
+            </div>
+
+            {/* Alimentícia & Hospitalar */}
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+              <div className="relative p-8 space-y-4 text-white">
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">C.A. Ativo</span>
+                <h3 className="text-2xl font-display font-black uppercase tracking-tight">Alimentícia & Hospitalar</h3>
+                <p className="text-slate-200 text-sm leading-relaxed">Higiene e aderência absoluta. Solados Super Grip e materiais de fácil higienização para ambientes controlados, sem deslizes e sem contaminação.</p>
+                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Itens Higiene <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <a href="/catalogo?setor=alimentar-hospitalar" className="sr-only">Ver itens para higiene</a>
+              </div>
+            </div>
           </div>
         </Container>
       </Section>
