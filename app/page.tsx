@@ -412,6 +412,71 @@ export default function HomePage() {
         </Container>
       </Section>
 
+      {/* Neo Evolution - Inovação */}
+      <Section id="neo-evolution" variant="default" className="reveal">
+        <Container>
+          <div className="relative overflow-hidden rounded-4xl bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border border-white/10 shadow-segura-hover hover:shadow-segura-glow transition-shadow duration-500">
+            <div className="absolute inset-0 opacity-50 bg-[radial-gradient(circle_at_70%_30%,rgba(255,155,33,0.25),transparent_35%),radial-gradient(circle_at_30%_60%,rgba(59,130,246,0.15),transparent_30%)]" />
+            <div className="grid lg:grid-cols-12 gap-12 p-8 md:p-12 relative z-10 items-center">
+              <div className="lg:col-span-6 space-y-6">
+                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Inovação Neo Evolution</p>
+                <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Conforto de Primeiro Mundo: A Revolução Neo Evolution.</h2>
+                <p className="text-slate-300 text-lg leading-relaxed">
+                  EPI desconfortável não é só incômodo; é perda de produtividade e risco de fadiga. Substitua o padrão pelo personalizado — conforto real, performance real.
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {[
+                    { title: 'Scanner Laser', desc: 'Moldagem precisa em apenas 3 minutos.' },
+                    { title: 'Antiestática', desc: 'Segurança total para eletrônicos ou inflamáveis.' },
+                    { title: 'Ergonomia Extrema', desc: 'Redução imediata de impacto e dor muscular.' },
+                  ].map((item) => (
+                    <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white">
+                      <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-2 text-segura-primary">{item.title}</p>
+                      <p className="text-slate-200 text-sm leading-relaxed">{item.desc}</p>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="flex flex-wrap items-center gap-4">
+                  <Button
+                    href="/chat?intent=demo-neo-evolution"
+                    variant="primary"
+                    className="px-10 py-4 shadow-segura-glow"
+                  >
+                    Agendar Demonstração Gratuita na Minha Empresa
+                  </Button>
+                  <div className="flex items-center gap-3 px-4 py-3 rounded-2xl bg-white/5 border border-white/10 text-white">
+                    <div className="h-10 w-10 rounded-xl bg-segura-primary/20 border border-segura-primary/60 flex items-center justify-center">
+                      <span className="text-2xl font-display font-black text-segura-primary animate-pulse">03</span>
+                    </div>
+                    <div className="text-xs uppercase tracking-[0.2em] text-slate-300 leading-tight">
+                      minutos<br />para moldar
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="lg:col-span-6 relative">
+                <div className="relative rounded-4xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-segura-soft">
+                  <div className="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60" />
+                  <div
+                    className="h-[340px] bg-cover bg-center"
+                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1508387027631-23a6441407dc?auto=format&fit=crop&w=1200&q=80')" }}
+                  />
+                  <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                    <div className="h-64 w-[3px] bg-gradient-to-b from-transparent via-segura-primary to-transparent animate-pulse" />
+                  </div>
+                </div>
+                <p className="mt-4 text-slate-300 text-sm">
+                  Visualização conceitual da palmilha sendo escaneada a laser. Podemos substituir por vídeo curto em loop se fornecido.
+                </p>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       {/* Objeções */}
       <Section id="objecoes" variant="offwhite" className="reveal">
         <Container>
