@@ -150,8 +150,6 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               </span>
             </div>
 
-            <LocaleSwitcher />
-
             <Button
               href={CONTACT_INFO.whatsapp}
               variant="primary"
