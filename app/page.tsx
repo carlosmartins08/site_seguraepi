@@ -177,24 +177,25 @@ export default function HomePage() {
       {/* Hub de Inteligência e Atalhos */}
       <Section id="hub-inteligencia" variant="offwhite" className="-mt-16 md:-mt-24 relative z-20">
         <Container>
-          <div className="bg-white rounded-4xl shadow-segura-hover border border-slate-100 p-6 md:p-10 lg:p-12">
-            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+          <div className="bg-slate-900/80 backdrop-blur-md rounded-4xl border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-shadow duration-500 p-6 md:p-10 lg:p-12">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
               <div>
-                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Hub de Inteligência</p>
-                <h2 className="text-2xl md:text-4xl font-display font-black text-segura-dark uppercase tracking-tight">O que você precisa resolver agora?</h2>
+                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Central de Ações Técnicas</p>
+                <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-tight">O que você precisa resolver agora?</h2>
               </div>
             </div>
 
-            <div className="bg-slate-900/80 rounded-3xl p-4 md:p-6 backdrop-blur-xl border border-white/10 shadow-segura-glow mb-10">
-              <label className="text-slate-300 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3 block">
-                Digite o número do C.A. ou o nome do produto (ex: Bota Bracol)
+            <div className="bg-slate-900/60 rounded-3xl p-4 md:p-6 border border-white/10 shadow-inner shadow-black/20 mb-8">
+              <label className="flex items-center gap-2 text-slate-200 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3">
+                <svg className="w-4 h-4 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                Validação Técnica
               </label>
               <div className="flex flex-col md:flex-row gap-4 items-stretch">
                 <div className="relative flex-1">
                   <input
                     value={caSearch}
                     onChange={(e) => setCaSearch(e.target.value)}
-                    placeholder={'Ex: CA 12345 ou "Capacete V-Gard"'}
+                    placeholder={'Digite o número do C.A. ou o nome do produto...'}
                     className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-segura-primary focus:ring-2 focus:ring-segura-primary/40 transition-all"
                   />
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 text-segura-primary">
@@ -211,30 +212,33 @@ export default function HomePage() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-3 gap-4">
               <DecisionCard
                 eyebrow="Atalho 01"
                 title="Soluções por NR"
-                description="Mapeie equipamentos por norma (NR-10, NR-35, NR-18) e valide conformidade em minutos."
+                description="Consultar por Norma: NR-10, NR-35, NR-18. Valide riscos e conformidade em minutos."
                 icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
                 href="/catalogo?filtro=nr"
                 actionText="Ver por NR"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
               />
               <DecisionCard
                 eyebrow="Atalho 02"
-                title="Catálogo Completo"
-                description="Explore todas as categorias, filtros por risco e aplicação, com estoque real para João Pessoa."
-                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm0 11h7v7h-7v-7z" /></svg>}
-                href="/catalogo"
-                actionText="Abrir catálogo"
+                title="Cotação para Empresas"
+                description="Cadastro B2B com faturamento em 24h. Agilidade para compras recorrentes e crédito."
+                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-9 6h12M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" /></svg>}
+                href="/chat?intent=cotacao-b2b"
+                actionText="Abrir cotação"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
               />
               <DecisionCard
                 eyebrow="Atalho 03"
-                title="Status de Pedido / Retirada"
-                description="Acompanhe seu pedido ou confirme retirada expressa em 3h via atendimento dedicado."
+                title="Retirada Expressa"
+                description="Onde retirar meu pedido? Consulte status e confirme retirada em 3h na unidade Cabedelo."
                 icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
-                href={CONTACT_INFO.whatsapp}
-                actionText="Falar agora"
+                href="/retira-em-loja"
+                actionText="Ver retirada"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
               />
             </div>
           </div>
