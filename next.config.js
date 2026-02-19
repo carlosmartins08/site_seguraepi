@@ -1,8 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  experimental: {
-    typedRoutes: true,
+  typedRoutes: true,
+  turbopack: {
+    // Force root to this project to avoid picking up lockfiles in parent folders
+    root: __dirname,
   },
 };
 
