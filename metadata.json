@@ -1,0 +1,7 @@
+{
+  "name": "Segura EPI - Home Oficial",
+  "description": "Frontend industrial premium da Segura EPI, focado em orientação técnica e fornecimento de EPIs para o setor corporativo.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
