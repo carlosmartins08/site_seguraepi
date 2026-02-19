@@ -83,89 +83,89 @@ export default function HomePage() {
       />
 
       {/* Hero */}
-      <Section id="hero" variant="dark" className="pt-32 pb-40 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-segura-primary/5 to-transparent pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-segura-primary/10 rounded-full blur-[120px] pointer-events-none" />
-
+      <Section id="hero" variant="dark" className="pt-28 pb-32 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-segura-dark to-slate-900 opacity-80" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.14),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.05),transparent_35%)]" />
         <Container className="relative z-10">
-          <div className="grid lg:grid-cols-12 gap-16 items-center">
+          <div className="grid lg:grid-cols-12 gap-14 items-center">
             <div className="lg:col-span-7 space-y-10">
-              <div className="animate-slide-up">
+              <div className="relative animate-slide-up">
+                <div className="absolute -left-6 -top-6 w-32 h-32 bg-segura-primary/15 blur-3xl rounded-full pointer-events-none" />
                 <span className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6 block">
-                  {t('hero.eyebrow', 'Fornecedor B2B de EPI')}
+                  Líder em Distribuição de EPI no Nordeste
                 </span>
-                <h1 className="text-4xl md:text-7xl font-display font-black leading-[1.1] mb-8 uppercase tracking-tighter">
-                  {t('hero.headlinePrefix', 'EPI para empresas com')} <br />
-                  <span className="text-segura-primary">{t('hero.headlineStrong', 'orientação técnica')}</span> <br />
-                  {t('hero.headlineSuffix', 'e compra segura')}
+                <h1 className="text-4xl md:text-7xl font-display font-black leading-[1.05] mb-6 uppercase tracking-tight text-white">
+                  EPI em João Pessoa: <br />
+                  Segurança com Inteligência <br />
+                  e Pronta Entrega.
                 </h1>
-                <p className="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed font-sans">
-                  {t(
-                    'hero.paragraph',
-                    'Escolha por risco, função e aplicação real. A Segura EPI conecta seu time às soluções certas — com apoio consultivo e parcerias de fabricantes líderes.'
-                  )}
+                <p className="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed font-sans">
+                  Muito mais que uma revenda. Somos consultores técnicos focados em proteger o seu maior patrimônio: a vida da sua equipe. Estoque real e logística expressa para sua obra não parar.
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-6 animate-slide-up delay-100">
-                <Button
-                  href={CONTACT_INFO.whatsapp}
-                  variant="primary"
-                  className="px-10 py-5 hover:bg-white hover:text-segura-dark hover:shadow-[0_0_30px_rgba(255,155,33,0.5)] transition-all duration-500"
-                >
-                  {t('hero.primaryCta', 'Falar com consultor')}
-                </Button>
+              <div className="flex flex-wrap items-center gap-4 animate-slide-up delay-100">
                 <Button
                   href="/catalogo?origem=home-hero"
-                  variant="outline"
-                  className="text-white border-white/20 hover:border-segura-primary hover:text-segura-primary hover:ring-2 hover:ring-segura-primary/50 px-10 py-5 bg-white/5 backdrop-blur-sm"
+                  variant="primary"
+                  className="px-10 py-5 shadow-segura-glow"
                 >
-                  {t('hero.secondaryCta', 'Ver catálogo')}
+                  Acessar Catálogo Digital
+                </Button>
+                <Button
+                  href={CONTACT_INFO.whatsapp}
+                  variant="outline"
+                  className="text-white border-white/20 hover:border-segura-primary hover:text-segura-primary hover:ring-2 hover:ring-segura-primary/40 px-10 py-5 bg-white/5 backdrop-blur-sm"
+                >
+                  Consultoria Técnica
                 </Button>
               </div>
 
-              <div className="pt-10 border-t border-white/5 grid grid-cols-1 md:grid-cols-3 gap-8 animate-slide-up delay-200">
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-segura-primary group-hover:bg-segura-primary group-hover:text-segura-dark transition-all">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 animate-slide-up delay-200">
+                {[
+                  { label: 'Estoque Real (+15k itens)', icon: 'boxes' },
+                  { label: 'Retirada em 3h', icon: 'clock' },
+                  { label: 'C.A. 100% Ativo', icon: 'shield' },
+                  { label: 'Faturamento B2B em 24h', icon: 'invoice' },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-segura-primary">
+                      {item.icon === 'boxes' && (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
+                      )}
+                      {item.icon === 'clock' && (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
+                      )}
+                      {item.icon === 'shield' && (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                      )}
+                      {item.icon === 'invoice' && (
+                        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h3m-7 6h16M5 21V5a2 2 0 012-2h8l4 4v14" /></svg>
+                      )}
+                    </div>
+                    <span className="text-[11px] font-display font-bold uppercase tracking-[0.2em] text-slate-200 leading-tight">{item.label}</span>
                   </div>
-                  <span className="text-[10px] font-display font-bold uppercase tracking-widest text-slate-300">Orientação por risco e aplicação</span>
-                </div>
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-segura-primary group-hover:bg-segura-primary group-hover:text-segura-dark transition-all">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-                  </div>
-                  <span className="text-[10px] font-display font-bold uppercase tracking-widest text-slate-300">Mix completo por categoria e setor</span>
-                </div>
-                <div className="flex items-center gap-4 group">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-segura-primary group-hover:bg-segura-primary group-hover:text-segura-dark transition-all">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" /></svg>
-                  </div>
-                  <span className="text-[10px] font-display font-bold uppercase tracking-widest text-slate-300">Atendimento consultivo e rápido</span>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col gap-4 animate-pop delay-300">
-              <div className="bg-white/5 border border-white/10 p-8 md:p-10 rounded-4xl backdrop-blur-xl relative overflow-hidden group">
-                <div className="absolute top-0 right-0 p-6 text-segura-primary opacity-20 group-hover:opacity-100 transition-opacity">
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
-                </div>
-                <h3 className="text-white font-display font-bold text-xl mb-8 uppercase tracking-tight">Atalhos por Intenção</h3>
-
-                <div className="space-y-4">
-                  <a href="/chat?origem=home-hero&intent=equipe" className="flex items-center justify-between p-5 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 hover:border-segura-primary/50 transition-all group/chip">
-                    <span className="text-slate-300 group-hover/chip:text-white font-sans font-medium">Preciso comprar para minha equipe</span>
-                    <svg className="w-5 h-5 text-segura-primary opacity-0 group-hover/chip:opacity-100 transition-all -translate-x-2 group-hover/chip:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                  </a>
-                  <a href="/catalogo?origem=home-hero&filtro=risco" className="flex items-center justify-between p-5 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 hover:border-segura-primary/50 transition-all group/chip">
-                    <span className="text-slate-300 group-hover/chip:text-white font-sans font-medium">Tenho um risco específico</span>
-                    <svg className="w-5 h-5 text-segura-primary opacity-0 group-hover/chip:opacity-100 transition-all -translate-x-2 group-hover/chip:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                  </a>
-                  <a href="/chat?origem=home-hero&intent=cotar-itens" className="flex items-center justify-between p-5 bg-white/5 border border-white/5 rounded-2xl hover:bg-white/10 hover:border-segura-primary/50 transition-all group/chip">
-                    <span className="text-slate-300 group-hover/chip:text-white font-sans font-medium">Quero cotar itens definidos</span>
-                    <svg className="w-5 h-5 text-segura-primary opacity-0 group-hover/chip:opacity-100 transition-all -translate-x-2 group-hover/chip:translate-x-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                  </a>
+            <div className="lg:col-span-5 animate-pop delay-150">
+              <div className="relative h-full min-h-[360px] rounded-4xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl">
+                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564326060809-8d6f2d8195ff?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-40" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-segura-dark/80 via-segura-dark/60 to-transparent" />
+                <div className="relative z-10 p-10 flex flex-col gap-6 h-full justify-end">
+                  <div className="flex items-center gap-3">
+                    <span className="w-2 h-2 bg-segura-primary rounded-full animate-pulse" />
+                    <p className="text-white font-display font-bold uppercase tracking-[0.25em] text-xs">Portal da Confiança</p>
+                  </div>
+                  <p className="text-slate-200 text-lg leading-relaxed">
+                    Inteligência técnica + estoque real. Retiradas em 3h para João Pessoa e logística expressa para todo o Nordeste.
+                  </p>
+                  <div className="flex gap-3 flex-wrap">
+                    <span className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-[11px] uppercase tracking-[0.2em]">NR-06</span>
+                    <span className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-[11px] uppercase tracking-[0.2em]">CA Ativo</span>
+                    <span className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-[11px] uppercase tracking-[0.2em]">Consultoria SST</span>
+                  </div>
                 </div>
               </div>
             </div>
