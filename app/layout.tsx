@@ -3,6 +3,7 @@ import React from 'react';
 import '../styles/segura-ui.css';
 import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } from '../lib/seo/site';
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
+import { Providers } from './providers';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -30,7 +31,9 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildWebSiteJsonLd()) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
