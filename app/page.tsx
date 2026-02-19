@@ -29,6 +29,7 @@ import { useI18n } from '../hooks/useI18n';
 export default function HomePage() {
   const [legalModal, setLegalModal] = useState<{ open: boolean, type: 'privacy' | 'terms' }>({ open: false, type: 'privacy' });
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
+  const [caSearch, setCaSearch] = useState('');
   const { t } = useI18n();
 
   useEffect(() => {
@@ -168,6 +169,73 @@ export default function HomePage() {
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Hub de Inteligência e Atalhos */}
+      <Section id="hub-inteligencia" variant="offwhite" className="-mt-16 md:-mt-24 relative z-20">
+        <Container>
+          <div className="bg-white rounded-4xl shadow-segura-hover border border-slate-100 p-6 md:p-10 lg:p-12">
+            <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-10">
+              <div>
+                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Hub de Inteligência</p>
+                <h2 className="text-2xl md:text-4xl font-display font-black text-segura-dark uppercase tracking-tight">O que você precisa resolver agora?</h2>
+              </div>
+            </div>
+
+            <div className="bg-slate-900/80 rounded-3xl p-4 md:p-6 backdrop-blur-xl border border-white/10 shadow-segura-glow mb-10">
+              <label className="text-slate-300 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3 block">
+                Digite o número do C.A. ou o nome do produto (ex: Bota Bracol)
+              </label>
+              <div className="flex flex-col md:flex-row gap-4 items-stretch">
+                <div className="relative flex-1">
+                  <input
+                    value={caSearch}
+                    onChange={(e) => setCaSearch(e.target.value)}
+                    placeholder="Ex: CA 12345 ou \"Capacete V-Gard\""
+                    className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-segura-primary focus:ring-2 focus:ring-segura-primary/40 transition-all"
+                  />
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-segura-primary">
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
+                  </div>
+                </div>
+                <Button
+                  href={`/catalogo?busca=${encodeURIComponent(caSearch || 'ca')}`}
+                  variant="primary"
+                  className="px-8 py-4 whitespace-nowrap"
+                >
+                  Buscar CA / Produto
+                </Button>
+              </div>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <DecisionCard
+                eyebrow="Atalho 01"
+                title="Soluções por NR"
+                description="Mapeie equipamentos por norma (NR-10, NR-35, NR-18) e valide conformidade em minutos."
+                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
+                href="/catalogo?filtro=nr"
+                actionText="Ver por NR"
+              />
+              <DecisionCard
+                eyebrow="Atalho 02"
+                title="Catálogo Completo"
+                description="Explore todas as categorias, filtros por risco e aplicação, com estoque real para João Pessoa."
+                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h7v7H3V3zm0 11h7v7H3v-7zm11-11h7v7h-7V3zm0 11h7v7h-7v-7z" /></svg>}
+                href="/catalogo"
+                actionText="Abrir catálogo"
+              />
+              <DecisionCard
+                eyebrow="Atalho 03"
+                title="Status de Pedido / Retirada"
+                description="Acompanhe seu pedido ou confirme retirada expressa em 3h via atendimento dedicado."
+                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+                href={CONTACT_INFO.whatsapp}
+                actionText="Falar agora"
+              />
             </div>
           </div>
         </Container>
