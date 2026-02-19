@@ -17,11 +17,12 @@ import { AssistedCTA } from '../components/conversion/AssistedCTA';
 import { GMBReviews } from '../components/trust/GMBReviews';
 import { CookieConsent } from '../components/trust/CookieConsent';
 import { LegalModal } from '../components/layout/LegalModal';
-import { FloatingChatButton } from '../components/actions/FloatingChatButton';
+// Floating chat do WhatsApp foi substituído pelo Wbot como ponto de contato prioritário
 import { cn } from '../lib/cn';
 import { CONTACT_INFO } from '../lib/constants';
 import { LEGAL_TEXTS } from '../lib/legal';
 import { useI18n } from '../hooks/useI18n';
+import { useBusinessStatus } from '../hooks/useBusinessStatus';
 
 /**
  * HOME OFICIAL - SEGURA EPI
@@ -31,6 +32,7 @@ export default function HomePage() {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
   const [caSearch, setCaSearch] = useState('');
   const { t } = useI18n();
+  const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
 
   useEffect(() => {
     const observer = new IntersectionObserver((entries) => {
@@ -44,6 +46,18 @@ export default function HomePage() {
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
     return () => observer.disconnect();
   }, []);
+
+  // Configura dados iniciais para o Wbot (prioridade de chat)
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    (window as any).WBOTdata = {
+      greeting: isOnline
+        ? 'Olá! Sou o consultor técnico da SeguraEPI. Precisa validar um C.A. ou de um orçamento rápido agora?'
+        : 'Estamos fora do horário, mas registre sua dúvida e retornaremos às 07:30 com um consultor técnico.',
+      status: statusMessage,
+      online: isOnline,
+    };
+  }, [isOnline, statusMessage]);
 
   const partnerPlaceholders = [
     'Fabricante A', 'Fabricante B', 'Fabricante C', 'Fabricante D',
@@ -73,7 +87,6 @@ export default function HomePage() {
     <main className="relative">
       <Navbar variant="dark" />
       <CookieConsent onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })} />
-      <FloatingChatButton />
 
       <LegalModal
         isOpen={legalModal.open}
@@ -390,6 +403,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
+
       {/* Metodologia */}
       <Section id="metodo" variant="offwhite" className="reveal">
         <Container>
@@ -664,6 +678,7 @@ export default function HomePage() {
           </div>
         </Container>
       </Section>
+
 
       {/* Objeções */}
       <Section id="objecoes" variant="offwhite" className="reveal">

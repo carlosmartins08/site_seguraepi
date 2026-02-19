@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Script from 'next/script';
 import '../styles/globals.css';
 import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } from '../lib/seo/site';
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
@@ -39,6 +40,11 @@ export default function RootLayout({
       </head>
       <body>
         <Providers>{children}</Providers>
+        <Script
+          src="https://wbot.chat/index.js"
+          strategy="afterInteractive"
+          data-token="4cdc9640da67dbd6e38fa5ef324befd6"
+        />
       </body>
     </html>
   );
