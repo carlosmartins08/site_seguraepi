@@ -194,7 +194,7 @@ export default function HomePage() {
                   <input
                     value={caSearch}
                     onChange={(e) => setCaSearch(e.target.value)}
-                    placeholder="Ex: CA 12345 ou \"Capacete V-Gard\""
+                    placeholder={'Ex: CA 12345 ou "Capacete V-Gard"'}
                     className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-segura-primary focus:ring-2 focus:ring-segura-primary/40 transition-all"
                   />
                   <div className="absolute right-4 top-1/2 -translate-y-1/2 text-segura-primary">
