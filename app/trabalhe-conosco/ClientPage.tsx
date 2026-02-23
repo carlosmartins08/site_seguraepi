@@ -1,0 +1,231 @@
+'use client';
+
+import React, { useState } from 'react';
+import Image from 'next/image';
+import { Navbar } from '../../components/layout/Navbar';
+import { Footer } from '../../components/layout/Footer';
+import { Section } from '../../components/layout/Section';
+import { Container } from '../../components/layout/Container';
+import { SectionTitle } from '../../components/typography/SectionTitle';
+import { Button } from '../../components/actions/Button';
+import { ContextLink } from '../../components/actions/ContextLink';
+import { LegalModal } from '../../components/layout/LegalModal';
+import { CONTACT_INFO } from '../../lib/constants';
+import { LEGAL_TEXTS } from '../../lib/legal';
+import { SeguraIcon } from '../../components/icons/SeguraIcon';
+
+const heroBadges = [
+  { label: 'Ética inegociável', color: 'bg-segura-primary/15 text-segura-primary' },
+  { label: 'Alta performance', color: 'bg-slate-900 text-white' },
+  { label: 'Propósito real', color: 'bg-emerald-100 text-emerald-700' },
+];
+
+const cultura: { title: string; desc: string; icon: 'shield' | 'heart' | 'book' | 'spark' }[] = [
+  { title: 'Ética inegociável', desc: 'Transparência do estoque à venda.', icon: 'shield' },
+  { title: 'Foco no cliente', desc: 'Entregamos soluções que salvam vidas.', icon: 'heart' },
+  { title: 'Crença e humildade', desc: 'Trabalho duro e respeito às pessoas.', icon: 'book' },
+  { title: 'Alta performance', desc: 'Metas, dados e mérito reconhecido.', icon: 'spark' },
+];
+
+const areas: { title: string; desc: string; icon: 'bolt' | 'truck' | 'check' }[] = [
+  {
+    title: 'Comercial e Vendas',
+    desc: 'Consultores e SDRs B2B com perfil consultivo e negociação forte para abrir portas e fechar contratos.',
+    icon: 'bolt',
+  },
+  {
+    title: 'Logística e Operações',
+    desc: 'Pessoas organizadas e ágeis para garantir prazo, conferência rigorosa e processos eficientes.',
+    icon: 'truck',
+  },
+  {
+    title: 'Administrativo e Financeiro',
+    desc: 'Perfis analíticos e éticos para Compras, Fiscal, RH e Financeiro, guardiões da conformidade.',
+    icon: 'check',
+  },
+];
+
+const beneficios = [
+  'Salário compatível com o mercado + variável (elegíveis).',
+  'Plano de Saúde e Odontológico (após experiência).',
+  'Vale-Refeição.',
+  'Seguro de Vida.',
+  'Plano de Carreira Estruturado.',
+];
+
+export default function ClientPage() {
+  const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
+    open: false,
+    type: 'privacy',
+  });
+
+  return (
+    <main className="bg-white min-h-screen">
+      <Navbar variant="light" />
+
+      <Section id="hero-trabalhe" variant="offwhite" className="pt-32 pb-16 relative overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"
+            alt="Equipe profissional em ambiente corporativo"
+            fill
+            priority
+            className="object-cover opacity-20"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white via-white/92 to-white/78" />
+        </div>
+        <Container className="relative max-w-6xl">
+          <div className="space-y-8">
+            <div>
+              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
+                Trabalhe Conosco | Segura EPI
+              </p>
+              <h1 className="text-3xl md:text-5xl font-display font-black text-segura-dark leading-tight">
+                Construa sua carreira protegendo vidas.
+              </h1>
+              <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
+                Somos a Segura EPI: ética, alta performance e compromisso em levar segurança a quem constrói o futuro.
+                Se você busca crescimento e propósito, seu lugar é aqui.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              {heroBadges.map((badge) => (
+                <span
+                  key={badge.label}
+                  className={`px-4 py-2 rounded-full text-[11px] font-display font-bold uppercase tracking-[0.2em] border ${badge.color} border-black/5`}
+                >
+                  {badge.label}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Button href="mailto:rh@seguraepi.com.br" variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+                Ver Vagas Abertas
+              </Button>
+              <ContextLink href="/catalogo" className="text-sm">
+                Conhecer a Segura EPI
+              </ContextLink>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="cultura" variant="default">
+        <Container className="max-w-6xl">
+          <SectionTitle
+            subtitle="Nossa Cultura"
+            title="Guardiões da Marca: ética, cliente, humildade e performance"
+            description="Ambiente dinâmico e desafiador, guiado por valores sólidos do nosso código de conduta."
+          />
+          <div className="grid md:grid-cols-2 gap-6">
+            {cultura.map((item) => (
+              <div
+                key={item.title}
+                className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white flex gap-4 items-start hover:-translate-y-1 hover:shadow-segura-glow transition-all"
+              >
+                <div className="w-11 h-11 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                  <SeguraIcon name={item.icon as any} />
+                </div>
+                <div className="space-y-2">
+                  <h4 className="text-lg font-display font-bold text-segura-dark uppercase tracking-tight">{item.title}</h4>
+                  <p className="text-slate-600 leading-relaxed text-sm">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="areas" variant="offwhite">
+        <Container className="max-w-6xl">
+          <SectionTitle
+            subtitle="Áreas de atuação"
+            title="Escolha o front onde você quer gerar impacto"
+            description="Perfis mapeados nos nossos ICPs para manter o padrão de excelência."
+          />
+          <div className="grid md:grid-cols-3 gap-6">
+            {areas.map((area) => (
+              <div
+                key={area.title}
+                className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white flex flex-col gap-3 hover:-translate-y-1 hover:shadow-segura-glow transition-all h-full"
+              >
+                <div className="w-11 h-11 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                  <SeguraIcon name={area.icon as any} />
+                </div>
+                <h4 className="text-lg font-display font-bold text-segura-dark uppercase tracking-tight">{area.title}</h4>
+                <p className="text-slate-600 leading-relaxed text-sm">{area.desc}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="beneficios" variant="default">
+        <Container className="max-w-6xl">
+          <SectionTitle
+            subtitle="O que oferecemos"
+            title="Benefícios e crescimento estruturado"
+            description="Reconhecemos quem caminha conosco e entregamos estrutura para evoluir."
+          />
+          <div className="grid md:grid-cols-2 gap-6">
+            {beneficios.map((beneficio) => (
+              <div key={beneficio} className="p-5 rounded-2xl border border-slate-100 shadow-segura-soft bg-white flex items-start gap-3">
+                <div className="w-10 h-10 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                  <SeguraIcon name="check" />
+                </div>
+                <p className="text-slate-600 leading-relaxed text-sm">{beneficio}</p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      <Section id="candidatar" variant="offwhite">
+        <Container className="max-w-5xl">
+          <div className="bg-slate-900 text-white rounded-4xl p-8 md:p-12 shadow-segura-hover border border-white/10 space-y-6">
+            <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Como se candidatar</p>
+            <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">Quer fazer parte do time Segura EPI?</h3>
+            <ul className="space-y-3 text-slate-200 leading-relaxed">
+              <li className="flex items-start gap-3">
+                <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                Envie seu currículo para <a className="underline hover:text-segura-primary" href="mailto:rh@seguraepi.com.br">rh@seguraepi.com.br</a>.
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                Assunto do e-mail: nome da vaga (Ex: “Vaga Vendedor B2B”).
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                Mantenha o LinkedIn atualizado e acompanhe nossas redes para novas oportunidades.
+              </li>
+            </ul>
+            <div className="flex flex-wrap gap-3">
+              <Button href="mailto:rh@seguraepi.com.br" variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+                Enviar currículo
+              </Button>
+              <ContextLink href="/catalogo" className="text-sm text-white">
+                Conhecer nossas soluções
+              </ContextLink>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Footer
+        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
+        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
+      />
+
+      <LegalModal
+        isOpen={legalModal.open}
+        onClose={() => setLegalModal({ ...legalModal, open: false })}
+        title={LEGAL_TEXTS[legalModal.type].title}
+        content={LEGAL_TEXTS[legalModal.type].content}
+        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
+      />
+    </main>
+  );
+}

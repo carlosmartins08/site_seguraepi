@@ -10,13 +10,13 @@
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: var(--font-inter), 'Inter', sans-serif;
   color: var(--segura-dark);
   scroll-behavior: smooth;
 }
 
 h1, h2, h3, h4, .font-display {
-  font-family: 'Poppins', sans-serif;
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
 }
 
 /* Animações Design System */

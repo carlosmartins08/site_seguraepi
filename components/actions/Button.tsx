@@ -10,7 +10,7 @@ interface ButtonProps {
 }
 
 export const Button: React.FC<ButtonProps> = ({ children, href, variant = 'primary', className }) => {
-  const baseStyles = "inline-flex items-center justify-center px-8 py-3.5 font-display font-bold uppercase tracking-wide transition-all duration-300 rounded-xl hover:-translate-y-1 active:scale-95";
+  const baseStyles = "inline-flex items-center justify-center px-8 py-3.5 font-display font-bold uppercase tracking-wide transition-all duration-300 rounded-xl hover:-translate-y-1 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-segura-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white";
   
   const variants = {
     primary: "bg-segura-primary text-white shadow-segura-glow hover:bg-white hover:text-segura-primary hover:ring-2 hover:ring-segura-primary",

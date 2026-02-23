@@ -1,6 +1,7 @@
 
 import React from 'react';
 import Script from 'next/script';
+import { Inter, Poppins } from 'next/font/google';
 import '../styles/globals.css';
 import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } from '../lib/seo/site';
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
@@ -15,6 +16,20 @@ export const metadata = {
   description: DEFAULT_DESCRIPTION,
 };
 
+const inter = Inter({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['300', '400', '500', '600'],
+  variable: '--font-inter',
+});
+
+const poppins = Poppins({
+  subsets: ['latin'],
+  display: 'swap',
+  weight: ['700', '800', '900'],
+  variable: '--font-poppins',
+});
+
 export default function RootLayout({
   children,
 }: {
@@ -23,12 +38,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@700;800;900&display=swap"
-          rel="stylesheet"
-        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildOrganizationJsonLd()) }}
@@ -38,7 +47,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildWebSiteJsonLd()) }}
         />
       </head>
-      <body>
+      <body className={`${inter.variable} ${poppins.variable}`}>
         <Providers>{children}</Providers>
         <Script
           src="https://wbot.chat/index.js"

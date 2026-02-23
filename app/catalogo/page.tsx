@@ -1,7 +1,7 @@
 
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
@@ -15,7 +15,7 @@ import { MOCK_PRODUCTS } from '../../lib/catalog/products';
 import { applyFilters, CATEGORIES_FILTER, SEGMENTS_FILTER } from '../../lib/catalog/filters';
 import { cn } from '../../lib/cn';
 
-export default function CatalogoPage() {
+function CatalogoContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
@@ -187,5 +187,13 @@ export default function CatalogoPage() {
 
       <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
+  );
+}
+
+export default function CatalogoPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen flex items-center justify-center text-slate-500">Carregando...</div>}>
+      <CatalogoContent />
+    </Suspense>
   );
 }

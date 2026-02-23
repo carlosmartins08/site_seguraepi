@@ -53,6 +53,11 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               <li><button onClick={onOpenPrivacy} className="hover:text-segura-primary transition-colors text-left uppercase">Privacidade</button></li>
               <li><button onClick={onOpenTerms} className="hover:text-segura-primary transition-colors text-left uppercase">Termos de Uso</button></li>
               <li><a href="/retira" className="hover:text-segura-primary transition-colors uppercase">Retirada Local</a></li>
+              <li><a href="/politica-de-trocas-e-devolucoes" className="hover:text-segura-primary transition-colors uppercase">Política de Trocas e Devoluções</a></li>
+              <li><a href="/politica-de-entrega-e-frete" className="hover:text-segura-primary transition-colors uppercase">Política de Entrega e Frete</a></li>
+              <li><a href="/retirada-expressa" className="hover:text-segura-primary transition-colors uppercase">Retirada Expressa</a></li>
+              <li><a href="/sobre-segura-epi" className="hover:text-segura-primary transition-colors uppercase">Sobre a Segura EPI</a></li>
+              <li><a href="/trabalhe-conosco" className="hover:text-segura-primary transition-colors uppercase">Trabalhe Conosco</a></li>
             </ul>
           </div>
           <div>

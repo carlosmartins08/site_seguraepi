@@ -2,6 +2,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/layout/Container';
@@ -67,19 +68,19 @@ export default function HomePage() {
   const faqItems = [
     {
       q: "Como funciona o faturamento B2B?",
-      a: "Oferecemos condições personalizadas de faturamento via boleto para empresas após uma análise de crédito rápida. O processo é focado em desburocratizar a compra de suprimentos industriais."
+      a: "Analisamos crédito de forma ágil e transparente. Após aprovação, liberamos boleto faturado em até 24h com limites alinhados ao seu volume e cronograma."
     },
     {
       q: "Qual o prazo de retirada?",
-      a: "Para pedidos locais em nossa unidade física, os itens podem ser retirados em até 2 horas após a confirmação financeira, garantindo agilidade para urgências operacionais."
+      a: "Pedidos confirmados até 12h ficam prontos às 14h. Após esse horário, a retirada é às 9h do dia seguinte, sempre com checklist de conferência."
     },
     {
       q: "Os produtos possuem C.A.?",
-      a: "Sim, 100% do nosso mix de produtos possui Certificado de Aprovação (CA) ativo e válido junto ao Ministério do Trabalho, garantindo conformidade total com a NR-06."
+      a: "100% do mix tem C.A. ativo e validado. Antes de cada venda conferimos vigência e aplicabilidade para o seu cenário."
     },
     {
       q: "Vocês entregam em todo o Brasil?",
-      a: "Sim. Embora tenhamos uma unidade física estratégica para retirada rápida, possuímos logística otimizada e parcerias com transportadoras para atender empresas em todo o território nacional."
+      a: "Sim. Frota própria na Grande João Pessoa e rede de transportadoras auditadas para todo o país, com rastreio e prazos combinados."
     }
   ];
 
@@ -106,15 +107,15 @@ export default function HomePage() {
               <div className="relative animate-slide-up">
                 <div className="absolute -left-6 -top-6 w-32 h-32 bg-segura-primary/15 blur-3xl rounded-full pointer-events-none" />
                 <span className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6 block">
-                  Líder em Distribuição de EPI no Nordeste
+                  Ecossistema Segura EPI · Comércio • Consultoria • Treinamento
                 </span>
                 <h1 className="text-4xl md:text-7xl font-display font-black leading-[1.05] mb-6 uppercase tracking-tight text-white">
-                  EPI em João Pessoa: <br />
-                  Segurança com Inteligência <br />
-                  e Pronta Entrega.
+                  Segurança que une <br />
+                  tecnologia e humanidade <br />
+                  para sua operação.
                 </h1>
                 <p className="text-slate-300 text-lg md:text-xl max-w-2xl leading-relaxed font-sans">
-                  Muito mais que uma revenda. Somos consultores técnicos focados em proteger o seu maior patrimônio: a vida da sua equipe. Estoque real e logística expressa para sua obra não parar.
+                  Protegemos vidas com consciência, conhecimento e respeito. Orientamos, validamos o C.A. e entregamos rápido para que cada pessoa volte para casa em segurança.
                 </p>
               </div>
 
@@ -137,10 +138,10 @@ export default function HomePage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 animate-slide-up delay-200">
                 {[
-                  { label: 'Estoque Real (+15k itens)', icon: 'boxes' },
-                  { label: 'Retirada em 3h', icon: 'clock' },
-                  { label: 'C.A. 100% Ativo', icon: 'shield' },
-                  { label: 'Faturamento B2B em 24h', icon: 'invoice' },
+                  { label: 'Estoque auditado (+15k itens)', icon: 'boxes' },
+                  { label: 'Retirada expressa em 3h', icon: 'clock' },
+                  { label: 'C.A. validado e ativo', icon: 'shield' },
+                  { label: 'Crédito B2B em 24h', icon: 'invoice' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
                     <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-segura-primary">
@@ -165,15 +166,24 @@ export default function HomePage() {
 
             <div className="lg:col-span-5 animate-pop delay-150">
               <div className="relative h-full min-h-[360px] rounded-4xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl">
-                <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1564326060809-8d6f2d8195ff?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-40" />
+                <Image
+                  src="https://images.unsplash.com/photo-1564326060809-8d6f2d8195ff?auto=format&fit=crop&w=1200&q=75"
+                  alt="Equipe usando EPI em operação"
+                  fill
+                  priority
+                  sizes="(min-width:1024px) 480px, 100vw"
+                  className="object-cover"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTMxNTE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
+                />
                 <div className="absolute inset-0 bg-gradient-to-tr from-segura-dark/80 via-segura-dark/60 to-transparent" />
                 <div className="relative z-10 p-10 flex flex-col gap-6 h-full justify-end">
                   <div className="flex items-center gap-3">
                     <span className="w-2 h-2 bg-segura-primary rounded-full animate-pulse" />
-                    <p className="text-white font-display font-bold uppercase tracking-[0.25em] text-xs">Portal da Confiança</p>
+                    <p className="text-white font-display font-bold uppercase tracking-[0.25em] text-xs">Radar de Conformidade</p>
                   </div>
                   <p className="text-slate-200 text-lg leading-relaxed">
-                    Inteligência técnica + estoque real. Retiradas em 3h para João Pessoa e logística expressa para todo o Nordeste.
+                    Consultoria técnica, estoque pronto e logística que honra seu cronograma. Validamos o risco, confirmamos o C.A. e colocamos o EPI certo na mão da sua equipe.
                   </p>
                   <div className="flex gap-3 flex-wrap">
                     <span className="px-4 py-2 rounded-full border border-white/15 text-white/80 text-[11px] uppercase tracking-[0.2em]">NR-06</span>
@@ -193,8 +203,8 @@ export default function HomePage() {
           <div className="bg-white/70 backdrop-blur-xl border border-slate-100 rounded-4xl shadow-segura-soft p-8 md:p-12 space-y-12">
             {/* Marcas */}
             <div className="space-y-4">
-              <h3 className="text-2xl font-display font-black text-segura-dark uppercase tracking-tight">Curadoria Técnica com as Melhores Marcas do Mercado.</h3>
-              <p className="text-slate-500 max-w-3xl">Trabalhamos exclusivamente com fabricantes que mantêm padrões rigorosos de qualidade e C.A.s sempre atualizados.</p>
+              <h3 className="text-2xl font-display font-black text-segura-dark uppercase tracking-tight">Curadoria técnica com marcas que respeitam a vida.</h3>
+              <p className="text-slate-500 max-w-3xl">Selecionamos fabricantes com C.A. ativo, rastreabilidade e compromisso ético. Cada parceria reflete nossa promessa: proteger pessoas com excelência.</p>
               <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 items-center">
                 {['3M', 'Bracol', 'Marluvas', 'Danny', 'MSA', 'Ansell'].map((brand) => (
                   <div
@@ -217,80 +227,112 @@ export default function HomePage() {
           <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-slate-950">
             <div className="absolute inset-0 opacity-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_10%,transparent_10%),linear-gradient(45deg,rgba(255,255,255,0.05)_10%,transparent_10%)] bg-[length:14px_14px]" />
             <div className="relative z-10 p-8 md:p-12 space-y-10">
-              <div className="max-w-3xl space-y-3">
-                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Potência Logística</p>
-                <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Logística que Honra o seu Cronograma.</h2>
-                <p className="text-slate-300 text-lg leading-relaxed">
-                  Sabemos que no canteiro de obras ou no chão de fábrica, “esperar” não é opção. Criamos um ecossistema logístico para que o EPI esteja na mão do seu colaborador no menor tempo possível.
-                </p>
+              <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
+                <div className="max-w-3xl space-y-3">
+                  <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Potência Logística</p>
+                  <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Fluxo rápido, visível e sem improviso.</h2>
+                  <p className="text-slate-300 text-lg leading-relaxed">
+                    Montamos o caminho do EPI com etapas claras: do pedido à entrega ou retirada, com SLA combinado, rastreio e conferência técnica.
+                  </p>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Button href="/chat?intent=frete" variant="primary" className="px-6 py-4 shadow-segura-glow">
+                    Validar prazo agora
+                  </Button>
+                  <Button href="/retira-em-loja" variant="outline" className="px-6 py-4 text-white border-white/30 hover:border-segura-primary hover:text-segura-primary">
+                    Ver pontos de retirada
+                  </Button>
+                </div>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-6">
-                {[
-                  {
-                    title: 'Retirada Expressa (3h)',
-                    desc: 'Compre via WhatsApp e retire em nossa recepção otimizada. Sem filas, sem burocracia.',
-                    icon: (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                    ),
-                  },
-                  {
-                    title: 'Frota Própria Segura',
-                    desc: 'Entrega gratuita na Grande João Pessoa para pedidos acima de R$ 500,00. Segurança de ponta a ponta.',
-                    icon: (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
-                    ),
-                  },
-                  {
-                    title: 'Distribuição Nordeste',
-                    desc: 'Parcerias com transportadoras líderes para grandes pedidos com rastreabilidade total.',
-                    icon: (
-                      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                    ),
-                  },
-                ].map((item) => (
-                  <div key={item.title} className="p-6 rounded-3xl bg-white/5 border border-white/10 text-white shadow-segura-soft hover:shadow-segura-glow transition-all">
-                    <div className="w-12 h-12 rounded-2xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary mb-4">
-                      {item.icon}
-                    </div>
-                    <h3 className="text-xl font-display font-bold uppercase tracking-tight mb-3">{item.title}</h3>
-                    <p className="text-slate-300 leading-relaxed text-sm">{item.desc}</p>
-                  </div>
-                ))}
+              <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 md:p-5 shadow-inner">
+                <div className="animate-marquee gap-6 items-center text-white/80 text-xs uppercase tracking-[0.25em]">
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Corte 12h → Retirada 14h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Pedidos pós 12h → Retirada 9h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frota própria · checklist + lacre</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Rastreio transportadora auditada</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frete grátis GJP acima de R$500</span>
+                </div>
               </div>
 
-              <div className="grid lg:grid-cols-2 gap-8 items-center">
-                <div className="bg-slate-900/70 border border-segura-primary/20 rounded-3xl p-6 md:p-8 shadow-segura-soft backdrop-blur">
-                  <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-4">Horários de Corte</p>
-                  <div className="space-y-4 text-white">
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary font-display font-black">AM</div>
-                      <div>
-                        <p className="font-display font-bold uppercase tracking-[0.2em]">Pedido até 12h</p>
-                        <p className="text-slate-300">Retirada às 14h do mesmo dia.</p>
+              <div className="bg-slate-900/70 border border-white/10 rounded-3xl p-6 md:p-8 shadow-segura-soft">
+                <div className="relative pb-8">
+                  <div className="hidden md:block absolute left-3 right-3 top-6 h-[2px] bg-gradient-to-r from-segura-primary/60 via-white/30 to-segura-primary/40" />
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
+                    {[
+                      { title: 'Pedido', desc: 'Recebido no chat ou portal, com conferência de C.A.', eta: '0h', icon: 'cart' },
+                      { title: 'Separação', desc: 'Estoque auditado e checklist de pares/tamanhos.', eta: '+1h', icon: 'boxes' },
+                      { title: 'Conferência', desc: 'Validação técnica + lacre e etiqueta de SLA.', eta: '+2h', icon: 'shield' },
+                      { title: 'Entrega/Retirada', desc: 'Retirada 3h ou envio com rastreio ativo.', eta: '+3h', icon: 'truck' },
+                    ].map((step, index) => (
+                      <div key={step.title} className="relative z-10 flex flex-col gap-2 text-white">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-segura-primary/20 border border-segura-primary/50 flex items-center justify-center text-segura-primary">
+                            {step.icon === 'cart' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l1-5H6.4M7 13l-1.35 6.74A1 1 0 006.64 21h10.72a1 1 0 00.99-.84L19 13M7 13h12M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" /></svg>)}
+                            {step.icon === 'boxes' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4a2 2 0 001-1.73z" /></svg>)}
+                            {step.icon === 'shield' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>)}
+                            {step.icon === 'truck' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 5l-4-2-4 2m8 0l-4 2-4-2m8 0v6m-8-6v6" /></svg>)}
+                          </div>
+                          <div>
+                            <p className="text-xs uppercase tracking-[0.25em] text-white/70">T{step.eta}</p>
+                            <p className="text-sm md:text-base font-display font-bold">{step.title}</p>
+                          </div>
+                        </div>
+                        <p className="text-slate-300 text-sm leading-relaxed">{step.desc}</p>
+                        {index < 3 && <div className="md:hidden h-[1px] bg-white/10 my-2" />}
                       </div>
-                    </div>
-                    <div className="flex items-start gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-segura-primary/15 border border-segura-primary/40 flex items-center justify-center text-segura-primary font-display font-black">PM</div>
-                      <div>
-                        <p className="font-display font-bold uppercase tracking-[0.2em]">Pedido após 12h</p>
-                        <p className="text-slate-300">Retirada às 9h do dia seguinte.</p>
-                      </div>
-                    </div>
+                    ))}
                   </div>
                 </div>
+              </div>
 
-                <div className="flex flex-col gap-4">
-                  <div className="rounded-3xl overflow-hidden border border-white/10 bg-white/5 shadow-segura-soft">
-                    <div className="h-48 bg-[url('https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center" />
-                  </div>
-                  <div className="flex flex-wrap items-center gap-4">
-                    <Button href="/chat?intent=frete" variant="outline" className="text-white border-white/30 hover:border-segura-primary hover:text-segura-primary">
-                      Consultar Frete para minha Região
-                    </Button>
-                    <p className="text-slate-400 text-sm">Grande João Pessoa: frete grátis acima de R$ 500,00 com frota própria.</p>
-                  </div>
-                </div>
+              {/* Conteúdo reduzido a linha do tempo e SLAs para foco e clareza */}
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Objeções (reposicionada após Logística) */}
+      <Section id="objecoes" variant="offwhite" className="reveal pt-16 pb-16 lg:pt-20 lg:pb-20">
+        <Container>
+          <SectionTitle subtitle="Evite erros" title="Erros comuns que comprometem gente e resultado" />
+
+          <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-6">
+            <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto px-6 py-4 shadow-segura-glow">
+              Falar agora com consultor técnico
+            </Button>
+            <Button href="/catalogo?origem=home-objecoes" variant="outline" className="w-full sm:w-auto px-6 py-4">
+              Ver soluções imediatas
+            </Button>
+          </div>
+
+          <div className="grid lg:grid-cols-12 gap-10 lg:gap-16 mt-12 items-start">
+            <div className="lg:col-span-7 space-y-6">
+              <AlertList items={[
+                "Escolher pelo preço e não pelo risco real.",
+                "Ignorar rotina, conforto e adesão da equipe.",
+                "Comprar sem padronizar tamanhos, reposição e treinamento.",
+                "Não validar C.A. ou alternativas técnicas equivalentes."
+              ]} />
+            </div>
+            <div className="lg:col-span-5 animate-pop">
+              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-segura-soft space-y-6">
+                <h3 className="text-xl font-display font-bold text-segura-dark uppercase">Como cuidamos disso</h3>
+                <ul className="space-y-5">
+                  <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
+                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    Orientação por risco, aplicação e nível de exposição.
+                  </li>
+                  <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
+                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    Padronização B2B com reposição programada e treinamento.
+                  </li>
+                  <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
+                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    Validação de C.A. e alternativas técnicas seguras.
+                  </li>
+                </ul>
+                <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full">Quero validar antes de comprar</Button>
               </div>
             </div>
           </div>
@@ -298,13 +340,13 @@ export default function HomePage() {
       </Section>
 
       {/* Hub de Inteligência e Atalhos */}
-      <Section id="hub-inteligencia" variant="offwhite" className="-mt-16 md:-mt-24 relative z-20">
+      <Section id="hub-inteligencia" variant="offwhite" className="pt-14 pb-16 md:pt-20 md:pb-20">
         <Container>
           <div className="bg-slate-900/80 backdrop-blur-md rounded-4xl border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-shadow duration-500 p-6 md:p-10 lg:p-12">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
               <div>
                 <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Central de Ações Técnicas</p>
-                <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-tight">O que você precisa resolver agora?</h2>
+                <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-tight">O que precisa ser protegido agora?</h2>
               </div>
             </div>
 
@@ -339,7 +381,7 @@ export default function HomePage() {
               <DecisionCard
                 eyebrow="Atalho 01"
                 title="Soluções por NR"
-                description="Consultar por Norma: NR-10, NR-35, NR-18. Valide riscos e conformidade em minutos."
+                description="Consulte por norma (NR-10, NR-35, NR-18) com orientação humana para decidir rápido e com segurança."
                 icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
                 href="/catalogo?filtro=nr"
                 actionText="Ver por NR"
@@ -348,7 +390,7 @@ export default function HomePage() {
               <DecisionCard
                 eyebrow="Atalho 02"
                 title="Cotação para Empresas"
-                description="Cadastro B2B com faturamento em 24h. Agilidade para compras recorrentes e crédito."
+                description="Cadastro B2B com crédito em 24h, padronização por função e acompanhamento do consultor."
                 icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-9 6h12M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" /></svg>}
                 href="/chat?intent=cotacao-b2b"
                 actionText="Abrir cotação"
@@ -357,7 +399,7 @@ export default function HomePage() {
               <DecisionCard
                 eyebrow="Atalho 03"
                 title="Retirada Expressa"
-                description="Onde retirar meu pedido? Consulte status e confirme retirada em 3h na unidade Cabedelo."
+                description="Confirme status e local de retirada em 3h na unidade Cabedelo com checklist de conferência."
                 icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
                 href="/retira-em-loja"
                 actionText="Ver retirada"
@@ -374,32 +416,32 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             subtitle="Nosso método"
-            title="Escolha de EPI com critério — por risco e aplicação"
-            description="Você não precisa adivinhar. Nós orientamos a compra com base no seu cenário, função e ambiente, para reduzir erros e acelerar a decisão."
+            title="EPI certo, validado pelo seu risco real"
+            description="Planejamos junto com você: entendemos a rotina, avaliamos a exposição e indicamos soluções com respaldo técnico e humano."
           />
           <div className="grid lg:grid-cols-12 gap-16 mt-16 items-start">
             <div className="lg:col-span-8 grid md:grid-cols-2 gap-x-12 gap-y-16">
-              <MethodStep number="01" title="Entendemos o cenário" description="Você informa função, ambiente e necessidade do time." />
-              <MethodStep number="02" title="Avaliamos risco e aplicação" description="Validamos o risco real e o tipo de uso (contínuo ou eventual)." />
-              <MethodStep number="03" title="Indicamos a solução" description="Recomendamos o EPI adequado e opções equivalentes quando fizer sentido." />
-              <MethodStep number="04" title="Validamos antes da compra" description="Conferimos o encaixe do produto no seu cenário e fechamos com segurança." />
+              <MethodStep number="01" title="Mapeamos o contexto" description="Função, ambiente, jornada e rotina de uso para entender a exposição real." />
+              <MethodStep number="02" title="Classificamos o risco" description="Aplicamos norma e experiência prática para definir o nível de proteção necessário." />
+              <MethodStep number="03" title="Indicamos e educamos" description="Apontamos o EPI ideal, alternativas equivalentes e orientamos a adoção pela equipe." />
+              <MethodStep number="04" title="Validamos e acompanhamos" description="Checamos C.A., ajuste e conforto antes da compra e monitoramos desempenho." />
             </div>
 
             <div className="lg:col-span-4 space-y-10">
               <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-segura-soft animate-pop">
-                <h3 className="text-xl font-display font-bold text-segura-dark mb-6 uppercase tracking-tight">Evite retrabalho e compras erradas</h3>
+                <h3 className="text-xl font-display font-bold text-segura-dark mb-6 uppercase tracking-tight">Compra consciente, sem retrabalho</h3>
                 <ul className="space-y-5">
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
                     <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
-                    Seleção orientada por uso real
+                    Seleção orientada pelo risco e pela rotina
                   </li>
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
                     <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
-                    Alternativas equivalentes quando necessário
+                    Alternativas equivalentes homologadas quando necessário
                   </li>
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
                     <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
-                    Apoio consultivo para padronização
+                    Apoio consultivo para padronização e treinamento
                   </li>
                 </ul>
                 <div className="mt-10 pt-8 border-t border-slate-50 space-y-6">
@@ -420,41 +462,41 @@ export default function HomePage() {
         <Container>
           <SectionTitle
             subtitle="Comece por aqui"
-            title="Qual é sua necessidade agora?"
-            description="Escolha um caminho e avance sem perder tempo. A gente orienta o próximo passo."
+            title="Qual proteção sua equipe precisa agora?"
+            description="Escolha o caminho e seguimos juntos. Orientação técnica, humana e objetiva para cada etapa."
             alignment="center"
           />
 
           <div className="grid md:grid-cols-2 gap-8 mt-16 max-w-5xl mx-auto">
-            <DecisionCard
-              eyebrow="Atendimento consultivo"
-              title="Comprar EPI para minha equipe"
-              description="Informe sua operação e função do time. Indicamos a seleção ideal por uso e risco."
-              badges={["B2B", "Padronização"]}
+              <DecisionCard
+                eyebrow="Atendimento consultivo"
+                title="Comprar EPI para minha equipe"
+                description="Conte sua operação e funções. Indicamos o EPI certo, treinamos o time e padronizamos reposição."
+                badges={["B2B", "Padronização"]}
               href="/chat?origem=home-intencoes&intent=equipe"
               actionText="Iniciar atendimento"
             />
-            <DecisionCard
-              eyebrow="Por risco e aplicação"
-              title="Encontrar EPI por risco específico"
-              description="Corte, ruído, poeira, química, altura e mais. Navegue por filtros e categorias."
-              badges={["Risco", "Aplicação"]}
+              <DecisionCard
+                eyebrow="Por risco e aplicação"
+                title="Encontrar EPI por risco específico"
+                description="Corte, ruído, poeira, química, altura e mais. Validação de C.A. e adequação às NRs."
+                badges={["Risco", "Aplicação"]}
               href="/catalogo?origem=home-intencoes&filtro=risco"
               actionText="Ver por risco"
             />
-            <DecisionCard
-              eyebrow="Cotação objetiva"
-              title="Já tenho itens definidos"
-              description="Envie a lista e receba alternativas equivalentes quando necessário."
-              badges={["Cotação", "Lista"]}
+              <DecisionCard
+                eyebrow="Cotação objetiva"
+                title="Já tenho itens definidos"
+                description="Envie a lista. Validamos se está aderente, sugerimos equivalentes e mostramos o prazo real."
+                badges={["Cotação", "Lista"]}
               href="/chat?origem=home-intencoes&intent=cotar-itens"
               actionText="Cotar agora"
             />
-            <DecisionCard
-              eyebrow="Compra recorrente"
-              title="Padronizar e comprar recorrente"
-              description="Organize categorias, tamanhos e frequência. Reduza urgências e erros de reposição."
-              badges={["Recorrência", "Controle"]}
+              <DecisionCard
+                eyebrow="Compra recorrente"
+                title="Padronizar e comprar recorrente"
+                description="Organize categorias, tamanhos e frequência. Menos urgência, mais controle e segurança para o time."
+                badges={["Recorrência", "Controle"]}
               href="/chat?origem=home-intencoes&intent=recorrencia"
               actionText="Falar sobre recorrência"
             />
@@ -466,19 +508,19 @@ export default function HomePage() {
       <Section id="categorias" variant="default" className="reveal">
         <Container>
           <SectionTitle
-            subtitle="Mix de produtos"
+            subtitle="Mix de proteção"
             title="Categorias de EPI para sua operação"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            <DecisionCard title="Proteção das mãos" description="Luvas e soluções para risco mecânico e químico." href="/catalogo?categoria=maos" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção respiratória" description="Máscaras e filtros contra poeiras e vapores." href="/catalogo?categoria=respiratoria" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para ambientes ruidosos." href="/catalogo?categoria=auditiva" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto e partículas." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
-            <DecisionCard title="Trabalho em altura" description="Cintos e talabartes para segurança vertical." href="/catalogo?categoria=altura" actionText="Ver catálogo" />
-            <DecisionCard title="Vestuário" description="Uniformes e proteção térmica operacional." href="/catalogo?categoria=vestuario" actionText="Ver catálogo" />
-            <DecisionCard title="Calçados" description="Botas e sapatos de segurança e conforto." href="/catalogo?categoria=calcados" actionText="Ver catálogo" />
-            <DecisionCard title="Sinalização" description="Itens de apoio e segurança do ambiente." href="/catalogo?categoria=sinalizacao" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção das mãos" description="Luvas por risco: corte, químico, abrasão e precisão. CA validado." href="/catalogo?categoria=maos" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção respiratória" description="Máscaras, filtros e respiradores com orientação de troca e selagem." href="/catalogo?categoria=respiratoria" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para diferentes níveis de ruído e turnos longos." href="/catalogo?categoria=auditiva" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
+            <DecisionCard title="Trabalho em altura" description="Cintos, talabartes e ancoragens certificados para NR-35." href="/catalogo?categoria=altura" actionText="Ver catálogo" />
+            <DecisionCard title="Vestuário" description="Uniformes e proteção térmica/antiestática alinhados ao seu ambiente." href="/catalogo?categoria=vestuario" actionText="Ver catálogo" />
+            <DecisionCard title="Calçados" description="Botas e sapatos com conforto, grip e isolamento conforme sua rotina." href="/catalogo?categoria=calcados" actionText="Ver catálogo" />
+            <DecisionCard title="Sinalização" description="Itens de apoio e comunicação visual para ambientes seguros e conscientes." href="/catalogo?categoria=sinalizacao" actionText="Ver catálogo" />
           </div>
         </Container>
       </Section>
@@ -489,19 +531,29 @@ export default function HomePage() {
           <SectionTitle
             subtitle="Segmentação por dor"
             title="Soluções integradas por nicho"
-            description="Escolha o cenário e veja o conjunto de EPIs e normas que eliminam suas objeções."
+            description="Cada setor tem um risco e uma cultura. Adaptamos o kit, a norma e o treinamento para eliminar objeções e manter a equipe protegida."
             alignment="center"
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {/* Construção Civil & Infra */}
             <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <Image
+                src="https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=900&q=75"
+                alt="Construção civil com equipe equipada"
+                fill
+                loading="lazy"
+                sizes="(min-width:1024px) 33vw, 100vw"
+                className="absolute inset-0 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ filter: 'grayscale(30%)' }}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTMxNTE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative p-8 space-y-4 text-white">
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-18 • NR-35</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Construção Civil & Infra</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">Sua obra não pode parar. Equipamentos testados para o rigor da NR-18 e NR-35, antiqueda e botinas de alta resistência com pronta entrega.</p>
+                <p className="text-slate-200 text-sm leading-relaxed">Obra segura e produtiva. Equipamentos testados para NR-18 e NR-35, antiqueda, botas de alta resistência e checklist de uso diário.</p>
                 <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Soluções para Obra <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=construcao" className="sr-only">Ir para catálogo de construção</a>
               </div>
@@ -509,12 +561,22 @@ export default function HomePage() {
 
             {/* Setor Elétrico */}
             <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <Image
+                src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=75"
+                alt="Setor elétrico em operação"
+                fill
+                loading="lazy"
+                sizes="(min-width:1024px) 33vw, 100vw"
+                className="absolute inset-0 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ filter: 'grayscale(30%)' }}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTMxNTE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative p-8 space-y-4 text-white">
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-10 • 1000V</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Setor Elétrico</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">Risco zero em alta tensão. Linha Metal-Free com isolamento térmico e elétrico, proteção rigorosa conforme NR-10 para quem lida com o invisível.</p>
+                <p className="text-slate-200 text-sm leading-relaxed">Alta tensão pede rigor. Linha metal-free, isolamento térmico/elétrico e validação de CA para NR-10 sem espaço para improviso.</p>
                 <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Linha Técnica <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=eletrico" className="sr-only">Ver linha técnica elétrica</a>
               </div>
@@ -522,12 +584,22 @@ export default function HomePage() {
 
             {/* Alimentícia & Hospitalar */}
             <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80')] bg-cover bg-center opacity-80 group-hover:opacity-100 transition-opacity duration-500" style={{ filter: 'grayscale(30%)' }} />
+              <Image
+                src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=75"
+                alt="Ambiente hospitalar"
+                fill
+                loading="lazy"
+                sizes="(min-width:1024px) 33vw, 100vw"
+                className="absolute inset-0 object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500"
+                style={{ filter: 'grayscale(30%)' }}
+                placeholder="blur"
+                blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTMxNTE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
+              />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative p-8 space-y-4 text-white">
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">C.A. Ativo</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Alimentícia & Hospitalar</h3>
-                <p className="text-slate-200 text-sm leading-relaxed">Higiene e aderência absoluta. Solados Super Grip e materiais de fácil higienização para ambientes controlados, sem deslizes e sem contaminação.</p>
+                <p className="text-slate-200 text-sm leading-relaxed">Higiene e aderência total. Solados Super Grip, materiais de fácil limpeza e protocolos para ambientes controlados sem contaminação.</p>
                 <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Itens Higiene <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=alimentar-hospitalar" className="sr-only">Ver itens para higiene</a>
               </div>
@@ -544,16 +616,16 @@ export default function HomePage() {
             <div className="grid lg:grid-cols-12 gap-12 p-8 md:p-12 relative z-10 items-center">
               <div className="lg:col-span-6 space-y-6">
                 <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Inovação Neo Evolution</p>
-                <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Conforto de Primeiro Mundo: A Revolução Neo Evolution.</h2>
+                <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Conforto que protege e mantém produtividade.</h2>
                 <p className="text-slate-300 text-lg leading-relaxed">
-                  EPI desconfortável não é só incômodo; é perda de produtividade e risco de fadiga. Substitua o padrão pelo personalizado — conforto real, performance real.
+                  EPI desconfortável vira risco. A linha Neo Evolution usa tecnologia para ajustar ao corpo, reduzir fadiga e manter a equipe segura o turno inteiro.
                 </p>
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   {[
-                    { title: 'Scanner Laser', desc: 'Moldagem precisa em apenas 3 minutos.' },
-                    { title: 'Antiestática', desc: 'Segurança total para eletrônicos ou inflamáveis.' },
-                    { title: 'Ergonomia Extrema', desc: 'Redução imediata de impacto e dor muscular.' },
+                    { title: 'Scanner a laser', desc: 'Moldagem precisa em 3 minutos, sem achismo.' },
+                    { title: 'Antiestática', desc: 'Proteção total em ambientes eletrônicos ou inflamáveis.' },
+                    { title: 'Ergonomia extrema', desc: 'Menos impacto e dor muscular, mais foco e desempenho.' },
                   ].map((item) => (
                     <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white">
                       <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-2 text-segura-primary">{item.title}</p>
@@ -612,17 +684,17 @@ export default function HomePage() {
             <div className="lg:col-span-7 p-8 md:p-12 space-y-6">
               <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Autoridade Humana</p>
               <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">
-                Não apenas vendemos EPIs. Mentoramos a sua Segurança.
+                Mais que vender EPIs, mentoramos sua segurança.
               </h2>
               <div className="bg-white/5 border border-white/10 rounded-3xl p-6 md:p-8 backdrop-blur">
                 <p className="text-slate-200 text-lg leading-relaxed">
-                  Entendemos que por trás de cada capacete existe uma história, um sonho e uma família esperando em casa. Nossa equipe não apenas “tira pedidos”; nós validamos riscos e entregamos soluções.
+                  Por trás de cada capacete existe uma história. Nossa equipe valida riscos, ensina o uso correto e caminha com você para que todos cheguem em casa em segurança.
                 </p>
                 <div className="grid md:grid-cols-3 gap-4 mt-6">
                   {[
-                    { title: 'Consultoria Ativa', desc: 'Especificamos C.A. correto para evitar multas e acidentes.' },
-                    { title: 'Olhar Humano', desc: 'Empatia em cada atendimento, respeitando a responsabilidade do gestor.' },
-                    { title: 'Ecossistema de Soluções', desc: 'Tecnologia (Neo Evolution) + conhecimento das NRs.' },
+                    { title: 'Consultoria ativa', desc: 'Especificamos o C.A. certo para prevenir acidentes e autuações.' },
+                    { title: 'Olhar humano', desc: 'Empatia e respeito pelo gestor e pela equipe em campo.' },
+                    { title: 'Ecossistema completo', desc: 'Tecnologia (Neo Evolution) + conhecimento prático das NRs.' },
                   ].map((item) => (
                     <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white">
                       <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-1 text-segura-primary">{item.title}</p>
@@ -631,7 +703,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="mt-6 text-segura-primary italic text-sm font-sans">
-                  “Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.”
+                  “Conectamos tecnologia e humanidade para proteger o que mais importa: as pessoas.”
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
@@ -644,39 +716,6 @@ export default function HomePage() {
         </Container>
       </Section>
 
-
-      {/* Objeções */}
-      <Section id="objecoes" variant="offwhite" className="reveal">
-        <Container>
-          <SectionTitle subtitle="Evite erros" title="O que dá errado na compra de EPI" />
-          <div className="grid lg:grid-cols-12 gap-16 mt-16 items-start">
-            <div className="lg:col-span-7">
-              <AlertList items={[
-                "Escolher pelo preço e não pela aplicação real.",
-                "Ignorar rotina e conforto do funcionário.",
-                "Comprar sem padronizar tamanhos e reposição.",
-                "Não considerar alternativas equivalentes técnicas."
-              ]} />
-            </div>
-            <div className="lg:col-span-5 animate-pop">
-              <div className="bg-white p-10 rounded-3xl border border-slate-100 shadow-segura-soft">
-                <h3 className="text-xl font-display font-bold text-segura-dark mb-8 uppercase">Solução Segura EPI</h3>
-                <ul className="space-y-6 mb-10">
-                  <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
-                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
-                    Orientação por risco e aplicação real.
-                  </li>
-                  <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
-                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
-                    Foco em padronização B2B.
-                  </li>
-                </ul>
-                <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full">Quero validar antes de comprar</Button>
-              </div>
-            </div>
-          </div>
-        </Container>
-      </Section>
 
       {/* FAQ */}
       <Section id="faq" variant="offwhite" className="reveal">

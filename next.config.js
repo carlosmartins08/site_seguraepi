@@ -6,6 +6,14 @@ const nextConfig = {
     // Force root to this project to avoid picking up lockfiles in parent folders
     root: __dirname,
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+      },
+    ],
+  },
 };
 
 module.exports = nextConfig;
