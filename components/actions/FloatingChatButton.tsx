@@ -39,13 +39,13 @@ export const FloatingChatButton: React.FC = () => {
 
       {/* Balão de Saudação Automático */}
       <div className={cn(
-        "mb-4 px-5 py-4 bg-segura-dark text-white rounded-2xl shadow-2xl border border-white/10 transition-all duration-500 transform origin-bottom-right max-w-[280px]",
+        "mb-4 px-5 py-4 bg-bg-inverse text-white rounded-2xl shadow-2xl border border-white/10 transition-all duration-500 transform origin-bottom-right max-w-[280px]",
         showGreeting ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-4 scale-75 pointer-events-none"
       )}>
         <p className="text-[11px] font-display font-bold uppercase tracking-widest flex items-center gap-2 mb-1">
           <span className={cn(
             "w-1.5 h-1.5 rounded-full",
-            isOnline ? "bg-segura-primary animate-pulse" : "bg-slate-400"
+            isOnline ? "bg-action-primary animate-pulse" : "bg-slate-400"
           )}></span>
           {isOnline ? 'Consultoria Técnica Ativa' : 'Equipe em Descanso'}
         </p>
@@ -55,14 +55,14 @@ export const FloatingChatButton: React.FC = () => {
             : `Estamos offline agora, mas ${statusMessage.toLowerCase()}. Deixe sua dúvida!`
           }
         </p>
-        <div className="absolute -bottom-2 right-6 w-4 h-4 bg-segura-dark rotate-45 border-r border-b border-white/10"></div>
+        <div className="absolute -bottom-2 right-6 w-4 h-4 bg-bg-inverse rotate-45 border-r border-b border-white/10"></div>
       </div>
 
       <a
         href={CONTACT_INFO.whatsapp}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-center gap-3 bg-segura-primary text-white p-4 rounded-2xl shadow-segura-glow hover:shadow-segura-hover transition-all duration-500 hover:-translate-y-2 active:scale-95"
+        className="group flex items-center gap-3 bg-action-primary text-white p-4 rounded-2xl shadow-glow-brand hover:shadow-elevation-2 transition-all duration-500 hover:-translate-y-2 active:scale-95"
       >
         {/* Ícone e Indicador de Status */}
         <div className="relative">
@@ -75,8 +75,8 @@ export const FloatingChatButton: React.FC = () => {
           {/* Status Online Pulsante - Apenas se estiver em horário comercial */}
           {isOnline && (
             <span className="absolute -top-1 -right-1 flex h-3.5 w-3.5 z-20">
-              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-segura-success opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-segura-success border-2 border-segura-primary"></span>
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-compliance opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-tech-compliance border-2 border-action-primary"></span>
             </span>
           )}
         </div>
@@ -102,3 +102,4 @@ export const FloatingChatButton: React.FC = () => {
     </div>
   );
 };
+

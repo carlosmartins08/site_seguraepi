@@ -1,4 +1,4 @@
-
+﻿
 import React from 'react';
 import { cn } from '../../lib/cn';
 
@@ -25,18 +25,18 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
 }) => {
   return (
     <div className={cn(
-      "rounded-3xl bg-white p-8 border border-slate-100 shadow-segura-soft transition-all duration-500 group flex flex-col h-full hover:shadow-segura-hover hover:-translate-y-2 hover:border-segura-primary",
+      "rounded-3xl bg-white p-8 border border-slate-100 shadow-elevation-1 transition-all duration-500 group flex flex-col h-full hover:shadow-elevation-2 hover:-translate-y-2 hover:border-action-primary",
       className
     )}>
       {eyebrow && (
-        <span className="text-segura-primary font-display font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block">
+        <span className="text-action-primary font-display font-bold uppercase tracking-[0.2em] text-[10px] mb-4 block">
           {eyebrow}
         </span>
       )}
       
-      {icon && <div className="mb-6 text-segura-primary">{icon}</div>}
+      {icon && <div className="mb-6 text-action-primary">{icon}</div>}
       
-      <h3 className="text-xl md:text-2xl font-display font-black mb-4 text-segura-dark group-hover:text-segura-primary transition-colors uppercase tracking-tight">
+      <h3 className="text-xl md:text-2xl font-display font-black mb-4 text-text-primary group-hover:text-action-primaryHover transition-colors uppercase tracking-tight">
         {title}
       </h3>
       
@@ -49,7 +49,7 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
           {badges.map((badge, idx) => (
             <span 
               key={idx} 
-              className="px-3 py-1 bg-segura-offwhite border border-slate-100 rounded-lg text-[9px] font-display font-bold uppercase tracking-widest text-slate-400 transition-all duration-500 group-hover:scale-115 group-hover:text-segura-primary group-hover:border-segura-primary/50 group-hover:shadow-segura-glow inline-block origin-center"
+              className="px-3 py-1 bg-bg-surfaceMuted border border-slate-100 rounded-lg text-[9px] font-display font-bold uppercase tracking-widest text-slate-400 transition-all duration-500 group-hover:scale-115 group-hover:text-action-primaryHover group-hover:border-action-primary/50 group-hover:shadow-glow-brand inline-block origin-center"
             >
               {badge}
             </span>
@@ -57,10 +57,11 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
         </div>
       )}
 
-      <a href={href} className="text-segura-dark font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
+      <a href={href} className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
         {actionText}
-        <span className="ml-3 block w-6 h-[2px] bg-segura-primary transition-all duration-300 group-hover/link:w-12 shadow-segura-glow"></span>
+        <span className="ml-3 block w-6 h-[2px] bg-action-primary transition-all duration-300 group-hover/link:w-12 shadow-glow-brand"></span>
       </a>
     </div>
   );
 };
+

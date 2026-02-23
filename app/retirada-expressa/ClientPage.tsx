@@ -14,7 +14,7 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { LEGAL_TEXTS } from '../../lib/legal';
 
 const badges = [
-  { label: 'Compra 100% pelo WhatsApp', color: 'bg-segura-primary/15 text-segura-primary' },
+  { label: 'Compra 100% pelo WhatsApp', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Retirada sem filas', color: 'bg-slate-900 text-white' },
   { label: 'Horários de corte claros', color: 'bg-emerald-100 text-emerald-700' },
 ];
@@ -27,7 +27,7 @@ const cortes = [
 const fluxo = [
   'Compra via WhatsApp com o consultor oficial.',
   'Separação e conferência do pedido no estoque.',
-  'Notificação: status muda para “Disponível para Retirada”.',
+  'Notificação: status muda para �SDisponível para Retirada⬝.',
   'Retirada rápida na recepção informando o número do pedido.',
 ];
 
@@ -89,10 +89,10 @@ export default function ClientPage() {
         <Container className="relative max-w-5xl">
           <div className="space-y-8">
             <div>
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
                 Retirada Expressa na Loja
               </p>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-segura-dark leading-tight">
+              <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
                 Chegue, retire e volte para a operação. Sem filas, sem espera.
               </h1>
               <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
@@ -112,7 +112,7 @@ export default function ClientPage() {
             </div>
 
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
                 Fechar pedido no WhatsApp
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
@@ -127,20 +127,20 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="1. Fluxo do Pedido à Retirada"
-            title="Recepção é só entrega — todo o resto acontece antes"
+            title="Recepção é só entrega � todo o resto acontece antes"
             description="Siga o passo a passo para garantir que seu pedido esteja pronto quando chegar."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4 text-slate-600">
               {fluxo.map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                  <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
                   <p className="leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-segura-offwhite">
-              <h3 className="text-xl font-display font-bold text-segura-dark mb-3">Por que funciona?</h3>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-bg-surfaceMuted">
+              <h3 className="text-xl font-display font-bold text-text-primary mb-3">Por que funciona?</h3>
               <p className="text-slate-600 leading-relaxed">
                 A fila some porque a conferência é feita antes. Quando você chega, o pedido já está lacrado e checado.
               </p>
@@ -158,20 +158,20 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cortes.map((corte) => (
-              <div key={corte.pedido} className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white">
+              <div key={corte.pedido} className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   </div>
                   <div>
-                    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-segura-primary">
+                    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">
                       Horário do pedido
                     </p>
-                    <h4 className="text-lg font-display font-bold text-segura-dark">{corte.pedido}</h4>
+                    <h4 className="text-lg font-display font-bold text-text-primary">{corte.pedido}</h4>
                   </div>
                 </div>
                 <p className="text-slate-600 leading-relaxed">
-                  <span className="font-display font-bold text-segura-dark">Disponibilidade: </span>
+                  <span className="font-display font-bold text-text-primary">Disponibilidade: </span>
                   {corte.retirada}
                 </p>
               </div>
@@ -191,12 +191,12 @@ export default function ClientPage() {
 
           <div className="grid md:grid-cols-3 gap-8">
             {oQueLevar.map((card) => (
-              <div key={card.title} className="rounded-3xl bg-white p-8 border border-slate-100 shadow-segura-soft flex flex-col gap-4">
-                <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">{card.title}</h3>
+              <div key={card.title} className="rounded-3xl bg-white p-8 border border-slate-100 shadow-elevation-1 flex flex-col gap-4">
+                <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">{card.title}</h3>
                 <ul className="space-y-3 text-sm text-slate-600 flex-grow">
                   {card.items.map((item) => (
                     <li key={item} className="flex items-start gap-2">
-                      <span className="w-1.5 h-1.5 bg-segura-primary rounded-full mt-1.5" />
+                      <span className="w-1.5 h-1.5 bg-action-primary rounded-full mt-1.5" />
                       {item}
                     </li>
                   ))}
@@ -207,8 +207,8 @@ export default function ClientPage() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-segura-offwhite p-8 rounded-3xl border border-slate-100 shadow-segura-soft">
-              <h4 className="text-lg font-display font-bold text-segura-dark mb-3 uppercase tracking-tight">Checklist rápido</h4>
+            <div className="bg-bg-surfaceMuted p-8 rounded-3xl border border-slate-100 shadow-elevation-1">
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3 uppercase tracking-tight">Checklist rápido</h4>
               <ul className="space-y-3 text-sm text-slate-600">
                 {[
                   'Retire somente após confirmação do pedido pronto.',
@@ -217,25 +217,25 @@ export default function ClientPage() {
                   'Confira itens e tamanhos no balcão antes de sair.',
                 ].map((item) => (
                   <li key={item} className="flex items-start gap-2">
-                    <span className="w-1.5 h-1.5 bg-segura-primary rounded-full mt-1.5" />
+                    <span className="w-1.5 h-1.5 bg-action-primary rounded-full mt-1.5" />
                     {item}
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-segura-soft space-y-4">
-              <h4 className="text-lg font-display font-bold text-segura-dark mb-2 uppercase tracking-tight">Prazos e disponibilidade</h4>
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-elevation-1 space-y-4">
+              <h4 className="text-lg font-display font-bold text-text-primary mb-2 uppercase tracking-tight">Prazos e disponibilidade</h4>
               <p className="text-slate-600 text-sm leading-relaxed">
                 A retirada ocorre somente após separação e confirmação. Itens sob encomenda dependem de reposição; em urgência, peça equivalentes técnicos.
               </p>
               <div className="grid sm:grid-cols-2 gap-3 text-sm text-slate-600">
-                <div className="p-4 rounded-xl border border-slate-200 bg-segura-offwhite/60">
-                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-segura-primary mb-1">Cenário comum</p>
+                <div className="p-4 rounded-xl border border-slate-200 bg-bg-surfaceMuted/60">
+                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-action-primary mb-1">Cenário comum</p>
                   <p>Itens em estoque liberam rápido após conferência.</p>
                 </div>
                 <div className="p-4 rounded-xl border border-slate-200 bg-white">
-                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-segura-primary mb-1">Atenção</p>
+                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-action-primary mb-1">Atenção</p>
                   <p>Encomendas exigem validação de prazo antes da retirada.</p>
                 </div>
               </div>
@@ -252,7 +252,7 @@ export default function ClientPage() {
             description="Após notificação de disponível, mantemos separado por 24h."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white">
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
               <p className="text-slate-600 leading-relaxed">
                 Se não for retirado dentro de 24h, os itens podem voltar ao estoque ou ser realocados. Será necessário
                 novo alinhamento com o vendedor.
@@ -270,40 +270,40 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle subtitle="4. Dúvidas Frequentes" title="Retirada sem atrito" />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-segura-dark">Posso comprar e retirar na hora?</h4>
+                <h4 className="text-lg font-display font-bold text-text-primary">Posso comprar e retirar na hora?</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
                 Não. A recepção é exclusiva para entrega de pedidos prontos. Novas compras e orçamentos são via WhatsApp
                 com os especialistas, garantindo zero fila.
               </p>
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-slate-900/10 text-slate-900 flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-segura-dark">Posso enviar um portador (Uber/Moto)?</h4>
+                <h4 className="text-lg font-display font-bold text-text-primary">Posso enviar um portador (Uber/Moto)?</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Sim. Com status “Disponível”, basta o portador apresentar o número do pedido e nome do cliente/empresa.
+                Sim. Com status �SDisponível⬝, basta o portador apresentar o número do pedido e nome do cliente/empresa.
               </p>
             </div>
           </div>
 
           <div className="max-w-4xl mt-12 space-y-4">
             {faqExtra.map((item, index) => (
-              <div key={item.q} className="bg-white rounded-2xl border border-slate-100 shadow-segura-soft p-6">
+              <div key={item.q} className="bg-white rounded-2xl border border-slate-100 shadow-elevation-1 p-6">
                 <div className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-xl bg-segura-primary/10 text-segura-primary flex items-center justify-center font-display font-bold text-sm">
+                  <div className="w-8 h-8 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center font-display font-bold text-sm">
                     {index + 1}
                   </div>
                   <div>
-                    <h4 className="text-base font-display font-bold text-segura-dark mb-1">{item.q}</h4>
+                    <h4 className="text-base font-display font-bold text-text-primary mb-1">{item.q}</h4>
                     <p className="text-slate-600 text-sm leading-relaxed">{item.a}</p>
                   </div>
                 </div>
@@ -328,3 +328,4 @@ export default function ClientPage() {
     </main>
   );
 }
+

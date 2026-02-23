@@ -14,7 +14,7 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { LEGAL_TEXTS } from '../../lib/legal';
 
 const heroBadges = [
-  { label: 'Segurança com propósito', color: 'bg-segura-primary/15 text-segura-primary' },
+  { label: 'Segurança com propósito', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Ecossistema de soluções', color: 'bg-slate-900 text-white' },
   { label: 'Tecnologia + humanidade', color: 'bg-emerald-100 text-emerald-700' },
 ];
@@ -22,7 +22,7 @@ const heroBadges = [
 const valores = [
   { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. Empatia guia decisões.', icon: 'heart' },
   { title: 'Excelência Técnica', desc: 'Conhecimento como ferramenta de transformação.', icon: 'shield' },
-  { title: 'Confiabilidade', desc: 'Ética, compromisso e respeito em cada entrega.', icon: 'check' },
+  { title: 'Confiabilidade', desc: '�0tica, compromisso e respeito em cada entrega.', icon: 'check' },
   { title: 'Educação', desc: 'Formar clientes e equipes mais conscientes.', icon: 'book' },
   { title: 'Inovação', desc: 'Tecnologia (Neo Evolution) e melhores práticas.', icon: 'spark' },
   { title: 'Colaboração', desc: 'Trabalhamos lado a lado com clientes e parceiros.', icon: 'users' },
@@ -43,9 +43,9 @@ const DiretrizCard = ({
   title: string;
   desc: string;
 }) => (
-  <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
-    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-segura-primary">{label}</p>
-    <h4 className="text-xl font-display font-bold text-segura-dark">{title}</h4>
+  <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">{label}</p>
+    <h4 className="text-xl font-display font-bold text-text-primary">{title}</h4>
     <p className="text-slate-600 leading-relaxed">{desc}</p>
   </div>
 );
@@ -85,10 +85,10 @@ export default function ClientPage() {
         <Container className="relative max-w-5xl">
           <div className="space-y-8">
             <div>
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
                 Sobre a Segura EPI
               </p>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-segura-dark leading-tight">
+              <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
                 Segurança com propósito, proteção com alma.
               </h1>
               <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
@@ -107,7 +107,7 @@ export default function ClientPage() {
               ))}
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
                 Falar com um consultor
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
@@ -126,14 +126,14 @@ export default function ClientPage() {
             description="Cuidamos de quem carrega sonhos, histórias e a responsabilidade de voltar para casa em segurança."
           />
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-4">
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-4">
               <p className="text-slate-600 leading-relaxed">
                 Não vendemos só capacete, luva ou cinto. Entregamos confiança, conhecimento e cuidado. Respeitamos quem
-                está na obra, na altura ou no chão de fábrica — e quem espera em casa.
+                está na obra, na altura ou no chão de fábrica � e quem espera em casa.
               </p>
             </div>
-            <div className="p-6 rounded-3xl border border-segura-primary/30 bg-segura-primary/5 shadow-segura-soft space-y-3">
-              <h3 className="text-xl font-display font-bold text-segura-dark">Nossa História</h3>
+            <div className="p-6 rounded-3xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
+              <h3 className="text-xl font-display font-bold text-text-primary">Nossa História</h3>
               <p className="text-slate-600 leading-relaxed">
                 Nascemos ao enxergar uma falha e ter coragem de preenchê-la: transformar experiência em construção civil
                 e comércio em missão de proteger com inteligência e empatia.
@@ -181,13 +181,13 @@ export default function ClientPage() {
             {valores.map((valor) => (
               <div
                 key={valor.title}
-                className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white flex gap-4 items-start"
+                className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white flex gap-4 items-start"
               >
-                <div className="w-11 h-11 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <IconBullet icon={valor.icon} />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-lg font-display font-bold text-segura-dark">{valor.title}</h4>
+                  <h4 className="text-lg font-display font-bold text-text-primary">{valor.title}</h4>
                   <p className="text-slate-600 leading-relaxed text-sm">{valor.desc}</p>
                 </div>
               </div>
@@ -204,11 +204,11 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-3 gap-6">
             {motivos.map((motivo) => (
-              <div key={motivo.title} className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-segura-primary/15 text-segura-primary flex items-center justify-center">
+              <div key={motivo.title} className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <IconBullet icon={motivo.icon} />
                 </div>
-                <h4 className="text-lg font-display font-bold text-segura-dark">{motivo.title}</h4>
+                <h4 className="text-lg font-display font-bold text-text-primary">{motivo.title}</h4>
                 <p className="text-slate-600 leading-relaxed text-sm">{motivo.desc}</p>
               </div>
             ))}
@@ -218,13 +218,13 @@ export default function ClientPage() {
 
       <Section id="compromisso" variant="default">
         <Container className="max-w-5xl">
-          <div className="bg-slate-900 text-white rounded-4xl p-8 md:p-12 shadow-segura-hover border border-white/10 space-y-6">
-            <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
+          <div className="bg-slate-900 text-white rounded-4xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
             <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">
-              “Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.”
+              �SConectamos tecnologia e humanidade para proteger o que mais importa: a vida.⬝
             </h3>
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
                 Falar com um mentor técnico
               </Button>
               <ContextLink href="/catalogo" className="text-sm text-white">
@@ -250,3 +250,4 @@ export default function ClientPage() {
     </main>
   );
 }
+

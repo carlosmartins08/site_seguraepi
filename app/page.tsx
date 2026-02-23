@@ -86,12 +86,12 @@ export default function HomePage() {
   ];
 
   const partners = [
-    { name: '3M', categoryHint: 'Respiratória • Óptica', logoSrc: '/brands/3m.svg', href: 'https://www.3m.com.br' },
-    { name: 'Bracol', categoryHint: 'Calçados • Botinas', logoSrc: '/brands/bracol.svg', href: 'https://www.bracol.com.br' },
-    { name: 'Marluvas', categoryHint: 'Calçados • Conforto', logoSrc: '/brands/marluvas.svg', href: 'https://www.marluvas.com.br' },
-    { name: 'Danny', categoryHint: 'Mãos • Proteção Mecânica', logoSrc: '/brands/danny.svg', href: 'https://www.danny.com.br' },
-    { name: 'MSA', categoryHint: 'Cabeça • Respiratória', logoSrc: '/brands/msa.svg', href: 'https://br.msasafety.com' },
-    { name: 'Ansell', categoryHint: 'Luvas • Química', logoSrc: '/brands/ansell.svg', href: 'https://www.ansell.com' },
+    { name: '3M', categoryHint: 'Respiratória ⬢ �ptica', logoSrc: '/brands/3m.svg', href: 'https://www.3m.com.br' },
+    { name: 'Bracol', categoryHint: 'Calçados ⬢ Botinas', logoSrc: '/brands/bracol.svg', href: 'https://www.bracol.com.br' },
+    { name: 'Marluvas', categoryHint: 'Calçados ⬢ Conforto', logoSrc: '/brands/marluvas.svg', href: 'https://www.marluvas.com.br' },
+    { name: 'Danny', categoryHint: 'Mãos ⬢ Proteção Mecânica', logoSrc: '/brands/danny.svg', href: 'https://www.danny.com.br' },
+    { name: 'MSA', categoryHint: 'Cabeça ⬢ Respiratória', logoSrc: '/brands/msa.svg', href: 'https://br.msasafety.com' },
+    { name: 'Ansell', categoryHint: 'Luvas ⬢ Química', logoSrc: '/brands/ansell.svg', href: 'https://www.ansell.com' },
   ];
 
   return (
@@ -109,15 +109,15 @@ export default function HomePage() {
 
       {/* Hero */}
       <Section id="hero" variant="dark" className="pt-28 pb-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-black via-segura-dark to-slate-900 opacity-80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-black via-bg-inverse to-slate-900 opacity-80" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.14),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.05),transparent_35%)]" />
         <Container className="relative z-10">
           <div className="grid lg:grid-cols-12 gap-14 items-center">
             <div className="lg:col-span-7 space-y-10">
               <div className="relative animate-slide-up">
-                <div className="absolute -left-6 -top-6 w-32 h-32 bg-segura-primary/15 blur-3xl rounded-full pointer-events-none" />
-                <span className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6 block">
-                  Ecossistema Segura EPI · Comércio • Consultoria • Treinamento
+                <div className="absolute -left-6 -top-6 w-32 h-32 bg-action-primary/15 blur-3xl rounded-full pointer-events-none" />
+                <span className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] md:text-xs mb-6 block">
+                  Ecossistema Segura EPI · Comércio ⬢ Consultoria ⬢ Treinamento
                 </span>
                 <h1 className="text-4xl md:text-7xl font-display font-black leading-[1.05] mb-6 uppercase tracking-tight text-white">
                   Segurança que une <br />
@@ -133,14 +133,14 @@ export default function HomePage() {
                 <Button
                   href="/catalogo?origem=home-hero"
                   variant="primary"
-                  className="px-10 py-5 shadow-segura-glow"
+                  className="px-10 py-5 shadow-glow-brand"
                 >
                   Acessar Catálogo Digital
                 </Button>
                 <Button
                   href={CONTACT_INFO.whatsapp}
                   variant="outline"
-                  className="text-white border-white/20 hover:border-segura-primary hover:text-segura-primary hover:ring-2 hover:ring-segura-primary/40 px-10 py-5 bg-white/5 backdrop-blur-sm"
+                  className="text-white border-white/20 hover:border-action-primary hover:text-action-primaryHover hover:ring-2 hover:ring-action-primary/40 px-10 py-5 bg-white/5 backdrop-blur-sm"
                 >
                   Consultoria Técnica
                 </Button>
@@ -154,7 +154,7 @@ export default function HomePage() {
                   { label: 'Crédito B2B em 24h', icon: 'invoice' },
                 ].map((item) => (
                   <div key={item.label} className="flex items-center gap-3 bg-white/5 border border-white/10 rounded-2xl px-4 py-3">
-                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-segura-primary">
+                    <div className="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-action-primary">
                       {item.icon === 'boxes' && (
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
                       )}
@@ -186,10 +186,10 @@ export default function HomePage() {
                   placeholder="blur"
                   blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMSIgaGVpZ2h0PSIxIiBmaWxsPSIjMTMxNTE2IiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciLz4="
                 />
-                <div className="absolute inset-0 bg-gradient-to-tr from-segura-dark/80 via-segura-dark/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-tr from-bg-inverse/80 via-bg-inverse/60 to-transparent" />
                 <div className="relative z-10 p-10 flex flex-col gap-6 h-full justify-end">
                   <div className="flex items-center gap-3">
-                    <span className="w-2 h-2 bg-segura-primary rounded-full animate-pulse" />
+                    <span className="w-2 h-2 bg-action-primary rounded-full animate-pulse" />
                     <p className="text-white font-display font-bold uppercase tracking-[0.25em] text-xs">Radar de Conformidade</p>
                   </div>
                   <p className="text-slate-200 text-lg leading-relaxed">
@@ -213,7 +213,7 @@ export default function HomePage() {
         partners={partners}
         title="Marcas que respeitam a vida."
         subtitle="Selecionamos fabricantes com C.A. ativo, rastreabilidade e compromisso ético. Cada parceria reflete nossa promessa: proteger pessoas com excelência."
-        kpiText="42 parceiros auditados • 100% CA válido"
+        kpiText="42 parceiros auditados ⬢ 100% CA válido"
         ctaHref="/catalogo?filtro=marca"
         ctaLabel="Ver todas as marcas"
       />
@@ -226,17 +226,17 @@ export default function HomePage() {
             <div className="relative z-10 p-8 md:p-12 space-y-10">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                 <div className="max-w-3xl space-y-3">
-                  <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Potência Logística</p>
+                  <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Potência Logística</p>
                   <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">Fluxo rápido, visível e sem improviso.</h2>
                   <p className="text-slate-300 text-lg leading-relaxed">
                     Montamos o caminho do EPI com etapas claras: do pedido à entrega ou retirada, com SLA combinado, rastreio e conferência técnica.
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Button href="/chat?intent=frete" variant="primary" className="px-6 py-4 shadow-segura-glow">
+                  <Button href="/chat?intent=frete" variant="primary" className="px-6 py-4 shadow-glow-brand">
                     Validar prazo agora
                   </Button>
-                  <Button href="/retira-em-loja" variant="outline" className="px-6 py-4 text-white border-white/30 hover:border-segura-primary hover:text-segura-primary">
+                  <Button href="/retira-em-loja" variant="outline" className="px-6 py-4 text-white border-white/30 hover:border-action-primary hover:text-action-primaryHover">
                     Ver pontos de retirada
                   </Button>
                 </div>
@@ -244,17 +244,17 @@ export default function HomePage() {
 
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 md:p-5 shadow-inner">
                 <div className="animate-marquee gap-6 items-center text-white/80 text-xs uppercase tracking-[0.25em]">
-                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Corte 12h → Retirada 14h</span>
-                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Pedidos pós 12h → Retirada 9h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Corte 12h �  Retirada 14h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Pedidos pós 12h �  Retirada 9h</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frota própria · checklist + lacre</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Rastreio transportadora auditada</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frete grátis GJP acima de R$500</span>
                 </div>
               </div>
 
-              <div className="bg-slate-900/70 border border-white/10 rounded-3xl p-6 md:p-8 shadow-segura-soft">
+              <div className="bg-slate-900/70 border border-white/10 rounded-3xl p-6 md:p-8 shadow-elevation-1">
                 <div className="relative pb-8">
-                  <div className="hidden md:block absolute left-3 right-3 top-6 h-[2px] bg-gradient-to-r from-segura-primary/60 via-white/30 to-segura-primary/40" />
+                  <div className="hidden md:block absolute left-3 right-3 top-6 h-[2px] bg-gradient-to-r from-action-primary/60 via-white/30 to-action-primary/40" />
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
                     {[
                       { title: 'Pedido', desc: 'Recebido no chat ou portal, com conferência de C.A.', eta: '0h', icon: 'cart' },
@@ -264,7 +264,7 @@ export default function HomePage() {
                     ].map((step, index) => (
                       <div key={step.title} className="relative z-10 flex flex-col gap-2 text-white">
                         <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-xl bg-segura-primary/20 border border-segura-primary/50 flex items-center justify-center text-segura-primary">
+                          <div className="w-10 h-10 rounded-xl bg-action-primary/20 border border-action-primary/50 flex items-center justify-center text-action-primary">
                             {step.icon === 'cart' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l1-5H6.4M7 13l-1.35 6.74A1 1 0 006.64 21h10.72a1 1 0 00.99-.84L19 13M7 13h12M9 21a1 1 0 100-2 1 1 0 000 2zm8 0a1 1 0 100-2 1 1 0 000 2z" /></svg>)}
                             {step.icon === 'boxes' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4a2 2 0 001-1.73z" /></svg>)}
                             {step.icon === 'shield' && (<svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>)}
@@ -295,7 +295,7 @@ export default function HomePage() {
           <SectionTitle subtitle="Evite erros" title="Erros comuns que comprometem gente e resultado" />
 
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-6">
-            <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto px-6 py-4 shadow-segura-glow">
+            <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto px-6 py-4 shadow-glow-brand">
               Falar agora com consultor técnico
             </Button>
             <Button href="/catalogo?origem=home-objecoes" variant="outline" className="w-full sm:w-auto px-6 py-4">
@@ -313,19 +313,19 @@ export default function HomePage() {
               ]} />
             </div>
             <div className="lg:col-span-5 animate-pop">
-              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-segura-soft space-y-6">
-                <h3 className="text-xl font-display font-bold text-segura-dark uppercase">Como cuidamos disso</h3>
+              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-elevation-1 space-y-6">
+                <h3 className="text-xl font-display font-bold text-text-primary uppercase">Como cuidamos disso</h3>
                 <ul className="space-y-5">
                   <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
-                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    <svg className="w-5 h-5 text-action-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
                     Orientação por risco, aplicação e nível de exposição.
                   </li>
                   <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
-                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    <svg className="w-5 h-5 text-action-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
                     Padronização B2B com reposição programada e treinamento.
                   </li>
                   <li className="flex items-start gap-4 text-sm text-slate-500 font-sans">
-                    <svg className="w-5 h-5 text-segura-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
+                    <svg className="w-5 h-5 text-action-primary mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={3} /></svg>
                     Validação de C.A. e alternativas técnicas seguras.
                   </li>
                 </ul>
@@ -339,17 +339,17 @@ export default function HomePage() {
       {/* Hub de Inteligência e Atalhos */}
       <Section id="hub-inteligencia" variant="offwhite" className="pt-14 pb-16 md:pt-20 md:pb-20">
         <Container>
-          <div className="bg-slate-900/80 backdrop-blur-md rounded-4xl border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-shadow duration-500 p-6 md:p-10 lg:p-12">
+          <div className="bg-slate-900/80 backdrop-blur-md rounded-4xl border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-shadow duration-500 p-6 md:p-10 lg:p-12">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
               <div>
-                <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Central de Ações Técnicas</p>
+                <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Central de Ações Técnicas</p>
                 <h2 className="text-2xl md:text-4xl font-display font-black text-white uppercase tracking-tight">O que precisa ser protegido agora?</h2>
               </div>
             </div>
 
             <div className="bg-slate-900/60 rounded-3xl p-4 md:p-6 border border-white/10 shadow-inner shadow-black/20 mb-8">
               <label className="flex items-center gap-2 text-slate-200 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3">
-                <svg className="w-4 h-4 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+                <svg className="w-4 h-4 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
                 Validação Técnica
               </label>
               <div className="flex flex-col md:flex-row gap-4 items-stretch">
@@ -358,9 +358,9 @@ export default function HomePage() {
                     value={caSearch}
                     onChange={(e) => setCaSearch(e.target.value)}
                     placeholder={'Digite o número do C.A. ou o nome do produto...'}
-                    className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-segura-primary focus:ring-2 focus:ring-segura-primary/40 transition-all"
+                    className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-action-primary focus:ring-2 focus:ring-focus-ring transition-all"
                   />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-segura-primary">
+                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-action-primary">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
                   </div>
                 </div>
@@ -379,28 +379,28 @@ export default function HomePage() {
                 eyebrow="Atalho 01"
                 title="Soluções por NR"
                 description="Consulte por norma (NR-10, NR-35, NR-18) com orientação humana para decidir rápido e com segurança."
-                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
+                icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
                 href="/catalogo?filtro=nr"
                 actionText="Ver por NR"
-                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
               <DecisionCard
                 eyebrow="Atalho 02"
                 title="Cotação para Empresas"
                 description="Cadastro B2B com crédito em 24h, padronização por função e acompanhamento do consultor."
-                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-9 6h12M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" /></svg>}
+                icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-9 6h12M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" /></svg>}
                 href="/chat?intent=cotacao-b2b"
                 actionText="Abrir cotação"
-                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
               <DecisionCard
                 eyebrow="Atalho 03"
                 title="Retirada Expressa"
                 description="Confirme status e local de retirada em 3h na unidade Cabedelo com checklist de conferência."
-                icon={<svg className="w-8 h-8 text-segura-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
+                icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
                 href="/retira-em-loja"
                 actionText="Ver retirada"
-                className="bg-slate-900/70 text-white border-white/10 hover:border-segura-primary hover:shadow-segura-glow"
+                className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
             </div>
           </div>
@@ -425,19 +425,19 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-4 space-y-10">
-              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-segura-soft animate-pop">
-                <h3 className="text-xl font-display font-bold text-segura-dark mb-6 uppercase tracking-tight">Compra consciente, sem retrabalho</h3>
+              <div className="bg-white p-8 md:p-10 rounded-3xl border border-slate-100 shadow-elevation-1 animate-pop">
+                <h3 className="text-xl font-display font-bold text-text-primary mb-6 uppercase tracking-tight">Compra consciente, sem retrabalho</h3>
                 <ul className="space-y-5">
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
-                    <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-action-primary rounded-full shrink-0" />
                     Seleção orientada pelo risco e pela rotina
                   </li>
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
-                    <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-action-primary rounded-full shrink-0" />
                     Alternativas equivalentes homologadas quando necessário
                   </li>
                   <li className="flex items-center gap-3 text-sm font-sans text-slate-500">
-                    <div className="w-1.5 h-1.5 bg-segura-primary rounded-full shrink-0" />
+                    <div className="w-1.5 h-1.5 bg-action-primary rounded-full shrink-0" />
                     Apoio consultivo para padronização e treinamento
                   </li>
                 </ul>
@@ -513,7 +513,7 @@ export default function HomePage() {
             <DecisionCard title="Proteção das mãos" description="Luvas por risco: corte, químico, abrasão e precisão. CA validado." href="/catalogo?categoria=maos" actionText="Ver catálogo" />
             <DecisionCard title="Proteção respiratória" description="Máscaras, filtros e respiradores com orientação de troca e selagem." href="/catalogo?categoria=respiratoria" actionText="Ver catálogo" />
             <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para diferentes níveis de ruído e turnos longos." href="/catalogo?categoria=auditiva" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção facial" description="�culos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
             <DecisionCard title="Trabalho em altura" description="Cintos, talabartes e ancoragens certificados para NR-35." href="/catalogo?categoria=altura" actionText="Ver catálogo" />
             <DecisionCard title="Vestuário" description="Uniformes e proteção térmica/antiestática alinhados ao seu ambiente." href="/catalogo?categoria=vestuario" actionText="Ver catálogo" />
             <DecisionCard title="Calçados" description="Botas e sapatos com conforto, grip e isolamento conforme sua rotina." href="/catalogo?categoria=calcados" actionText="Ver catálogo" />
@@ -534,7 +534,7 @@ export default function HomePage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
             {/* Construção Civil & Infra */}
-            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-all duration-500 hover:-translate-y-2">
               <Image
                 src="https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=900&q=75"
                 alt="Construção civil com equipe equipada"
@@ -548,16 +548,16 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative p-8 space-y-4 text-white">
-                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-18 • NR-35</span>
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-18 ⬢ NR-35</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Construção Civil & Infra</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Obra segura e produtiva. Equipamentos testados para NR-18 e NR-35, antiqueda, botas de alta resistência e checklist de uso diário.</p>
-                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Soluções para Obra <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Soluções para Obra <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=construcao" className="sr-only">Ir para catálogo de construção</a>
               </div>
             </div>
 
             {/* Setor Elétrico */}
-            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-all duration-500 hover:-translate-y-2">
               <Image
                 src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=900&q=75"
                 alt="Setor elétrico em operação"
@@ -571,16 +571,16 @@ export default function HomePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
               <div className="relative p-8 space-y-4 text-white">
-                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-10 • 1000V</span>
+                <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">NR-10 ⬢ 1000V</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Setor Elétrico</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Alta tensão pede rigor. Linha metal-free, isolamento térmico/elétrico e validação de CA para NR-10 sem espaço para improviso.</p>
-                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Linha Técnica <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Linha Técnica <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=eletrico" className="sr-only">Ver linha técnica elétrica</a>
               </div>
             </div>
 
             {/* Alimentícia & Hospitalar */}
-            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-segura-soft hover:shadow-segura-glow transition-all duration-500 hover:-translate-y-2">
+            <div className="group relative overflow-hidden rounded-3xl bg-slate-900 border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-all duration-500 hover:-translate-y-2">
               <Image
                 src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=75"
                 alt="Ambiente hospitalar"
@@ -597,7 +597,7 @@ export default function HomePage() {
                 <span className="px-3 py-1 rounded-full bg-white/10 border border-white/20 text-[10px] font-display font-bold uppercase tracking-[0.25em]">C.A. Ativo</span>
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Alimentícia & Hospitalar</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Higiene e aderência total. Solados Super Grip, materiais de fácil limpeza e protocolos para ambientes controlados sem contaminação.</p>
-                <p className="text-segura-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Itens Higiene <span className="w-6 h-[2px] bg-segura-primary block group-hover:w-10 transition-all"></span></p>
+                <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Itens Higiene <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
                 <a href="/catalogo?setor=alimentar-hospitalar" className="sr-only">Ver itens para higiene</a>
               </div>
             </div>
@@ -616,7 +616,7 @@ export default function HomePage() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
             </div>
             <div className="lg:col-span-7 p-8 md:p-12 space-y-6">
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Autoridade Humana</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Autoridade Humana</p>
               <h2 className="text-3xl md:text-5xl font-display font-black text-white leading-tight">
                 Mais que vender EPIs, mentoramos sua segurança.
               </h2>
@@ -631,17 +631,17 @@ export default function HomePage() {
                     { title: 'Ecossistema completo', desc: 'Tecnologia (Neo Evolution) + conhecimento prático das NRs.' },
                   ].map((item) => (
                     <div key={item.title} className="p-4 rounded-2xl bg-white/5 border border-white/10 text-white">
-                      <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-1 text-segura-primary">{item.title}</p>
+                      <p className="font-display font-bold uppercase tracking-[0.15em] text-sm mb-1 text-action-primary">{item.title}</p>
                       <p className="text-slate-200 text-sm leading-relaxed">{item.desc}</p>
                     </div>
                   ))}
                 </div>
-                <p className="mt-6 text-segura-primary italic text-sm font-sans">
-                  “Conectamos tecnologia e humanidade para proteger o que mais importa: as pessoas.”
+                <p className="mt-6 text-action-primary italic text-sm font-sans">
+                  �SConectamos tecnologia e humanidade para proteger o que mais importa: as pessoas.⬝
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
-                <Button href="/chat?intent=mentoria" variant="primary" className="px-8 py-4 shadow-segura-glow">
+                <Button href="/chat?intent=mentoria" variant="primary" className="px-8 py-4 shadow-glow-brand">
                   Falar com um Mentor Técnico
                 </Button>
               </div>
@@ -659,7 +659,7 @@ export default function HomePage() {
             {faqItems.map((item, index) => (
               <div key={index} className="bg-white rounded-3xl border border-slate-100 p-8">
                 <button onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)} className="w-full flex items-center justify-between text-left">
-                  <span className="text-xl font-display font-black uppercase text-segura-dark">{item.q}</span>
+                  <span className="text-xl font-display font-black uppercase text-text-primary">{item.q}</span>
                   <svg className={cn("w-6 h-6 transition-transform", openFaqIndex === index && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth={2} /></svg>
                 </button>
                 {openFaqIndex === index && <p className="mt-6 pt-6 border-t border-slate-50 text-slate-600 text-lg leading-relaxed">{item.a}</p>}
@@ -683,3 +683,4 @@ export default function HomePage() {
     </main>
   );
 }
+

@@ -2,6 +2,12 @@
 **Versão:** 2.0 (Industrial Premium B2B + Technical Authority)  
 **Missão:** Interface de alta confiança para compra técnica de EPI: conformidade (C.A./NR), previsibilidade (logística/estoque) e conversão sem fricção.
 
+### Governança de tokens (fonte de verdade)
+- Intenção e regras vivem aqui (`design-system.md`).
+- Valores vivem em `src/styles/tokens.ts`.
+- Exposição como classes Tailwind vive em `tailwind.config.ts`.
+- Proibido hex/valores novos direto em componentes; alterar token = atualizar os três artefatos juntos.
+
 ---
 
 ## 0) Princípios (refinados)

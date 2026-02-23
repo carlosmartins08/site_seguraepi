@@ -2,25 +2,27 @@
 import React from 'react';
 import { cn } from '../../lib/cn';
 
-interface ButtonProps {
+type AnchorAttrs = React.AnchorHTMLAttributes<HTMLAnchorElement>;
+
+interface ButtonProps extends AnchorAttrs {
   children: React.ReactNode;
   href: string;
   variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
   className?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({ children, href, variant = 'primary', className }) => {
-  const baseStyles = "inline-flex items-center justify-center px-8 py-3.5 font-display font-bold uppercase tracking-wide transition-all duration-300 rounded-xl hover:-translate-y-1 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-segura-primary/70 focus-visible:ring-offset-2 focus-visible:ring-offset-white";
+export const Button: React.FC<ButtonProps> = ({ children, href, variant = 'primary', className, ...rest }) => {
+  const baseStyles = "inline-flex items-center justify-center px-8 py-3.5 font-display font-bold uppercase tracking-wide transition-all duration-base ease-standard rounded-md hover:-translate-y-1 active:scale-95 focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface";
   
   const variants = {
-    primary: "bg-segura-primary text-white shadow-segura-glow hover:bg-white hover:text-segura-primary hover:ring-2 hover:ring-segura-primary",
-    secondary: "bg-segura-secondary text-white hover:bg-segura-dark",
-    outline: "bg-transparent border-2 border-segura-dark text-segura-dark hover:bg-segura-dark hover:text-white",
-    ghost: "bg-transparent text-segura-dark hover:bg-segura-offwhite"
+    primary: "bg-action-primary text-text-onBrand shadow-glow-brand hover:bg-action-primaryHover active:bg-action-primaryPressed",
+    secondary: "bg-action-secondary text-text-inverse hover:bg-action-secondaryHover",
+    outline: "bg-transparent border-2 border-border-strong text-text-primary hover:bg-bg-inverse hover:text-text-inverse",
+    ghost: "bg-transparent text-text-primary hover:bg-bg-surfaceMuted"
   };
 
   return (
-    <a href={href} className={cn(baseStyles, variants[variant], className)}>
+    <a href={href} className={cn(baseStyles, variants[variant], className)} {...rest}>
       {children}
     </a>
   );

@@ -131,7 +131,7 @@ export default function CentroTecnicoPage() {
               <Button
                 href="/catalogo"
                 variant="outline"
-                className="bg-white/10 text-white border-white/30 hover:text-segura-dark"
+                className="bg-white/10 text-white border-white/30 hover:text-text-primary"
               >
                 Acessar catálogo
               </Button>
@@ -141,8 +141,8 @@ export default function CentroTecnicoPage() {
               <span>Validação sempre com a base oficial do Ministério do Trabalho.</span>
             </div>
           </div>
-          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-segura-hover backdrop-blur-xl">
-            <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">
+          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-elevation-2 backdrop-blur-xl">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">
               Fonte primária
             </p>
             <h3 className="text-3xl font-display font-black text-white mb-3">Sistema CAEPI</h3>
@@ -166,25 +166,25 @@ export default function CentroTecnicoPage() {
         <Container className="space-y-10">
           <SectionTitle
             subtitle="O que é o CA?"
-            title="Certificado de Aprovação — licença oficial para comercializar e usar EPI"
+            title="Certificado de Aprovação � licença oficial para comercializar e usar EPI"
             description="Documento emitido pelo Ministério do Trabalho que autoriza comercialização e uso. Sem C.A. válido, o EPI é irregular."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-3xl border border-slate-200 bg-white shadow-segura-soft">
-              <h3 className="text-xl font-display font-bold text-segura-dark mb-3">Sem C.A. válido</h3>
+            <div className="p-8 rounded-3xl border border-slate-200 bg-white shadow-elevation-1">
+              <h3 className="text-xl font-display font-bold text-text-primary mb-3">Sem C.A. válido</h3>
               <ul className="space-y-3 text-slate-600">
                 {caWithoutList.map((item) => (
                   <li key={item} className="flex gap-3 items-start">
-                    <span className="mt-1 h-2 w-2 rounded-full bg-segura-primary" aria-hidden />
+                    <span className="mt-1 h-2 w-2 rounded-full bg-action-primary" aria-hidden />
                     <span>{item}</span>
                   </li>
                 ))}
               </ul>
             </div>
-            <div className="p-8 rounded-3xl border border-segura-primary/30 bg-white shadow-segura-glow">
-              <h3 className="text-xl font-display font-bold text-segura-dark mb-3">Fonte oficial</h3>
+            <div className="p-8 rounded-3xl border border-action-primary/30 bg-white shadow-glow-brand">
+              <h3 className="text-xl font-display font-bold text-text-primary mb-3">Fonte oficial</h3>
               <p className="text-slate-600 leading-relaxed">
-                Ministério do Trabalho e Emprego — Sistema CAEPI. Sempre valide na base governamental antes de comprar,
+                Ministério do Trabalho e Emprego � Sistema CAEPI. Sempre valide na base governamental antes de comprar,
                 especificar ou substituir um EPI.
               </p>
               <ContextLink
@@ -211,13 +211,13 @@ export default function CentroTecnicoPage() {
             {validarSteps.map((step, index) => (
               <div
                 key={step.title}
-                className="p-6 rounded-3xl border border-slate-200 bg-white shadow-segura-soft flex gap-4"
+                className="p-6 rounded-3xl border border-slate-200 bg-white shadow-elevation-1 flex gap-4"
               >
-                <div className="h-10 w-10 rounded-2xl bg-segura-primary/10 text-segura-primary font-display font-black flex items-center justify-center">
+                <div className="h-10 w-10 rounded-2xl bg-action-primary/10 text-action-primary font-display font-black flex items-center justify-center">
                   {index + 1}
                 </div>
                 <div>
-                  <h4 className="text-lg font-display font-bold text-segura-dark">{step.title}</h4>
+                  <h4 className="text-lg font-display font-bold text-text-primary">{step.title}</h4>
                   <p className="text-slate-600 text-sm leading-relaxed">{step.detail}</p>
                 </div>
               </div>
@@ -235,8 +235,8 @@ export default function CentroTecnicoPage() {
           />
           <div className="grid md:grid-cols-3 gap-8">
             {errosComuns.map((item) => (
-              <div key={item.title} className="p-6 rounded-3xl border border-slate-200 bg-white shadow-segura-soft">
-                <h4 className="text-lg font-display font-bold text-segura-dark mb-2">{item.title}</h4>
+              <div key={item.title} className="p-6 rounded-3xl border border-slate-200 bg-white shadow-elevation-1">
+                <h4 className="text-lg font-display font-bold text-text-primary mb-2">{item.title}</h4>
                 <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
               </div>
             ))}
@@ -253,17 +253,17 @@ export default function CentroTecnicoPage() {
           />
           <div className="grid md:grid-cols-3 gap-8">
             {normas.map((norma) => (
-              <div key={norma.sigla} className="p-6 rounded-3xl border border-slate-200 bg-white shadow-segura-soft">
+              <div key={norma.sigla} className="p-6 rounded-3xl border border-slate-200 bg-white shadow-elevation-1">
                 <div className="flex items-center gap-3 mb-3">
-                  <span className="px-3 py-1 rounded-full bg-segura-primary/10 text-segura-primary font-display font-bold text-xs tracking-[0.2em]">
+                  <span className="px-3 py-1 rounded-full bg-action-primary/10 text-action-primary font-display font-bold text-xs tracking-[0.2em]">
                     {norma.sigla}
                   </span>
-                  <h4 className="text-lg font-display font-bold text-segura-dark">{norma.title}</h4>
+                  <h4 className="text-lg font-display font-bold text-text-primary">{norma.title}</h4>
                 </div>
                 <ul className="space-y-2 text-sm text-slate-600">
                   {norma.bullets.map((b) => (
                     <li key={b} className="flex gap-2 items-start">
-                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-segura-primary" aria-hidden />
+                      <span className="mt-1 h-1.5 w-1.5 rounded-full bg-action-primary" aria-hidden />
                       <span>{b}</span>
                     </li>
                   ))}
@@ -283,17 +283,17 @@ export default function CentroTecnicoPage() {
               description="A ordem correta: eliminar risco, controlar risco, proteger individualmente."
             />
           </div>
-          <div className="space-y-4 p-8 rounded-3xl border border-slate-200 bg-white shadow-segura-soft">
+          <div className="space-y-4 p-8 rounded-3xl border border-slate-200 bg-white shadow-elevation-1">
             <div>
-              <h4 className="text-lg font-display font-bold text-segura-dark">EPC (Equipamento de Proteção Coletiva)</h4>
+              <h4 className="text-lg font-display font-bold text-text-primary">EPC (Equipamento de Proteção Coletiva)</h4>
               <p className="text-slate-600 text-sm leading-relaxed">Protege vários trabalhadores e deve ser priorizado sempre que possível.</p>
             </div>
             <div>
-              <h4 className="text-lg font-display font-bold text-segura-dark">EPI</h4>
+              <h4 className="text-lg font-display font-bold text-text-primary">EPI</h4>
               <p className="text-slate-600 text-sm leading-relaxed">Proteção individual usada quando o risco não pode ser eliminado ou controlado por EPC.</p>
             </div>
             <div className="flex flex-col gap-2 text-sm text-slate-600">
-              <span className="font-display font-bold text-segura-primary uppercase tracking-[0.2em]">Ordem técnica</span>
+              <span className="font-display font-bold text-action-primary uppercase tracking-[0.2em]">Ordem técnica</span>
               <span>1) Eliminar risco</span>
               <span>2) Controlar risco</span>
               <span>3) Proteger individualmente</span>
@@ -313,9 +313,9 @@ export default function CentroTecnicoPage() {
             {checklist.map((item) => (
               <li
                 key={item}
-                className="flex items-center gap-3 p-4 rounded-2xl border border-slate-200 bg-white shadow-segura-soft"
+                className="flex items-center gap-3 p-4 rounded-2xl border border-slate-200 bg-white shadow-elevation-1"
               >
-                <span className="h-2.5 w-2.5 rounded-full bg-segura-primary" aria-hidden />
+                <span className="h-2.5 w-2.5 rounded-full bg-action-primary" aria-hidden />
                 <span>{item}</span>
               </li>
             ))}
@@ -327,7 +327,7 @@ export default function CentroTecnicoPage() {
         <Container className="space-y-6">
           <SectionTitle
             subtitle="Posicionamento Segura EPI"
-            title="Segurança não é produto. É decisão técnica."
+            title="Segurança não é produto. �0 decisão técnica."
             description="Validamos aplicação, norma, conformidade e responsabilidade legal antes de recomendar qualquer EPI."
           />
           <p className="text-slate-600 text-lg max-w-4xl">
@@ -339,10 +339,10 @@ export default function CentroTecnicoPage() {
       </Section>
 
       <Section id="cta-final" variant="default" className="pb-28">
-        <Container className="bg-segura-dark text-white rounded-4xl p-10 md:p-14 shadow-segura-hover border border-white/10">
+        <Container className="bg-bg-inverse text-white rounded-4xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Antes de comprar</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Antes de comprar</p>
               <h3 className="text-3xl md:text-4xl font-display font-black leading-tight">Valide, consulte e só então feche o pedido</h3>
               <p className="text-slate-300 text-base">
                 Validar C.A., confirmar norma e registrar treinamento evita autuações e devoluções por especificação errada.
@@ -359,14 +359,14 @@ export default function CentroTecnicoPage() {
               <Button
                 href={CONTACT_INFO.whatsapp}
                 variant="outline"
-                className="w-full sm:w-auto text-white border-white/40 hover:text-segura-dark"
+                className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary"
               >
                 Solicitar orçamento
               </Button>
               <Button
                 href="/catalogo"
                 variant="ghost"
-                className="w-full sm:w-auto bg-white/10 text-white hover:text-segura-dark"
+                className="w-full sm:w-auto bg-white/10 text-white hover:text-text-primary"
               >
                 Acessar catálogo B2B
               </Button>
@@ -379,3 +379,4 @@ export default function CentroTecnicoPage() {
     </main>
   );
 }
+

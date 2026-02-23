@@ -22,13 +22,13 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
   return (
     <main className="min-h-screen bg-white">
       {/* Header: Glassmorphism */}
-      <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-segura-soft">
+      <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-elevation-1">
         <Container className="w-full flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition-opacity">
             <SeguraLogo section="navbar" variant="light" size="md" padding="tight" />
           </a>
           <nav className="flex items-center gap-10">
-            <a href="/epi/categorias" className="text-segura-dark text-[11px] font-display font-bold uppercase tracking-widest hover:text-segura-primary transition-all">Todos Guias</a>
+            <a href="/epi/categorias" className="text-text-primary text-[11px] font-display font-bold uppercase tracking-widest hover:text-action-primaryHover transition-all">Todos Guias</a>
             <Button href={`/catalogo?categoria=${data.key}`} variant="primary" className="py-2.5 px-6 text-[10px]">Ver Mix</Button>
           </nav>
         </Container>
@@ -36,9 +36,9 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
 
       {/* Hero Section */}
       <Section id="category-hero" variant="dark" className="pt-40 pb-24 relative overflow-hidden">
-        <div className="absolute inset-0 bg-segura-primary/5 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-action-primary/5 pointer-events-none"></div>
         <Container className="relative z-10 animate-slide-up">
-          <span className="bg-segura-primary text-white px-4 py-1 rounded-full font-display font-bold text-[10px] mb-8 inline-block uppercase tracking-widest shadow-segura-glow">
+          <span className="bg-action-primary text-white px-4 py-1 rounded-full font-display font-bold text-[10px] mb-8 inline-block uppercase tracking-widest shadow-glow-brand">
             Guia de Proteção • {data.name}
           </span>
           <h1 className="text-4xl md:text-7xl font-display font-black leading-[1.05] mb-8 uppercase">{data.heroTitle}</h1>
@@ -79,18 +79,18 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
               <div className="space-y-8">
                 {data.commonMistakes.map((mistake, i) => (
                   <div key={i} className="flex items-start gap-4 group">
-                    <div className="w-6 h-6 rounded-full bg-segura-danger/10 text-segura-danger flex items-center justify-center shrink-0 mt-1 font-display font-bold text-xs">!</div>
-                    <p className="text-slate-600 font-sans leading-relaxed group-hover:text-segura-dark transition-colors">{mistake}</p>
+                    <div className="w-6 h-6 rounded-full bg-tech-risk/10 text-tech-risk flex items-center justify-center shrink-0 mt-1 font-display font-bold text-xs">!</div>
+                    <p className="text-slate-600 font-sans leading-relaxed group-hover:text-text-primary transition-colors">{mistake}</p>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-segura-dark text-white p-12 rounded-4xl relative overflow-hidden shadow-segura-hover border border-white/5">
+            <div className="bg-bg-inverse text-white p-12 rounded-4xl relative overflow-hidden shadow-elevation-2 border border-white/5">
               <h3 className="text-2xl font-display font-bold mb-8">FAQ Técnico</h3>
               <div className="space-y-10">
                 {data.faq.map((item, i) => (
                   <div key={i}>
-                    <h4 className="text-segura-primary font-display font-bold text-sm uppercase tracking-widest mb-3">{item.q}</h4>
+                    <h4 className="text-action-primary font-display font-bold text-sm uppercase tracking-widest mb-3">{item.q}</h4>
                     <p className="text-slate-400 font-sans text-sm leading-relaxed">{item.a}</p>
                   </div>
                 ))}

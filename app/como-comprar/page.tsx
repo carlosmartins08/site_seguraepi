@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar';
@@ -12,7 +12,7 @@ import { SeguraLogo } from '../../components/brand/SeguraLogo';
 
 const bullet = (text: string, key: React.Key) => (
   <li key={key} className="flex items-start gap-3 text-slate-600">
-    <span className="mt-1 h-2 w-2 rounded-full bg-segura-primary" aria-hidden />
+    <span className="mt-1 h-2 w-2 rounded-full bg-action-primary" aria-hidden />
     <span>{text}</span>
   </li>
 );
@@ -34,7 +34,7 @@ export default function ComoComprarPage() {
             />
             <div className="flex flex-wrap gap-4">
               <Button href={CONTACT_INFO.whatsapp} variant="primary">Falar com um consultor</Button>
-              <Button href="/catalogo" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-segura-dark">
+              <Button href="/catalogo" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-text-primary">
                 Ver catalogo
               </Button>
             </div>
@@ -43,8 +43,8 @@ export default function ComoComprarPage() {
               <span>Cadastro revisado periodicamente para manter limite alinhado ao seu volume.</span>
             </div>
           </div>
-          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-segura-hover backdrop-blur-xl">
-            <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-4">Prazos</p>
+          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-elevation-2 backdrop-blur-xl">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-4">Prazos</p>
             <h3 className="text-3xl font-display font-black text-white mb-4">Liberacao em ate 24h uteis</h3>
             <p className="text-slate-200 text-sm leading-relaxed">
               Enviando a documentacao completa, o cadastro simplificado libera compras a vista imediatamente. Para faturamento, a analise de credito ocorre no mesmo SLA.
@@ -62,9 +62,9 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-segura-soft">
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra a vista</p>
-              <h3 className="text-2xl font-display font-black text-segura-dark mb-3">Cadastro rapido</h3>
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-elevation-1">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra a vista</p>
+              <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro rapido</h3>
               <p className="text-slate-600 mb-4">Ideal para pedidos urgentes. Coletamos apenas dados comerciais e fiscais basicos.</p>
               <ul className="space-y-3 text-sm">
                 {[
@@ -75,9 +75,9 @@ export default function ComoComprarPage() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-segura-primary bg-white p-8 shadow-segura-glow">
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra faturada</p>
-              <h3 className="text-2xl font-display font-black text-segura-dark mb-3">Cadastro completo + credito</h3>
+            <div className="rounded-3xl border border-action-primary bg-white p-8 shadow-glow-brand">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra faturada</p>
+              <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro completo + credito</h3>
               <p className="text-slate-600 mb-4">Pensado para quem precisa de prazo. Realizamos analise segura para definir limite aderente ao seu historico.</p>
               <ul className="space-y-3 text-sm">
                 {[
@@ -100,8 +100,8 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-8 border border-slate-200 rounded-3xl bg-segura-offwhite/60">
-              <h4 className="text-xl font-display font-bold text-segura-dark mb-4">Dados fiscais</h4>
+            <div className="p-8 border border-slate-200 rounded-3xl bg-bg-surfaceMuted/60">
+              <h4 className="text-xl font-display font-bold text-text-primary mb-4">Dados fiscais</h4>
               <ul className="space-y-3 text-sm">
                 {[
                   'Cartao CNPJ ativo.',
@@ -111,7 +111,7 @@ export default function ComoComprarPage() {
               </ul>
             </div>
             <div className="p-8 border border-slate-200 rounded-3xl bg-white">
-              <h4 className="text-xl font-display font-bold text-segura-dark mb-4">Contatos e enderecos</h4>
+              <h4 className="text-xl font-display font-bold text-text-primary mb-4">Contatos e enderecos</h4>
               <ul className="space-y-3 text-sm">
                 {[
                   'Endereco completo da sede e, se aplicavel, de entrega e cobranca.',
@@ -141,15 +141,15 @@ export default function ComoComprarPage() {
               ].map((item) => bullet(item, item))}
             </ul>
           </div>
-          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-segura-soft">
-            <h4 className="text-xl font-display font-bold text-segura-dark mb-3">Perguntas frequentes</h4>
+          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-elevation-1">
+            <h4 className="text-xl font-display font-bold text-text-primary mb-3">Perguntas frequentes</h4>
             <div className="space-y-4 text-sm text-slate-600">
               <div>
-                <p className="font-display font-bold text-segura-dark">Pessoa fisica pode comprar?</p>
+                <p className="font-display font-bold text-text-primary">Pessoa fisica pode comprar?</p>
                 <p>O foco e B2B (PJ). Para CPF, consulte o time sobre venda a vista como consumidor final.</p>
               </div>
               <div>
-                <p className="font-display font-bold text-segura-dark">Como saber se o cadastro foi aprovado?</p>
+                <p className="font-display font-bold text-text-primary">Como saber se o cadastro foi aprovado?</p>
                 <p>Dentro de 24h uteis seu consultor retorna. Se faltar algo, avisamos na hora para nao atrasar o pedido.</p>
               </div>
             </div>
@@ -158,16 +158,16 @@ export default function ComoComprarPage() {
       </Section>
 
       <Section id="cta-final" variant="default" className="pb-28">
-        <Container className="bg-segura-dark text-white rounded-4xl p-10 md:p-14 shadow-segura-hover border border-white/10">
+        <Container className="bg-bg-inverse text-white rounded-4xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Pronto para comprar</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Pronto para comprar</p>
               <h3 className="text-3xl md:text-4xl font-display font-black leading-tight">Envie sua documentacao agora e acelere a primeira compra</h3>
               <p className="text-slate-300 text-base">Separar os dados fiscais e de contato evita pendencias e libera seu pedido no mesmo dia util.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto">Enviar pelo WhatsApp</Button>
-              <Button href={`mailto:${CONTACT_INFO.email}`} variant="outline" className="w-full sm:w-auto text-white border-white/40 hover:text-segura-dark">Enviar por email</Button>
+              <Button href={`mailto:${CONTACT_INFO.email}`} variant="outline" className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary">Enviar por email</Button>
             </div>
           </div>
         </Container>
@@ -177,3 +177,4 @@ export default function ComoComprarPage() {
     </main>
   );
 }
+

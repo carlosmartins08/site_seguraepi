@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { useI18n } from '../../hooks/useI18n';
 import { cn } from '../../lib/cn';
 
@@ -24,7 +24,7 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({ compact = false 
           className={cn(
             'px-2 py-1 rounded-full transition-all duration-200 uppercase tracking-[0.15em]',
             locale === loc
-              ? 'bg-white text-segura-dark font-bold shadow-segura-soft'
+              ? 'bg-white text-text-primary font-bold shadow-elevation-1'
               : 'text-white/70 hover:text-white hover:bg-white/10'
           )}
           aria-pressed={locale === loc}
@@ -35,3 +35,4 @@ export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({ compact = false 
     </div>
   );
 };
+

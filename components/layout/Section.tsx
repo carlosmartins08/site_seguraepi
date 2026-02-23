@@ -1,4 +1,4 @@
-
+﻿
 import React from 'react';
 import { cn } from '../../lib/cn';
 
@@ -12,9 +12,9 @@ interface SectionProps {
 export const Section: React.FC<SectionProps> = ({ id, children, className, variant = 'default' }) => {
   const variantStyles = {
     default: "bg-white",
-    dark: "bg-segura-dark text-white",
-    offwhite: "bg-segura-offwhite",
-    immersive: "bg-segura-dark text-white rounded-t-4xl md:rounded-t-[5rem]"
+    dark: "bg-bg-inverse text-white",
+    offwhite: "bg-bg-surfaceMuted",
+    immersive: "bg-bg-inverse text-white rounded-t-4xl md:rounded-t-[5rem]"
   };
 
   return (
@@ -30,3 +30,4 @@ export const Section: React.FC<SectionProps> = ({ id, children, className, varia
     </section>
   );
 };
+

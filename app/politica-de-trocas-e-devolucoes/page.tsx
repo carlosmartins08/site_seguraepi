@@ -13,7 +13,7 @@ export const metadata = {
 };
 
 const badges = [
-  { label: 'Conferir no ato da entrega', color: 'bg-segura-primary/15 text-segura-primary' },
+  { label: 'Conferir no ato da entrega', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Garantia até 7 dias direto conosco', color: 'bg-emerald-100 text-emerald-700' },
   { label: 'Troca de numeração em 30 dias', color: 'bg-slate-900 text-white' },
 ];
@@ -37,10 +37,10 @@ export default function PoliticaTrocasPage() {
         <Container className="max-w-4xl">
           <div className="space-y-8">
             <div>
-              <p className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
                 Política de Trocas e Devoluções
               </p>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-segura-dark leading-tight">
+              <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
                 Transparência para proteger quem usa e quem compra EPI.
               </h1>
               <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
@@ -59,7 +59,7 @@ export default function PoliticaTrocasPage() {
               ))}
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-segura-glow">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
                 Falar com SAC
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
@@ -87,13 +87,13 @@ export default function PoliticaTrocasPage() {
                 'Erro no endereço ou dados da Nota Fiscal',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 text-slate-600">
-                  <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                  <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
                   <p className="leading-relaxed">{item}</p>
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-segura-offwhite">
-              <h3 className="text-xl font-display font-bold text-segura-dark mb-4">Como proceder</h3>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-bg-surfaceMuted">
+              <h3 className="text-xl font-display font-bold text-text-primary mb-4">Como proceder</h3>
               <p className="text-slate-600 leading-relaxed">
                 Identificou divergência? Avise imediatamente o motorista. A logística aciona a coordenação comercial em
                 tempo real. Se precisar devolver, faça no mesmo transporte com a Nota Fiscal de Devolução impressa.
@@ -112,12 +112,12 @@ export default function PoliticaTrocasPage() {
             description="Seguimos os prazos legais e acionamos o fabricante quando necessário."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
-              <h4 className="text-lg font-display font-bold text-segura-dark">Até 7 dias da NF</h4>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+              <h4 className="text-lg font-display font-bold text-text-primary">Até 7 dias da NF</h4>
               <p className="text-slate-600 leading-relaxed">Tratamos troca ou devolução diretamente com a Segura EPI.</p>
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white space-y-3">
-              <h4 className="text-lg font-display font-bold text-segura-dark">Após 7 dias</h4>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+              <h4 className="text-lg font-display font-bold text-text-primary">Após 7 dias</h4>
               <p className="text-slate-600 leading-relaxed">
                 Acionamos o fabricante via SAC, respeitando o prazo técnico de análise de cada marca.
               </p>
@@ -146,13 +146,13 @@ export default function PoliticaTrocasPage() {
                 'Apresentar a Nota Fiscal de compra',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
-                  <span className="w-2 h-2 rounded-full bg-segura-primary mt-2" />
+                  <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
                   <p>{item}</p>
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-segura-offwhite">
-              <h4 className="text-lg font-display font-bold text-segura-dark mb-3">Para quem vale</h4>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-bg-surfaceMuted">
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Para quem vale</h4>
               <p className="text-slate-600 leading-relaxed">
                 Botas de segurança, uniformes e demais EPIs que dependem de ajuste. Troca simples, sem burocracia, para
                 manter o uso correto.
@@ -171,14 +171,14 @@ export default function PoliticaTrocasPage() {
             description="Devoluções e trocas seguem controle fiscal e de segurança."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white">
-              <h4 className="text-lg font-display font-bold text-segura-dark mb-3">Retiradas</h4>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Retiradas</h4>
               <p className="text-slate-600 leading-relaxed">
                 Realizadas por transportadoras parceiras ou frota própria Segura EPI, garantindo rastreabilidade.
               </p>
             </div>
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-segura-soft bg-white">
-              <h4 className="text-lg font-display font-bold text-segura-dark mb-3">Restrição</h4>
+            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Restrição</h4>
               <p className="text-slate-600 leading-relaxed">
                 Não aceitamos retirada/envio via motoristas de aplicativo (Uber, 99 etc.) por segurança e controle fiscal.
               </p>
@@ -193,8 +193,8 @@ export default function PoliticaTrocasPage() {
           <SectionTitle subtitle="FAQ" title="Perguntas Frequentes" />
           <div className="space-y-4">
             {faqItems.map((item) => (
-              <details key={item.q} className="bg-white border border-slate-100 rounded-2xl px-5 py-4 shadow-segura-soft">
-                <summary className="cursor-pointer text-lg font-display font-bold text-segura-dark">
+              <details key={item.q} className="bg-white border border-slate-100 rounded-2xl px-5 py-4 shadow-elevation-1">
+                <summary className="cursor-pointer text-lg font-display font-bold text-text-primary">
                   {item.q}
                 </summary>
                 <p className="mt-3 text-slate-600 leading-relaxed">{item.a}</p>
@@ -206,3 +206,4 @@ export default function PoliticaTrocasPage() {
     </main>
   );
 }
+

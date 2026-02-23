@@ -12,14 +12,14 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
     updatedAt: '2026-02-10',
     content: (
       <div className="space-y-8">
-        <p className="text-xl font-display font-medium text-segura-dark">
+        <p className="text-xl font-display font-medium text-text-primary">
           A Segura EPI trata a proteção de dados como parte do nosso compromisso com segurança no trabalho e
           conformidade. Esta política explica como coletamos, usamos e protegemos suas informações, em linha com a
-          Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018).
+          Lei Geral de Proteção de Dados (LGPD � Lei nº 13.709/2018).
         </p>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">1. Coleta de informações</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">1. Coleta de informações</h3>
           <p>Coletamos apenas o necessário para operar com eficiência B2B:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Dados da empresa:</strong> Razão social, CNPJ, inscrição estadual e endereços.</li>
@@ -30,7 +30,7 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">2. Finalidades</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">2. Finalidades</h3>
           <p>Usamos os dados para:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Processar pedidos:</strong> emissão de NF-e, boletos e duplicatas.</li>
@@ -42,18 +42,18 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">3. Compartilhamento</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">3. Compartilhamento</h3>
           <p>Não vendemos dados. Compartilhamos apenas quando necessário com:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Parceiros logísticos:</strong> para entrega.</li>
-            <li><strong>Órgãos fiscais:</strong> para obrigações legais.</li>
+            <li><strong>�rgãos fiscais:</strong> para obrigações legais.</li>
             <li><strong>Instituições financeiras:</strong> para pagamentos e boletos.</li>
             <li><strong>Fornecedores de tecnologia:</strong> serviços de hospedagem, métricas e automação, sempre com contratos de confidencialidade.</li>
           </ul>
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">4. Cookies e preferências</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">4. Cookies e preferências</h3>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Necessários:</strong> mantêm o site funcional e seguro.</li>
             <li><strong>Métricas:</strong> nos ajudam a melhorar performance e navegação.</li>
@@ -62,7 +62,7 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">5. Segurança e retenção</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">5. Segurança e retenção</h3>
           <p>
             Aplicamos controles técnicos e administrativos, acesso restrito por função e armazenamento em provedores com certificações de segurança.
             Dados financeiros e de crédito são mantidos pelo prazo legal ou enquanto necessários à relação comercial.
@@ -70,7 +70,7 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">6. Direitos do titular</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">6. Direitos do titular</h3>
           <p>Você pode solicitar, a qualquer momento:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li>Confirmação e acesso aos dados.</li>
@@ -88,17 +88,17 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
     updatedAt: '2026-02-10',
     content: (
       <div className="space-y-8">
-        <p className="text-xl font-display font-medium text-segura-dark border-l-4 border-segura-primary pl-6 py-2 bg-segura-offwhite">
+        <p className="text-xl font-display font-medium text-text-primary border-l-4 border-action-primary pl-6 py-2 bg-bg-surfaceMuted">
           Ao usar o site da Segura EPI, você concorda com estes termos. O foco é atender empresas (B2B) com EPIs e serviços de SST.
         </p>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">1. Natureza do serviço</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">1. Natureza do serviço</h3>
           <p>Apresentamos catálogo, orientações técnicas e canais de contato para cotações e faturamento.</p>
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">2. Cadastro e compras</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">2. Cadastro e compras</h3>
           <ul className="list-disc pl-5 space-y-3">
             <li>Forneça informações verdadeiras e atualizadas.</li>
             <li>Podemos solicitar documentos para validação e análise de crédito.</li>
@@ -107,12 +107,12 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">3. Propriedade intelectual</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">3. Propriedade intelectual</h3>
           <p>Conteúdos, marcas e layouts pertencem à Segura EPI ou parceiros. Reprodução ou uso comercial requer autorização prévia.</p>
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">4. Limitação de responsabilidade</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">4. Limitação de responsabilidade</h3>
           <ul className="list-disc pl-5 space-y-3">
             <li>EPIs são fornecidos com CA; uso correto, treinamento e fiscalização são responsabilidade do empregador conforme NRs.</li>
             <li>Disponibilidade de estoque pode variar pelo fluxo de vendas.</li>
@@ -120,20 +120,21 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">5. Trocas e devoluções</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">5. Trocas e devoluções</h3>
           <p>Conferir a mercadoria na entrega. Prazos seguem a legislação aplicável e nossas políticas internas comunicadas no ato da compra.</p>
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">6. Alterações</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">6. Alterações</h3>
           <p>Podemos atualizar estes termos. Mudanças entram em vigor na publicação. Em casos relevantes, solicitaremos novo consentimento.</p>
         </section>
 
         <section className="space-y-4">
-          <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">7. Foro</h3>
+          <h3 className="text-xl font-display font-black text-text-primary uppercase tracking-tight">7. Foro</h3>
           <p>Fica eleito o foro da Comarca de Cabedelo/PB para resolver conflitos oriundos destes termos.</p>
         </section>
       </div>
     ),
   },
 };
+

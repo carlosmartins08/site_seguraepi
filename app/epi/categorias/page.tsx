@@ -16,13 +16,13 @@ export default function CategoryHubPage() {
   return (
     <main className="min-h-screen bg-white">
       {/* Header: Glassmorphism */}
-      <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-segura-soft">
+      <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-elevation-1">
         <Container className="w-full flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition-opacity">
             <SeguraLogo section="navbar" variant="light" size="md" padding="tight" />
           </a>
           <nav className="flex items-center gap-10">
-            <a href="/" className="text-segura-dark text-[11px] font-display font-bold uppercase tracking-widest hover:text-segura-primary transition-all">Home</a>
+            <a href="/" className="text-text-primary text-[11px] font-display font-bold uppercase tracking-widest hover:text-action-primaryHover transition-all">Home</a>
             <Button href="/catalogo" variant="primary" className="py-2.5 px-6 text-[10px]">Ver Catálogo</Button>
           </nav>
         </Container>
@@ -30,12 +30,12 @@ export default function CategoryHubPage() {
 
       {/* Hero Section */}
       <Section id="hub-hero" variant="dark" className="pt-40 pb-24 relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-segura-primary/5 blur-4xl pointer-events-none"></div>
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-action-primary/5 blur-4xl pointer-events-none"></div>
         <Container>
           <div className="max-w-3xl animate-slide-up">
-            <span className="text-segura-primary font-display font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Hub de Proteção</span>
+            <span className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Hub de Proteção</span>
             <h1 className="text-4xl md:text-7xl font-display font-black leading-tight mb-8 uppercase">
-              GUIA TÉCNICO DE <span className="text-segura-primary">CATEGORIAS</span>
+              GUIA T�0CNICO DE <span className="text-action-primary">CATEGORIAS</span>
             </h1>
             <p className="text-slate-400 text-lg md:text-xl font-sans leading-relaxed">
               Navegue pelos nossos guias de categoria. Cada seção foi estruturada para ajudar sua empresa a decidir pelo EPI correto com base em normas e riscos reais.
@@ -59,8 +59,8 @@ export default function CategoryHubPage() {
             ))}
             
             {/* AI CTA Card */}
-            <div className="rounded-3xl bg-segura-dark text-white p-10 flex flex-col justify-center items-start shadow-segura-hover border border-white/5 group hover:-translate-y-2 transition-all duration-500">
-              <span className="text-segura-primary font-display font-bold text-[10px] uppercase tracking-widest mb-4">Suporte Inteligente</span>
+            <div className="rounded-3xl bg-bg-inverse text-white p-10 flex flex-col justify-center items-start shadow-elevation-2 border border-white/5 group hover:-translate-y-2 transition-all duration-500">
+              <span className="text-action-primary font-display font-bold text-[10px] uppercase tracking-widest mb-4">Suporte Inteligente</span>
               <h3 className="text-2xl font-display font-bold mb-6">Dúvidas Técnicas sobre Riscos?</h3>
               <p className="text-slate-400 text-sm mb-10 leading-relaxed font-sans">Nossos consultores utilizam dimensionamento inteligente para diagnosticar o risco do seu setor e indicar o mix ideal.</p>
               <Button href="/chat?origem=epi-hub" variant="primary" className="w-full">Falar com Consultor</Button>
@@ -73,3 +73,4 @@ export default function CategoryHubPage() {
     </main>
   );
 }
+
