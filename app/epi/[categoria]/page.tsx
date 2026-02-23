@@ -28,7 +28,7 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
             <SeguraLogo section="navbar" variant="light" size="md" padding="tight" />
           </a>
           <nav className="flex items-center gap-10">
-            <a href="/epi" className="text-segura-dark text-[11px] font-display font-bold uppercase tracking-widest hover:text-segura-primary transition-all">Todos Guias</a>
+            <a href="/epi/categorias" className="text-segura-dark text-[11px] font-display font-bold uppercase tracking-widest hover:text-segura-primary transition-all">Todos Guias</a>
             <Button href={`/catalogo?categoria=${data.key}`} variant="primary" className="py-2.5 px-6 text-[10px]">Ver Mix</Button>
           </nav>
         </Container>

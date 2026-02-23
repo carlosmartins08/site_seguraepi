@@ -41,7 +41,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
   const navLinks = [
     { name: t('nav.home', 'Início'), href: '/' },
-    { name: t('nav.epiCategories', 'EPI por Categoria'), href: '/epi' },
+    { name: t('nav.epiCategories', 'EPI por Categoria'), href: '/epi/categorias' },
     { name: t('nav.catalog', 'Catálogo'), href: '/catalogo' },
     { name: t('nav.pickup', 'Retira em Loja'), href: '/retira' },
   ];
