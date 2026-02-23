@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { Container } from './Container';
-import { Logo } from '../brand/Logo';
+import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
 
 interface FooterProps {
@@ -23,7 +23,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
       <Container>
         <div className="grid md:grid-cols-4 gap-16 mb-20">
           <div className="md:col-span-1">
-            <Logo theme="white" className="h-12 mb-8" />
+            <SeguraLogo section="footer" variant="mono-white" size="lg" padding="relaxed" className="mb-8" />
             <p className="text-slate-500 text-xs leading-relaxed uppercase tracking-[0.2em] font-sans mb-8">
               Especialistas em proteção industrial e serviços técnicos B2B. Consultoria baseada em risco e conformidade.
             </p>
@@ -56,6 +56,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               <li><a href="/politica-de-trocas-e-devolucoes" className="hover:text-segura-primary transition-colors uppercase">Política de Trocas e Devoluções</a></li>
               <li><a href="/politica-de-entrega-e-frete" className="hover:text-segura-primary transition-colors uppercase">Política de Entrega e Frete</a></li>
               <li><a href="/retirada-expressa" className="hover:text-segura-primary transition-colors uppercase">Retirada Expressa</a></li>
+              <li><a href="/como-comprar" className="hover:text-segura-primary transition-colors uppercase">Como Comprar</a></li>
+              <li><a href="/centro-tecnico" className="hover:text-segura-primary transition-colors uppercase">Centro Técnico</a></li>
               <li><a href="/sobre-segura-epi" className="hover:text-segura-primary transition-colors uppercase">Sobre a Segura EPI</a></li>
               <li><a href="/trabalhe-conosco" className="hover:text-segura-primary transition-colors uppercase">Trabalhe Conosco</a></li>
             </ul>

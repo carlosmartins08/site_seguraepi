@@ -1,5 +1,5 @@
 import React from 'react';
-import { Logo } from '../brand/Logo';
+import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
 import { useI18n } from '../../hooks/useI18n';
 
@@ -34,7 +34,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
         <div className="p-8 md:p-10 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white relative z-10">
           <div className="flex items-center gap-6">
             <div className="p-3 bg-segura-offwhite rounded-2xl">
-              <Logo variant="icon" className="h-10 w-10" />
+              <SeguraLogo section="modal" variant="icon-only" size="sm" padding="tight" />
             </div>
             <div>
               <span className="text-segura-primary font-display font-bold text-[10px] uppercase tracking-[0.3em] block mb-1">

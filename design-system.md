@@ -81,4 +81,14 @@ Documentadas em `styles/segura-ui.css`.
 6. O componente respeita a margem de segurança do `Container`?
 
 ---
+
+## 8. Logo & Governanca de Marca
+- Componente unificado: <SeguraLogo /> (inline SVG; elimina <img> fixo).
+- Variantes oficiais: light (texto #0F172A + acento laranja), dark (texto branco), mono-white, mono-black, icon-only (simbolo com acento laranja).
+- Tokens: LOGO_SIZES {sm:28px, md:36px, lg:48px, xl:56px}; LOGO_PADDING {tight:4px, base:8px, relaxed:12px}; alturas minimas 32px (wordmark) e 28px (icon) com proporcao 3.75.
+- Regras por secao: Navbar em hero escuro usa dark/padding tight/size md e troca para light size sm ao rolar; Footer fixa mono-white size lg padding relaxed; Modais de compliance usam icon-only size md padding base; usos inline/cartao claro ficam com light size sm padding tight.
+- Acessibilidade: aria-label padrao "Segura EPI & Servicos"; use decorative quando o logo for apenas ornamental.
+
+
+---
 *Este documento é um organismo vivo. Atualizações devem ser validadas pelo Lead Frontend.*

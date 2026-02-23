@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { Container } from './Container';
-import { Logo } from '../brand/Logo';
+import { SeguraLogo, LOGO_RULES } from '../brand/SeguraLogo';
 import { Button } from '../actions/Button';
 import { cn } from '../../lib/cn';
 import { CONTACT_INFO } from '../../lib/constants';
@@ -21,6 +21,10 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
   const { region, loading: locationLoading } = useLocation();
   const { t } = useI18n();
+
+  const logoRule = LOGO_RULES.navbar;
+  const logoVariant = !isScrolled && variant === 'dark' ? 'dark' : 'light';
+  const logoSize = isScrolled ? 'sm' : 'md';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -99,9 +103,12 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
         <Container className="h-full flex items-center justify-between">
           <a href="/" className="hover:scale-105 transition-transform duration-500 relative z-10">
-            <Logo
-              theme={variant === 'dark' && !isScrolled ? 'white' : 'colored'}
-              className={cn("transition-all duration-500", isScrolled ? "h-8" : "h-10")}
+            <SeguraLogo
+              section="navbar"
+              variant={logoVariant}
+              size={logoSize}
+              padding="tight"
+              className="transition-all duration-500"
             />
           </a>
 
@@ -190,7 +197,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
         <Container className="h-full flex flex-col py-10 relative z-10">
           <div className="flex justify-between items-center mb-16">
-            <Logo theme="white" className="h-10" />
+            <SeguraLogo section="navbar" variant="dark" size="md" padding="tight" />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-14 h-14 flex items-center justify-center text-white bg-white/5 border border-white/10 rounded-2xl hover:bg-segura-primary transition-all duration-500"

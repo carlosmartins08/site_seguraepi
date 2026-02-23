@@ -31,6 +31,39 @@ const fluxo = [
   'Retirada rápida na recepção informando o número do pedido.',
 ];
 
+const oQueLevar = [
+  {
+    title: 'Pessoa Física',
+    items: ['Documento com foto (RG ou CNH)', 'Número do pedido', 'Confirmação de liberação'],
+    href: '/chat?intent=pf',
+  },
+  {
+    title: 'Empresa (PJ)',
+    items: ['Documento de quem retira', 'CNPJ da empresa', 'Confirmação de liberação'],
+    href: '/chat?intent=pj',
+  },
+  {
+    title: 'Terceiros / Portador',
+    items: ['Documento do portador', 'Autorização simples do comprador', 'Número do pedido'],
+    href: '/chat?intent=terceiro',
+  },
+];
+
+const faqExtra = [
+  {
+    q: 'Posso retirar sem aviso de pedido pronto?',
+    a: 'Não. O aviso garante que todos os itens estão separados e conferidos. Sem ele há risco de espera ou falta de item.',
+  },
+  {
+    q: 'Outra pessoa pode retirar por mim?',
+    a: 'Sim, com documento e uma autorização simples (digital serve) com número do pedido e dados da empresa.',
+  },
+  {
+    q: 'Qual o prazo máximo para retirar?',
+    a: 'Mantemos separado por até 7 dias úteis; depois disso os itens voltam ao estoque e pode ser necessário novo prazo.',
+  },
+];
+
 export default function ClientPage() {
   const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
     open: false,
@@ -147,6 +180,70 @@ export default function ClientPage() {
         </Container>
       </Section>
 
+      {/* Conteúdo consolidado do fluxo Retira em Loja */}
+      <Section id="o-que-levar" variant="default">
+        <Container className="max-w-6xl space-y-12">
+          <SectionTitle
+            subtitle="Documentação e regras"
+            title="Chegue pronto: o que levar e como evitar ida perdida"
+            description="Documento, número do pedido e confirmação de liberação são a base para qualquer perfil."
+          />
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {oQueLevar.map((card) => (
+              <div key={card.title} className="rounded-3xl bg-white p-8 border border-slate-100 shadow-segura-soft flex flex-col gap-4">
+                <h3 className="text-xl font-display font-black text-segura-dark uppercase tracking-tight">{card.title}</h3>
+                <ul className="space-y-3 text-sm text-slate-600 flex-grow">
+                  {card.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="w-1.5 h-1.5 bg-segura-primary rounded-full mt-1.5" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+                <ContextLink href={card.href}>Tirar dúvida</ContextLink>
+              </div>
+            ))}
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-12">
+            <div className="bg-segura-offwhite p-8 rounded-3xl border border-slate-100 shadow-segura-soft">
+              <h4 className="text-lg font-display font-bold text-segura-dark mb-3 uppercase tracking-tight">Checklist rápido</h4>
+              <ul className="space-y-3 text-sm text-slate-600">
+                {[
+                  'Retire somente após confirmação do pedido pronto.',
+                  'Leve documento original e número do pedido.',
+                  'Terceiros precisam de autorização simples.',
+                  'Confira itens e tamanhos no balcão antes de sair.',
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <span className="w-1.5 h-1.5 bg-segura-primary rounded-full mt-1.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white p-8 rounded-3xl border border-slate-100 shadow-segura-soft space-y-4">
+              <h4 className="text-lg font-display font-bold text-segura-dark mb-2 uppercase tracking-tight">Prazos e disponibilidade</h4>
+              <p className="text-slate-600 text-sm leading-relaxed">
+                A retirada ocorre somente após separação e confirmação. Itens sob encomenda dependem de reposição; em urgência, peça equivalentes técnicos.
+              </p>
+              <div className="grid sm:grid-cols-2 gap-3 text-sm text-slate-600">
+                <div className="p-4 rounded-xl border border-slate-200 bg-segura-offwhite/60">
+                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-segura-primary mb-1">Cenário comum</p>
+                  <p>Itens em estoque liberam rápido após conferência.</p>
+                </div>
+                <div className="p-4 rounded-xl border border-slate-200 bg-white">
+                  <p className="font-display font-bold text-xs uppercase tracking-[0.2em] text-segura-primary mb-1">Atenção</p>
+                  <p>Encomendas exigem validação de prazo antes da retirada.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
       <Section id="prazo-limite" variant="default">
         <Container className="max-w-6xl">
           <SectionTitle
@@ -196,6 +293,22 @@ export default function ClientPage() {
                 Sim. Com status “Disponível”, basta o portador apresentar o número do pedido e nome do cliente/empresa.
               </p>
             </div>
+          </div>
+
+          <div className="max-w-4xl mt-12 space-y-4">
+            {faqExtra.map((item, index) => (
+              <div key={item.q} className="bg-white rounded-2xl border border-slate-100 shadow-segura-soft p-6">
+                <div className="flex items-start gap-3">
+                  <div className="w-8 h-8 rounded-xl bg-segura-primary/10 text-segura-primary flex items-center justify-center font-display font-bold text-sm">
+                    {index + 1}
+                  </div>
+                  <div>
+                    <h4 className="text-base font-display font-bold text-segura-dark mb-1">{item.q}</h4>
+                    <p className="text-slate-600 text-sm leading-relaxed">{item.a}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </Container>
       </Section>

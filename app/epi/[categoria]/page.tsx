@@ -10,7 +10,7 @@ import { DecisionCard } from '../../../components/cards/DecisionCard';
 import { MethodStep } from '../../../components/method/MethodStep';
 import { AlertList } from '../../../components/trust/AlertList';
 import { Footer } from '../../../components/layout/Footer';
-import { Logo } from '../../../components/brand/Logo';
+import { SeguraLogo } from '../../../components/brand/SeguraLogo';
 import { CATEGORY_PAGES, CategoryKey } from '../../../lib/catalog/categories';
 
 export default function CategoryLandingPage({ params }: { params: { categoria: string } }) {
@@ -25,7 +25,7 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
       <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-segura-soft">
         <Container className="w-full flex justify-between items-center">
           <a href="/" className="hover:opacity-80 transition-opacity">
-            <Logo theme="colored" className="h-10" />
+            <SeguraLogo section="navbar" variant="light" size="md" padding="tight" />
           </a>
           <nav className="flex items-center gap-10">
             <a href="/epi" className="text-segura-dark text-[11px] font-display font-bold uppercase tracking-widest hover:text-segura-primary transition-all">Todos Guias</a>

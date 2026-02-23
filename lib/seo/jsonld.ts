@@ -7,7 +7,7 @@ export const buildOrganizationJsonLd = () => {
     "@type": "Organization",
     "name": SITE_NAME,
     "url": SITE_URL,
-    "logo": `${SITE_URL}/logo-colored.png`,
+    "logo": `${SITE_URL}/brand/logo-icon-color.png`,
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "Av. Santa Isabel, 96 - Renascer",
