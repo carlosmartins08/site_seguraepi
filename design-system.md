@@ -237,6 +237,14 @@ Base 4px
 
 ---
 
+# 9) Integrações (3rd-party UI)
+- Integrações que injetam DOM/CSS (ex.: chat/atendimento) devem ser carregadas via gate de consentimento quando aplicável.
+- Tokens e semântica continuam sendo a regra: preferir overrides isolados em `styles/segura-ui.css` (não em componentes).
+- Reduced motion é obrigatório: desativar animações/transições do widget em `prefers-reduced-motion`.
+- Se a integração exigir atributos específicos no `<script>` (ex.: `token` literal), documentar e centralizar o carregamento em `app/layout.tsx`.
+
+---
+
 ## Nota de Logo (opcional, para governança rápida)
 - Use o componente `<SeguraLogo />` com variantes light/dark/mono e ícone-only; tokens de tamanho/padding seguem LOGO_SIZES/LOGO_PADDING definidos no código.  
 - Preferir palavra-chave brand.500/600 para manter consistência com o acento Segura Orange.
