@@ -1,5 +1,6 @@
 
 import React from 'react';
+import Link from 'next/link';
 import { Container } from './Container';
 import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';

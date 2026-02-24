@@ -1,56 +1,41 @@
-import React, { useEffect, useMemo, useState } from 'react';
+'use client';
+
+import React, { useEffect, useState } from 'react';
 import { cn } from '../../lib/cn';
+import {
+  CONSENT_STORAGE_KEY,
+  CONSENT_VERSION,
+  PreferenceKey,
+  ConsentState,
+  defaultPreferences,
+  persistConsent,
+} from '../../lib/consent';
 
 interface CookieConsentProps {
   onOpenPrivacy?: () => void;
 }
 
-type PreferenceKey = 'necessary' | 'analytics' | 'marketing';
-
-type ConsentState = {
-  version: string;
-  accepted: boolean;
-  preferences: Record<PreferenceKey, boolean>;
-  updatedAt: string;
-};
-
-const CONSENT_STORAGE_KEY = 'segura-epi-consent';
-const CONSENT_VERSION = '2026-02';
-
 export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) => {
-  const defaultPreferences: Record<PreferenceKey, boolean> = useMemo(
-    () => ({ necessary: true, analytics: false, marketing: false }),
-    []
-  );
-
   const [isVisible, setIsVisible] = useState(false);
   const [isManaging, setIsManaging] = useState(false);
   const [preferences, setPreferences] = useState<Record<PreferenceKey, boolean>>(defaultPreferences);
 
-  const isBrowser = typeof window !== 'undefined';
-
   useEffect(() => {
-    if (!isBrowser) return;
+    if (typeof window === 'undefined') return;
 
     const stored = localStorage.getItem(CONSENT_STORAGE_KEY);
     if (stored) {
       try {
         const parsed: ConsentState = JSON.parse(stored);
-        // resurfacing banner when version changes forces re-consent after policy updates
         if (parsed.version === CONSENT_VERSION) return;
       } catch {
-        // ignore invalid stored values
+        /* ignore malformed */
       }
     }
 
     const timer = setTimeout(() => setIsVisible(true), 800);
     return () => clearTimeout(timer);
-  }, [isBrowser]);
-
-  const persist = (next: ConsentState) => {
-    if (!isBrowser) return;
-    localStorage.setItem(CONSENT_STORAGE_KEY, JSON.stringify(next));
-  };
+  }, []);
 
   const handleAcceptAll = () => {
     const payload: ConsentState = {
@@ -59,7 +44,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
       preferences: { necessary: true, analytics: true, marketing: true },
       updatedAt: new Date().toISOString(),
     };
-    persist(payload);
+    persistConsent(payload);
     setIsVisible(false);
   };
 
@@ -70,7 +55,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
       preferences: { ...defaultPreferences, analytics: false, marketing: false },
       updatedAt: new Date().toISOString(),
     };
-    persist(payload);
+    persistConsent(payload);
     setIsVisible(false);
   };
 
@@ -81,12 +66,12 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
       preferences,
       updatedAt: new Date().toISOString(),
     };
-    persist(payload);
+    persistConsent(payload);
     setIsVisible(false);
   };
 
   const togglePreference = (key: PreferenceKey) => {
-    if (key === 'necessary') return; // cannot be disabled
+    if (key === 'necessary') return;
     setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
   };
 
@@ -95,7 +80,6 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-8 animate-slide-up">
       <div className="max-w-7xl mx-auto bg-bg-inverse/95 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-3xl shadow-elevation-2 relative overflow-hidden">
-        {/* Decorative background glow */}
         <div className="absolute top-0 left-0 w-32 h-32 bg-action-primary/10 rounded-full blur-3xl -ml-16 -mt-16"></div>
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
@@ -103,12 +87,13 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
             <div className="flex items-center gap-3 mb-4">
               <div className="w-2 h-2 bg-action-primary rounded-full animate-pulse shadow-glow-brand"></div>
               <span className="text-action-primary font-display font-bold text-[10px] uppercase tracking-[0.3em]">
-                Privacidade & Governança de Dados
+                Privacidade &amp; Governança de Dados
               </span>
             </div>
             <h3 className="text-white font-display font-bold text-lg mb-3">Sua segurança começa com a transparência</h3>
             <p className="text-slate-400 text-sm leading-relaxed font-sans max-w-4xl">
-              Utilizamos cookies e tecnologias de rastreamento para otimizar sua jornada técnica, analisar o desempenho das nossas ferramentas B2B e personalizar ofertas de EPI. Ao prosseguir, você concorda com nossa{' '}
+              Utilizamos cookies para otimizar sua jornada técnica, medir performance e personalizar ofertas de EPI.
+              Ao prosseguir, você concorda com nossa{' '}
               <button onClick={onOpenPrivacy} className="text-action-primary font-bold hover:underline underline-offset-4 transition-all">
                 Política de Privacidade
               </button>{' '}
@@ -204,4 +189,3 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
     </div>
   );
 };
-

@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
@@ -67,7 +69,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
             <div className="prose prose-slate prose-lg max-w-none">{content}</div>
 
             <div className="mt-12 pt-12 border-t border-slate-100 italic text-sm text-slate-400">
-              * �altima atualização em {lastUpdateLabel}. Segura EPI e Serviços segue rigorosamente a Lei Geral de
+              * Última atualização em {lastUpdateLabel}. Segura EPI e Serviços segue rigorosamente a Lei Geral de
               Proteção de Dados (13.709/2018). Dúvidas sobre seus dados? Contate {CONTACT_INFO.email}.
             </div>
           </div>
@@ -100,4 +102,3 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
     </div>
   );
 };
-

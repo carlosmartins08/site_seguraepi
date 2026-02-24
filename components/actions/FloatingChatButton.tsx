@@ -1,4 +1,6 @@
 
+'use client';
+
 import React, { useState, useEffect } from 'react';
 import { cn } from '../../lib/cn';
 import { CONTACT_INFO } from '../../lib/constants';

@@ -1,4 +1,6 @@
 
+'use client';
+
 import { useState, useEffect } from 'react';
 import { CONTACT_INFO } from '../lib/constants';
 

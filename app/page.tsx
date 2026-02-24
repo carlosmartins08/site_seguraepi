@@ -1,10 +1,7 @@
 
-'use client';
-
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Navbar } from '../components/layout/Navbar';
-import { Footer } from '../components/layout/Footer';
 import { Container } from '../components/layout/Container';
 import { Section } from '../components/layout/Section';
 import { SectionTitle } from '../components/typography/SectionTitle';
@@ -16,57 +13,41 @@ import { PartnerBlock } from '../components/trust/PartnerBlock';
 import { AlertList } from '../components/trust/AlertList';
 import { AssistedCTA } from '../components/conversion/AssistedCTA';
 import { GMBReviews } from '../components/trust/GMBReviews';
-import { CookieConsent } from '../components/trust/CookieConsent';
-import { LegalModal } from '../components/layout/LegalModal';
-// Floating chat do WhatsApp foi substituído pelo Wbot como ponto de contato prioritário
-import { cn } from '../lib/cn';
-import { CONTACT_INFO } from '../lib/constants';
-import { LEGAL_TEXTS } from '../lib/legal';
-import { useI18n } from '../hooks/useI18n';
-import { useBusinessStatus } from '../hooks/useBusinessStatus';
 import { PartnerShowcase } from '../components/trust/PartnerShowcase';
+import { CONTACT_INFO } from '../lib/constants';
+import { LegalLayer } from '../components/home/LegalLayer';
+import { ScrollReveal } from '../components/home/ScrollReveal';
+import { WbotInitializer } from '../components/home/WbotInitializer';
+import { CaSearch } from '../components/home/CaSearch';
+import { FaqList, FaqItem } from '../components/home/FaqList';
+
+export const metadata = {
+  title: 'Segura EPI | EPI com orientação técnica e compra segura',
+  description:
+    'Fornecedor B2B de EPI com consultoria técnica, validação de C.A., estoque auditado e retirada expressa. Atendemos empresas com logística confiável e suporte especializado.',
+  alternates: {
+    canonical: 'https://seguraepi.com.br/',
+  },
+  openGraph: {
+    title: 'Segura EPI | Autoridade técnica em EPI para empresas',
+    description:
+      'Comércio, consultoria e treinamento em EPI. Validação de C.A., crédito B2B, retirada expressa e parceiros líderes como 3M, MSA e Ansell.',
+    url: 'https://seguraepi.com.br/',
+    siteName: 'Segura EPI',
+    type: 'website',
+  },
+};
 
 /**
  * HOME OFICIAL - SEGURA EPI
  */
 export default function HomePage() {
-  const [legalModal, setLegalModal] = useState<{ open: boolean, type: 'privacy' | 'terms' }>({ open: false, type: 'privacy' });
-  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
-  const [caSearch, setCaSearch] = useState('');
-  const { t } = useI18n();
-  const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
-
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('reveal-visible');
-        }
-      });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, []);
-
-  // Configura dados iniciais para o Wbot (prioridade de chat)
-  useEffect(() => {
-    if (typeof window === 'undefined') return;
-    (window as any).WBOTdata = {
-      greeting: isOnline
-        ? 'Olá! Sou o consultor técnico da SeguraEPI. Precisa validar um C.A. ou de um orçamento rápido agora?'
-        : 'Estamos fora do horário, mas registre sua dúvida e retornaremos às 07:30 com um consultor técnico.',
-      status: statusMessage,
-      online: isOnline,
-    };
-  }, [isOnline, statusMessage]);
-
   const partnerPlaceholders = [
     'Fabricante A', 'Fabricante B', 'Fabricante C', 'Fabricante D',
     'Fabricante E', 'Fabricante F', 'Fabricante G', 'Fabricante H'
   ];
 
-  const faqItems = [
+  const faqItems: FaqItem[] = [
     {
       q: "Como funciona o faturamento B2B?",
       a: "Analisamos crédito de forma ágil e transparente. Após aprovação, liberamos boleto faturado em até 24h com limites alinhados ao seu volume e cronograma."
@@ -95,17 +76,10 @@ export default function HomePage() {
   ];
 
   return (
-    <main className="relative">
+    <main className="relative" id="main-content">
       <Navbar variant="dark" />
-      <CookieConsent onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })} />
-
-      <LegalModal
-        isOpen={legalModal.open}
-        onClose={() => setLegalModal({ ...legalModal, open: false })}
-        title={LEGAL_TEXTS[legalModal.type].title}
-        content={LEGAL_TEXTS[legalModal.type].content}
-        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
-      />
+      <ScrollReveal />
+      <WbotInitializer />
 
       {/* Hero */}
       <Section id="hero" variant="dark" className="pt-28 pb-32 relative overflow-hidden">
@@ -134,6 +108,7 @@ export default function HomePage() {
                   href="/catalogo?origem=home-hero"
                   variant="primary"
                   className="px-10 py-5 shadow-glow-brand"
+                  trackEvent="cta_hero_catalogo"
                 >
                   Acessar Catálogo Digital
                 </Button>
@@ -141,6 +116,7 @@ export default function HomePage() {
                   href={CONTACT_INFO.whatsapp}
                   variant="outline"
                   className="text-white border-white/20 hover:border-action-primary hover:text-action-primaryHover hover:ring-2 hover:ring-action-primary/40 px-10 py-5 bg-white/5 backdrop-blur-sm"
+                  trackEvent="cta_hero_consultoria"
                 >
                   Consultoria Técnica
                 </Button>
@@ -348,30 +324,7 @@ export default function HomePage() {
             </div>
 
             <div className="bg-slate-900/60 rounded-3xl p-4 md:p-6 border border-white/10 shadow-inner shadow-black/20 mb-8">
-              <label className="flex items-center gap-2 text-slate-200 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3">
-                <svg className="w-4 h-4 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
-                Validação Técnica
-              </label>
-              <div className="flex flex-col md:flex-row gap-4 items-stretch">
-                <div className="relative flex-1">
-                  <input
-                    value={caSearch}
-                    onChange={(e) => setCaSearch(e.target.value)}
-                    placeholder={'Digite o número do C.A. ou o nome do produto...'}
-                    className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-action-primary focus:ring-2 focus:ring-focus-ring transition-all"
-                  />
-                  <div className="absolute right-4 top-1/2 -translate-y-1/2 text-action-primary">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-4.35-4.35M11 19a8 8 0 100-16 8 8 0 000 16z" /></svg>
-                  </div>
-                </div>
-                <Button
-                  href={`/catalogo?busca=${encodeURIComponent(caSearch || 'ca')}`}
-                  variant="primary"
-                  className="px-8 py-4 whitespace-nowrap"
-                >
-                  Buscar CA / Produto
-                </Button>
-              </div>
+              <CaSearch />
             </div>
 
             <div className="grid md:grid-cols-3 gap-4">
@@ -655,17 +608,7 @@ export default function HomePage() {
       <Section id="faq" variant="offwhite" className="reveal">
         <Container>
           <SectionTitle subtitle="FAQ" title="Dúvidas Frequentes" />
-          <div className="max-w-4xl mt-16 space-y-5">
-            {faqItems.map((item, index) => (
-              <div key={index} className="bg-white rounded-3xl border border-slate-100 p-8">
-                <button onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)} className="w-full flex items-center justify-between text-left">
-                  <span className="text-xl font-display font-black uppercase text-text-primary">{item.q}</span>
-                  <svg className={cn("w-6 h-6 transition-transform", openFaqIndex === index && "rotate-180")} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" strokeWidth={2} /></svg>
-                </button>
-                {openFaqIndex === index && <p className="mt-6 pt-6 border-t border-slate-50 text-slate-600 text-lg leading-relaxed">{item.a}</p>}
-              </div>
-            ))}
-          </div>
+          <FaqList items={faqItems} />
         </Container>
       </Section>
 
@@ -676,10 +619,7 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <Footer
-        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
-        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
-      />
+      <LegalLayer />
     </main>
   );
 }

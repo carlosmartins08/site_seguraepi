@@ -1,3 +1,5 @@
+'use client';
+
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { DEFAULT_LOCALE, LOCALE_LABELS, Locale, STORAGE_KEY_LOCALE } from '../lib/i18n/locales';
 import { getResource } from '../lib/i18n/resources';

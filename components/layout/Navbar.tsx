@@ -1,5 +1,7 @@
+'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Link from 'next/link';
 import { Container } from './Container';
 import { SeguraLogo, LOGO_RULES } from '../brand/SeguraLogo';
 import { Button } from '../actions/Button';
@@ -18,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const overlayRef = useRef<HTMLDivElement | null>(null);
   const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
   const { region, loading: locationLoading } = useLocation();
   const { t } = useI18n();
@@ -38,6 +41,43 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // A11y focus trap + escape for mobile menu
+  useEffect(() => {
+    if (!isMobileMenuOpen) {
+      document.body.style.overflow = '';
+      return;
+    }
+
+    document.body.style.overflow = 'hidden';
+    const focusables = overlayRef.current?.querySelectorAll<HTMLElement>(
+      'a, button, input, select, textarea, [tabindex]:not([tabindex="-1"])'
+    );
+    const first = focusables?.[0];
+    const last = focusables?.[focusables.length - 1];
+    first?.focus();
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsMobileMenuOpen(false);
+      }
+      if (e.key === 'Tab' && focusables && focusables.length > 0) {
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last?.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first?.focus();
+        }
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.body.style.overflow = '';
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [isMobileMenuOpen]);
 
   const navLinks = [
     { name: t('nav.home', 'Início'), href: '/' },
@@ -97,12 +137,12 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
       )}>
         {/* Scroll Progress Bar with Technical Glow */}
         <div
-          className="absolute bottom-0 left-0 h-[2px] bg-action-primary transition-all duration-150 z-[80] shadow-[0_0_10px_#FF9B21]"
+          className="absolute bottom-0 left-0 h-[2px] bg-action-primary transition-all duration-150 z-[80] shadow-glow-brand"
           style={{ width: `${scrollProgress}%` }}
         />
 
         <Container className="h-full flex items-center justify-between">
-          <a href="/" className="hover:scale-105 transition-transform duration-500 relative z-10">
+          <Link href="/" className="hover:scale-105 transition-transform duration-500 relative z-10">
             <SeguraLogo
               section="navbar"
               variant={logoVariant}
@@ -110,12 +150,12 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               padding="tight"
               className="transition-all duration-500"
             />
-          </a>
+          </Link>
 
           {/* Desktop Navigation Center */}
           <nav className="hidden lg:flex items-center gap-8 xl:gap-12">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 className={cn(
@@ -126,7 +166,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 {link.name}
                 {/* Magnetic Technical Underline */}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-action-primary transition-all duration-500 group-hover:w-full shadow-glow-brand" />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -164,6 +204,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 "text-[10px] py-2.5 px-8 shadow-glow-brand rounded-xl transition-all duration-500",
                 isScrolled ? "scale-95" : "scale-100"
               )}
+              trackEvent="cta_nav_cotacao"
             >
               Cotação B2B
             </Button>
@@ -179,6 +220,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 : "bg-white/5 text-white border border-white/10"
             )}
             aria-label="Abrir Menu"
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu"
           >
             <span className="w-6 h-[2.5px] bg-current rounded-full" />
             <span className="w-4 h-[2.5px] bg-current rounded-full self-end" />
@@ -188,10 +231,17 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
       </header>
 
       {/* Immersive Mobile Command Center Overlay */}
-      <div className={cn(
-        "fixed inset-0 z-[100] bg-bg-inverse transition-all duration-700 ease-in-out",
-        isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-x-full"
-      )}>
+      <div
+        ref={overlayRef}
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-hidden={!isMobileMenuOpen}
+        className={cn(
+          "fixed inset-0 z-[100] bg-bg-inverse transition-all duration-700 ease-in-out",
+          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-x-full"
+        )}
+      >
         <div className="absolute top-0 right-0 w-96 h-96 bg-action-primary/5 rounded-full blur-[100px] -mr-48 -mt-48" />
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-action-primary/5 rounded-full blur-[80px] -ml-32 -mb-32" />
 
@@ -201,6 +251,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="w-14 h-14 flex items-center justify-center text-white bg-white/5 border border-white/10 rounded-2xl hover:bg-action-primary transition-all duration-500"
+              aria-label="Fechar menu"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
@@ -219,7 +270,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
             <nav className="flex flex-col gap-6 md:gap-8">
               {navLinks.map((link, i) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -229,7 +280,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                   <span className="opacity-10 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-2xl md:text-4xl">0{i + 1}</span>
                   {link.name}
                   <span className="ml-6 w-0 h-1 bg-action-primary transition-all duration-700 group-hover:w-24 shadow-glow-brand" />
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -245,6 +296,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 href={CONTACT_INFO.whatsapp}
                 variant="primary"
                 className="w-full py-5 text-xs shadow-glow-brand"
+                trackEvent="cta_mobile_consultor"
               >
                 Falar com um Consultor Técnico
               </Button>

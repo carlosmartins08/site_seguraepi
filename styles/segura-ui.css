@@ -5,7 +5,6 @@
 
 :root {
   --segura-primary: #FF9B21;
-  --segura-secondary: #1E40AF;
   --segura-dark: #0F172A;
 }
 
@@ -13,6 +12,31 @@ body {
   font-family: var(--font-inter), 'Inter', sans-serif;
   color: var(--segura-dark);
   scroll-behavior: smooth;
+}
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  z-index: 200;
+  background: #fff;
+  color: #0F172A;
+  padding: 12px 16px;
+  border-radius: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  width: auto;
+  height: auto;
+  overflow: visible;
 }
 
 h1, h2, h3, h4, .font-display {
@@ -98,4 +122,25 @@ h1, h2, h3, h4, .font-display {
   background-color: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body {
+    scroll-behavior: auto;
+  }
+
+  .animate-pop,
+  .animate-slide-up,
+  .animate-bounce-in,
+  .animate-pulse-soft,
+  .animate-ticker,
+  .animate-marquee {
+    animation: none !important;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
 }
