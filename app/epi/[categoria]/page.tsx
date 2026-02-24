@@ -85,7 +85,7 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
                 ))}
               </div>
             </div>
-            <div className="bg-bg-inverse text-white p-12 rounded-4xl relative overflow-hidden shadow-elevation-2 border border-white/5">
+            <div className="bg-bg-inverse text-white p-12 rounded-2xl relative overflow-hidden shadow-elevation-2 border border-white/5">
               <h3 className="text-2xl font-display font-bold mb-8">FAQ Técnico</h3>
               <div className="space-y-10">
                 {data.faq.map((item, i) => (

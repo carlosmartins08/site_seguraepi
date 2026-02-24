@@ -218,7 +218,7 @@ export default function ClientPage() {
 
       <Section id="compromisso" variant="default">
         <Container className="max-w-5xl">
-          <div className="bg-slate-900 text-white rounded-4xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
+          <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
             <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">
               �SConectamos tecnologia e humanidade para proteger o que mais importa: a vida.⬝

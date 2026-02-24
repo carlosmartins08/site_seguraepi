@@ -124,6 +124,40 @@ h1, h2, h3, h4, .font-display {
   -webkit-backdrop-filter: blur(24px);
 }
 
+/* WBOT widget overrides (Design System alignment) */
+#wbot-chat-container,
+#wbot-chat-container * {
+  font-family: var(--font-inter), 'Inter', sans-serif;
+}
+
+#wbot-chat-container .wbot-attendant,
+#wbot-chat-container #wbot-header .wbot-attendant {
+  font-family: var(--font-poppins), 'Poppins', sans-serif;
+}
+
+#wbot-open-chat {
+  border-radius: 24px !important;
+  background: var(--segura-primary) !important;
+  color: var(--segura-dark) !important;
+  border: 1px solid rgba(255, 155, 33, 0.25) !important;
+  box-shadow:
+    0 18px 40px -20px rgba(15, 23, 42, 0.35),
+    0 0 0 1px rgba(255, 155, 33, 0.25),
+    0 0 22px rgba(255, 155, 33, 0.22) !important;
+}
+
+#wbot-open-chat:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(255, 155, 33, 0.45),
+    0 18px 40px -20px rgba(15, 23, 42, 0.35),
+    0 0 22px rgba(255, 155, 33, 0.22) !important;
+}
+
+#wbot-chat {
+  border-radius: 24px !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
   body {
     scroll-behavior: auto;
@@ -133,6 +167,10 @@ h1, h2, h3, h4, .font-display {
   .animate-slide-up,
   .animate-bounce-in,
   .animate-pulse-soft,
+  .animate-spin,
+  .animate-ping,
+  .animate-pulse,
+  .animate-bounce,
   .animate-ticker,
   .animate-marquee {
     animation: none !important;
@@ -142,5 +180,10 @@ h1, h2, h3, h4, .font-display {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  #wbot-chat-container * {
+    animation: none !important;
+    transition: none !important;
   }
 }

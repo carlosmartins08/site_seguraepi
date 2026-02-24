@@ -339,7 +339,7 @@ export default function CentroTecnicoPage() {
       </Section>
 
       <Section id="cta-final" variant="default" className="pb-28">
-        <Container className="bg-bg-inverse text-white rounded-4xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
+        <Container className="bg-bg-inverse text-white rounded-2xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Antes de comprar</p>

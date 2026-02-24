@@ -35,7 +35,7 @@ export const PartnerShowcase: React.FC<PartnerShowcaseProps> = ({
   return (
     <Section id={id} variant="offwhite" className="py-20 md:py-28">
       <Container>
-        <div className="bg-white rounded-4xl border border-white/40 shadow-elevation-1 px-6 py-10 md:px-10 md:py-14">
+        <div className="bg-white rounded-2xl border border-white/40 shadow-elevation-1 px-6 py-10 md:px-10 md:py-14">
           <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6 md:gap-8">
             <div className="space-y-3 max-w-3xl">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">

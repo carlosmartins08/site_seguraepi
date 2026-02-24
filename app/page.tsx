@@ -7,6 +7,7 @@ import { Section } from '../components/layout/Section';
 import { SectionTitle } from '../components/typography/SectionTitle';
 import { Button } from '../components/actions/Button';
 import { ContextLink } from '../components/actions/ContextLink';
+import { OnlineChatButton } from '../components/chat/OnlineChatButton';
 import { DecisionCard } from '../components/cards/DecisionCard';
 import { MethodStep } from '../components/method/MethodStep';
 import { PartnerBlock } from '../components/trust/PartnerBlock';
@@ -17,7 +18,6 @@ import { PartnerShowcase } from '../components/trust/PartnerShowcase';
 import { CONTACT_INFO } from '../lib/constants';
 import { LegalLayer } from '../components/home/LegalLayer';
 import { ScrollReveal } from '../components/home/ScrollReveal';
-import { WbotInitializer } from '../components/home/WbotInitializer';
 import { CaSearch } from '../components/home/CaSearch';
 import { FaqList, FaqItem } from '../components/home/FaqList';
 
@@ -79,7 +79,6 @@ export default function HomePage() {
     <main className="relative" id="main-content">
       <Navbar variant="dark" />
       <ScrollReveal />
-      <WbotInitializer />
 
       {/* Hero */}
       <Section id="hero" variant="dark" className="pt-28 pb-32 relative overflow-hidden">
@@ -112,14 +111,13 @@ export default function HomePage() {
                 >
                   Acessar Catálogo Digital
                 </Button>
-                <Button
-                  href={CONTACT_INFO.whatsapp}
+                <OnlineChatButton
                   variant="outline"
                   className="text-white border-white/20 hover:border-action-primary hover:text-action-primaryHover hover:ring-2 hover:ring-action-primary/40 px-10 py-5 bg-white/5 backdrop-blur-sm"
                   trackEvent="cta_hero_consultoria"
                 >
-                  Consultoria Técnica
-                </Button>
+                  Atendimento online
+                </OnlineChatButton>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 pt-6 animate-slide-up delay-200">
@@ -151,7 +149,7 @@ export default function HomePage() {
             </div>
 
             <div className="lg:col-span-5 animate-pop delay-150">
-              <div className="relative h-full min-h-[360px] rounded-4xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl">
+              <div className="relative h-full min-h-[360px] rounded-2xl overflow-hidden border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-white/0 backdrop-blur-xl">
                 <Image
                   src="https://images.unsplash.com/photo-1564326060809-8d6f2d8195ff?auto=format&fit=crop&w=1200&q=75"
                   alt="Equipe usando EPI em operação"
@@ -197,7 +195,7 @@ export default function HomePage() {
       {/* Potência Logística */}
       <Section id="logistica" variant="dark" className="reveal">
         <Container>
-          <div className="relative overflow-hidden rounded-4xl border border-white/10 bg-slate-950">
+          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-slate-950">
             <div className="absolute inset-0 opacity-20 bg-[linear-gradient(135deg,rgba(255,255,255,0.05)_10%,transparent_10%),linear-gradient(45deg,rgba(255,255,255,0.05)_10%,transparent_10%)] bg-[length:14px_14px]" />
             <div className="relative z-10 p-8 md:p-12 space-y-10">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
@@ -271,9 +269,13 @@ export default function HomePage() {
           <SectionTitle subtitle="Evite erros" title="Erros comuns que comprometem gente e resultado" />
 
           <div className="flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between mt-6">
-            <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto px-6 py-4 shadow-glow-brand">
-              Falar agora com consultor técnico
-            </Button>
+            <OnlineChatButton
+              variant="primary"
+              className="w-full sm:w-auto px-6 py-4 shadow-glow-brand"
+              trackEvent="cta_home_objecoes_chat"
+            >
+              Atendimento online com consultor
+            </OnlineChatButton>
             <Button href="/catalogo?origem=home-objecoes" variant="outline" className="w-full sm:w-auto px-6 py-4">
               Ver soluções imediatas
             </Button>
@@ -305,7 +307,9 @@ export default function HomePage() {
                     Validação de C.A. e alternativas técnicas seguras.
                   </li>
                 </ul>
-                <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full">Quero validar antes de comprar</Button>
+                <OnlineChatButton variant="primary" className="w-full" trackEvent="cta_home_validar_chat">
+                  Quero validar antes de comprar
+                </OnlineChatButton>
               </div>
             </div>
           </div>
@@ -315,7 +319,7 @@ export default function HomePage() {
       {/* Hub de Inteligência e Atalhos */}
       <Section id="hub-inteligencia" variant="offwhite" className="pt-14 pb-16 md:pt-20 md:pb-20">
         <Container>
-          <div className="bg-slate-900/80 backdrop-blur-md rounded-4xl border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-shadow duration-500 p-6 md:p-10 lg:p-12">
+          <div className="bg-slate-900/80 backdrop-blur-md rounded-2xl border border-white/10 shadow-elevation-1 hover:shadow-glow-brand transition-shadow duration-500 p-6 md:p-10 lg:p-12">
             <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 mb-8">
               <div>
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-2">Central de Ações Técnicas</p>
@@ -395,7 +399,9 @@ export default function HomePage() {
                   </li>
                 </ul>
                 <div className="mt-10 pt-8 border-t border-slate-50 space-y-6">
-                  <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full text-xs py-4">Validar meu cenário no chat</Button>
+                  <OnlineChatButton variant="primary" className="w-full text-xs py-4" trackEvent="cta_home_metodo_chat">
+                    Validar meu cenário no chat
+                  </OnlineChatButton>
                   <ContextLink href="/catalogo?origem=home-metodo" className="justify-center w-full">Ver catálogo por categoria</ContextLink>
                 </div>
               </div>
@@ -563,7 +569,7 @@ export default function HomePage() {
       {/* Autoridade Humana - Mentoria Técnica */}
       <Section id="mentoria" variant="default" className="reveal">
         <Container>
-          <div className="grid lg:grid-cols-12 gap-10 items-center bg-slate-950 rounded-4xl border border-white/10 overflow-hidden">
+          <div className="grid lg:grid-cols-12 gap-10 items-center bg-slate-950 rounded-2xl border border-white/10 overflow-hidden">
             <div className="lg:col-span-5 relative h-full">
               <div className="h-full min-h-[320px] bg-[url('https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1200&q=80')] bg-cover bg-center grayscale-[15%]" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />

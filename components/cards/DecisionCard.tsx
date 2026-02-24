@@ -61,7 +61,7 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
       )}
 
       {isInternal ? (
-        <Link href={href} className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
+        <Link href={href as any} className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
           {actionText}
           <span className="ml-3 block w-6 h-[2px] bg-action-primary transition-all duration-300 group-hover/link:w-12 shadow-glow-brand"></span>
         </Link>

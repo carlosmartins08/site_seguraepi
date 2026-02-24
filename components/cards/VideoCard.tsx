@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { cn } from '../../lib/cn';
 
@@ -17,9 +16,11 @@ export const VideoCard: React.FC<VideoCardProps> = ({ title, duration, thumbnail
       target="_blank" 
       rel="noopener noreferrer"
       className={cn(
-        "group relative block overflow-hidden corner-notch transition-all duration-500",
-        "bg-gradient-to-b from-bg-inverse/10 to-neutral-950 border border-white/10",
-        "hover:border-action-primary/50 hover:shadow-[0_20px_40px_-15px_rgba(255,156,42,0.15)]",
+        "group relative block overflow-hidden rounded-2xl border border-border-inverse",
+        "bg-gradient-to-b from-bg-inverse/10 to-bg-inverse shadow-elevation-1",
+        "transition-[transform,box-shadow,border-color] duration-base ease-standard",
+        "hover:-translate-y-0.5 hover:border-action-primary/50 hover:shadow-elevation-2",
+        "focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-canvas",
         className
       )}
     >
@@ -30,15 +31,19 @@ export const VideoCard: React.FC<VideoCardProps> = ({ title, duration, thumbnail
         <img 
           src={thumbnail} 
           alt={title} 
-          className="w-full h-full object-cover grayscale opacity-50 group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80 transition-all duration-700" 
+          className={cn(
+            "w-full h-full object-cover grayscale opacity-50",
+            "group-hover:grayscale-0 group-hover:scale-105 group-hover:opacity-80",
+            "transition-[transform,filter,opacity] duration-slow ease-standard"
+          )}
         />
         
         {/* Play Overlay - Industrial Styled */}
         <div className="absolute inset-0 z-20 flex items-center justify-center">
           <div className="relative">
             {/* Pulsing ring for hover */}
-            <div className="absolute inset-0 bg-action-primary rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-500 animate-pulse"></div>
-            <div className="relative w-16 h-16 bg-action-primary text-neutral-950 flex items-center justify-center corner-notch transform scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 ease-out shadow-2xl">
+            <div className="absolute inset-0 bg-action-primary rounded-full blur-xl opacity-0 group-hover:opacity-40 transition-opacity duration-base ease-standard animate-pulse-soft"></div>
+            <div className="relative w-16 h-16 bg-action-primary text-text-onBrand flex items-center justify-center rounded-xl transform scale-75 opacity-0 group-hover:opacity-100 group-hover:scale-100 transition-[transform,opacity] duration-base ease-standard shadow-elevation-2">
               <svg className="w-7 h-7 ml-1" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -48,7 +53,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({ title, duration, thumbnail
 
         {/* Duration Badge - Enhanced Contrast */}
         <div className="absolute bottom-3 right-3 z-30">
-          <span className="bg-neutral-950/90 backdrop-blur-md text-white text-[10px] font-industrial font-bold px-3 py-1.5 uppercase tracking-widest corner-notch border border-white/10">
+          <span className="bg-bg-inverse/90 backdrop-blur-md text-text-inverse text-labelSM font-display px-3 py-1.5 uppercase rounded-md border border-border-inverse">
             {duration}
           </span>
         </div>
@@ -56,18 +61,18 @@ export const VideoCard: React.FC<VideoCardProps> = ({ title, duration, thumbnail
 
       <div className="p-6 relative">
         <div className="flex items-center gap-3 mb-3">
-          <div className="w-1.5 h-1.5 bg-action-primary animate-pulse"></div>
-          <span className="text-action-primary text-[10px] font-industrial font-bold uppercase tracking-[0.3em] opacity-90">
+          <div className="w-1.5 h-1.5 bg-action-primary animate-pulse-soft"></div>
+          <span className="text-action-primary text-labelSM font-display uppercase opacity-90">
             Segura TV
           </span>
         </div>
         
-        <h3 className="text-white/80 font-industrial font-bold text-xl leading-[1.2] group-hover:text-white transition-colors">
+        <h3 className="text-text-inverse/80 font-display text-titleMD leading-[1.2] group-hover:text-text-inverse transition-colors duration-base ease-standard">
           {title}
         </h3>
         
         {/* Subtle Bottom Accent */}
-        <div className="mt-4 w-0 h-[1px] bg-action-primary/50 group-hover:w-full transition-all duration-700 ease-in-out"></div>
+        <div className="mt-4 w-0 h-px bg-action-primary/50 group-hover:w-full transition-[width] duration-slow ease-standard"></div>
       </div>
     </a>
   );

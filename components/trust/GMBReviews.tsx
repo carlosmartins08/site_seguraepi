@@ -77,7 +77,7 @@ export const GMBReviews: React.FC = () => {
                     {reviews.map((review, i) => (
                         <div
                             key={i}
-                            className="group p-8 bg-slate-50 rounded-4xl border border-slate-200 hover:bg-white hover:shadow-elevation-1 transition-all duration-500 relative"
+                            className="group p-8 bg-slate-50 rounded-2xl border border-slate-200 hover:bg-white hover:shadow-elevation-1 transition-all duration-500 relative"
                         >
                             <div className="absolute top-8 right-8 text-slate-200 group-hover:text-action-primaryHover/20 transition-colors">
                                 <svg className="w-12 h-12 rotate-180" fill="currentColor" viewBox="0 0 24 24">

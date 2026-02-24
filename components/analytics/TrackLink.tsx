@@ -1,5 +1,6 @@
-/* Simple wrapper to instrument anchor clicks */
 'use client';
+
+/* Simple wrapper to instrument anchor clicks */
 
 import React from 'react';
 import { track } from '../../lib/analytics/track';

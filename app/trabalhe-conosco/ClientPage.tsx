@@ -185,7 +185,7 @@ export default function ClientPage() {
 
       <Section id="candidatar" variant="offwhite">
         <Container className="max-w-5xl">
-          <div className="bg-slate-900 text-white rounded-4xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
+          <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Como se candidatar</p>
             <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">Quer fazer parte do time Segura EPI?</h3>
             <ul className="space-y-3 text-slate-200 leading-relaxed">

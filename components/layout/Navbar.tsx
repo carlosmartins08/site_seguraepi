@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
+import type { Route } from 'next';
 import Link from 'next/link';
 import { Container } from './Container';
 import { SeguraLogo, LOGO_RULES } from '../brand/SeguraLogo';
@@ -10,6 +11,7 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { useBusinessStatus } from '../../hooks/useBusinessStatus';
 import { useLocation } from '../../hooks/useLocation';
 import { useI18n } from '../../hooks/useI18n';
+import { openWbotChat } from '../../lib/wbot';
 import { LocaleSwitcher } from '../actions/LocaleSwitcher';
 
 interface NavbarProps {
@@ -79,7 +81,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks = [
+  const navLinks: Array<{ name: string; href: Route }> = [
     { name: t('nav.home', 'Início'), href: '/' },
     { name: t('nav.epiCategories', 'EPI por Categoria'), href: '/epi/categorias' },
     { name: t('nav.catalog', 'Catálogo'), href: '/catalogo' },
@@ -198,15 +200,20 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             </div>
 
             <Button
-              href={CONTACT_INFO.whatsapp}
               variant="primary"
               className={cn(
-                "text-[10px] py-2.5 px-8 shadow-glow-brand rounded-xl transition-all duration-500",
+                "text-[10px] py-2.5 px-8 shadow-glow-brand rounded-xl transition-[transform,box-shadow,background-color] duration-base ease-standard",
                 isScrolled ? "scale-95" : "scale-100"
               )}
-              trackEvent="cta_nav_cotacao"
+              onClick={() =>
+                openWbotChat({
+                  fallbackHref: CONTACT_INFO.whatsapp,
+                  trackEvent: 'cta_nav_chat',
+                  trackParams: { surface: 'navbar' },
+                })
+              }
             >
-              Cotação B2B
+              Atendimento online
             </Button>
           </div>
 
@@ -293,12 +300,17 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             </div>
             <div className="flex flex-col gap-4">
               <Button
-                href={CONTACT_INFO.whatsapp}
                 variant="primary"
                 className="w-full py-5 text-xs shadow-glow-brand"
-                trackEvent="cta_mobile_consultor"
+                onClick={() =>
+                  openWbotChat({
+                    fallbackHref: CONTACT_INFO.whatsapp,
+                    trackEvent: 'cta_mobile_chat',
+                    trackParams: { surface: 'mobile_menu' },
+                  })
+                }
               >
-                Falar com um Consultor Técnico
+                Atendimento online
               </Button>
               <div className="flex items-center justify-center gap-2 py-4 border border-white/5 rounded-2xl bg-white/5">
                 <span className={cn(

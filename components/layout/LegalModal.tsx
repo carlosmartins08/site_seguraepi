@@ -31,7 +31,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
       />
 
       {/* Modal Container */}
-      <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-3xl md:rounded-4xl shadow-elevation-2 animate-pop overflow-hidden flex flex-col border border-white/10">
+      <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-xl md:rounded-2xl shadow-elevation-2 animate-pop overflow-hidden flex flex-col border border-white/10">
         {/* Header Section */}
         <div className="p-8 md:p-10 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white relative z-10">
           <div className="flex items-center gap-6">
@@ -95,7 +95,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
         .custom-scrollbar::-webkit-scrollbar { width: 6px; }
         .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
         .custom-scrollbar::-webkit-scrollbar-thumb { background: #E2E8F0; border-radius: 10px; }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: #FF9B21; }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover { background: var(--segura-primary); }
       `,
         }}
       />

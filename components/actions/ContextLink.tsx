@@ -18,7 +18,7 @@ export const ContextLink: React.FC<ContextLinkProps> = ({ children, href, classN
   if (isInternal) {
     return (
       <Link
-        href={href}
+        href={href as any}
         onClick={onClick}
         className={cn(
           "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover",

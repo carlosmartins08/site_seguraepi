@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Inter, Poppins } from 'next/font/google';
+import Script from 'next/script';
 import '../styles/globals.css';
 import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } from '../lib/seo/site';
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
@@ -50,10 +51,36 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable}`}>
         <a href="#main-content" className="skip-link">Pular para o conteudo principal</a>
         <Providers>{children}</Providers>
+        <Script
+          id="wbot-jquery-each-polyfill"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function () {
+                if (typeof window === 'undefined') return;
+                var w = window;
+                if (!w.$) w.$ = {};
+                if (!w.$.each) {
+                  w.$.each = function (obj, cb) {
+                    if (!obj || !cb) return;
+                    if (Array.isArray(obj)) {
+                      for (var i = 0; i < obj.length; i++) cb(i, obj[i]);
+                      return;
+                    }
+                    for (var k in obj) {
+                      if (Object.prototype.hasOwnProperty.call(obj, k)) cb(k, obj[k]);
+                    }
+                  };
+                }
+              })();
+            `,
+          }}
+        />
         <ConsentScriptGate
-          preference="marketing"
+          preference="necessary"
+          id="wbot-chat-script"
           src="https://wbot.chat/index.js"
-          data-token="4cdc9640da67dbd6e38fa5ef324befd6"
+          token="4cdc9640da67dbd6e38fa5ef324befd6"
         />
       </body>
     </html>

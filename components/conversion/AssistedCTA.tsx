@@ -1,4 +1,3 @@
-﻿
 'use client';
 
 import React from 'react';
@@ -7,12 +6,13 @@ import { LocationMap } from '../trust/LocationMap';
 import { CONTACT_INFO } from '../../lib/constants';
 import { useBusinessStatus } from '../../hooks/useBusinessStatus';
 import { cn } from '../../lib/cn';
+import { openWbotChat } from '../../lib/wbot';
 
 export const AssistedCTA: React.FC = () => {
   const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
 
   return (
-    <div className="bg-bg-inverse text-white p-8 md:p-20 rounded-4xl relative overflow-hidden shadow-elevation-2 border border-white/5">
+    <div className="bg-bg-inverse text-white p-8 md:p-20 rounded-2xl relative overflow-hidden shadow-elevation-2 border border-white/5">
       {/* Elementos decorativos de fundo */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-action-primary/10 rounded-full blur-4xl -mr-40 -mt-40"></div>
       <div className="absolute bottom-0 left-0 w-40 h-40 bg-white/5 rounded-full blur-3xl -ml-20 -mb-20"></div>
@@ -36,11 +36,17 @@ export const AssistedCTA: React.FC = () => {
 
           <div className="flex flex-wrap gap-4 md:gap-6 mb-10">
             <Button
-              href={CONTACT_INFO.whatsapp}
               variant="primary"
               className="px-10 py-5 shadow-glow-brand w-full sm:w-auto"
+              onClick={() =>
+                openWbotChat({
+                  fallbackHref: CONTACT_INFO.whatsapp,
+                  trackEvent: 'cta_assisted_chat',
+                  trackParams: { surface: 'assisted_cta' },
+                })
+              }
             >
-              Falar com Consultor
+              Atendimento online
             </Button>
 
             <Button

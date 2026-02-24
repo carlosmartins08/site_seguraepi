@@ -53,22 +53,22 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
               <li><button onClick={onOpenPrivacy} className="hover:text-action-primaryHover transition-colors text-left uppercase">Privacidade</button></li>
               <li><button onClick={onOpenTerms} className="hover:text-action-primaryHover transition-colors text-left uppercase">Termos de Uso</button></li>
-              <li><a href="/retira" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Local</a></li>
-              <li><a href="/politica-de-trocas-e-devolucoes" className="hover:text-action-primaryHover transition-colors uppercase">Política de Trocas e Devoluções</a></li>
-              <li><a href="/politica-de-entrega-e-frete" className="hover:text-action-primaryHover transition-colors uppercase">Política de Entrega e Frete</a></li>
-              <li><a href="/retirada-expressa" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</a></li>
-              <li><a href="/como-comprar" className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</a></li>
-              <li><a href="/centro-tecnico" className="hover:text-action-primaryHover transition-colors uppercase">Centro Técnico</a></li>
-              <li><a href="/sobre-segura-epi" className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</a></li>
-              <li><a href="/trabalhe-conosco" className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</a></li>
+              <li><Link href="/retira" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Local</Link></li>
+              <li><Link href="/politica-de-trocas-e-devolucoes" className="hover:text-action-primaryHover transition-colors uppercase">Política de Trocas e Devoluções</Link></li>
+              <li><Link href="/politica-de-entrega-e-frete" className="hover:text-action-primaryHover transition-colors uppercase">Política de Entrega e Frete</Link></li>
+              <li><Link href="/retirada-expressa" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</Link></li>
+              <li><Link href="/como-comprar" className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</Link></li>
+              <li><Link href="/centro-tecnico" className="hover:text-action-primaryHover transition-colors uppercase">Centro Técnico</Link></li>
+              <li><Link href="/sobre-segura-epi" className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</Link></li>
+              <li><Link href="/trabalhe-conosco" className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Soluções</h4>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
-              <li><a href="/catalogo" className="hover:text-action-primaryHover transition-colors uppercase">Catálogo de EPI</a></li>
+              <li><Link href="/catalogo" className="hover:text-action-primaryHover transition-colors uppercase">Catálogo de EPI</Link></li>
               <li><a href={CONTACT_INFO.whatsapp} className="hover:text-action-primaryHover transition-colors uppercase">Consultoria</a></li>
-              <li><a href="/epi" className="hover:text-action-primaryHover transition-colors uppercase">Guias Técnicos</a></li>
+              <li><Link href="/epi" className="hover:text-action-primaryHover transition-colors uppercase">Guias Técnicos</Link></li>
             </ul>
           </div>
           <div>
