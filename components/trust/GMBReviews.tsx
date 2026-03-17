@@ -50,7 +50,7 @@ export const GMBReviews: React.FC = () => {
                         </div>
                         <h2 className="text-4xl md:text-5xl font-display font-black text-text-primary leading-tight uppercase">
                             AUTORIDADE RECONHECIDA <br />
-                            <span className="text-slate-400">PELA IND�aSTRIA</span>
+                            <span className="text-slate-400">PELA INDÚSTRIA</span>
                         </h2>
                     </div>
 

@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
@@ -107,7 +106,6 @@ export default function CatalogoRedirectPage() {
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }

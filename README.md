@@ -11,6 +11,7 @@ Projeto institucional em Next.js 16 (App Router) com React 19, focado em UX B2B 
 - `npm run dev` - desenvolvimento (Next).
 - `npm run build` - build de producao (valida TypeScript + rotas tipadas).
 - `npm run start` - serve o build.
+- `npm run lint:design` - lint de design (spacing/radius/arbitrários/cores soltas).
 
 ## Estrutura
 - `app/` - rotas e layouts do App Router.
@@ -19,6 +20,11 @@ Projeto institucional em Next.js 16 (App Router) com React 19, focado em UX B2B 
 - `src/styles/tokens.ts` - valores do design system (fonte de verdade).
 - `tailwind.config.cjs` - exposicao dos tokens como classes Tailwind semanticas.
 - `design-system.md` - regras, escalas e governanca (intencao do sistema).
+
+## Checklist de design (lint)
+- Sem valores arbitrários `[...]` para spacing/radius em classes Tailwind.
+- Evitar cores soltas em JSX (hex/rgba); prefira tokens/classe semântica.
+- `npm run lint:design` deve seguir limpo antes de publicar.
 
 ## Regras de arquitetura (importantes para nao quebrar build)
 - **Client Components:** arquivos que usam hooks (`useEffect`, `useState`, etc.) precisam do `'use client';` como **primeiro statement** do arquivo (sem comentario/linha em branco antes).

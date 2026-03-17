@@ -1,17 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
-import { LegalModal } from '../../components/layout/LegalModal';
 import { CONTACT_INFO } from '../../lib/constants';
-import { LEGAL_TEXTS } from '../../lib/legal';
 
 const heroBadges = [
   { label: 'Segurança com propósito', color: 'bg-action-primary/15 text-action-primary' },
@@ -22,7 +19,7 @@ const heroBadges = [
 const valores = [
   { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. Empatia guia decisões.', icon: 'heart' },
   { title: 'Excelência Técnica', desc: 'Conhecimento como ferramenta de transformação.', icon: 'shield' },
-  { title: 'Confiabilidade', desc: '�0tica, compromisso e respeito em cada entrega.', icon: 'check' },
+  { title: 'Confiabilidade', desc: 'Ética, compromisso e respeito em cada entrega.', icon: 'check' },
   { title: 'Educação', desc: 'Formar clientes e equipes mais conscientes.', icon: 'book' },
   { title: 'Inovação', desc: 'Tecnologia (Neo Evolution) e melhores práticas.', icon: 'spark' },
   { title: 'Colaboração', desc: 'Trabalhamos lado a lado com clientes e parceiros.', icon: 'users' },
@@ -61,11 +58,6 @@ const IconBullet = ({ icon }: { icon: string }) => {
 };
 
 export default function ClientPage() {
-  const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
-    open: false,
-    type: 'privacy',
-  });
-
   return (
     <main className="bg-white min-h-screen">
       <Navbar variant="light" />
@@ -129,7 +121,7 @@ export default function ClientPage() {
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-4">
               <p className="text-slate-600 leading-relaxed">
                 Não vendemos só capacete, luva ou cinto. Entregamos confiança, conhecimento e cuidado. Respeitamos quem
-                está na obra, na altura ou no chão de fábrica � e quem espera em casa.
+                está na obra, na altura ou no chão de fábrica — e quem espera em casa.
               </p>
             </div>
             <div className="p-6 rounded-3xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
@@ -221,7 +213,7 @@ export default function ClientPage() {
           <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
             <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">
-              �SConectamos tecnologia e humanidade para proteger o que mais importa: a vida.⬝
+              “Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.”
             </h3>
             <div className="flex flex-wrap gap-3">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
@@ -235,18 +227,6 @@ export default function ClientPage() {
         </Container>
       </Section>
 
-      <Footer
-        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
-        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
-      />
-
-      <LegalModal
-        isOpen={legalModal.open}
-        onClose={() => setLegalModal({ ...legalModal, open: false })}
-        title={LEGAL_TEXTS[legalModal.type].title}
-        content={LEGAL_TEXTS[legalModal.type].content}
-        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
-      />
     </main>
   );
 }

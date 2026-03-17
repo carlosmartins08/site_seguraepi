@@ -1,17 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
-import { LegalModal } from '../../components/layout/LegalModal';
 import { CONTACT_INFO } from '../../lib/constants';
-import { LEGAL_TEXTS } from '../../lib/legal';
 
 const badges = [
   { label: 'Entrega gratuita GJP acima de R$ 500', color: 'bg-action-primary/15 text-action-primary' },
@@ -20,11 +17,6 @@ const badges = [
 ];
 
 export default function ClientPage() {
-  const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
-    open: false,
-    type: 'privacy',
-  });
-
   return (
     <main className="bg-white min-h-screen">
       <Navbar variant="light" />
@@ -214,18 +206,6 @@ export default function ClientPage() {
         </Container>
       </Section>
 
-      <Footer
-        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
-        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
-      />
-
-      <LegalModal
-        isOpen={legalModal.open}
-        onClose={() => setLegalModal({ ...legalModal, open: false })}
-        title={LEGAL_TEXTS[legalModal.type].title}
-        content={LEGAL_TEXTS[legalModal.type].content}
-        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
-      />
     </main>
   );
 }

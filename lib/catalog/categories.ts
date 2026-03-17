@@ -1,9 +1,8 @@
-
-export type CategoryKey = 
-  | "protecao-maos" 
-  | "protecao-respiratoria" 
-  | "protecao-auditiva" 
-  | "protecao-ocular" 
+export type CategoryKey =
+  | "protecao-maos"
+  | "protecao-respiratoria"
+  | "protecao-auditiva"
+  | "protecao-ocular"
   | "trabalho-em-altura";
 
 export interface CategoryPageData {
@@ -23,132 +22,132 @@ export interface CategoryPageData {
 export const CATEGORY_PAGES: Record<CategoryKey, CategoryPageData> = {
   "protecao-maos": {
     key: "protecao-maos",
-    name: "Prote��o das M�os",
-    shortDescription: "Luvas de alta performance para riscos t�rmicos, qu�micos e mec�nicos em ambientes industriais.",
-    heroTitle: "PROTE��O T�CNICA PARA AS M�OS",
-    heroSubtitle: "Aumente a seguran�a e produtividade com luvas especificadas para o risco real da sua opera��o.",
-    badges: ["NR-06", "Riscos Mec�nicos", "Alta Destreza"],
+    name: "Proteção das Mãos",
+    shortDescription: "Luvas de alta performance para riscos térmicos, químicos e mecânicos em ambientes industriais.",
+    heroTitle: "PROTEÇÃO TÉCNICA PARA AS MÃOS",
+    heroSubtitle: "Aumente a segurança e produtividade com luvas especificadas para o risco real da sua operação.",
+    badges: ["NR-06", "Riscos Mecânicos", "Alta Destreza"],
     indications: [
-      { title: "Manuseio de Agentes Qu�micos", desc: "Barreiras espec�ficas para solventes, �cidos e �leos." },
-      { title: "Opera��es de Corte e Abras�o", desc: "Fibras de alta resist�ncia para prote��o contra l�minas." },
-      { title: "Ambientes de Alta Temperatura", desc: "Isolamento t�rmico certificado para calor de contato." }
+      { title: "Manuseio de Agentes Químicos", desc: "Barreiras específicas para solventes, ácidos e óleos." },
+      { title: "Operações de Corte e Abrasão", desc: "Fibras de alta resistência para proteção contra lâminas." },
+      { title: "Ambientes de Alta Temperatura", desc: "Isolamento térmico certificado para calor de contato." }
     ],
-    commonUses: ["Manuten��o Industrial", "Linhas de Montagem", "Manipula��o de Pe�as Oleosas", "Constru��o Civil"],
+    commonUses: ["Manutenção Industrial", "Linhas de Montagem", "Manipulação de Peças Oleosas", "Construção Civil"],
     commonMistakes: [
       "Usar luvas de tamanho inadequado, comprometendo a destreza.",
-      "Ignorar o tempo de permea��o em luvas qu�micas.",
-      "Utilizar luvas de couro onde h� risco de umidade constante.",
-      "N�o validar a resist�ncia ao corte conforme a norma EN 388."
+      "Ignorar o tempo de permeação em luvas químicas.",
+      "Utilizar luvas de couro onde há risco de umidade constante.",
+      "Não validar a resistência ao corte conforme a norma EN 388."
     ],
-    segments: ["Ind�stria Metalmec�nica", "Log�stica", "Qu�mica e Petroqu�mica", "Constru��o"],
+    segments: ["Indústria Metalmecânica", "Logística", "Química e Petroquímica", "Construção"],
     faq: [
-      { q: "Como saber o tamanho correto?", a: "Me�a a circunfer�ncia da palma da m�o e consulte nossa tabela t�cnica." },
-      { q: "Qual a durabilidade m�dia?", a: "Depende da agressividade do uso, mas orientamos trocas preventivas baseadas no desgaste." },
-      { q: "Todas t�m CA?", a: "Sim, fornecemos apenas itens com Certificado de Aprova��o v�lido." }
+      { q: "Como saber o tamanho correto?", a: "Meça a circunferência da palma da mão e consulte nossa tabela técnica." },
+      { q: "Qual a durabilidade média?", a: "Depende da agressividade do uso, mas orientamos trocas preventivas baseadas no desgaste." },
+      { q: "Todas têm CA?", a: "Sim, fornecemos apenas itens com Certificado de Aprovação válido." }
     ]
   },
   "protecao-respiratoria": {
     key: "protecao-respiratoria",
-    name: "Prote��o Respirat�ria",
-    shortDescription: "M�scaras, respiradores e filtros para prote��o contra gases, vapores e particulados nocivos.",
-    heroTitle: "SEGURAN�A RESPIRAT�RIA ESPECIALIZADA",
-    heroSubtitle: "Proteja sua equipe contra contaminantes a�reos com filtros e m�scaras de alta efici�ncia.",
-    badges: ["PFF2 / N95", "Vapores Org�nicos", "NR-15"],
+    name: "Proteção Respiratória",
+    shortDescription: "Máscaras, respiradores e filtros para proteção contra gases, vapores e particulados nocivos.",
+    heroTitle: "SEGURANÇA RESPIRATÓRIA ESPECIALIZADA",
+    heroSubtitle: "Proteja sua equipe contra contaminantes aéreos com filtros e máscaras de alta eficiência.",
+    badges: ["PFF2 / N95", "Vapores Orgânicos", "NR-15"],
     indications: [
-      { title: "Presen�a de Poeiras e N�voas", desc: "Filtragem mec�nica para part�culas s�lidas e l�quidas." },
-      { title: "Manipula��o de Solventes", desc: "Filtros qu�micos para adsor��o de vapores org�nicos." },
-      { title: "Ambientes com Baixo Oxig�nio", desc: "Sistemas de ar mandado ou aut�nomos para �reas cr�ticas." }
+      { title: "Presença de Poeiras e Névoas", desc: "Filtragem mecânica para partículas sólidas e líquidas." },
+      { title: "Manipulação de Solventes", desc: "Filtros químicos para adsorção de vapores orgânicos." },
+      { title: "Ambientes com Baixo Oxigênio", desc: "Sistemas de ar mandado ou autônomos para áreas críticas." }
     ],
-    commonUses: ["Pintura Industrial", "Minera��o", "Ind�stria Farmac�utica", "Soldagem"],
+    commonUses: ["Pintura Industrial", "Mineração", "Indústria Farmacêutica", "Soldagem"],
     commonMistakes: [
-      "N�o realizar o ensaio de veda��o (Fit Test) nos usu�rios.",
+      "Não realizar o ensaio de vedação (Fit Test) nos usuários.",
       "Usar filtros vencidos ou saturados por mais tempo que o recomendado.",
-      "Utilizar respiradores sem manuten��o ou higieniza��o adequada.",
-      "Confundir m�scaras descart�veis simples com respiradores certificados."
+      "Utilizar respiradores sem manutenção ou higienização adequada.",
+      "Confundir máscaras descartáveis simples com respiradores certificados."
     ],
-    segments: ["Sa�de", "Aliment�cia", "Ind�stria Qu�mica", "Agroneg�cio"],
+    segments: ["Saúde", "Alimentícia", "Indústria Química", "Agronegócio"],
     faq: [
-      { q: "Quando trocar o filtro?", a: "Quando sentir cheiro do contaminante ou houver aumento da resist�ncia respirat�ria." },
-      { q: "Pode usar com barba?", a: "N�o � recomendado para respiradores de veda��o facial, pois compromete a prote��o." },
-      { q: "O que � PFF2?", a: "Pe�a Facial Filtrante com efici�ncia m�nima de 94% contra part�culas." }
+      { q: "Quando trocar o filtro?", a: "Quando sentir cheiro do contaminante ou houver aumento da resistência respiratória." },
+      { q: "Pode usar com barba?", a: "Não é recomendado para respiradores de vedação facial, pois compromete a proteção." },
+      { q: "O que é PFF2?", a: "Peça Facial Filtrante com eficiência mínima de 94% contra partículas." }
     ]
   },
   "protecao-auditiva": {
     key: "protecao-auditiva",
-    name: "Prote��o Auditiva",
-    shortDescription: "Abafadores de ru�do e plugues de inser��o para preserva��o da sa�de auricular em ambientes ruidosos.",
-    heroTitle: "CONSERVA��O AUDITIVA INDUSTRIAL",
-    heroSubtitle: "Atenua��o de ru�dos com conforto para garantir o bem-estar e foco da sua equipe.",
+    name: "Proteção Auditiva",
+    shortDescription: "Abafadores de ruído e plugues de inserção para preservação da saúde auricular em ambientes ruidosos.",
+    heroTitle: "CONSERVAÇÃO AUDITIVA INDUSTRIAL",
+    heroSubtitle: "Atenuação de ruídos com conforto para garantir o bem-estar e foco da sua equipe.",
     badges: ["Abafadores Shell", "Plugues de Silicone", "NR-15"],
     indications: [
-      { title: "Exposi��o a Ru�do Cont�nuo", desc: "Prote��o para jornadas longas em ambientes com m�quinas barulhentas." },
-      { title: "Ru�dos de Impacto", desc: "Atenua��o para opera��es de forjaria, britagem ou disparos." },
-      { title: "Zonas de Conforto Ac�stico", desc: "Melhoria da concentra��o em escrit�rios industriais ou log�stica." }
+      { title: "Exposição a Ruído Contínuo", desc: "Proteção para jornadas longas em ambientes com máquinas barulhentas." },
+      { title: "Ruídos de Impacto", desc: "Atenuação para operações de forjaria, britagem ou disparos." },
+      { title: "Zonas de Conforto Acústico", desc: "Melhoria da concentração em escritórios industriais ou logística." }
     ],
-    commonUses: ["Aeroportos", "Serralherias", "Usinas", "Eventos e Servi�os"],
+    commonUses: ["Aeroportos", "Serralherias", "Usinas", "Eventos e Serviços"],
     commonMistakes: [
-      "N�o considerar o NRRsf (N�vel de Redu��o de Ru�do) real.",
+      "Não considerar o NRRsf (Nível de Redução de Ruído) real.",
       "Retirar o protetor durante a jornada de trabalho.",
-      "Uso incorreto do plugue de inser��o (falta de selagem).",
-      "N�o higienizar protetores tipo plugue, gerando infec��es."
+      "Uso incorreto do plugue de inserção (falta de selagem).",
+      "Não higienizar protetores tipo plugue, gerando infecções."
     ],
-    segments: ["Manufatura", "Log�stica", "Aeroportu�rio", "Constru��o"],
+    segments: ["Manufatura", "Logística", "Aeroportuário", "Construção"],
     faq: [
-      { q: "Plugue ou abafador?", a: "Depende do n�vel de ru�do e da prefer�ncia de conforto do usu�rio." },
-      { q: "Como limpar o abafador?", a: "Use apenas pano �mido e sab�o neutro nas almofadas." },
-      { q: "O que � NRRsf?", a: "� o valor de atenua��o obtido em testes com usu�rios reais." }
+      { q: "Plugue ou abafador?", a: "Depende do nível de ruído e da preferência de conforto do usuário." },
+      { q: "Como limpar o abafador?", a: "Use apenas pano úmido e sabão neutro nas almofadas." },
+      { q: "O que é NRRsf?", a: "É o valor de atenuação obtido em testes com usuários reais." }
     ]
   },
   "protecao-ocular": {
     key: "protecao-ocular",
-    name: "Prote��o Ocular",
-    shortDescription: "�culos de seguran�a e protetores faciais contra impactos, luminosidade intensa e respingos.",
-    heroTitle: "VIS�O PROTEGIDA EM QUALQUER OPERA��O",
-    heroSubtitle: "�culos t�cnicos com tratamento anti-emba�ante e resist�ncia a impactos de alta velocidade.",
+    name: "Proteção Ocular",
+    shortDescription: "Óculos de segurança e protetores faciais contra impactos, luminosidade intensa e respingos.",
+    heroTitle: "VISÃO PROTEGIDA EM QUALQUER OPERAÇÃO",
+    heroSubtitle: "Óculos técnicos com tratamento anti-embaçante e resistência a impactos de alta velocidade.",
     badges: ["Anti-Risco", "UV 400", "Z87.1"],
     indications: [
-      { title: "Risco de Proje��o de Part�culas", desc: "Lentes de policarbonato resistentes a estilha�os." },
-      { title: "Radia��o Infravermelha e UV", desc: "Lentes escuras ou verdes para trabalhos ao ar livre ou solda." },
-      { title: "Respingos de Produtos Qu�micos", desc: "Modelos com veda��o perif�rica ou ampla vis�o." }
+      { title: "Risco de Projeção de Partículas", desc: "Lentes de policarbonato resistentes a estilhaços." },
+      { title: "Radiação Infravermelha e UV", desc: "Lentes escuras ou verdes para trabalhos ao ar livre ou solda." },
+      { title: "Respingos de Produtos Químicos", desc: "Modelos com vedação periférica ou ampla visão." }
     ],
-    commonUses: ["Laborat�rios", "Oficinas Mec�nicas", "Jardinagem Profissional", "Constru��o Civil"],
+    commonUses: ["Laboratórios", "Oficinas Mecânicas", "Jardinagem Profissional", "Construção Civil"],
     commonMistakes: [
-      "Usar �culos sem tratamento anti-emba�ante em �reas quentes.",
-      "Utilizar �culos riscados que prejudicam a visibilidade.",
-      "N�o considerar o uso de �culos de sobreposi��o para quem usa grau.",
-      "Ignorar a prote��o lateral em ambientes de alto risco mec�nico."
+      "Usar óculos sem tratamento anti-embaçante em áreas quentes.",
+      "Utilizar óculos riscados que prejudicam a visibilidade.",
+      "Não considerar o uso de óculos de sobreposição para quem usa grau.",
+      "Ignorar a proteção lateral em ambientes de alto risco mecânico."
     ],
-    segments: ["Sa�de", "Ind�stria Naval", "Manuten��o", "Servi�os Gerais"],
+    segments: ["Saúde", "Indústria Naval", "Manutenção", "Serviços Gerais"],
     faq: [
-      { q: "Lente incolor ou escura?", a: "Incolor para interiores; escura para �reas externas com sol intenso." },
-      { q: "O policarbonato quebra?", a: "Ele � projetado para n�o estilha�ar, deformando-se sob impacto extremo." },
-      { q: "Existe �culos com grau?", a: "Sim, trabalhamos com modelos que permitem inser��o de lentes corretivas." }
+      { q: "Lente incolor ou escura?", a: "Incolor para interiores; escura para áreas externas com sol intenso." },
+      { q: "O policarbonato quebra?", a: "Ele é projetado para não estilhaçar, deformando-se sob impacto extremo." },
+      { q: "Existe óculos com grau?", a: "Sim, trabalhamos com modelos que permitem inserção de lentes corretivas." }
     ]
   },
   "trabalho-em-altura": {
     key: "trabalho-em-altura",
     name: "Trabalho em Altura",
-    shortDescription: "Cintur�es de seguran�a, talabartes e trava-quedas certificados para preven��o de quedas (NR-35).",
-    heroTitle: "SEGURAN�A M�XIMA PARA TRABALHO EM ALTURA",
-    heroSubtitle: "Equipamentos de reten��o e posicionamento com foco em ergonomia e seguran�a absoluta.",
-    badges: ["NR-35", "NBR 15836", "Reten��o de Queda"],
+    shortDescription: "Cinturões de segurança, talabartes e trava-quedas certificados para prevenção de quedas (NR-35).",
+    heroTitle: "SEGURANÇA MÁXIMA PARA TRABALHO EM ALTURA",
+    heroSubtitle: "Equipamentos de retenção e posicionamento com foco em ergonomia e segurança absoluta.",
+    badges: ["NR-35", "NBR 15836", "Retenção de Queda"],
     indications: [
-      { title: "Acesso a Telhados e Estruturas", desc: "Sistemas de ancoragem e linhas de vida tempor�rias." },
-      { title: "Uso em Andaimes e Plataformas", desc: "Talabartes duplos para movimenta��o segura." },
-      { title: "Espa�os Confinados com Verticalidade", desc: "Cintur�es com pontos de conex�o para resgate." }
+      { title: "Acesso a Telhados e Estruturas", desc: "Sistemas de ancoragem e linhas de vida temporárias." },
+      { title: "Uso em Andaimes e Plataformas", desc: "Talabartes duplos para movimentação segura." },
+      { title: "Espaços Confinados com Verticalidade", desc: "Cinturões com pontos de conexão para resgate." }
     ],
-    commonUses: ["Limpeza de Fachadas", "Instala��es El�tricas", "Montagem de Eventos", "Manuten��o Industrial"],
+    commonUses: ["Limpeza de Fachadas", "Instalações Elétricas", "Montagem de Eventos", "Manutenção Industrial"],
     commonMistakes: [
-      "N�o calcular a Zona Livre de Queda (ZLQ).",
-      "Utilizar equipamentos sem inspe��o pr�via de rotina.",
-      "Ancoragem em pontos sem resist�ncia estrutural validada.",
-      "N�o utilizar absorvedores de energia em quedas potenciais."
+      "Não calcular a Zona Livre de Queda (ZLQ).",
+      "Utilizar equipamentos sem inspeção prévia de rotina.",
+      "Ancoragem em pontos sem resistência estrutural validada.",
+      "Não utilizar absorvedores de energia em quedas potenciais."
     ],
-    segments: ["Constru��o Civil", "Telecomunica��es", "Energia", "Manuten��o Predial"],
+    segments: ["Construção Civil", "Telecomunicações", "Energia", "Manutenção Predial"],
     faq: [
-      { q: "Qual a validade do cintur�o?", a: "Geralmente 5 anos, mas deve ser descartado ap�s qualquer queda real." },
-      { q: "Precisa de treinamento?", a: "Sim, a NR-35 exige treinamento te�rico e pr�tico obrigat�rio." },
-      { q: "O que � talabarte em Y?", a: "Permite que o usu�rio esteja sempre conectado a um ponto enquanto se move." }
+      { q: "Qual a validade do cinturão?", a: "Geralmente 5 anos, mas deve ser descartado após qualquer queda real." },
+      { q: "Precisa de treinamento?", a: "Sim, a NR-35 exige treinamento teórico e prático obrigatório." },
+      { q: "O que é talabarte em Y?", a: "Permite que o usuário esteja sempre conectado a um ponto enquanto se move." }
     ]
   }
 };

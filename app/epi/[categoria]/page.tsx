@@ -9,7 +9,6 @@ import { Button } from '../../../components/actions/Button';
 import { DecisionCard } from '../../../components/cards/DecisionCard';
 import { MethodStep } from '../../../components/method/MethodStep';
 import { AlertList } from '../../../components/trust/AlertList';
-import { Footer } from '../../../components/layout/Footer';
 import { SeguraLogo } from '../../../components/brand/SeguraLogo';
 import { CATEGORY_PAGES, CategoryKey } from '../../../lib/catalog/categories';
 
@@ -101,7 +100,6 @@ export default function CategoryLandingPage({ params }: { params: { categoria: s
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }

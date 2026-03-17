@@ -7,6 +7,7 @@ import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } fro
 import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
 import { Providers } from './providers';
 import { ConsentScriptGate } from '../components/analytics/ConsentScriptGate';
+import { LegalLayer } from '../components/home/LegalLayer';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -15,6 +16,27 @@ export const metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description: DEFAULT_DESCRIPTION,
+  openGraph: {
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    type: 'website',
+    images: [
+      {
+        url: OG_IMAGE,
+        width: 1200,
+        height: 630,
+        alt: SITE_NAME,
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+    images: [OG_IMAGE],
+  },
 };
 
 const inter = Inter({
@@ -51,6 +73,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable}`}>
         <a href="#main-content" className="skip-link">Pular para o conteudo principal</a>
         <Providers>{children}</Providers>
+        <LegalLayer />
         <Script
           id="wbot-jquery-each-polyfill"
           strategy="beforeInteractive"

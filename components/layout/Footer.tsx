@@ -47,36 +47,40 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
                 <span className="max-w-[180px] leading-tight group-hover:underline underline-offset-4">{CONTACT_INFO.fullAddress}</span>
               </a>
             </div>
-          </div>
-          <div>
-            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Institucional</h4>
-            <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
-              <li><button onClick={onOpenPrivacy} className="hover:text-action-primaryHover transition-colors text-left uppercase">Privacidade</button></li>
-              <li><button onClick={onOpenTerms} className="hover:text-action-primaryHover transition-colors text-left uppercase">Termos de Uso</button></li>
-              <li><Link href="/retira" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Local</Link></li>
-              <li><Link href="/politica-de-trocas-e-devolucoes" className="hover:text-action-primaryHover transition-colors uppercase">Política de Trocas e Devoluções</Link></li>
-              <li><Link href="/politica-de-entrega-e-frete" className="hover:text-action-primaryHover transition-colors uppercase">Política de Entrega e Frete</Link></li>
-              <li><Link href="/retirada-expressa" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</Link></li>
-              <li><Link href="/como-comprar" className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</Link></li>
-              <li><Link href="/centro-tecnico" className="hover:text-action-primaryHover transition-colors uppercase">Centro Técnico</Link></li>
-              <li><Link href="/sobre-segura-epi" className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</Link></li>
-              <li><Link href="/trabalhe-conosco" className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</Link></li>
-            </ul>
+            <div className="mt-10">
+              <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-4 text-action-primary">Certificações</h4>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">NR-06</div>
+                <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">ISO 9001</div>
+              </div>
+            </div>
           </div>
           <div>
             <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Soluções</h4>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
               <li><Link href="/catalogo" className="hover:text-action-primaryHover transition-colors uppercase">Catálogo de EPI</Link></li>
-              <li><a href={CONTACT_INFO.whatsapp} className="hover:text-action-primaryHover transition-colors uppercase">Consultoria</a></li>
               <li><Link href="/epi" className="hover:text-action-primaryHover transition-colors uppercase">Guias Técnicos</Link></li>
+              <li><Link href="/centro-tecnico" className="hover:text-action-primaryHover transition-colors uppercase">Centro Técnico</Link></li>
+              <li><a href={CONTACT_INFO.whatsapp} className="hover:text-action-primaryHover transition-colors uppercase">Consultoria</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Certificações</h4>
-            <div className="grid grid-cols-2 gap-4">
-              <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">NR-06</div>
-              <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">ISO 9001</div>
-            </div>
+            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Compra & Logística</h4>
+            <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
+              <li><Link href="/como-comprar" className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</Link></li>
+              <li><Link href="/retirada-expressa" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</Link></li>
+              <li><Link href="/politica-de-entrega-e-frete" className="hover:text-action-primaryHover transition-colors uppercase">Política de Entrega e Frete</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Institucional & Legal</h4>
+            <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
+              <li><Link href="/sobre-segura-epi" className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</Link></li>
+              <li><Link href="/trabalhe-conosco" className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</Link></li>
+              <li><Link href="/politica-de-trocas-e-devolucoes" className="hover:text-action-primaryHover transition-colors uppercase">Política de Trocas e Devoluções</Link></li>
+              <li><button onClick={onOpenPrivacy} className="hover:text-action-primaryHover transition-colors text-left uppercase">Privacidade</button></li>
+              <li><button onClick={onOpenTerms} className="hover:text-action-primaryHover transition-colors text-left uppercase">Termos de Uso</button></li>
+            </ul>
           </div>
         </div>
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
@@ -108,4 +112,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
     </footer>
   );
 };
+
+
 

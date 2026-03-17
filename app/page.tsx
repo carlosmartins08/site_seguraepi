@@ -16,7 +16,7 @@ import { AssistedCTA } from '../components/conversion/AssistedCTA';
 import { GMBReviews } from '../components/trust/GMBReviews';
 import { PartnerShowcase } from '../components/trust/PartnerShowcase';
 import { CONTACT_INFO } from '../lib/constants';
-import { LegalLayer } from '../components/home/LegalLayer';
+import { OG_IMAGE } from '../lib/seo/site';
 import { ScrollReveal } from '../components/home/ScrollReveal';
 import { CaSearch } from '../components/home/CaSearch';
 import { FaqList, FaqItem } from '../components/home/FaqList';
@@ -35,6 +35,11 @@ export const metadata = {
     url: 'https://seguraepi.com.br/',
     siteName: 'Segura EPI',
     type: 'website',
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: [OG_IMAGE],
   },
 };
 
@@ -67,7 +72,7 @@ export default function HomePage() {
   ];
 
   const partners = [
-    { name: '3M', categoryHint: 'Respiratória ⬢ �ptica', logoSrc: '/brands/3m.svg', href: 'https://www.3m.com.br' },
+    { name: '3M', categoryHint: 'Respiratória ⬢ Óptica', logoSrc: '/brands/3m.svg', href: 'https://www.3m.com.br' },
     { name: 'Bracol', categoryHint: 'Calçados ⬢ Botinas', logoSrc: '/brands/bracol.svg', href: 'https://www.bracol.com.br' },
     { name: 'Marluvas', categoryHint: 'Calçados ⬢ Conforto', logoSrc: '/brands/marluvas.svg', href: 'https://www.marluvas.com.br' },
     { name: 'Danny', categoryHint: 'Mãos ⬢ Proteção Mecânica', logoSrc: '/brands/danny.svg', href: 'https://www.danny.com.br' },
@@ -218,8 +223,8 @@ export default function HomePage() {
 
               <div className="overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 md:p-5 shadow-inner">
                 <div className="animate-marquee gap-6 items-center text-white/80 text-xs uppercase tracking-[0.25em]">
-                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Corte 12h �  Retirada 14h</span>
-                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Pedidos pós 12h �  Retirada 9h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Corte 12h → Retirada 14h</span>
+                  <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Pedidos pós 12h → Retirada 9h</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frota própria · checklist + lacre</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Rastreio transportadora auditada</span>
                   <span className="px-3 py-2 rounded-full bg-white/10 border border-white/15">Frete grátis GJP acima de R$500</span>
@@ -472,7 +477,7 @@ export default function HomePage() {
             <DecisionCard title="Proteção das mãos" description="Luvas por risco: corte, químico, abrasão e precisão. CA validado." href="/catalogo?categoria=maos" actionText="Ver catálogo" />
             <DecisionCard title="Proteção respiratória" description="Máscaras, filtros e respiradores com orientação de troca e selagem." href="/catalogo?categoria=respiratoria" actionText="Ver catálogo" />
             <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para diferentes níveis de ruído e turnos longos." href="/catalogo?categoria=auditiva" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção facial" description="�culos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
             <DecisionCard title="Trabalho em altura" description="Cintos, talabartes e ancoragens certificados para NR-35." href="/catalogo?categoria=altura" actionText="Ver catálogo" />
             <DecisionCard title="Vestuário" description="Uniformes e proteção térmica/antiestática alinhados ao seu ambiente." href="/catalogo?categoria=vestuario" actionText="Ver catálogo" />
             <DecisionCard title="Calçados" description="Botas e sapatos com conforto, grip e isolamento conforme sua rotina." href="/catalogo?categoria=calcados" actionText="Ver catálogo" />
@@ -596,7 +601,7 @@ export default function HomePage() {
                   ))}
                 </div>
                 <p className="mt-6 text-action-primary italic text-sm font-sans">
-                  �SConectamos tecnologia e humanidade para proteger o que mais importa: as pessoas.⬝
+                  “Conectamos tecnologia e humanidade para proteger o que mais importa: as pessoas.”
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
@@ -625,7 +630,6 @@ export default function HomePage() {
         </Container>
       </Section>
 
-      <LegalLayer />
     </main>
   );
 }

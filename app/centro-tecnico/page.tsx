@@ -2,12 +2,12 @@
 
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
+import { DecisionCard } from '../../components/cards/DecisionCard';
 import { SeguraLogo } from '../../components/brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
 
@@ -162,11 +162,44 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
+      <Section id="hub-tecnico" variant="default">
+        <Container className="space-y-10">
+          <SectionTitle
+            subtitle="Mapa TÃ©cnico"
+            title="Tudo o que vocÃª precisa, em uma Ãºnica trilha"
+            description="Comece pelo guia geral, aprofunde por categoria e valide o C.A. antes de fechar o pedido."
+          />
+          <div className="grid md:grid-cols-3 gap-8">
+            <DecisionCard
+              eyebrow="Guia Geral"
+              title="Guia TÃ©cnico de EPI"
+              description="Conceitos, categorias por Ã¡rea do corpo e responsabilidades da NR-06."
+              href="/epi"
+              actionText="Abrir guia tÃ©cnico"
+            />
+            <DecisionCard
+              eyebrow="Por Categoria"
+              title="Guias TÃ©cnicos por Categoria"
+              description="Aprofunde por tipo de proteÃ§Ã£o com recomendaÃ§Ãµes e FAQ tÃ©cnico."
+              href="/epi/categorias"
+              actionText="Ver categorias"
+            />
+            <DecisionCard
+              eyebrow="ValidaÃ§Ã£o"
+              title="Validar Certificado de AprovaÃ§Ã£o"
+              description="Passo a passo para checar situaÃ§Ã£o, validade e restriÃ§Ãµes no CAEPI."
+              href="/centro-tecnico#como-validar"
+              actionText="Ver como validar"
+            />
+          </div>
+        </Container>
+      </Section>
+
       <Section id="o-que-e-ca" variant="offwhite">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="O que é o CA?"
-            title="Certificado de Aprovação � licença oficial para comercializar e usar EPI"
+            title="Certificado de Aprovação — licença oficial para comercializar e usar EPI"
             description="Documento emitido pelo Ministério do Trabalho que autoriza comercialização e uso. Sem C.A. válido, o EPI é irregular."
           />
           <div className="grid md:grid-cols-2 gap-8">
@@ -184,7 +217,7 @@ export default function CentroTecnicoPage() {
             <div className="p-8 rounded-3xl border border-action-primary/30 bg-white shadow-glow-brand">
               <h3 className="text-xl font-display font-bold text-text-primary mb-3">Fonte oficial</h3>
               <p className="text-slate-600 leading-relaxed">
-                Ministério do Trabalho e Emprego � Sistema CAEPI. Sempre valide na base governamental antes de comprar,
+                Ministério do Trabalho e Emprego — Sistema CAEPI. Sempre valide na base governamental antes de comprar,
                 especificar ou substituir um EPI.
               </p>
               <ContextLink
@@ -327,7 +360,7 @@ export default function CentroTecnicoPage() {
         <Container className="space-y-6">
           <SectionTitle
             subtitle="Posicionamento Segura EPI"
-            title="Segurança não é produto. �0 decisão técnica."
+            title="Segurança não é produto. É decisão técnica."
             description="Validamos aplicação, norma, conformidade e responsabilidade legal antes de recomendar qualquer EPI."
           />
           <p className="text-slate-600 text-lg max-w-4xl">
@@ -375,7 +408,6 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }

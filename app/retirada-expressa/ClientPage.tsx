@@ -1,17 +1,14 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
-import { LegalModal } from '../../components/layout/LegalModal';
 import { CONTACT_INFO } from '../../lib/constants';
-import { LEGAL_TEXTS } from '../../lib/legal';
 
 const badges = [
   { label: 'Compra 100% pelo WhatsApp', color: 'bg-action-primary/15 text-action-primary' },
@@ -27,7 +24,7 @@ const cortes = [
 const fluxo = [
   'Compra via WhatsApp com o consultor oficial.',
   'Separação e conferência do pedido no estoque.',
-  'Notificação: status muda para �SDisponível para Retirada⬝.',
+  'Notificação: status muda para “Disponível para Retirada”.',
   'Retirada rápida na recepção informando o número do pedido.',
 ];
 
@@ -65,11 +62,6 @@ const faqExtra = [
 ];
 
 export default function ClientPage() {
-  const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
-    open: false,
-    type: 'privacy',
-  });
-
   return (
     <main className="bg-white min-h-screen">
       <Navbar variant="light" />
@@ -127,7 +119,7 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="1. Fluxo do Pedido à Retirada"
-            title="Recepção é só entrega � todo o resto acontece antes"
+            title="Recepção é só entrega — todo o resto acontece antes"
             description="Siga o passo a passo para garantir que seu pedido esteja pronto quando chegar."
           />
           <div className="grid md:grid-cols-2 gap-8">
@@ -290,7 +282,7 @@ export default function ClientPage() {
                 <h4 className="text-lg font-display font-bold text-text-primary">Posso enviar um portador (Uber/Moto)?</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Sim. Com status �SDisponível⬝, basta o portador apresentar o número do pedido e nome do cliente/empresa.
+                Sim. Com status “Disponível”, basta o portador apresentar o número do pedido e nome do cliente/empresa.
               </p>
             </div>
           </div>
@@ -313,18 +305,6 @@ export default function ClientPage() {
         </Container>
       </Section>
 
-      <Footer
-        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
-        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
-      />
-
-      <LegalModal
-        isOpen={legalModal.open}
-        onClose={() => setLegalModal({ ...legalModal, open: false })}
-        title={LEGAL_TEXTS[legalModal.type].title}
-        content={LEGAL_TEXTS[legalModal.type].content}
-        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
-      />
     </main>
   );
 }

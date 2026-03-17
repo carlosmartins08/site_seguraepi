@@ -1,27 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import Image from 'next/image';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
-import { LegalModal } from '../../components/layout/LegalModal';
 import { CONTACT_INFO } from '../../lib/constants';
-import { LEGAL_TEXTS } from '../../lib/legal';
 import { SeguraIcon } from '../../components/icons/SeguraIcon';
 
 const heroBadges = [
-  { label: '�0tica inegociável', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'Ética inegociável', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Alta performance', color: 'bg-slate-900 text-white' },
   { label: 'Propósito real', color: 'bg-emerald-100 text-emerald-700' },
 ];
 
 const cultura: { title: string; desc: string; icon: 'shield' | 'heart' | 'book' | 'spark' }[] = [
-  { title: '�0tica inegociável', desc: 'Transparência do estoque à venda.', icon: 'shield' },
+  { title: 'Ética inegociável', desc: 'Transparência do estoque à venda.', icon: 'shield' },
   { title: 'Foco no cliente', desc: 'Entregamos soluções que salvam vidas.', icon: 'heart' },
   { title: 'Crença e humildade', desc: 'Trabalho duro e respeito às pessoas.', icon: 'book' },
   { title: 'Alta performance', desc: 'Metas, dados e mérito reconhecido.', icon: 'spark' },
@@ -54,11 +51,6 @@ const beneficios = [
 ];
 
 export default function ClientPage() {
-  const [legalModal, setLegalModal] = useState<{ open: boolean; type: 'privacy' | 'terms' }>({
-    open: false,
-    type: 'privacy',
-  });
-
   return (
     <main className="bg-white min-h-screen">
       <Navbar variant="light" />
@@ -195,7 +187,7 @@ export default function ClientPage() {
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
-                Assunto do e-mail: nome da vaga (Ex: �SVaga Vendedor B2B⬝).
+                Assunto do e-mail: nome da vaga (Ex: “Vaga Vendedor B2B”).
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -214,18 +206,6 @@ export default function ClientPage() {
         </Container>
       </Section>
 
-      <Footer
-        onOpenPrivacy={() => setLegalModal({ open: true, type: 'privacy' })}
-        onOpenTerms={() => setLegalModal({ open: true, type: 'terms' })}
-      />
-
-      <LegalModal
-        isOpen={legalModal.open}
-        onClose={() => setLegalModal({ ...legalModal, open: false })}
-        title={LEGAL_TEXTS[legalModal.type].title}
-        content={LEGAL_TEXTS[legalModal.type].content}
-        updatedAt={LEGAL_TEXTS[legalModal.type].updatedAt}
-      />
     </main>
   );
 }

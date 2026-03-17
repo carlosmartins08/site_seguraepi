@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
@@ -12,7 +11,7 @@ import { CONTACT_INFO } from '../../lib/constants';
 
 const tableRows = [
   ['Cabeça', 'Capacetes de segurança', 'Impactos, queda de objetos, risco elétrico'],
-  ['Olhos e Face', '�culos, viseiras', 'Partículas, radiação, respingos químicos'],
+  ['Olhos e Face', 'Óculos, viseiras', 'Partículas, radiação, respingos químicos'],
   ['Auditiva', 'Abafadores e plugs', 'Ruídos contínuos ou intermitentes'],
   ['Respiratória', 'Respiradores e filtros', 'Poeiras, gases, vapores, fumos'],
   ['Mãos e Braços', 'Luvas e mangotes', 'Cortes, agentes químicos, térmicos'],
@@ -32,7 +31,7 @@ export default function GuiaEpiPage() {
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[11px]">Guia Técnico de Equipamentos de Proteção Individual</p>
             <h1 className="text-4xl md:text-5xl font-display font-black text-text-primary leading-tight">O Que São Equipamentos de Proteção Individual (EPI)?</h1>
             <p className="text-slate-600 text-lg leading-relaxed">
-              Conforme a Norma Regulamentadora nº 6 (NR-06), do Ministério do Trabalho e Emprego, EPI é todo dispositivo ou produto de uso individual destinado à proteção do trabalhador contra riscos capazes de ameaçar sua segurança e saúde no exercício da atividade laboral. �0 obrigatório sempre que as medidas de proteção coletiva não eliminarem totalmente o risco ou não forem suficientes para controlá-lo.
+              Conforme a Norma Regulamentadora nº 6 (NR-06), do Ministério do Trabalho e Emprego, EPI é todo dispositivo ou produto de uso individual destinado à proteção do trabalhador contra riscos capazes de ameaçar sua segurança e saúde no exercício da atividade laboral. É obrigatório sempre que as medidas de proteção coletiva não eliminarem totalmente o risco ou não forem suficientes para controlá-lo.
             </p>
             <ContextLink href="/centro-tecnico">Entenda como validar o CA no Centro Técnico</ContextLink>
           </div>
@@ -126,11 +125,11 @@ export default function GuiaEpiPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-elevation-1">
               <ul className="space-y-3 text-slate-600 text-sm">
-                <li>�S Inspeção visual diária</li>
-                <li>�S Higienização conforme recomendação técnica</li>
-                <li>�S Armazenamento em local seco e protegido</li>
-                <li>�S Substituição imediata em caso de dano</li>
-                <li>�S Verificação periódica da validade do CA</li>
+                <li>✓ Inspeção visual diária</li>
+                <li>✓ Higienização conforme recomendação técnica</li>
+                <li>✓ Armazenamento em local seco e protegido</li>
+                <li>✓ Substituição imediata em caso de dano</li>
+                <li>✓ Verificação periódica da validade do CA</li>
               </ul>
             </div>
             <div className="p-6 bg-white rounded-3xl border border-slate-200 shadow-elevation-1 text-slate-600 text-sm space-y-3">
@@ -162,7 +161,6 @@ export default function GuiaEpiPage() {
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }

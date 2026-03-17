@@ -15,7 +15,7 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
         <p className="text-xl font-display font-medium text-text-primary">
           A Segura EPI trata a proteção de dados como parte do nosso compromisso com segurança no trabalho e
           conformidade. Esta política explica como coletamos, usamos e protegemos suas informações, em linha com a
-          Lei Geral de Proteção de Dados (LGPD � Lei nº 13.709/2018).
+          Lei Geral de Proteção de Dados (LGPD — Lei nº 13.709/2018).
         </p>
 
         <section className="space-y-4">
@@ -46,7 +46,7 @@ export const LEGAL_TEXTS: Record<'privacy' | 'terms', LegalEntry> = {
           <p>Não vendemos dados. Compartilhamos apenas quando necessário com:</p>
           <ul className="list-disc pl-5 space-y-2">
             <li><strong>Parceiros logísticos:</strong> para entrega.</li>
-            <li><strong>�rgãos fiscais:</strong> para obrigações legais.</li>
+            <li><strong>Órgãos fiscais:</strong> para obrigações legais.</li>
             <li><strong>Instituições financeiras:</strong> para pagamentos e boletos.</li>
             <li><strong>Fornecedores de tecnologia:</strong> serviços de hospedagem, métricas e automação, sempre com contratos de confidencialidade.</li>
           </ul>

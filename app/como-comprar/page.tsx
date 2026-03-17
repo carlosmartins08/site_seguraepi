@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar';
-import { Footer } from '../../components/layout/Footer';
 import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
@@ -86,6 +85,22 @@ export default function ComoComprarPage() {
                   'Limite revisado trimestralmente para clientes acima de R$30 mil.',
                 ].map((item) => bullet(item, item))}
               </ul>
+            </div>
+          </div>
+
+          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-elevation-1">
+            <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Modalidade presencial</p>
+                <h3 className="text-2xl font-display font-black text-text-primary">Retirada expressa na loja</h3>
+                <p className="text-slate-600">
+                  Compre via vendedor e retire na unidade quando preferir. Sem filas e com o pedido separado e conferido.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
+                <Button href="/retirada-expressa" variant="primary" className="w-full sm:w-auto">Ver retirada expressa</Button>
+                <Button href={CONTACT_INFO.whatsapp} variant="outline" className="w-full sm:w-auto">Falar com consultor</Button>
+              </div>
             </div>
           </div>
         </Container>
@@ -173,7 +188,6 @@ export default function ComoComprarPage() {
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }

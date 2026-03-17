@@ -6,7 +6,6 @@ import { Container } from '../../../components/layout/Container';
 import { SectionTitle } from '../../../components/typography/SectionTitle';
 import { DecisionCard } from '../../../components/cards/DecisionCard';
 import { Button } from '../../../components/actions/Button';
-import { Footer } from '../../../components/layout/Footer';
 import { SeguraLogo } from '../../../components/brand/SeguraLogo';
 import { CATEGORY_PAGES } from '../../../lib/catalog/categories';
 
@@ -35,7 +34,7 @@ export default function CategoryHubPage() {
           <div className="max-w-3xl animate-slide-up">
             <span className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-xs mb-6 block">Hub de Proteção</span>
             <h1 className="text-4xl md:text-7xl font-display font-black leading-tight mb-8 uppercase">
-              GUIA T�0CNICO DE <span className="text-action-primary">CATEGORIAS</span>
+              GUIA TÉCNICO DE <span className="text-action-primary">CATEGORIAS</span>
             </h1>
             <p className="text-slate-400 text-lg md:text-xl font-sans leading-relaxed">
               Navegue pelos nossos guias de categoria. Cada seção foi estruturada para ajudar sua empresa a decidir pelo EPI correto com base em normas e riscos reais.
@@ -69,7 +68,6 @@ export default function CategoryHubPage() {
         </Container>
       </Section>
 
-      <Footer onOpenPrivacy={() => {}} onOpenTerms={() => {}} />
     </main>
   );
 }
