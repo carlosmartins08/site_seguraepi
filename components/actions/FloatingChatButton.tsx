@@ -137,7 +137,7 @@ export const FloatingChatButton: React.FC = () => {
                 Atendimento offline
               </p>
               <h4 className="text-lg font-display font-bold text-text-primary mt-2">Deixe sua mensagem</h4>
-              <p className="text-slate-600 text-xs mt-2">
+              <p className="text-slate-600 text-xs mt-2" aria-live="polite">
                 {statusMessage}. Assim que voltarmos, nossa equipe responde pelo WhatsApp.
               </p>
             </div>
@@ -147,7 +147,7 @@ export const FloatingChatButton: React.FC = () => {
               className="text-slate-500 hover:text-text-primary transition-colors"
               aria-label="Fechar pre-chat"
             >
-              ✕
+              x
             </button>
           </div>
 
@@ -263,7 +263,7 @@ export const FloatingChatButton: React.FC = () => {
           <span className={cn(
             'absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full border-2 border-action-primary',
             isOnline ? 'bg-tech-compliance animate-pulse' : 'bg-slate-400'
-          )}></span>
+          )} />
         </div>
         <div className="text-left">
           <p className="text-[10px] font-display font-bold uppercase tracking-widest">

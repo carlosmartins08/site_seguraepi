@@ -6,6 +6,7 @@
 :root {
   --segura-primary: #FF9B21;
   --segura-dark: #0F172A;
+  --nav-offset: 112px;
 }
 
 body {
@@ -15,7 +16,17 @@ body {
 }
 
 section[id] {
-  scroll-margin-top: 120px;
+  scroll-margin-top: calc(var(--nav-offset) + 16px);
+}
+
+.pt-nav {
+  padding-top: var(--nav-offset);
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-offset: 152px;
+  }
 }
 
 .skip-link {
@@ -94,6 +105,11 @@ h1, h2, h3, h4, .font-display {
 
 .send-check {
   animation: send-check 320ms ease-out forwards;
+}
+
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 900px;
 }
 
 /* Scroll Reveal classes */

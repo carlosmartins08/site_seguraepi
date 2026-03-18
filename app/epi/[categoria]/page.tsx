@@ -6,8 +6,15 @@ import { Container } from '../../../components/layout/Container';
 import { SectionTitle } from '../../../components/typography/SectionTitle';
 import { Button } from '../../../components/actions/Button';
 import { FaqList, FaqItem } from '../../../components/home/FaqList';
+import { QuickSummary } from '../../../components/content/QuickSummary';
+import { LastUpdated } from '../../../components/content/LastUpdated';
 import { CATEGORY_PAGES, CategoryKey } from '../../../lib/catalog/categories';
 import { ROUTES, buildUrl } from '../../../lib/routes';
+import { AUTHORITY_INFO } from '../../../lib/content/authority';
+import { JsonLd } from '../../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../../../lib/seo/schema';
+import { SITE_URL } from '../../../lib/seo/site';
+import { AuthorityPanel } from '../../../components/trust/AuthorityPanel';
 
 export const dynamicParams = false;
 
@@ -37,6 +44,12 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const indicationsTitle = data.indicationsSection?.title ?? 'Onde este EPI se aplica';
   const indicationsDescription = data.indicationsSection?.description;
   const faqItems: FaqItem[] = data.faq.map((item) => ({ q: item.q, a: item.a }));
+  const summaryItems = [
+    `Indicacoes: ${data.indications.map((item) => item.title).slice(0, 2).join(', ')}.`,
+    data.compliance?.title ?? 'Itens com CA ativo e rastreavel.',
+    'Aplicacoes comuns e erros evitados para reduzir risco.',
+    'FAQ com suporte consultivo por categoria.',
+  ];
 
   const spotlightHref = data.spotlight?.ctaLabel
     ? buildUrl(ROUTES.chat, { categoria: data.key, intent: 'spotlight' })
@@ -45,9 +58,16 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
   return (
     <main className="min-h-screen bg-white">
+      <JsonLd data={buildFaqJsonLd(faqItems)} />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', url: SITE_URL },
+          { name: data.name, url: `${SITE_URL}${ROUTES.epi}/${data.key}` },
+        ])}
+      />
       <Navbar variant="light" />
 
-      <Section id="hero" variant="offwhite" className="pt-32 pb-20">
+      <Section id="hero" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-5xl space-y-6">
           <div className="space-y-4">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
@@ -69,6 +89,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
               </span>
             ))}
           </div>
+
+          <QuickSummary items={summaryItems} />
+          <LastUpdated date={AUTHORITY_INFO.updatedAt} />
         </Container>
       </Section>
 
@@ -162,7 +185,20 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         </Container>
       </Section>
 
-      <Section id="faq" variant="default" className="pt-16 pb-16">
+      <Section id="autoridade" variant="default" className="pt-16 pb-16 cv-auto">
+        <Container className="max-w-6xl">
+          <AuthorityPanel
+            subtitle="Autoridade tecnica"
+            title="Conteudo revisado por especialistas em EPI"
+            description="Orientacoes alinhadas as normas vigentes e boas praticas de seguranca do trabalho."
+            leadLabel="Responsavel tecnico"
+            sourcesLabel="Fontes consultadas"
+            updatedLabel="Ultima atualizacao"
+          />
+        </Container>
+      </Section>
+
+      <Section id="faq" variant="default" className="pt-16 pb-16 cv-auto">
         <Container className="max-w-5xl">
           <SectionTitle subtitle="FAQ" title="FAQ - Duvidas Frequentes" />
           <FaqList items={faqItems} />
@@ -170,7 +206,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </Section>
 
       {data.cta && ctaHref && (
-        <Section id="cta" variant="dark" className="pt-16 pb-16">
+        <Section id="cta" variant="dark" className="pt-16 pb-16 cv-auto">
           <Container className="max-w-5xl">
             <div className="bg-slate-950 border border-white/10 rounded-3xl p-8 md:p-12 text-white">
               {data.cta.eyebrow && (

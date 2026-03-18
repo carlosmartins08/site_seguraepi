@@ -55,7 +55,7 @@ export default function ClientPage() {
     <main className="bg-white min-h-screen">
       <Navbar variant="light" />
 
-      <Section id="hero-trabalhe" variant="offwhite" className="pt-32 pb-16 relative overflow-hidden">
+      <Section id="hero-trabalhe" variant="offwhite" className="pt-nav pb-16 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1600&q=80"

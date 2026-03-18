@@ -80,22 +80,22 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-8 animate-slide-up">
       <div className="max-w-7xl mx-auto bg-bg-inverse/95 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-3xl shadow-elevation-2 relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-32 h-32 bg-action-primary/10 rounded-full blur-3xl -ml-16 -mt-16"></div>
+        <div className="absolute top-0 left-0 w-32 h-32 bg-action-primary/10 rounded-full blur-3xl -ml-16 -mt-16" />
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
           <div className="flex-1">
             <div className="flex items-center gap-3 mb-4">
-              <div className="w-2 h-2 bg-action-primary rounded-full animate-pulse shadow-glow-brand"></div>
+              <div className="w-2 h-2 bg-action-primary rounded-full animate-pulse shadow-glow-brand" />
               <span className="text-action-primary font-display font-bold text-[10px] uppercase tracking-[0.3em]">
-                Privacidade &amp; Governança de Dados
+                Privacidade &amp; Governanca de Dados
               </span>
             </div>
-            <h3 className="text-white font-display font-bold text-lg mb-3">Sua segurança começa com a transparência</h3>
-            <p className="text-slate-400 text-sm leading-relaxed font-sans max-w-4xl">
-              Utilizamos cookies para otimizar sua jornada técnica, medir performance e personalizar ofertas de EPI.
-              Ao prosseguir, você concorda com nossa{' '}
+            <h3 className="text-white font-display font-bold text-lg mb-3">Sua seguranca comeca com a transparencia</h3>
+            <p className="text-slate-300 text-sm leading-relaxed font-sans max-w-4xl">
+              Utilizamos cookies para otimizar sua jornada tecnica, medir performance e personalizar ofertas de EPI.
+              Ao prosseguir, voce concorda com nossa{' '}
               <button onClick={onOpenPrivacy} className="text-action-primary font-bold hover:underline underline-offset-4 transition-all">
-                Política de Privacidade
+                Politica de Privacidade
               </button>{' '}
               em conformidade com a LGPD.
             </p>
@@ -104,8 +104,8 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
               <div className="mt-6 bg-white/5 border border-white/10 rounded-2xl p-4 md:p-5 space-y-4">
                 <div className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-white font-display text-sm uppercase tracking-[0.2em]">Necessários</p>
-                    <p className="text-slate-400 text-xs">Essenciais para funcionamento seguro do site.</p>
+                    <p className="text-white font-display text-sm uppercase tracking-[0.2em]">Necessarios</p>
+                    <p className="text-slate-300 text-xs">Essenciais para funcionamento seguro do site.</p>
                   </div>
                   <span className="text-action-primary font-display text-[10px] uppercase tracking-widest">Sempre ativos</span>
                 </div>
@@ -114,12 +114,12 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
                   <label key={key} className="flex items-center justify-between gap-4 py-2 px-3 rounded-xl hover:bg-white/5 transition">
                     <div>
                       <p className="text-white font-display text-sm uppercase tracking-[0.2em]">
-                        {key === 'analytics' ? 'Métricas' : 'Marketing'}
+                        {key === 'analytics' ? 'Metricas' : 'Marketing'}
                       </p>
-                      <p className="text-slate-400 text-xs">
+                      <p className="text-slate-300 text-xs">
                         {key === 'analytics'
                           ? 'Ajuda a melhorar performance e usabilidade.'
-                          : 'Personaliza ofertas e remarketing responsável.'}
+                          : 'Personaliza ofertas e remarketing responsavel.'}
                       </p>
                     </div>
                     <button
@@ -147,7 +147,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
                     onClick={handleSavePreferences}
                     className="bg-white text-text-primary px-6 py-3 font-display font-bold uppercase text-[11px] tracking-widest rounded-xl hover:bg-action-primary hover:text-white transition-all"
                   >
-                    Salvar preferências
+                    Salvar preferencias
                   </button>
                   <button
                     onClick={() => setIsManaging(false)}
@@ -167,13 +167,13 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
                   onClick={() => setIsManaging(true)}
                   className="text-slate-300 font-display font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors py-3"
                 >
-                  Gerenciar preferências
+                  Gerenciar preferencias
                 </button>
                 <button
                   onClick={handleRejectNonEssential}
                   className="bg-white/10 text-white px-8 py-4 font-display font-bold uppercase text-xs tracking-widest rounded-xl border border-white/15 hover:border-action-primary hover:text-action-primaryHover hover:bg-white transition-all active:scale-95 w-full lg:w-auto"
                 >
-                  Recusar não essenciais
+                  Recusar nao essenciais
                 </button>
                 <button
                   onClick={handleAcceptAll}

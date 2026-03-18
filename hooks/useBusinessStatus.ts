@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import { CONTACT_INFO } from '../lib/constants';
+import { useI18n } from './useI18n';
 
 interface BusinessStatus {
   isOpen: boolean;
@@ -13,9 +14,10 @@ interface BusinessStatus {
 }
 
 export function useBusinessStatus(): BusinessStatus {
+  const { t } = useI18n();
   const [status, setStatus] = useState<BusinessStatus>({
     isOpen: false,
-    message: 'Verificando status...',
+    message: t('status.checking', 'Verificando status...'),
   });
 
   useEffect(() => {
@@ -34,34 +36,38 @@ export function useBusinessStatus(): BusinessStatus {
       if (isBusinessDay && currentTimeInMinutes >= openTimeInMinutes && currentTimeInMinutes < closeTimeInMinutes) {
         setStatus({
           isOpen: true,
-          message: 'Central de Atendimento ON',
+          message: t('status.openNow', 'Central de Atendimento ON'),
         });
         return;
       }
 
       // 2. Se esta fechado, quando abre?
+      const todayLabel = t('status.today', 'Hoje');
+      const tomorrowLabel = t('status.tomorrow', 'Amanha');
+      const mondayLabel = t('status.monday', 'Segunda-feira');
+
       let label = '';
 
       // Se for dia util mas ja fechou
       if (isBusinessDay && currentTimeInMinutes >= closeTimeInMinutes) {
         if (day === 5) {
           // Sexta-feira
-          label = 'Segunda-feira';
+          label = mondayLabel;
         } else {
-          label = 'Amanha';
+          label = tomorrowLabel;
         }
       }
       // Se for dia util mas ainda nao abriu
       else if (isBusinessDay && currentTimeInMinutes < openTimeInMinutes) {
-        label = 'Hoje';
+        label = todayLabel;
       }
       // Se for Sabado
       else if (day === 6) {
-        label = 'Segunda-feira';
+        label = mondayLabel;
       }
       // Se for Domingo
       else if (day === 0) {
-        label = 'Segunda-feira';
+        label = mondayLabel;
       }
 
       const timeLabel = `${CONTACT_INFO.businessHours.open.toString().padStart(2, '0')}:00h`;
@@ -72,12 +78,18 @@ export function useBusinessStatus(): BusinessStatus {
         const diffMins = (openTimeInMinutes - currentTimeInMinutes) % 60;
 
         if (diffHours > 0) {
-          message = `Abrimos em ${diffHours}h e ${diffMins}min`;
+          message = t('status.opensIn', 'Abrimos em {hours}h e {minutes}min', {
+            hours: diffHours,
+            minutes: diffMins,
+          });
         } else {
-          message = `Abrimos em ${diffMins}min`;
+          message = t('status.opensInShort', 'Abrimos em {minutes}min', { minutes: diffMins });
         }
       } else {
-        message = `Retornamos ${label} as ${timeLabel}`;
+        message = t('status.returnsAt', 'Retornamos {label} as {timeLabel}', {
+          label,
+          timeLabel,
+        });
       }
 
       setStatus({
@@ -93,7 +105,7 @@ export function useBusinessStatus(): BusinessStatus {
     calculateStatus();
     const interval = setInterval(calculateStatus, 60000);
     return () => clearInterval(interval);
-  }, []);
+  }, [t]);
 
   return status;
 }

@@ -8,6 +8,14 @@ import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { CONTACT_INFO } from '../../lib/constants';
 import { SeguraLogo } from '../../components/brand/SeguraLogo';
+import { QuickSummary } from '../../components/content/QuickSummary';
+import { LastUpdated } from '../../components/content/LastUpdated';
+import { AUTHORITY_INFO } from '../../lib/content/authority';
+import { mailtoHref } from '../../lib/contact';
+import { JsonLd } from '../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../../lib/seo/schema';
+import { SITE_URL } from '../../lib/seo/site';
+import { ROUTES } from '../../lib/routes';
 
 const bullet = (text: string, key: React.Key) => (
   <li key={key} className="flex items-start gap-3 text-slate-600">
@@ -16,12 +24,30 @@ const bullet = (text: string, key: React.Key) => (
   </li>
 );
 
+const faqItems = [
+  {
+    q: 'Pessoa fisica (CPF) pode comprar?',
+    a: 'Nosso foco e o atendimento B2B (Pessoa Juridica). Para CPF, consulte o time comercial sobre venda a vista (Consumidor Final).',
+  },
+  {
+    q: 'Como sei se meu cadastro foi aprovado?',
+    a: 'Assim que a analise for concluida (dentro de 24h), seu consultor entra em contato. Se houver pendencia, avisamos imediatamente.',
+  },
+];
+
 export default function ComoComprarPage() {
   return (
     <main className="min-h-screen bg-white">
+      <JsonLd data={buildFaqJsonLd(faqItems)} />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Como Comprar', url: `${SITE_URL}${ROUTES.howToBuy}` },
+        ])}
+      />
       <Navbar variant="light" />
 
-      <Section id="como-comprar-hero" variant="dark" className="pt-32 pb-28 relative overflow-hidden">
+      <Section id="como-comprar-hero" variant="dark" className="pt-nav pb-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.12),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_40%)]" />
         <Container className="relative z-10 grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-8">
@@ -41,6 +67,16 @@ export default function ComoComprarPage() {
               <SeguraLogo section="inline" variant="dark" size="sm" padding="tight" decorative />
               <span>Revisao trimestral para clientes com volume acima de R$ 30 mil.</span>
             </div>
+            <QuickSummary
+              variant="dark"
+              items={[
+                'Cadastro liberado em ate 24h uteis apos envio completo.',
+                'Modalidades: compra a vista (cadastro rapido) e faturada (credito).',
+                'Documentacao fiscal e contatos agilizam a aprovacao.',
+                'Revisao trimestral para volumes acima de R$ 30 mil.',
+              ]}
+            />
+            <LastUpdated variant="dark" date={AUTHORITY_INFO.updatedAt} />
           </div>
           <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-elevation-2 backdrop-blur-xl">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-4">Prazos</p>
@@ -162,20 +198,18 @@ export default function ComoComprarPage() {
           <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-elevation-1">
             <h4 className="text-xl font-display font-bold text-text-primary mb-3">Perguntas frequentes</h4>
             <div className="space-y-4 text-sm text-slate-600">
-              <div>
-                <p className="font-display font-bold text-text-primary">Pessoa fisica (CPF) pode comprar?</p>
-                <p>Nosso foco e o atendimento B2B (Pessoa Juridica). Para CPF, consulte o time comercial sobre venda a vista (Consumidor Final).</p>
-              </div>
-              <div>
-                <p className="font-display font-bold text-text-primary">Como sei se meu cadastro foi aprovado?</p>
-                <p>Assim que a analise for concluida (dentro de 24h), seu consultor entra em contato. Se houver pendencia, avisamos imediatamente.</p>
-              </div>
+              {faqItems.map((item) => (
+                <div key={item.q}>
+                  <p className="font-display font-bold text-text-primary">{item.q}</p>
+                  <p>{item.a}</p>
+                </div>
+              ))}
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section id="cta-final" variant="default" className="pb-28">
+      <Section id="cta-final" variant="default" className="pb-28 cv-auto">
         <Container className="bg-bg-inverse text-white rounded-2xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
@@ -185,7 +219,7 @@ export default function ComoComprarPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto">Enviar pelo WhatsApp</Button>
-              <Button href={`mailto:${CONTACT_INFO.email}`} variant="outline" className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary">Enviar por email</Button>
+              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline" className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary">Enviar por email</Button>
             </div>
           </div>
         </Container>

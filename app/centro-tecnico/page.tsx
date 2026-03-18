@@ -100,7 +100,7 @@ export default function CentroTecnicoPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="dark" />
 
-      <Section id="centro-hero" variant="dark" className="pt-32 pb-28 relative overflow-hidden">
+      <Section id="centro-hero" variant="dark" className="pt-nav pb-28 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.12),transparent_40%),radial-gradient(circle_at_80%_15%,rgba(255,255,255,0.06),transparent_40%)]" />
         <Container className="relative z-10 grid lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-7 space-y-8">

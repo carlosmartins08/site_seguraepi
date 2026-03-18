@@ -8,12 +8,14 @@ import { SeguraLogo, LOGO_RULES } from '../brand/SeguraLogo';
 import { Button } from '../actions/Button';
 import { cn } from '../../lib/cn';
 import { CONTACT_INFO } from '../../lib/constants';
+import { phoneHref } from '../../lib/contact';
 import { useBusinessStatus } from '../../hooks/useBusinessStatus';
 import { useLocation } from '../../hooks/useLocation';
 import { useI18n } from '../../hooks/useI18n';
 import { openWbotChat } from '../../lib/wbot';
 import { LocaleSwitcher } from '../actions/LocaleSwitcher';
 import { ROUTES } from '../../lib/routes';
+import { storeChatContext } from '../../lib/chat-context';
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
@@ -82,11 +84,21 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
     };
   }, [isMobileMenuOpen]);
 
-  const navLinks: Array<{ name: string; href: Route }> = [
-    { name: t('nav.home', 'Inicio'), href: ROUTES.home },
-    { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
+  const navLinks: Array<{ name: string; href: Route; showDesktop?: boolean }> = [
+    { name: t('nav.home', 'Inicio'), href: ROUTES.home, showDesktop: false },
     { name: t('nav.catalog', 'Catalogo'), href: ROUTES.catalog },
+    { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
+    { name: t('nav.center', 'Centro Tecnico'), href: ROUTES.center },
+    { name: t('nav.howToBuy', 'Como Comprar'), href: ROUTES.howToBuy },
+    { name: t('nav.about', 'Quem Somos'), href: ROUTES.about },
   ];
+
+  const supportLabel = t('nav.support', 'Suporte B2B');
+  const priorityLabel = t('nav.priorityLogistics', 'Logistica prioritaria em');
+  const directoryLabel = t('nav.directory', 'Diretorio de Navegacao');
+  const chatLabel = t('nav.chat', 'Atendimento online');
+  const teamOnlineLabel = t('nav.teamOnlineNow', 'Time comercial online agora');
+  const supportBlockLabel = t('nav.supportBlock', 'Suporte Industrial');
 
   return (
     <>
@@ -101,7 +113,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               href={CONTACT_INFO.googleMapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[9px] font-display font-bold uppercase tracking-widest text-slate-400 hover:text-action-primaryHover transition-colors group"
+              className="flex items-center gap-2 text-[9px] font-display font-bold uppercase tracking-widest text-slate-300 hover:text-action-primaryHover transition-colors group"
             >
               <svg className="w-3 h-3 text-action-primary group-hover:scale-125 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -109,12 +121,15 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               {CONTACT_INFO.address}
             </a>
             <div className="w-[1px] h-3 bg-white/10" />
-            <div className="flex items-center gap-2 text-[9px] font-display font-bold uppercase tracking-widest text-slate-400">
+            <a
+              href={phoneHref(CONTACT_INFO.phone)}
+              className="flex items-center gap-2 text-[9px] font-display font-bold uppercase tracking-widest text-slate-300 hover:text-action-primaryHover transition-colors"
+            >
               <svg className="w-3 h-3 text-action-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
               </svg>
-              Suporte B2B: {CONTACT_INFO.phone}
-            </div>
+              {supportLabel}: {CONTACT_INFO.phone}
+            </a>
           </div>
           <div className="flex items-center gap-4">
             <LocaleSwitcher compact />
@@ -124,7 +139,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             )}>
               <span className="w-1.5 h-1.5 bg-action-primary rounded-full animate-pulse"></span>
               <span className="text-[9px] font-display font-bold uppercase tracking-widest text-slate-300">
-                Logistica Prioritaria em <span className="text-white">{region}</span>
+                {priorityLabel} <span className="text-white">{region}</span>
               </span>
             </div>
           </div>
@@ -156,7 +171,9 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
           {/* Desktop Navigation Center */}
           <nav className="hidden lg:flex items-center gap-8 xl:gap-12">
-            {navLinks.map((link) => (
+            {navLinks
+              .filter((link) => link.showDesktop !== false)
+              .map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -169,7 +186,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 {/* Magnetic Technical Underline */}
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-action-primary transition-all duration-500 group-hover:w-full shadow-glow-brand" />
               </Link>
-            ))}
+              ))}
           </nav>
 
           {/* Status & CTA Cluster */}
@@ -189,12 +206,15 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                   isOnline ? "bg-tech-compliance" : "bg-slate-400"
                 )}></span>
               </span>
-              <span className={cn(
-                "text-[9px] font-display font-bold uppercase tracking-widest transition-colors relative z-10 whitespace-nowrap",
-                isOnline
-                  ? (isScrolled || variant === 'light' ? "text-slate-400 group-hover:text-tech-compliance" : "text-slate-300 group-hover:text-tech-compliance")
-                  : "text-slate-500 italic"
-              )}>
+              <span
+                aria-live="polite"
+                className={cn(
+                  "text-[9px] font-display font-bold uppercase tracking-widest transition-colors relative z-10 whitespace-nowrap",
+                  isOnline
+                    ? (isScrolled || variant === 'light' ? "text-slate-300 group-hover:text-tech-compliance" : "text-slate-300 group-hover:text-tech-compliance")
+                    : "text-slate-300 italic"
+                )}
+              >
                 {statusMessage}
               </span>
             </div>
@@ -205,15 +225,16 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 "text-[10px] py-2.5 px-8 shadow-glow-brand rounded-xl transition-[transform,box-shadow,background-color] duration-base ease-standard",
                 isScrolled ? "scale-95" : "scale-100"
               )}
-              onClick={() =>
+              onClick={() => {
+                storeChatContext({ intent: 'nav-chat', origem: 'navbar' });
                 openWbotChat({
                   fallbackHref: CONTACT_INFO.whatsapp,
                   trackEvent: 'cta_nav_chat',
                   trackParams: { surface: 'navbar' },
-                })
-              }
+                });
+              }}
             >
-              Atendimento online
+              {chatLabel}
             </Button>
           </div>
 
@@ -268,7 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
           <div className="flex flex-col flex-grow">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.4em] text-[10px] mb-12 opacity-60">
-              Diretorio de Navegacao
+              {directoryLabel}
             </p>
 
             <div className="mb-8">
@@ -294,31 +315,37 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
           <div className="mt-auto pt-10 border-t border-white/10 grid md:grid-cols-2 gap-10">
             <div className="space-y-4">
-              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Suporte Industrial</p>
-              <p className="text-white text-3xl font-display font-black tracking-tight leading-none">{CONTACT_INFO.phone}</p>
-              <p className="text-slate-500 text-xs font-sans">{CONTACT_INFO.supportTime}</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">{supportBlockLabel}</p>
+              <a
+                href={phoneHref(CONTACT_INFO.phone)}
+                className="text-white text-3xl font-display font-black tracking-tight leading-none hover:text-action-primaryHover transition-colors"
+              >
+                {CONTACT_INFO.phone}
+              </a>
+              <p className="text-slate-300 text-xs font-sans">{CONTACT_INFO.supportTime}</p>
             </div>
             <div className="flex flex-col gap-4">
               <Button
                 variant="primary"
                 className="w-full py-5 text-xs shadow-glow-brand"
-                onClick={() =>
+                onClick={() => {
+                  storeChatContext({ intent: 'mobile-chat', origem: 'mobile_menu' });
                   openWbotChat({
                     fallbackHref: CONTACT_INFO.whatsapp,
                     trackEvent: 'cta_mobile_chat',
                     trackParams: { surface: 'mobile_menu' },
-                  })
-                }
+                  });
+                }}
               >
-                Atendimento online
+                {chatLabel}
               </Button>
               <div className="flex items-center justify-center gap-2 py-4 border border-white/5 rounded-2xl bg-white/5">
                 <span className={cn(
                   "h-2 w-2 rounded-full",
                   isOnline ? "bg-tech-compliance animate-pulse" : "bg-slate-500"
                 )}></span>
-                <span className="text-[10px] font-display font-bold uppercase tracking-widest text-slate-400">
-                  {isOnline ? 'Time comercial online agora' : statusMessage}
+                <span className="text-[10px] font-display font-bold uppercase tracking-widest text-slate-300" aria-live="polite">
+                  {isOnline ? teamOnlineLabel : statusMessage}
                 </span>
               </div>
             </div>

@@ -61,7 +61,7 @@ export default function ClientPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="light" />
 
-      <Section id="chat-bridge" variant="offwhite" className="pt-32 pb-20">
+      <Section id="chat-bridge" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-3xl">
           <div className="bg-white border border-slate-100 rounded-3xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">

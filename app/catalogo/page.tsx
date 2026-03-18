@@ -39,7 +39,7 @@ export default function CatalogoRedirectPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="light" />
 
-      <Section id="catalog-bridge-hero" variant="offwhite" className="pt-36 pb-20">
+      <Section id="catalog-bridge-hero" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-5xl">
           <SectionTitle
             subtitle="Catálogo B2B"

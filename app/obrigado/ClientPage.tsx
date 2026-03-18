@@ -47,7 +47,7 @@ export default function ClientPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="light" />
 
-      <Section id="thanks-hero" variant="offwhite" className="pt-32 pb-16">
+      <Section id="thanks-hero" variant="offwhite" className="pt-nav pb-16">
         <Container className="max-w-4xl space-y-6">
           <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
             Pos-conversao

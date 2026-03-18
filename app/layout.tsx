@@ -4,7 +4,7 @@ import { Inter, Poppins } from 'next/font/google';
 import Script from 'next/script';
 import '../styles/globals.css';
 import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } from '../lib/seo/site';
-import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
+import { buildLocalBusinessJsonLd, buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/schema';
 import { Providers } from './providers';
 import { ConsentScriptGate } from '../components/analytics/ConsentScriptGate';
 import { LegalLayer } from '../components/home/LegalLayer';
@@ -68,14 +68,20 @@ export default function RootLayout({
         />
         <script
           type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(buildLocalBusinessJsonLd()) }}
+        />
+        <script
+          type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildWebSiteJsonLd()) }}
         />
       </head>
       <body className={`${inter.variable} ${poppins.variable}`}>
         <a href="#main-content" className="skip-link">Pular para o conteudo principal</a>
-        <Providers>{children}</Providers>
-        <FloatingChatButton />
-        <LegalLayer />
+        <Providers>
+          {children}
+          <FloatingChatButton />
+          <LegalLayer />
+        </Providers>
         <Script
           id="wbot-jquery-each-polyfill"
           strategy="beforeInteractive"

@@ -5,6 +5,13 @@ import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
 import { CONTACT_INFO } from '../../lib/constants';
+import { QuickSummary } from '../../components/content/QuickSummary';
+import { LastUpdated } from '../../components/content/LastUpdated';
+import { AUTHORITY_INFO } from '../../lib/content/authority';
+import { JsonLd } from '../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../../lib/seo/schema';
+import { SITE_URL } from '../../lib/seo/site';
+import { ROUTES } from '../../lib/routes';
 
 export const metadata = {
   title: 'Politica de Trocas e Devolucoes | Segura EPI',
@@ -29,11 +36,25 @@ const faqItems = [
   },
 ];
 
+const summaryItems = [
+  'Conferencia obrigatoria no ato da entrega.',
+  'Garantia: ate 7 dias com a Segura EPI.',
+  'Troca de numeracao em ate 30 dias.',
+  'Nota de devolucao e logistica reversa formal.',
+];
+
 export default function PoliticaTrocasPage() {
   return (
     <main className="bg-white">
+      <JsonLd data={buildFaqJsonLd(faqItems)} />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Politica de Trocas e Devolucoes', url: `${SITE_URL}${ROUTES.policyReturns}` },
+        ])}
+      />
       {/* Hero */}
-      <Section id="hero-politica" variant="offwhite" className="pb-16">
+      <Section id="hero-politica" variant="offwhite" className="pt-nav pb-16">
         <Container className="max-w-4xl">
           <div className="space-y-8">
             <div>
@@ -66,6 +87,8 @@ export default function PoliticaTrocasPage() {
                 Ver catalogo de EPIs
               </ContextLink>
             </div>
+            <QuickSummary items={summaryItems} />
+            <LastUpdated date={AUTHORITY_INFO.updatedAt} />
           </div>
         </Container>
       </Section>
@@ -222,7 +245,7 @@ export default function PoliticaTrocasPage() {
       </Section>
 
       {/* FAQ */}
-      <Section id="faq-politica" variant="default">
+      <Section id="faq-politica" variant="default" className="cv-auto">
         <Container className="max-w-4xl">
           <SectionTitle subtitle="FAQ" title="Perguntas Frequentes" />
           <div className="space-y-4">

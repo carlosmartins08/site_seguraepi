@@ -3,6 +3,7 @@
 import React from 'react';
 import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
+import { mailtoHref } from '../../lib/contact';
 import { useI18n } from '../../hooks/useI18n';
 
 interface LegalModalProps {
@@ -70,7 +71,11 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
 
             <div className="mt-12 pt-12 border-t border-slate-100 italic text-sm text-slate-400">
               * Ultima atualizacao em {lastUpdateLabel}. Segura EPI e Servicos segue rigorosamente a Lei Geral de
-              Protecao de Dados (13.709/2018). Duvidas sobre seus dados? Contate {CONTACT_INFO.email}.
+              Protecao de Dados (13.709/2018). Duvidas sobre seus dados? Contate{' '}
+              <a className="underline hover:text-action-primary" href={mailtoHref(CONTACT_INFO.email)}>
+                {CONTACT_INFO.email}
+              </a>
+              .
             </div>
           </div>
         </div>

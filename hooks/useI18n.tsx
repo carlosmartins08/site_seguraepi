@@ -20,7 +20,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   useEffect(() => {
     const stored = typeof window !== 'undefined' ? (localStorage.getItem(STORAGE_KEY_LOCALE) as Locale | null) : null;
-    if (stored === 'pt' || stored === 'en') {
+    if (stored === 'pt' || stored === 'en' || stored === 'es') {
       setLocaleState(stored);
     }
   }, []);
@@ -50,6 +50,12 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
     [locale]
   );
 
+  useEffect(() => {
+    if (typeof document === 'undefined') return;
+    const htmlLang = locale === 'pt' ? 'pt-BR' : locale === 'en' ? 'en-US' : 'es-ES';
+    document.documentElement.lang = htmlLang;
+  }, [locale]);
+
   const value = useMemo<I18nContextValue>(
     () => ({
       locale,
@@ -57,7 +63,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
       t,
       formatDate,
       labels: LOCALE_LABELS,
-      availableLocales: ['pt', 'en'],
+      availableLocales: ['pt', 'en', 'es'],
     }),
     [locale, setLocale, t, formatDate]
   );

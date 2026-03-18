@@ -10,6 +10,12 @@ import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
 import { CONTACT_INFO } from '../../lib/constants';
 import { ROUTES } from '../../lib/routes';
+import { QuickSummary } from '../../components/content/QuickSummary';
+import { LastUpdated } from '../../components/content/LastUpdated';
+import { AUTHORITY_INFO } from '../../lib/content/authority';
+import { JsonLd } from '../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../../lib/seo/schema';
+import { SITE_URL } from '../../lib/seo/site';
 
 const badges = [
   { label: 'Retirada expressa', color: 'bg-action-primary/15 text-action-primary' },
@@ -43,9 +49,16 @@ const faqItems = [
 export default function ClientPage() {
   return (
     <main className="bg-white min-h-screen">
+      <JsonLd data={buildFaqJsonLd(faqItems)} />
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Retirada Expressa', url: `${SITE_URL}${ROUTES.pickupExpress}` },
+        ])}
+      />
       <Navbar variant="light" />
 
-      <Section id="hero-retirada" variant="offwhite" className="pt-32 pb-16 relative overflow-hidden">
+      <Section id="hero-retirada" variant="offwhite" className="pt-nav pb-16 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80"
@@ -91,6 +104,15 @@ export default function ClientPage() {
                 Ver catalogo de EPIs
               </ContextLink>
             </div>
+
+            <QuickSummary
+              items={[
+                'Pedido via WhatsApp e confirmacao de disponibilidade.',
+                'Cortes claros: ate 12h retira 14h; apos 12h retira 9h.',
+                'Reserva por 24h apos confirmacao.',
+              ]}
+            />
+            <LastUpdated date={AUTHORITY_INFO.updatedAt} />
           </div>
         </Container>
       </Section>
@@ -173,7 +195,7 @@ export default function ClientPage() {
         </Container>
       </Section>
 
-      <Section id="faq-retirada" variant="offwhite">
+      <Section id="faq-retirada" variant="offwhite" className="cv-auto">
         <Container className="max-w-6xl">
           <SectionTitle subtitle="4. Duvidas Frequentes sobre Retirada" title="Retirada sem atrito" />
           <div className="grid md:grid-cols-2 gap-8">

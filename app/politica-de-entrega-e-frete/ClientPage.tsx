@@ -9,6 +9,13 @@ import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
 import { CONTACT_INFO } from '../../lib/constants';
+import { QuickSummary } from '../../components/content/QuickSummary';
+import { LastUpdated } from '../../components/content/LastUpdated';
+import { AUTHORITY_INFO } from '../../lib/content/authority';
+import { JsonLd } from '../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd } from '../../lib/seo/schema';
+import { SITE_URL } from '../../lib/seo/site';
+import { ROUTES } from '../../lib/routes';
 
 const badges = [
   { label: 'Logistica GJP + Nordeste', color: 'bg-action-primary/15 text-action-primary' },
@@ -16,16 +23,29 @@ const badges = [
   { label: 'Conferencia no recebimento', color: 'bg-emerald-100 text-emerald-700' },
 ];
 
+const summaryItems = [
+  'Frete gratuito em GJP acima de R$ 500,00.',
+  'Modalidades CIF (Segura) ou FOB (cliente).',
+  'Conferencia obrigatoria no ato da entrega.',
+  'Prazo contado a partir do faturamento.',
+];
+
 export default function ClientPage() {
   return (
     <main className="bg-white min-h-screen">
+      <JsonLd
+        data={buildBreadcrumbJsonLd([
+          { name: 'Home', url: SITE_URL },
+          { name: 'Politica de Entrega e Frete', url: `${SITE_URL}${ROUTES.policyDelivery}` },
+        ])}
+      />
       <Navbar variant="light" />
 
-      <Section id="hero-entrega" variant="offwhite" className="pt-32 pb-16 relative overflow-hidden">
+      <Section id="hero-entrega" variant="offwhite" className="pt-nav pb-16 relative overflow-hidden">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1541417904950-b855846fe074?auto=format&fit=crop&w=1600&q=80"
-            alt="Centro de distribuição e frota"
+            alt="Centro de distribuicao e frota"
             fill
             priority
             className="object-cover opacity-20"
@@ -37,7 +57,7 @@ export default function ClientPage() {
           <div className="space-y-8">
             <div>
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
-                Política de Entrega e Frete
+                Politica de Entrega e Frete
               </p>
               <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
                 Logistica estruturada para entregar com integridade e prazo.
@@ -64,9 +84,12 @@ export default function ClientPage() {
                 Consultar frete agora
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
-                Ver catálogo
+                Ver catalogo
               </ContextLink>
             </div>
+
+            <QuickSummary items={summaryItems} />
+            <LastUpdated date={AUTHORITY_INFO.updatedAt} />
           </div>
         </Container>
       </Section>
@@ -74,7 +97,7 @@ export default function ClientPage() {
       <Section id="frete-gratis" variant="default">
         <Container className="max-w-6xl">
           <SectionTitle
-            subtitle="1. Frete Grátis e Condições Especiais"
+            subtitle="1. Frete Gratis e Condicoes Especiais"
             title="Custo-beneficio para sua operacao"
             description="Condicoes especiais para Grande Joao Pessoa e demais regioes."
           />
@@ -84,7 +107,7 @@ export default function ClientPage() {
                 <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
                 </div>
-                <h3 className="text-xl font-display font-bold text-text-primary">Grande João Pessoa</h3>
+                <h3 className="text-xl font-display font-bold text-text-primary">Grande Joao Pessoa</h3>
               </div>
               <p className="text-slate-600 leading-relaxed">
                 Para pedidos acima de R$ 500,00, oferecemos entrega gratuita via rota propria. Consulte seu vendedor
@@ -96,7 +119,7 @@ export default function ClientPage() {
                 <div className="w-10 h-10 rounded-xl bg-slate-900/10 text-slate-900 flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
                 </div>
-                <h3 className="text-xl font-display font-bold text-text-primary">Demais Regiões</h3>
+                <h3 className="text-xl font-display font-bold text-text-primary">Demais regioes</h3>
               </div>
               <p className="text-slate-600 leading-relaxed">
                 Trabalhamos com transportadoras parceiras que garantem prazos competitivos e rastreabilidade da carga.
@@ -184,7 +207,7 @@ export default function ClientPage() {
                 <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">Rotas locais (frota própria)</h4>
+                <h4 className="text-lg font-display font-bold text-text-primary">Rotas locais (frota propria)</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
                 Entregas conforme cronograma da frota propria. Consulte os dias da sua regiao.
@@ -204,8 +227,6 @@ export default function ClientPage() {
           </div>
         </Container>
       </Section>
-
     </main>
   );
 }
-

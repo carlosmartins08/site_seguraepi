@@ -25,7 +25,7 @@ export default function GuiaEpiPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="light" />
 
-      <Section id="hero-epi" variant="offwhite" className="pt-36 pb-20">
+      <Section id="hero-epi" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-5xl space-y-8">
           <div className="space-y-4">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[11px]">Guia Técnico de Equipamentos de Proteção Individual</p>
