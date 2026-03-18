@@ -6,7 +6,7 @@ import { Section } from '../../components/layout/Section';
 import { Container } from '../../components/layout/Container';
 import { Button } from '../../components/actions/Button';
 import { OnlineChatButton } from '../../components/chat/OnlineChatButton';
-import { openWbotChat } from '../../lib/wbot';
+import { buildWhatsappLink, openWbotChat } from '../../lib/wbot';
 import { CONTACT_INFO } from '../../lib/constants';
 import { ROUTES } from '../../lib/routes';
 
@@ -14,13 +14,44 @@ export default function ClientPage() {
   const [attempted, setAttempted] = useState(false);
   const [opened, setOpened] = useState<boolean | null>(null);
   const didTrigger = useRef(false);
+  const storageKey = 'lead_orcamento';
+
+  const buildLeadMessage = (payload: Record<string, any>) => {
+    const lines = ['Solicitacao de orcamento B2B'];
+
+    if (payload.name) lines.push(`Nome: ${payload.name}`);
+    if (payload.company) lines.push(`Empresa: ${payload.company}`);
+    if (payload.cnpj) lines.push(`CNPJ: ${payload.cnpj}`);
+    if (payload.segment) lines.push(`Segmento: ${payload.segment}`);
+    if (payload.whatsapp) lines.push(`WhatsApp: ${payload.whatsapp}`);
+    if (payload.items) lines.push(`Itens: ${payload.items}`);
+    if (payload.source) lines.push(`Origem: ${payload.source}`);
+
+    return lines.join('\n');
+  };
 
   useEffect(() => {
     if (didTrigger.current) return;
     didTrigger.current = true;
 
+    let fallbackHref = CONTACT_INFO.whatsapp;
+    if (typeof window !== 'undefined') {
+      const stored = window.sessionStorage.getItem(storageKey);
+      if (stored) {
+        try {
+          const payload = JSON.parse(stored);
+          const message = buildLeadMessage(payload);
+          fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, message);
+        } catch {
+          fallbackHref = CONTACT_INFO.whatsapp;
+        } finally {
+          window.sessionStorage.removeItem(storageKey);
+        }
+      }
+    }
+
     const didOpen = openWbotChat({
-      fallbackHref: CONTACT_INFO.whatsapp,
+      fallbackHref,
       trackEvent: 'route_chat_autostart',
       trackParams: { surface: 'chat_route' },
     });

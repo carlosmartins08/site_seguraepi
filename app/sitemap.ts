@@ -2,7 +2,8 @@
 import { CATEGORY_PAGES } from '../lib/catalog/categories';
 import { ROUTES, SITEMAP_EXCLUDE } from '../lib/routes';
 
-const staticRoutes = Object.values(ROUTES).filter((path) => !SITEMAP_EXCLUDE.includes(path));
+const excludedRoutes = new Set<string>(SITEMAP_EXCLUDE as readonly string[]);
+const staticRoutes = Object.values(ROUTES).filter((path) => !excludedRoutes.has(path));
 
 export default function sitemap() {
   const categoryRoutes = Object.keys(CATEGORY_PAGES).map((key) => `${ROUTES.epi}/${key}`);

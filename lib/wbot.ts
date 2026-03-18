@@ -33,3 +33,9 @@ export function openWbotChat(options: OpenWbotChatOptions = {}): boolean {
   return false;
 }
 
+export function buildWhatsappLink(baseHref: string, text?: string): string {
+  if (!text) return baseHref;
+
+  const connector = baseHref.includes('?') ? '&' : '?';
+  return `${baseHref}${connector}text=${encodeURIComponent(text)}`;
+}

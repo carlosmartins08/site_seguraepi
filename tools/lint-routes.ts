@@ -12,8 +12,8 @@ type Finding = {
 const roots = ['app', 'components', 'hooks', 'lib', 'src'];
 const exts = new Set(['.ts', '.tsx']);
 
-const allowedRoutes = new Set(Object.values(ROUTES));
-const legacyRoutes = new Set(LEGACY_ROUTES);
+const allowedRoutes = new Set<string>(Object.values(ROUTES));
+const legacyRoutes = new Set<string>(LEGACY_ROUTES as readonly string[]);
 const dynamicPrefixes = Array.from(DYNAMIC_ROUTE_PREFIXES);
 
 const findings: Finding[] = [];
