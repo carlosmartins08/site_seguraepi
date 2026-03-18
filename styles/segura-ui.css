@@ -75,6 +75,27 @@ h1, h2, h3, h4, .font-display {
 .animate-bounce-in { animation: bounce-in 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
 .animate-pulse-soft { animation: pulse-soft 2s ease-in-out infinite; }
 
+@keyframes fab-breathe {
+  0%, 86% { transform: scale(1); }
+  90% { transform: scale(1.02); }
+  94% { transform: scale(1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes send-check {
+  0% { transform: scale(0.6); opacity: 0; }
+  60% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+.fab-idle {
+  animation: fab-breathe 12s ease-in-out infinite;
+}
+
+.send-check {
+  animation: send-check 320ms ease-out forwards;
+}
+
 /* Scroll Reveal classes */
 .reveal {
   opacity: 0;
@@ -184,6 +205,11 @@ h1, h2, h3, h4, .font-display {
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .fab-idle,
+  .send-check {
+    animation: none !important;
   }
 
   #wbot-chat-container * {

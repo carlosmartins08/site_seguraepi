@@ -27,6 +27,8 @@ export const FloatingChatButton: React.FC = () => {
   const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
   const [isPanelOpen, setIsPanelOpen] = useState(false);
   const [prefill, setPrefill] = useState<PrefillState>(DEFAULT_PREFILL);
+  const [isIdle, setIsIdle] = useState(true);
+  const [isSending, setIsSending] = useState(false);
   const firstFieldRef = useRef<HTMLInputElement | null>(null);
 
   useEffect(() => {
@@ -39,7 +41,24 @@ export const FloatingChatButton: React.FC = () => {
     return () => window.removeEventListener('keydown', handleKey);
   }, [isPanelOpen]);
 
+  useEffect(() => {
+    if (!isIdle) return;
+
+    const stopIdle = () => setIsIdle(false);
+
+    window.addEventListener('scroll', stopIdle, { passive: true });
+    window.addEventListener('pointerdown', stopIdle);
+    window.addEventListener('keydown', stopIdle);
+
+    return () => {
+      window.removeEventListener('scroll', stopIdle);
+      window.removeEventListener('pointerdown', stopIdle);
+      window.removeEventListener('keydown', stopIdle);
+    };
+  }, [isIdle]);
+
   const handleOpenChat = () => {
+    setIsIdle(false);
     storeChatContext({ intent: 'chat-fab', origem: 'fab' });
 
     if (isOnline) {
@@ -69,6 +88,9 @@ export const FloatingChatButton: React.FC = () => {
   const handlePrefillSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
+    setIsIdle(false);
+    setIsSending(true);
+
     const payload = {
       ...prefill,
       createdAt: new Date().toISOString(),
@@ -83,8 +105,12 @@ export const FloatingChatButton: React.FC = () => {
     clearChatContext();
 
     const href = buildWhatsappLink(CONTACT_INFO.whatsapp, message);
-    window.open(href, '_blank', 'noopener,noreferrer');
-    setIsPanelOpen(false);
+
+    setTimeout(() => {
+      window.open(href, '_blank', 'noopener,noreferrer');
+      setIsPanelOpen(false);
+      setIsSending(false);
+    }, 360);
   };
 
   return (
@@ -196,11 +222,29 @@ export const FloatingChatButton: React.FC = () => {
               </a>
               <button
                 type="submit"
-                className="bg-action-primary text-white px-5 py-3 font-display font-bold uppercase text-[10px] tracking-widest rounded-xl shadow-glow-brand hover:bg-white hover:text-action-primaryHover transition-all"
+                className="bg-action-primary text-white px-5 py-3 font-display font-bold text-[11px] tracking-wide rounded-xl shadow-glow-brand hover:bg-white hover:text-action-primaryHover transition-all flex items-center gap-2"
                 aria-label="Enviar mensagem pelo WhatsApp"
+                disabled={isSending}
               >
-                Enviar pelo WhatsApp
+                <span className={cn('flex items-center justify-center', isSending ? 'send-check' : '')}>
+                  {isSending ? (
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path d="M5 12l4 4L19 6" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  ) : (
+                    <svg className="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                      <path d="M22 2L11 13" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                      <path d="M22 2l-7 20-4-9-9-4 20-7z" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  )}
+                </span>
+                <span>Enviar pelo WhatsApp</span>
               </button>
+              {isSending && (
+                <span className="sr-only" aria-live="polite">
+                  Mensagem enviada
+                </span>
+              )}
             </div>
           </form>
         </div>
@@ -213,7 +257,7 @@ export const FloatingChatButton: React.FC = () => {
         aria-label={isOnline ? 'Abrir chat com consultor' : 'Deixar mensagem no WhatsApp'}
       >
         <div className="relative">
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <svg className={cn('w-6 h-6', isIdle ? 'fab-idle' : '')} fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M8 10h.01M12 10h.01M16 10h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
           </svg>
           <span className={cn(
