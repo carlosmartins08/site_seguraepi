@@ -13,6 +13,7 @@ import { useLocation } from '../../hooks/useLocation';
 import { useI18n } from '../../hooks/useI18n';
 import { openWbotChat } from '../../lib/wbot';
 import { LocaleSwitcher } from '../actions/LocaleSwitcher';
+import { ROUTES } from '../../lib/routes';
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
@@ -82,9 +83,9 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   }, [isMobileMenuOpen]);
 
   const navLinks: Array<{ name: string; href: Route }> = [
-    { name: t('nav.home', 'Início'), href: '/' },
-    { name: t('nav.epiCategories', 'EPI por Categoria'), href: '/epi/categorias' },
-    { name: t('nav.catalog', 'Catálogo'), href: '/catalogo' },
+    { name: t('nav.home', 'Início'), href: ROUTES.home },
+    { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
+    { name: t('nav.catalog', 'Catálogo'), href: ROUTES.catalog },
   ];
 
   return (
@@ -143,7 +144,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         />
 
         <Container className="h-full flex items-center justify-between">
-          <Link href="/" className="hover:scale-105 transition-transform duration-500 relative z-10">
+          <Link href={ROUTES.home} className="hover:scale-105 transition-transform duration-500 relative z-10">
             <SeguraLogo
               section="navbar"
               variant={logoVariant}

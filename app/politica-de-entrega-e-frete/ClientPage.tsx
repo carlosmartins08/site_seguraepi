@@ -11,9 +11,9 @@ import { ContextLink } from '../../components/actions/ContextLink';
 import { CONTACT_INFO } from '../../lib/constants';
 
 const badges = [
-  { label: 'Entrega gratuita GJP acima de R$ 500', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'CIF ou FOB conforme sua operação', color: 'bg-slate-900 text-white' },
-  { label: 'Rastreio e conferência na entrega', color: 'bg-emerald-100 text-emerald-700' },
+  { label: 'Logistica GJP + Nordeste', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'CIF ou FOB conforme sua operacao', color: 'bg-slate-900 text-white' },
+  { label: 'Conferencia no recebimento', color: 'bg-emerald-100 text-emerald-700' },
 ];
 
 export default function ClientPage() {
@@ -40,11 +40,11 @@ export default function ClientPage() {
                 Política de Entrega e Frete
               </p>
               <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
-                Logística segura, prazos combinados e rastreio visível.
+                Logistica estruturada para entregar com integridade e prazo.
               </h1>
               <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
-                Atendemos Grande João Pessoa com rota própria e grandes pedidos em todo o Nordeste com transportadoras
-                auditadas. Integridade do EPI e cumprimento do prazo são prioridade.
+                Atendemos desde demandas locais na Grande Joao Pessoa ate grandes pedidos industriais no Nordeste.
+                Nosso compromisso e que o EPI chegue dentro do prazo acordado e em perfeito estado.
               </p>
             </div>
 
@@ -75,8 +75,8 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="1. Frete Grátis e Condições Especiais"
-            title="Custo-benefício sem abrir mão da rastreabilidade"
-            description="Condições sob medida para pedidos locais e regionais."
+            title="Custo-beneficio para sua operacao"
+            description="Condicoes especiais para Grande Joao Pessoa e demais regioes."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-bg-surfaceMuted">
@@ -87,8 +87,8 @@ export default function ClientPage() {
                 <h3 className="text-xl font-display font-bold text-text-primary">Grande João Pessoa</h3>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Pedidos acima de R$ 500,00 têm entrega gratuita via rota própria. Consulte seu vendedor para confirmar a
-                disponibilidade no seu bairro e janela de entrega.
+                Para pedidos acima de R$ 500,00, oferecemos entrega gratuita via rota propria. Consulte seu vendedor
+                para verificar a disponibilidade de rota para o seu bairro.
               </p>
             </div>
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
@@ -99,8 +99,7 @@ export default function ClientPage() {
                 <h3 className="text-xl font-display font-bold text-text-primary">Demais Regiões</h3>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Operamos com transportadoras parceiras que oferecem prazos competitivos, rastreabilidade e manuseio
-                seguro dos volumes.
+                Trabalhamos com transportadoras parceiras que garantem prazos competitivos e rastreabilidade da carga.
               </p>
             </div>
           </div>
@@ -111,8 +110,8 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="2. Modalidades de Envio (CIF e FOB)"
-            title="Escolha conforme a estratégia da sua operação"
-            description="Definimos no momento da cotação a modalidade que melhor atende seu pedido."
+            title="Definicao no momento da cotacao"
+            description="Escolha a modalidade que melhor atende sua necessidade."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
@@ -123,8 +122,8 @@ export default function ClientPage() {
                 <h4 className="text-lg font-display font-bold text-text-primary">Frete CIF</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Pago pela Segura EPI em negociações específicas ou rotas promocionais. Assumimos pagamento e gestão da
-                entrega até sua porta.
+                Pago pela Segura EPI em negociacoes especificas ou rotas promocionais. Assumimos pagamento e gestao da
+                entrega ate sua porta.
               </p>
             </div>
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
@@ -135,8 +134,8 @@ export default function ClientPage() {
                 <h4 className="text-lg font-display font-bold text-text-primary">Frete FOB</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Pago pelo cliente. Você escolhe a transportadora de confiança para coletar no nosso CD; preparamos a
-                carga paletizada/embalada e pronta para coleta.
+                Pago pelo cliente. Voce indica a transportadora de confianca para coletar no nosso CD. Nossa equipe
+                deixa a carga paletizada ou embalada, pronta para coleta.
               </p>
             </div>
           </div>
@@ -147,16 +146,16 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="3. Protocolo de Recebimento Seguro"
-            title="Conferência na entrega garante integridade e agilidade"
-            description="Siga estes passos ao receber a mercadoria."
+            title="Conferencia no ato da entrega"
+            description="A verificacao na hora e a maior garantia de seguranca."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-3 text-slate-600">
               {[
-                'Conte os volumes e compare com a NF e o CT-e.',
-                'Avalie a embalagem: sinais de violação, avaria ou umidade.',
+                'Conte os volumes e compare com a Nota Fiscal e o Conhecimento de Transporte.',
+                'Avalie a embalagem: sinais de violacao, avaria ou umidade.',
                 'Ressalva imediata no verso do comprovante se houver problema (item faltante ou trocado).',
-                'Comunique o setor de Logística no ato.',
+                'Comunique nosso setor de Logistica no ato.',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -165,8 +164,8 @@ export default function ClientPage() {
               ))}
             </div>
             <div className="p-6 rounded-3xl border border-amber-200 bg-amber-50 text-amber-800 text-sm">
-              Não aceitamos reclamações de divergência de volume após a saída do entregador. A ressalva no comprovante é
-              essencial para abrir o chamado.
+              Nao aceitaremos reclamacoes de divergencia de volume apos a saida do entregador. A ressalva no comprovante
+              e essencial para abrir o chamado.
             </div>
           </div>
         </Container>
@@ -177,7 +176,7 @@ export default function ClientPage() {
           <SectionTitle
             subtitle="4. Prazos de Entrega"
             title="Contagem a partir do faturamento"
-            description="Transparência sobre quando seu EPI chega."
+            description="O prazo comeca a contar a partir do faturamento do pedido."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
@@ -188,7 +187,7 @@ export default function ClientPage() {
                 <h4 className="text-lg font-display font-bold text-text-primary">Rotas locais (frota própria)</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Entregas conforme cronograma das rotas. Consulte os dias da sua região.
+                Entregas conforme cronograma da frota propria. Consulte os dias da sua regiao.
               </p>
             </div>
             <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white">
@@ -199,7 +198,7 @@ export default function ClientPage() {
                 <h4 className="text-lg font-display font-bold text-text-primary">Transportadoras</h4>
               </div>
               <p className="text-slate-600 leading-relaxed">
-                Prazos conforme tabela da transportadora contratada, variando por cidade de destino.
+                Prazos conforme a tabela da transportadora contratada, variando conforme a cidade de destino.
               </p>
             </div>
           </div>

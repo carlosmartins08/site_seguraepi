@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Retirada Expressa na Loja | Segura EPI',
+  title: 'Politica de Entregas e Retirada na Loja | Segura EPI',
   description:
-    'Entenda o fluxo de compra via WhatsApp, horários de corte e prazos para retirada expressa na recepção da Segura EPI, sem filas e com conferência prévia.',
+    'Entenda a retirada expressa na loja, cortes de liberacao, modalidades CIF/FOB e protocolo de conferencia da Segura EPI.',
 };

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint:design": "tsx tools/lint-design.ts"
+    "lint:design": "tsx tools/lint-design.ts",
+    "lint:routes": "tsx tools/lint-routes.ts"
   },
   "dependencies": {
     "next": "^16.1.3",

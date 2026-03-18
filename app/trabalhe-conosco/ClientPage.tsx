@@ -12,40 +12,40 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { SeguraIcon } from '../../components/icons/SeguraIcon';
 
 const heroBadges = [
-  { label: 'Ética inegociável', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'Etica inegociavel', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Alta performance', color: 'bg-slate-900 text-white' },
-  { label: 'Propósito real', color: 'bg-emerald-100 text-emerald-700' },
+  { label: 'Compromisso com a vida', color: 'bg-emerald-100 text-emerald-700' },
 ];
 
 const cultura: { title: string; desc: string; icon: 'shield' | 'heart' | 'book' | 'spark' }[] = [
-  { title: 'Ética inegociável', desc: 'Transparência do estoque à venda.', icon: 'shield' },
-  { title: 'Foco no cliente', desc: 'Entregamos soluções que salvam vidas.', icon: 'heart' },
-  { title: 'Crença e humildade', desc: 'Trabalho duro e respeito às pessoas.', icon: 'book' },
-  { title: 'Alta performance', desc: 'Metas, dados e mérito reconhecido.', icon: 'spark' },
+  { title: 'Etica inegociavel', desc: 'A transparencia guia todas as nossas decisoes, do estoque a venda.', icon: 'shield' },
+  { title: 'Foco no cliente', desc: 'Nao vendemos apenas produtos, entregamos solucoes que salvam vidas.', icon: 'heart' },
+  { title: 'Crenca e humildade', desc: 'Trabalho duro, aprendizado continuo e respeito as pessoas.', icon: 'book' },
+  { title: 'Alta performance', desc: 'Metas, dados e resultados. Aqui, o merito e reconhecido.', icon: 'spark' },
 ];
 
 const areas: { title: string; desc: string; icon: 'bolt' | 'truck' | 'check' }[] = [
   {
     title: 'Comercial e Vendas',
-    desc: 'Consultores e SDRs B2B com perfil consultivo e negociação forte para abrir portas e fechar contratos.',
+    desc: 'Consultores e SDRs (pre-vendas) com perfil consultivo, resiliente e negociacao B2B para abrir portas e fechar contratos.',
     icon: 'bolt',
   },
   {
-    title: 'Logística e Operações',
-    desc: 'Pessoas organizadas e ágeis para garantir prazo, conferência rigorosa e processos eficientes.',
+    title: 'Logistica e Operacoes',
+    desc: 'Profissionais organizados para garantir prazo, conferencia rigorosa e processos eficientes que sustentam a operacao.',
     icon: 'truck',
   },
   {
     title: 'Administrativo e Financeiro',
-    desc: 'Perfis analíticos e éticos para Compras, Fiscal, RH e Financeiro, guardiões da conformidade.',
+    desc: 'Compras, Fiscal, RH e Financeiro com perfis analiticos, eticos e detalhistas, guardioes da conformidade.',
     icon: 'check',
   },
 ];
 
 const beneficios = [
-  'Salário compatível com o mercado + variável (elegíveis).',
-  'Plano de Saúde e Odontológico (após experiência).',
-  'Vale-Refeição.',
+  'Salario compativel com o mercado + variavel (para cargos elegiveis).',
+  'Plano de Saude e Odontologico (apos experiencia).',
+  'Vale-Refeicao.',
   'Seguro de Vida.',
   'Plano de Carreira Estruturado.',
 ];
@@ -77,8 +77,8 @@ export default function ClientPage() {
                 Construa sua carreira protegendo vidas.
               </h1>
               <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
-                Somos a Segura EPI: ética, alta performance e compromisso em levar segurança a quem constrói o futuro.
-                Se você busca crescimento e propósito, seu lugar é aqui.
+                Somos a Segura EPI. Uma empresa lider em distribuicao, movida por etica, alta performance e o compromisso
+                de levar seguranca para quem constroi o futuro. Se voce busca crescimento e proposito, seu lugar e aqui.
               </p>
             </div>
 
@@ -109,8 +109,8 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="Nossa Cultura"
-            title="Guardiões da Marca: ética, cliente, humildade e performance"
-            description="Ambiente dinâmico e desafiador, guiado por valores sólidos do nosso código de conduta."
+            title="Por que trabalhar aqui?"
+            description="Baseado nos valores inegociaveis do nosso Codigo de Conduta."
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cultura.map((item) => (
@@ -134,9 +134,9 @@ export default function ClientPage() {
       <Section id="areas" variant="offwhite">
         <Container className="max-w-6xl">
           <SectionTitle
-            subtitle="Áreas de atuação"
-            title="Escolha o front onde você quer gerar impacto"
-            description="Perfis mapeados nos nossos ICPs para manter o padrão de excelência."
+            subtitle="Areas de atuacao"
+            title="Perfis que buscamos"
+            description="Para atrair os perfis especificos dos nossos ICPs e manter o padrao de excelencia."
           />
           <div className="grid md:grid-cols-3 gap-6">
             {areas.map((area) => (
@@ -159,8 +159,8 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="O que oferecemos"
-            title="Benefícios e crescimento estruturado"
-            description="Reconhecemos quem caminha conosco e entregamos estrutura para evoluir."
+            title="Beneficios e crescimento estruturado"
+            description="Valorizamos quem caminha conosco e entregamos estrutura para evoluir."
           />
           <div className="grid md:grid-cols-2 gap-6">
             {beneficios.map((beneficio) => (
@@ -183,23 +183,23 @@ export default function ClientPage() {
             <ul className="space-y-3 text-slate-200 leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
-                Envie seu currículo para <a className="underline hover:text-action-primaryHover" href="mailto:rh@seguraepi.com.br">rh@seguraepi.com.br</a>.
+                Envie seu curriculo para <a className="underline hover:text-action-primaryHover" href="mailto:rh@seguraepi.com.br">rh@seguraepi.com.br</a>.
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
-                Assunto do e-mail: nome da vaga (Ex: “Vaga Vendedor B2B”).
+                Assunto do e-mail: coloque o nome da vaga de interesse (ex: "Vaga Vendedor B2B").
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
-                Mantenha o LinkedIn atualizado e acompanhe nossas redes para novas oportunidades.
+                Mantenha o LinkedIn atualizado e acompanhe nossas redes sociais para novas oportunidades.
               </li>
             </ul>
             <div className="flex flex-wrap gap-3">
               <Button href="mailto:rh@seguraepi.com.br" variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
-                Enviar currículo
+                Enviar curriculo
               </Button>
               <ContextLink href="/catalogo" className="text-sm text-white">
-                Conhecer nossas soluções
+                Conhecer nossas solucoes
               </ContextLink>
             </div>
           </div>
@@ -209,4 +209,3 @@ export default function ClientPage() {
     </main>
   );
 }
-

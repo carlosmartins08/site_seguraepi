@@ -3,7 +3,9 @@ export type CategoryKey =
   | "protecao-respiratoria"
   | "protecao-auditiva"
   | "protecao-ocular"
-  | "trabalho-em-altura";
+  | "trabalho-em-altura"
+  | "calcados"
+  | "sinalizacao";
 
 export interface CategoryPageData {
   key: CategoryKey;
@@ -12,39 +14,69 @@ export interface CategoryPageData {
   heroTitle: string;
   heroSubtitle: string;
   badges: string[];
+  indicationsSection?: { subtitle?: string; title: string; description?: string };
   indications: { title: string; desc: string }[];
+  spotlight?: { subtitle?: string; title: string; description: string; ctaLabel?: string; ctaHref?: string };
+  compliance?: { title: string; description: string };
   commonUses: string[];
   commonMistakes: string[];
   segments: string[];
   faq: { q: string; a: string }[];
+  cta?: { eyebrow?: string; title: string; description?: string; buttonLabel: string; href: string };
 }
+
+export const CATEGORY_ORDER: CategoryKey[] = [
+  "protecao-maos",
+  "protecao-respiratoria",
+  "protecao-auditiva",
+  "protecao-ocular",
+  "trabalho-em-altura",
+  "calcados",
+  "sinalizacao",
+];
 
 export const CATEGORY_PAGES: Record<CategoryKey, CategoryPageData> = {
   "protecao-maos": {
     key: "protecao-maos",
-    name: "Proteção das Mãos",
-    shortDescription: "Luvas de alta performance para riscos térmicos, químicos e mecânicos em ambientes industriais.",
-    heroTitle: "PROTEÇÃO TÉCNICA PARA AS MÃOS",
-    heroSubtitle: "Aumente a segurança e produtividade com luvas especificadas para o risco real da sua operação.",
-    badges: ["NR-06", "Riscos Mecânicos", "Alta Destreza"],
+    name: "Luvas de Seguranca",
+    shortDescription: "Luvas tecnicas para riscos mecanicos, quimicos, termicos e biologicos com sensibilidade tatil.",
+    heroTitle: "LUVAS DE SEGURANCA E PROTECAO PARA AS MAOS",
+    heroSubtitle: "As maos sao as ferramentas mais versateis e expostas do corpo. Portfolio tecnico com marcas como Danny, Volk, Super Safety e 3M.",
+    badges: ["Risco Mecanico", "Risco Quimico", "Alta Destreza"],
+    indicationsSection: {
+      subtitle: "Navegue por Risco",
+      title: "Encontre a luva ideal para o perigo da sua atividade",
+    },
     indications: [
-      { title: "Manuseio de Agentes Químicos", desc: "Barreiras específicas para solventes, ácidos e óleos." },
-      { title: "Operações de Corte e Abrasão", desc: "Fibras de alta resistência para proteção contra lâminas." },
-      { title: "Ambientes de Alta Temperatura", desc: "Isolamento térmico certificado para calor de contato." }
+      { title: "Risco Mecanico", desc: "Luvas de vaqueta, raspa e malha para construcao, carga e solda." },
+      { title: "Risco Quimico", desc: "Luvas nitrilicas, neoprene e latex para oleos, solventes e acidos." },
+      { title: "Tato e Precisao", desc: "Luvas banhadas em PU ou latex corrugado para manuseio de pecas pequenas." },
+      { title: "Anti-Corte", desc: "Fibras de alta tecnologia para laminas, vidros e chapas metalicas." }
     ],
-    commonUses: ["Manutenção Industrial", "Linhas de Montagem", "Manipulação de Peças Oleosas", "Construção Civil"],
+    spotlight: {
+      subtitle: "Venda Corporativa",
+      title: "Abastecimento Industrial e Atacado",
+      description: "Luvas sao itens de alto giro e reposicao constante. Oferecemos condicoes diferenciadas para caixas fechadas ou contratos mensais.",
+    },
+    commonUses: ["Construcao", "Manutencao", "Industria", "Logistica"],
     commonMistakes: [
-      "Usar luvas de tamanho inadequado, comprometendo a destreza.",
-      "Ignorar o tempo de permeação em luvas químicas.",
-      "Utilizar luvas de couro onde há risco de umidade constante.",
-      "Não validar a resistência ao corte conforme a norma EN 388."
+      "Escolher a luva sem considerar o risco predominante da atividade.",
+      "Usar latex em ambientes com oleos, solventes ou acidos.",
+      "Ignorar a necessidade de sensibilidade tatil em tarefas de precisao.",
+      "Nao validar o tamanho correto para o calce da equipe."
     ],
-    segments: ["Indústria Metalmecânica", "Logística", "Química e Petroquímica", "Construção"],
+    segments: ["Industria", "Logistica", "Construcao", "Quimica"],
     faq: [
-      { q: "Como saber o tamanho correto?", a: "Meça a circunferência da palma da mão e consulte nossa tabela técnica." },
-      { q: "Qual a durabilidade média?", a: "Depende da agressividade do uso, mas orientamos trocas preventivas baseadas no desgaste." },
-      { q: "Todas têm CA?", a: "Sim, fornecemos apenas itens com Certificado de Aprovação válido." }
-    ]
+      { q: "Qual a diferenca entre luva nitrilica e latex?", a: "A nitrilica oferece maior resistencia quimica e mecanica e e hipoalergenica. A de latex tem mais elasticidade, mas menor resistencia a oleos." },
+      { q: "Como saber o tamanho correto?", a: "Consulte nossa tabela de medidas ou solicite uma amostra para testes de calce com a equipe." }
+    ],
+    cta: {
+      eyebrow: "Atendimento B2B",
+      title: "Fale com um consultor sobre luvas para sua operacao",
+      description: "Oriente a escolha tecnica e garanta reposicao constante sem ruptura.",
+      buttonLabel: "Falar com consultor",
+      href: "/chat",
+    }
   },
   "protecao-respiratoria": {
     key: "protecao-respiratoria",
@@ -126,28 +158,130 @@ export const CATEGORY_PAGES: Record<CategoryKey, CategoryPageData> = {
   },
   "trabalho-em-altura": {
     key: "trabalho-em-altura",
-    name: "Trabalho em Altura",
-    shortDescription: "Cinturões de segurança, talabartes e trava-quedas certificados para prevenção de quedas (NR-35).",
-    heroTitle: "SEGURANÇA MÁXIMA PARA TRABALHO EM ALTURA",
-    heroSubtitle: "Equipamentos de retenção e posicionamento com foco em ergonomia e segurança absoluta.",
-    badges: ["NR-35", "NBR 15836", "Retenção de Queda"],
+    name: "Trabalho em Altura (NR-35)",
+    shortDescription: "Cinturoes, talabartes e ancoragens certificados para trabalho em altura com conformidade NR-35.",
+    heroTitle: "EQUIPAMENTOS PARA TRABALHO EM ALTURA (NR-35)",
+    heroSubtitle: "Quando o risco e a queda, a qualidade do equipamento e vital. Marcas como Carbografite e MG Cintos com certificacao INMETRO e conformidade NR-35.",
+    badges: ["NR-35", "INMETRO", "Protecao Contra Quedas"],
+    indicationsSection: {
+      subtitle: "Linha Completa de Protecao",
+      title: "Cintos, talabartes e acessorios para trabalho em altura",
+    },
     indications: [
-      { title: "Acesso a Telhados e Estruturas", desc: "Sistemas de ancoragem e linhas de vida temporárias." },
-      { title: "Uso em Andaimes e Plataformas", desc: "Talabartes duplos para movimentação segura." },
-      { title: "Espaços Confinados com Verticalidade", desc: "Cinturões com pontos de conexão para resgate." }
+      { title: "Cintos Paraquedistas", desc: "Modelos com 1 a 5 pontos de conexao e opcoes para espaco confinado ou solda." },
+      { title: "Talabartes de Seguranca", desc: "Simples, duplos (em Y) e com absorvedor de energia (ABS)." },
+      { title: "Trava-Quedas", desc: "Para corda ou cabo de aco, essenciais para movimentacao vertical segura." },
+      { title: "Acessorios", desc: "Mosquetoes, polias, fitas de ancoragem e capacetes com jugular." }
     ],
-    commonUses: ["Limpeza de Fachadas", "Instalações Elétricas", "Montagem de Eventos", "Manutenção Industrial"],
+    spotlight: {
+      subtitle: "Conteudo Tecnico",
+      title: "A Importancia da Inspecao",
+      description: "Equipamentos de altura exigem inspecao rigorosa antes de cada uso. Indicamos o material correto conforme o ambiente (poliester ou para-aramida).",
+    },
+    commonUses: ["Construcao", "Telecom", "Energia", "Manutencao"],
     commonMistakes: [
-      "Não calcular a Zona Livre de Queda (ZLQ).",
-      "Utilizar equipamentos sem inspeção prévia de rotina.",
-      "Ancoragem em pontos sem resistência estrutural validada.",
-      "Não utilizar absorvedores de energia em quedas potenciais."
+      "Usar equipamento sem inspecao previa de rotina.",
+      "Escolher material inadequado para ambientes com calor ou solda.",
+      "Nao descartar cintos que sofreram queda ou desgaste nas costuras.",
+      "Ignorar o uso de absorvedor de energia em quedas com fator maior que 1."
     ],
-    segments: ["Construção Civil", "Telecomunicações", "Energia", "Manutenção Predial"],
+    segments: ["Construcao", "Telecomunicacoes", "Energia", "Manutencao"],
     faq: [
-      { q: "Qual a validade do cinturão?", a: "Geralmente 5 anos, mas deve ser descartado após qualquer queda real." },
-      { q: "Precisa de treinamento?", a: "Sim, a NR-35 exige treinamento teórico e prático obrigatório." },
-      { q: "O que é talabarte em Y?", a: "Permite que o usuário esteja sempre conectado a um ponto enquanto se move." }
-    ]
+      { q: "Qual a validade de um cinto de seguranca?", a: "Os fabricantes indicam entre 5 e 10 anos, mas a vida util depende do estado de conservacao. Se houve queda, descarte imediatamente." },
+      { q: "O que e o Absorvedor de Energia?", a: "Dispositivo no talabarte que se abre em caso de queda para amortecer o impacto e evitar lesoes graves." }
+    ],
+    cta: {
+      eyebrow: "NR-35",
+      title: "Garanta a seguranca da sua equipe em altura.",
+      description: "Fale com um especialista e monte o sistema correto para a sua operacao.",
+      buttonLabel: "Falar com Especialista NR-35",
+      href: "/chat",
+    }
+  },
+  "calcados": {
+    key: "calcados",
+    name: "Calcados de Seguranca",
+    shortDescription: "Botas e calcados de seguranca com protecao contra impactos, perfuracao, umidade e risco eletrico.",
+    heroTitle: "CALCADOS DE SEGURANCA E BOTAS DE PROTECAO",
+    heroSubtitle: "A protecao dos pes e fundamental para a integridade do trabalhador e a produtividade da operacao. Linha completa com NR-06 e marcas como Bracol, Vulcaflex, Marluvas e Fujiwara.",
+    badges: ["NR-06", "Biqueira de Aco", "Isolamento Eletrico"],
+    indicationsSection: {
+      subtitle: "Navegue por Aplicacao",
+      title: "Escolha onde voce vai usar",
+    },
+    indications: [
+      { title: "Construcao e Obra", desc: "Botinas de couro com biqueira de aco e solado bidensidade." },
+      { title: "Limpeza e Saneamento", desc: "Botas de PVC impermeaveis (galocha) de cano curto ou longo." },
+      { title: "Eletricista", desc: "Calcados livres de metais (composite) com isolamento eletrico." },
+      { title: "Hospitalar e Alimenticia", desc: "Sapatos brancos de facil higienizacao e solado antiderrapante." }
+    ],
+    spotlight: {
+      subtitle: "Destaque Tecnologico",
+      title: "Conheca a Tecnologia Neo Evolution",
+      description: "Palmilhas antiestaticas moldadas a laser em 3 minutos para se adaptar a pisada e reduzir a fadiga muscular.",
+      ctaLabel: "Saiba mais",
+      ctaHref: "/chat",
+    },
+    compliance: {
+      title: "Seguranca Certificada (CA Ativo)",
+      description: "Todos os calcados comercializados possuem Certificado de Aprovacao valido, garantindo rastreabilidade e qualidade tecnica para auditorias.",
+    },
+    commonUses: ["Construcao", "Industria", "Limpeza", "Eletrica"],
+    commonMistakes: [
+      "Escolher calcado sem considerar risco de perfuracao, impacto ou umidade.",
+      "Usar modelo com metais em ambientes com risco eletrico.",
+      "Ignorar necessidade de solado antiderrapante em areas molhadas.",
+      "Nao validar o CA ativo antes de fechar o pedido."
+    ],
+    segments: ["Construcao", "Industria", "Saneamento", "Eletrica"],
+    faq: [
+      { q: "Qual a validade de uma bota de seguranca?", a: "A validade do CA se refere a autorizacao de venda. A vida util depende do uso e conservacao, variando em geral de 6 a 12 meses." },
+      { q: "Voces vendem grade fechada?", a: "Sim. Atendemos desde a reposicao de um par ate grades completas para industrias com condicoes especiais." }
+    ],
+    cta: {
+      eyebrow: "Conversao B2B",
+      title: "Precisa cotar calcados para toda a equipe?",
+      buttonLabel: "Falar com Consultor no WhatsApp",
+      href: "/chat",
+    }
+  },
+  "sinalizacao": {
+    key: "sinalizacao",
+    name: "Sinalizacao e EPC",
+    shortDescription: "Itens de sinalizacao e protecao coletiva para delimitar areas e reduzir riscos em ambientes industriais.",
+    heroTitle: "SINALIZACAO DE SEGURANCA E PROTECAO COLETIVA (EPC)",
+    heroSubtitle: "A seguranca comeca pela organizacao do ambiente. Oferecemos produtos robustos e de alta visibilidade em conformidade com normas tecnicas.",
+    badges: ["Alta Visibilidade", "Normas Tecnicas", "EPC"],
+    indicationsSection: {
+      subtitle: "Categorias de Produtos",
+      title: "Tudo para organizar e sinalizar ambientes com seguranca",
+    },
+    indications: [
+      { title: "Delimitacao de Area", desc: "Cones de borracha ou rigidos, pedestais e correntes plasticas." },
+      { title: "Fitas de Sinalizacao", desc: "Fitas zebradas, antiderrapantes e de demarcacao de solo." },
+      { title: "Sinalizacao Visual", desc: "Placas de cuidado, EPI obrigatorio, saida de emergencia e cavaletes." },
+      { title: "Protecao Coletiva", desc: "Mantas isolantes, protetores de vergalao e telas de tapume." }
+    ],
+    commonUses: ["Obras", "Industria", "Estacionamentos", "Logistica"],
+    commonMistakes: [
+      "Usar cone rigido em locais com trafego de veiculos.",
+      "Nao sinalizar riscos em areas de circulacao.",
+      "Ignorar a padronizacao normativa das placas.",
+      "Deixar fitas e demarcacoes desgastadas sem reposicao."
+    ],
+    segments: ["Construcao", "Industria", "Logistica", "Servicos"],
+    faq: [
+      { q: "Qual a diferenca entre cone rigido e flexivel?", a: "O cone flexivel e indicado para trafego de veiculos, pois nao quebra ao ser atropelado. O rigido e para sinalizacao estatica." },
+      { q: "Voces personalizam placas?", a: "Trabalhamos com o padrao normativo de sinalizacao. Consulte nosso time para projetos especificos." }
+    ],
+    cta: {
+      eyebrow: "Conversao B2B",
+      title: "Organize sua obra ou empresa hoje mesmo.",
+      buttonLabel: "Solicitar Cotacao de Sinalizacao",
+      href: "/chat",
+    }
   }
 };
+
+
+

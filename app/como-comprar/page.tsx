@@ -27,8 +27,8 @@ export default function ComoComprarPage() {
           <div className="lg:col-span-7 space-y-8">
             <SectionTitle
               subtitle="Onboarding B2B"
-              title="Como Comprar e Cadastro de Clientes"
-              description="Processo de cadastro estruturado para liberar compras em ate 24h uteis, com opcoes a vista ou faturadas."
+              title="Como Comprar e Cadastro de Clientes | Segura EPI"
+              description="Processo de cadastro estruturado e transparente para liberar compras em ate 24 horas uteis apos o envio da documentacao completa."
               light
             />
             <div className="flex flex-wrap gap-4">
@@ -39,14 +39,14 @@ export default function ComoComprarPage() {
             </div>
             <div className="flex items-center gap-4 text-slate-300 text-sm">
               <SeguraLogo section="inline" variant="dark" size="sm" padding="tight" decorative />
-              <span>Cadastro revisado periodicamente para manter limite alinhado ao seu volume.</span>
+              <span>Revisao trimestral para clientes com volume acima de R$ 30 mil.</span>
             </div>
           </div>
           <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-elevation-2 backdrop-blur-xl">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-4">Prazos</p>
             <h3 className="text-3xl font-display font-black text-white mb-4">Liberacao em ate 24h uteis</h3>
             <p className="text-slate-200 text-sm leading-relaxed">
-              Enviando a documentacao completa, o cadastro simplificado libera compras a vista imediatamente. Para faturamento, a analise de credito ocorre no mesmo SLA.
+              Nosso time libera o cadastro em ate 24 horas uteis apos o envio de toda a documentacao necessaria.
             </p>
           </div>
         </Container>
@@ -55,34 +55,34 @@ export default function ComoComprarPage() {
       <Section id="modalidades" variant="offwhite">
         <Container className="space-y-16">
           <SectionTitle
-            subtitle="Flexibilidade financeira"
-            title="Escolha entre compra a vista ou faturada"
-            description="Do cadastro rapido sem analise ate o boleto faturado com limite sob medida para sua operacao."
+            subtitle="Modalidades de compra"
+            title="Compra a vista ou faturada, conforme seu fluxo"
+            description="Duas modalidades principais para atender urgencia ou planejamento, com cadastro rapido ou completo."
           />
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-elevation-1">
-              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra a vista</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra a vista (Cadastro rapido)</p>
               <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro rapido</h3>
-              <p className="text-slate-600 mb-4">Ideal para pedidos urgentes. Coletamos apenas dados comerciais e fiscais basicos.</p>
+              <p className="text-slate-600 mb-4">Ideal para quem tem urgencia. Cadastro simplificado com dados comerciais e fiscais.</p>
               <ul className="space-y-3 text-sm">
                 {[
-                  'Sem analise de credito aprofundada.',
-                  'Liberacao do pedido logo apos conferencia dos dados.',
-                  'Pagamentos via Pix ou Cartao conforme combinado com o consultor.',
+                  'Sem necessidade de analise de credito aprofundada.',
+                  'Liberacao do pedido mais celere.',
+                  'Compra a vista com validacao rapida.',
                 ].map((item) => bullet(item, item))}
               </ul>
             </div>
 
             <div className="rounded-3xl border border-action-primary bg-white p-8 shadow-glow-brand">
-              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra faturada</p>
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra faturada / boleto</p>
               <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro completo + credito</h3>
-              <p className="text-slate-600 mb-4">Pensado para quem precisa de prazo. Realizamos analise segura para definir limite aderente ao seu historico.</p>
+              <p className="text-slate-600 mb-4">Para quem busca prazo. Analise de credito segura para definir limite compativel com o porte e historico da empresa.</p>
               <ul className="space-y-3 text-sm">
                 {[
-                  'Prazo de pagamento via boleto apos aprovacao.',
                   'Analise de credito com retorno em ate 24h uteis.',
-                  'Limite revisado trimestralmente para clientes acima de R$30 mil.',
+                  'Limite definido conforme historico e capacidade da operacao.',
+                  'Pagamento via boleto faturado apos aprovacao.',
                 ].map((item) => bullet(item, item))}
               </ul>
             </div>
@@ -94,7 +94,7 @@ export default function ComoComprarPage() {
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Modalidade presencial</p>
                 <h3 className="text-2xl font-display font-black text-text-primary">Retirada expressa na loja</h3>
                 <p className="text-slate-600">
-                  Compre via vendedor e retire na unidade quando preferir. Sem filas e com o pedido separado e conferido.
+                  Feche o pedido com o consultor e retire na unidade com o pedido separado e conferido.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
@@ -109,9 +109,9 @@ export default function ComoComprarPage() {
       <Section id="documentacao" className="bg-white">
         <Container className="space-y-12">
           <SectionTitle
-            subtitle="Checklist de envio"
-            title="Documentacao necessaria para aprovacao sem pendencias"
-            description="Envie tudo na primeira remessa para garantir liberacao dentro do SLA de 24h uteis."
+            subtitle="Documentacao necessaria"
+            title="Envie os dados certos para aprovar sem pendencias"
+            description="Tenha tudo em maos para garantir liberacao dentro de 24 horas uteis."
           />
 
           <div className="grid md:grid-cols-2 gap-10">
@@ -120,8 +120,8 @@ export default function ComoComprarPage() {
               <ul className="space-y-3 text-sm">
                 {[
                   'Cartao CNPJ ativo.',
-                  'Inscricao Estadual / Sintegra atualizado.',
-                  'CNAE principal correto para o segmento.',
+                  'Comprovante de Inscricao Estadual (Sintegra) atualizado.',
+                  'CNAE correto para o ramo de atividade.',
                 ].map((item) => bullet(item, item))}
               </ul>
             </div>
@@ -129,12 +129,15 @@ export default function ComoComprarPage() {
               <h4 className="text-xl font-display font-bold text-text-primary mb-4">Contatos e enderecos</h4>
               <ul className="space-y-3 text-sm">
                 {[
-                  'Endereco completo da sede e, se aplicavel, de entrega e cobranca.',
-                  'Telefone fixo e celular/WhatsApp do comprador responsavel.',
-                  'Email dedicado para NFe e boletos do financeiro.',
-                  'Numero de colaboradores para dimensionar estoque e mix.',
+                  'Endereco completo da sede e confirmacao dos enderecos de entrega e cobranca.',
+                  'Telefone fixo e celular (WhatsApp) do comprador responsavel.',
+                  'Email para envio de NFe/boletos e telefone do financeiro.',
+                  'Numero aproximado de funcionarios para personalizar o atendimento.',
                 ].map((item) => bullet(item, item))}
               </ul>
+              <p className="text-slate-500 text-xs mt-4">
+                Dica: informar o CNAE correto e o numero de funcionarios agiliza a analise.
+              </p>
             </div>
           </div>
         </Container>
@@ -144,15 +147,15 @@ export default function ComoComprarPage() {
         <Container className="grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-6">
             <SectionTitle
-              subtitle="Saude do limite"
-              title="Politica de credito e revisao trimestral"
-              description="Clientes com volume acima de R$30 mil sao revisitados a cada 3 meses para ajustar limites e manter fluxo saudavel."
+              subtitle="Politica de credito"
+              title="Revisao trimestral para manter o limite alinhado"
+              description="Clientes com volume acima de R$ 30 mil passam por revisao de cadastro a cada 3 meses."
             />
             <ul className="space-y-3 text-sm text-slate-600">
               {[
-                'Avisamos sobre qualquer pendencia de documentacao antes de bloquear pedidos.',
-                'A revisao considera historico de pagamentos, volumes e previsao de demanda.',
-                'Consultor acompanha o processo e confirma nova alocacao de limite.',
+                'A revisao garante limite compativel com o crescimento da demanda.',
+                'A analise considera historico e perfil da empresa.',
+                'O consultor acompanha e informa qualquer pendencia imediatamente.',
               ].map((item) => bullet(item, item))}
             </ul>
           </div>
@@ -160,12 +163,12 @@ export default function ComoComprarPage() {
             <h4 className="text-xl font-display font-bold text-text-primary mb-3">Perguntas frequentes</h4>
             <div className="space-y-4 text-sm text-slate-600">
               <div>
-                <p className="font-display font-bold text-text-primary">Pessoa fisica pode comprar?</p>
-                <p>O foco e B2B (PJ). Para CPF, consulte o time sobre venda a vista como consumidor final.</p>
+                <p className="font-display font-bold text-text-primary">Pessoa fisica (CPF) pode comprar?</p>
+                <p>Nosso foco e o atendimento B2B (Pessoa Juridica). Para CPF, consulte o time comercial sobre venda a vista (Consumidor Final).</p>
               </div>
               <div>
-                <p className="font-display font-bold text-text-primary">Como saber se o cadastro foi aprovado?</p>
-                <p>Dentro de 24h uteis seu consultor retorna. Se faltar algo, avisamos na hora para nao atrasar o pedido.</p>
+                <p className="font-display font-bold text-text-primary">Como sei se meu cadastro foi aprovado?</p>
+                <p>Assim que a analise for concluida (dentro de 24h), seu consultor entra em contato. Se houver pendencia, avisamos imediatamente.</p>
               </div>
             </div>
           </div>
@@ -178,7 +181,7 @@ export default function ComoComprarPage() {
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Pronto para comprar</p>
               <h3 className="text-3xl md:text-4xl font-display font-black leading-tight">Envie sua documentacao agora e acelere a primeira compra</h3>
-              <p className="text-slate-300 text-base">Separar os dados fiscais e de contato evita pendencias e libera seu pedido no mesmo dia util.</p>
+              <p className="text-slate-300 text-base">Separar a documentacao evita pendencias e garante liberacao dentro de 24 horas uteis.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto">Enviar pelo WhatsApp</Button>

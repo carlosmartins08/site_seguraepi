@@ -1,9 +1,9 @@
-
 import React from 'react';
 import Link from 'next/link';
 import { Container } from './Container';
 import { SeguraLogo } from '../brand/SeguraLogo';
 import { CONTACT_INFO } from '../../lib/constants';
+import { ROUTES } from '../../lib/routes';
 
 interface FooterProps {
   onOpenPrivacy: () => void;
@@ -26,7 +26,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           <div className="md:col-span-1">
             <SeguraLogo section="footer" variant="mono-white" size="lg" padding="relaxed" className="mb-8" />
             <p className="text-slate-500 text-xs leading-relaxed uppercase tracking-[0.2em] font-sans mb-8">
-              Especialistas em proteção industrial e serviços técnicos B2B. Consultoria baseada em risco e conformidade.
+              Especialistas em protecao industrial e servicos tecnicos B2B. Consultoria baseada em risco e conformidade.
             </p>
             <div className="space-y-4">
               <p className="text-slate-400 text-[10px] font-display font-bold uppercase tracking-widest flex items-center gap-3">
@@ -48,7 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
               </a>
             </div>
             <div className="mt-10">
-              <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-4 text-action-primary">Certificações</h4>
+              <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-4 text-action-primary">Certificacoes</h4>
               <div className="grid grid-cols-2 gap-4">
                 <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">NR-06</div>
                 <div className="border border-white/10 p-3 rounded-xl text-center text-[9px] font-bold uppercase tracking-widest text-white/40">ISO 9001</div>
@@ -56,36 +56,38 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
             </div>
           </div>
           <div>
-            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Soluções</h4>
+            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Solucoes</h4>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
-              <li><Link href="/catalogo" className="hover:text-action-primaryHover transition-colors uppercase">Catálogo de EPI</Link></li>
-              <li><Link href="/epi" className="hover:text-action-primaryHover transition-colors uppercase">Guias Técnicos</Link></li>
-              <li><Link href="/centro-tecnico" className="hover:text-action-primaryHover transition-colors uppercase">Centro Técnico</Link></li>
+              <li><Link href={ROUTES.catalog} className="hover:text-action-primaryHover transition-colors uppercase">Catalogo de EPI</Link></li>
+              <li><Link href={ROUTES.epi} className="hover:text-action-primaryHover transition-colors uppercase">Guias Tecnicos</Link></li>
+              <li><Link href={ROUTES.center} className="hover:text-action-primaryHover transition-colors uppercase">Centro Tecnico</Link></li>
               <li><a href={CONTACT_INFO.whatsapp} className="hover:text-action-primaryHover transition-colors uppercase">Consultoria</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Compra & Logística</h4>
+            <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Compra & Logistica</h4>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
-              <li><Link href="/como-comprar" className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</Link></li>
-              <li><Link href="/retirada-expressa" className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</Link></li>
-              <li><Link href="/politica-de-entrega-e-frete" className="hover:text-action-primaryHover transition-colors uppercase">Política de Entrega e Frete</Link></li>
+              <li><Link href={ROUTES.howToBuy} className="hover:text-action-primaryHover transition-colors uppercase">Como Comprar</Link></li>
+              <li><Link href={ROUTES.pickupExpress} className="hover:text-action-primaryHover transition-colors uppercase">Retirada Expressa</Link></li>
+              <li><Link href={ROUTES.policyDelivery} className="hover:text-action-primaryHover transition-colors uppercase">Politica de Entrega e Frete</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-display font-bold text-[10px] uppercase tracking-[0.3em] mb-10 text-action-primary">Institucional & Legal</h4>
             <ul className="space-y-6 text-[10px] text-slate-400 uppercase tracking-widest font-display font-bold">
-              <li><Link href="/sobre-segura-epi" className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</Link></li>
-              <li><Link href="/trabalhe-conosco" className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</Link></li>
-              <li><Link href="/politica-de-trocas-e-devolucoes" className="hover:text-action-primaryHover transition-colors uppercase">Política de Trocas e Devoluções</Link></li>
-              <li><button onClick={onOpenPrivacy} className="hover:text-action-primaryHover transition-colors text-left uppercase">Privacidade</button></li>
-              <li><button onClick={onOpenTerms} className="hover:text-action-primaryHover transition-colors text-left uppercase">Termos de Uso</button></li>
+              <li><Link href={ROUTES.about} className="hover:text-action-primaryHover transition-colors uppercase">Sobre a Segura EPI</Link></li>
+              <li><Link href={ROUTES.careers} className="hover:text-action-primaryHover transition-colors uppercase">Trabalhe Conosco</Link></li>
+              <li><Link href={ROUTES.policyReturns} className="hover:text-action-primaryHover transition-colors uppercase">Politica de Trocas e Devolucoes</Link></li>
+              <li><Link href={ROUTES.privacyPolicy} className="hover:text-action-primaryHover transition-colors uppercase">Politica de Privacidade</Link></li>
+              <li><Link href={ROUTES.termsOfUse} className="hover:text-action-primaryHover transition-colors uppercase">Termos de Uso</Link></li>
+              <li><button onClick={onOpenPrivacy} className="hover:text-action-primaryHover transition-colors text-left uppercase">Privacidade (modal)</button></li>
+              <li><button onClick={onOpenTerms} className="hover:text-action-primaryHover transition-colors text-left uppercase">Termos (modal)</button></li>
             </ul>
           </div>
         </div>
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="text-slate-600 text-[9px] font-bold uppercase tracking-[0.4em]">
-            &copy; {new Date().getFullYear()} Segura EPI & Serviços. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Segura EPI & Servicos. Todos os direitos reservados.
           </div>
           <div className="flex gap-6">
             {socialLinks.map((social) => (
@@ -112,6 +114,3 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
     </footer>
   );
 };
-
-
-

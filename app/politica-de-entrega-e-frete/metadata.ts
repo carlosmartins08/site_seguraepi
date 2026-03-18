@@ -1,5 +1,5 @@
 export const metadata = {
   title: 'Política de Entrega e Frete | Segura EPI',
   description:
-    'Condições de frete, modalidades CIF/FOB, protocolo de recebimento seguro e prazos de entrega da Segura EPI para todo o Nordeste.',
+    'Politica de entrega e frete da Segura EPI: frete gratis em GJP acima de R$ 500, modalidades CIF/FOB, protocolo de recebimento e prazos.',
 };

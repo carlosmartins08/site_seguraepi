@@ -1,24 +1,11 @@
-import { SITE_URL } from '../lib/seo/site';
+﻿import { SITE_URL } from '../lib/seo/site';
 import { CATEGORY_PAGES } from '../lib/catalog/categories';
+import { ROUTES, SITEMAP_EXCLUDE } from '../lib/routes';
 
-const staticRoutes = [
-  '',
-  '/catalogo',
-  '/centro-tecnico',
-  '/como-comprar',
-  '/epi',
-  '/epi/categorias',
-  '/politica-de-entrega-e-frete',
-  '/politica-de-trocas-e-devolucoes',
-  '/retira',
-  '/retira-em-loja',
-  '/retirada-expressa',
-  '/sobre-segura-epi',
-  '/trabalhe-conosco',
-];
+const staticRoutes = Object.values(ROUTES).filter((path) => !SITEMAP_EXCLUDE.includes(path));
 
 export default function sitemap() {
-  const categoryRoutes = Object.keys(CATEGORY_PAGES).map((key) => `/epi/${key}`);
+  const categoryRoutes = Object.keys(CATEGORY_PAGES).map((key) => `${ROUTES.epi}/${key}`);
 
   return [...staticRoutes, ...categoryRoutes].map((path) => ({
     url: `${SITE_URL}${path}`,

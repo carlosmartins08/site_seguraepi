@@ -15,8 +15,8 @@ import { AlertList } from '../components/trust/AlertList';
 import { AssistedCTA } from '../components/conversion/AssistedCTA';
 import { GMBReviews } from '../components/trust/GMBReviews';
 import { PartnerShowcase } from '../components/trust/PartnerShowcase';
-import { CONTACT_INFO } from '../lib/constants';
 import { OG_IMAGE } from '../lib/seo/site';
+import { ROUTES, buildUrl } from '../lib/routes';
 import { ScrollReveal } from '../components/home/ScrollReveal';
 import { CaSearch } from '../components/home/CaSearch';
 import { FaqList, FaqItem } from '../components/home/FaqList';
@@ -109,7 +109,7 @@ export default function HomePage() {
 
               <div className="flex flex-wrap items-center gap-4 animate-slide-up delay-100">
                 <Button
-                  href="/catalogo?origem=home-hero"
+                  href={buildUrl(ROUTES.catalog, { origem: 'home-hero' })}
                   variant="primary"
                   className="px-10 py-5 shadow-glow-brand"
                   trackEvent="cta_hero_catalogo"
@@ -193,7 +193,7 @@ export default function HomePage() {
         title="Marcas que respeitam a vida."
         subtitle="Selecionamos fabricantes com C.A. ativo, rastreabilidade e compromisso ético. Cada parceria reflete nossa promessa: proteger pessoas com excelência."
         kpiText="42 parceiros auditados ⬢ 100% CA válido"
-        ctaHref="/catalogo?filtro=marca"
+        ctaHref={buildUrl(ROUTES.catalog, { filtro: 'marca' })}
         ctaLabel="Ver todas as marcas"
       />
 
@@ -212,10 +212,10 @@ export default function HomePage() {
                   </p>
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Button href="/chat?intent=frete" variant="primary" className="px-6 py-4 shadow-glow-brand">
+                  <Button href={buildUrl(ROUTES.chat, { intent: 'frete' })} variant="primary" className="px-6 py-4 shadow-glow-brand">
                     Validar prazo agora
                   </Button>
-                  <Button href="/retira-em-loja" variant="outline" className="px-6 py-4 text-white border-white/30 hover:border-action-primary hover:text-action-primaryHover">
+                  <Button href={ROUTES.pickupExpress} variant="outline" className="px-6 py-4 text-white border-white/30 hover:border-action-primary hover:text-action-primaryHover">
                     Ver pontos de retirada
                   </Button>
                 </div>
@@ -281,7 +281,7 @@ export default function HomePage() {
             >
               Atendimento online com consultor
             </OnlineChatButton>
-            <Button href="/catalogo?origem=home-objecoes" variant="outline" className="w-full sm:w-auto px-6 py-4">
+            <Button href={buildUrl(ROUTES.catalog, { origem: 'home-objecoes' })} variant="outline" className="w-full sm:w-auto px-6 py-4">
               Ver soluções imediatas
             </Button>
           </div>
@@ -342,7 +342,7 @@ export default function HomePage() {
                 title="Soluções por NR"
                 description="Consulte por norma (NR-10, NR-35, NR-18) com orientação humana para decidir rápido e com segurança."
                 icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>}
-                href="/catalogo?filtro=nr"
+                href={buildUrl(ROUTES.catalog, { filtro: 'nr' })}
                 actionText="Ver por NR"
                 className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
@@ -351,7 +351,7 @@ export default function HomePage() {
                 title="Cotação para Empresas"
                 description="Cadastro B2B com crédito em 24h, padronização por função e acompanhamento do consultor."
                 icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 7h6m-6 4h6m-9 6h12M5 21V5a2 2 0 012-2h10a2 2 0 012 2v16" /></svg>}
-                href="/chat?intent=cotacao-b2b"
+                href={buildUrl(ROUTES.chat, { intent: 'cotacao-b2b' })}
                 actionText="Abrir cotação"
                 className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
@@ -360,7 +360,7 @@ export default function HomePage() {
                 title="Retirada Expressa"
                 description="Confirme status e local de retirada em 3h na unidade Cabedelo com checklist de conferência."
                 icon={<svg className="w-8 h-8 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>}
-                href="/retira-em-loja"
+                href={ROUTES.pickupExpress}
                 actionText="Ver retirada"
                 className="bg-slate-900/70 text-white border-white/10 hover:border-action-primary hover:shadow-glow-brand"
               />
@@ -407,7 +407,7 @@ export default function HomePage() {
                   <OnlineChatButton variant="primary" className="w-full text-xs py-4" trackEvent="cta_home_metodo_chat">
                     Validar meu cenário no chat
                   </OnlineChatButton>
-                  <ContextLink href="/catalogo?origem=home-metodo" className="justify-center w-full">Ver catálogo por categoria</ContextLink>
+                  <ContextLink href={buildUrl(ROUTES.catalog, { origem: 'home-metodo' })} className="justify-center w-full">Ver catálogo por categoria</ContextLink>
                 </div>
               </div>
             </div>
@@ -434,7 +434,7 @@ export default function HomePage() {
                 title="Comprar EPI para minha equipe"
                 description="Conte sua operação e funções. Indicamos o EPI certo, treinamos o time e padronizamos reposição."
                 badges={["B2B", "Padronização"]}
-              href="/chat?origem=home-intencoes&intent=equipe"
+              href={buildUrl(ROUTES.chat, { origem: 'home-intencoes', intent: 'equipe' })}
               actionText="Iniciar atendimento"
             />
               <DecisionCard
@@ -442,7 +442,7 @@ export default function HomePage() {
                 title="Encontrar EPI por risco específico"
                 description="Corte, ruído, poeira, química, altura e mais. Validação de C.A. e adequação às NRs."
                 badges={["Risco", "Aplicação"]}
-              href="/catalogo?origem=home-intencoes&filtro=risco"
+              href={buildUrl(ROUTES.catalog, { origem: 'home-intencoes', filtro: 'risco' })}
               actionText="Ver por risco"
             />
               <DecisionCard
@@ -450,7 +450,7 @@ export default function HomePage() {
                 title="Já tenho itens definidos"
                 description="Envie a lista. Validamos se está aderente, sugerimos equivalentes e mostramos o prazo real."
                 badges={["Cotação", "Lista"]}
-              href="/chat?origem=home-intencoes&intent=cotar-itens"
+              href={buildUrl(ROUTES.chat, { origem: 'home-intencoes', intent: 'cotar-itens' })}
               actionText="Cotar agora"
             />
               <DecisionCard
@@ -458,7 +458,7 @@ export default function HomePage() {
                 title="Padronizar e comprar recorrente"
                 description="Organize categorias, tamanhos e frequência. Menos urgência, mais controle e segurança para o time."
                 badges={["Recorrência", "Controle"]}
-              href="/chat?origem=home-intencoes&intent=recorrencia"
+              href={buildUrl(ROUTES.chat, { origem: 'home-intencoes', intent: 'recorrencia' })}
               actionText="Falar sobre recorrência"
             />
           </div>
@@ -474,14 +474,14 @@ export default function HomePage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
-            <DecisionCard title="Proteção das mãos" description="Luvas por risco: corte, químico, abrasão e precisão. CA validado." href="/catalogo?categoria=maos" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção respiratória" description="Máscaras, filtros e respiradores com orientação de troca e selagem." href="/catalogo?categoria=respiratoria" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para diferentes níveis de ruído e turnos longos." href="/catalogo?categoria=auditiva" actionText="Ver catálogo" />
-            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto, partículas e respingos químicos." href="/catalogo?categoria=ocular" actionText="Ver catálogo" />
-            <DecisionCard title="Trabalho em altura" description="Cintos, talabartes e ancoragens certificados para NR-35." href="/catalogo?categoria=altura" actionText="Ver catálogo" />
-            <DecisionCard title="Vestuário" description="Uniformes e proteção térmica/antiestática alinhados ao seu ambiente." href="/catalogo?categoria=vestuario" actionText="Ver catálogo" />
-            <DecisionCard title="Calçados" description="Botas e sapatos com conforto, grip e isolamento conforme sua rotina." href="/catalogo?categoria=calcados" actionText="Ver catálogo" />
-            <DecisionCard title="Sinalização" description="Itens de apoio e comunicação visual para ambientes seguros e conscientes." href="/catalogo?categoria=sinalizacao" actionText="Ver catálogo" />
+            <DecisionCard title="Proteção das mãos" description="Luvas por risco: corte, químico, abrasão e precisão. CA validado." href={buildUrl(ROUTES.catalog, { categoria: 'maos' })} actionText="Ver catálogo" />
+            <DecisionCard title="Proteção respiratória" description="Máscaras, filtros e respiradores com orientação de troca e selagem." href={buildUrl(ROUTES.catalog, { categoria: 'respiratoria' })} actionText="Ver catálogo" />
+            <DecisionCard title="Proteção auditiva" description="Abafadores e plugues para diferentes níveis de ruído e turnos longos." href={buildUrl(ROUTES.catalog, { categoria: 'auditiva' })} actionText="Ver catálogo" />
+            <DecisionCard title="Proteção facial" description="Óculos e viseiras contra impacto, partículas e respingos químicos." href={buildUrl(ROUTES.catalog, { categoria: 'ocular' })} actionText="Ver catálogo" />
+            <DecisionCard title="Trabalho em altura" description="Cintos, talabartes e ancoragens certificados para NR-35." href={buildUrl(ROUTES.catalog, { categoria: 'altura' })} actionText="Ver catálogo" />
+            <DecisionCard title="Vestuário" description="Uniformes e proteção térmica/antiestática alinhados ao seu ambiente." href={buildUrl(ROUTES.catalog, { categoria: 'vestuario' })} actionText="Ver catálogo" />
+            <DecisionCard title="Calçados" description="Botas e sapatos com conforto, grip e isolamento conforme sua rotina." href={buildUrl(ROUTES.catalog, { categoria: 'calcados' })} actionText="Ver catálogo" />
+            <DecisionCard title="Sinalização" description="Itens de apoio e comunicação visual para ambientes seguros e conscientes." href={buildUrl(ROUTES.catalog, { categoria: 'sinalizacao' })} actionText="Ver catálogo" />
           </div>
         </Container>
       </Section>
@@ -516,7 +516,7 @@ export default function HomePage() {
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Construção Civil & Infra</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Obra segura e produtiva. Equipamentos testados para NR-18 e NR-35, antiqueda, botas de alta resistência e checklist de uso diário.</p>
                 <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Soluções para Obra <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
-                <a href="/catalogo?setor=construcao" className="sr-only">Ir para catálogo de construção</a>
+                <a href={buildUrl(ROUTES.catalog, { setor: 'construcao' })} className="sr-only">Ir para catálogo de construção</a>
               </div>
             </div>
 
@@ -539,7 +539,7 @@ export default function HomePage() {
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Setor Elétrico</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Alta tensão pede rigor. Linha metal-free, isolamento térmico/elétrico e validação de CA para NR-10 sem espaço para improviso.</p>
                 <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Linha Técnica <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
-                <a href="/catalogo?setor=eletrico" className="sr-only">Ver linha técnica elétrica</a>
+                <a href={buildUrl(ROUTES.catalog, { setor: 'eletrico' })} className="sr-only">Ver linha técnica elétrica</a>
               </div>
             </div>
 
@@ -562,7 +562,7 @@ export default function HomePage() {
                 <h3 className="text-2xl font-display font-black uppercase tracking-tight">Alimentícia & Hospitalar</h3>
                 <p className="text-slate-200 text-sm leading-relaxed">Higiene e aderência total. Solados Super Grip, materiais de fácil limpeza e protocolos para ambientes controlados sem contaminação.</p>
                 <p className="text-action-primary font-display text-xs uppercase tracking-[0.25em] flex items-center gap-2">Ver Itens Higiene <span className="w-6 h-[2px] bg-action-primary block group-hover:w-10 transition-all"></span></p>
-                <a href="/catalogo?setor=alimentar-hospitalar" className="sr-only">Ver itens para higiene</a>
+                <a href={buildUrl(ROUTES.catalog, { setor: 'alimentar-hospitalar' })} className="sr-only">Ver itens para higiene</a>
               </div>
             </div>
           </div>
@@ -605,7 +605,7 @@ export default function HomePage() {
                 </p>
               </div>
               <div className="flex flex-wrap items-center gap-4">
-                <Button href="/chat?intent=mentoria" variant="primary" className="px-8 py-4 shadow-glow-brand">
+                <Button href={buildUrl(ROUTES.chat, { intent: 'mentoria' })} variant="primary" className="px-8 py-4 shadow-glow-brand">
                   Falar com um Mentor Técnico
                 </Button>
               </div>

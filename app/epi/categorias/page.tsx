@@ -7,22 +7,23 @@ import { SectionTitle } from '../../../components/typography/SectionTitle';
 import { DecisionCard } from '../../../components/cards/DecisionCard';
 import { Button } from '../../../components/actions/Button';
 import { SeguraLogo } from '../../../components/brand/SeguraLogo';
-import { CATEGORY_PAGES } from '../../../lib/catalog/categories';
+import { CATEGORY_ORDER, CATEGORY_PAGES } from '../../../lib/catalog/categories';
+import { ROUTES, buildUrl } from '../../../lib/routes';
 
 export default function CategoryHubPage() {
-  const categories = Object.values(CATEGORY_PAGES);
+  const categories = CATEGORY_ORDER.map((key) => CATEGORY_PAGES[key]);
 
   return (
     <main className="min-h-screen bg-white">
       {/* Header: Glassmorphism */}
       <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-slate-100 h-20 flex items-center shadow-elevation-1">
         <Container className="w-full flex justify-between items-center">
-          <a href="/" className="hover:opacity-80 transition-opacity">
+          <a href={ROUTES.home} className="hover:opacity-80 transition-opacity">
             <SeguraLogo section="navbar" variant="light" size="md" padding="tight" />
           </a>
           <nav className="flex items-center gap-10">
-            <a href="/" className="text-text-primary text-[11px] font-display font-bold uppercase tracking-widest hover:text-action-primaryHover transition-all">Home</a>
-            <Button href="/catalogo" variant="primary" className="py-2.5 px-6 text-[10px]">Ver Catálogo</Button>
+            <a href={ROUTES.home} className="text-text-primary text-[11px] font-display font-bold uppercase tracking-widest hover:text-action-primaryHover transition-all">Home</a>
+            <Button href={ROUTES.catalog} variant="primary" className="py-2.5 px-6 text-[10px]">Ver Catálogo</Button>
           </nav>
         </Container>
       </header>
@@ -52,7 +53,7 @@ export default function CategoryHubPage() {
                 key={cat.key}
                 title={cat.name}
                 description={cat.shortDescription}
-                href={`/epi/${cat.key}`}
+                href={`${ROUTES.epi}/${cat.key}`}
                 actionText="Ver Guia Completo"
               />
             ))}
@@ -62,7 +63,7 @@ export default function CategoryHubPage() {
               <span className="text-action-primary font-display font-bold text-[10px] uppercase tracking-widest mb-4">Suporte Inteligente</span>
               <h3 className="text-2xl font-display font-bold mb-6">Dúvidas Técnicas sobre Riscos?</h3>
               <p className="text-slate-400 text-sm mb-10 leading-relaxed font-sans">Nossos consultores utilizam dimensionamento inteligente para diagnosticar o risco do seu setor e indicar o mix ideal.</p>
-              <Button href="/chat?origem=epi-hub" variant="primary" className="w-full">Falar com Consultor</Button>
+              <Button href={buildUrl(ROUTES.chat, { origem: 'epi-hub' })} variant="primary" className="w-full">Falar com Consultor</Button>
             </div>
           </div>
         </Container>

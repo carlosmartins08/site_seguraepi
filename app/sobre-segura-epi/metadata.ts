@@ -1,5 +1,5 @@
 export const metadata = {
-  title: 'Sobre a Segura EPI | Segurança com Propósito',
+  title: 'Sobre a Segura EPI | Seguranca com Proposito, Protecao com Alma',
   description:
-    'Conheça a essência, história, posicionamento e valores da Segura EPI. Um ecossistema de soluções que conecta tecnologia e humanidade para proteger vidas.',
+    'Conheca a essencia, historia, posicionamento, diretrizes e valores da Segura EPI. Conectamos tecnologia e humanidade para proteger vidas.',
 };

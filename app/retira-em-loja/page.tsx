@@ -1,5 +1,6 @@
 import { redirect } from 'next/navigation';
+import { ROUTES } from '../../lib/routes';
 
 export default function RetiraEmLojaRedirect() {
-  redirect('/retirada-expressa');
+  redirect(ROUTES.pickupExpress);
 }
