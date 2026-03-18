@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
 import type { Route } from 'next';
@@ -83,9 +83,9 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   }, [isMobileMenuOpen]);
 
   const navLinks: Array<{ name: string; href: Route }> = [
-    { name: t('nav.home', 'Início'), href: ROUTES.home },
+    { name: t('nav.home', 'Inicio'), href: ROUTES.home },
     { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
-    { name: t('nav.catalog', 'Catálogo'), href: ROUTES.catalog },
+    { name: t('nav.catalog', 'Catalogo'), href: ROUTES.catalog },
   ];
 
   return (
@@ -124,7 +124,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             )}>
               <span className="w-1.5 h-1.5 bg-action-primary rounded-full animate-pulse"></span>
               <span className="text-[9px] font-display font-bold uppercase tracking-widest text-slate-300">
-                Logística Prioritária em <span className="text-white">{region}</span>
+                Logistica Prioritaria em <span className="text-white">{region}</span>
               </span>
             </div>
           </div>
@@ -268,7 +268,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
 
           <div className="flex flex-col flex-grow">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.4em] text-[10px] mb-12 opacity-60">
-              Diretório de Navegação
+              Diretorio de Navegacao
             </p>
 
             <div className="mb-8">
@@ -328,5 +328,6 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
     </>
   );
 };
+
 
 

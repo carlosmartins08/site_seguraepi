@@ -52,7 +52,7 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
           {badges.map((badge, idx) => (
             <span 
               key={idx} 
-              className="px-3 py-1 bg-bg-surfaceMuted border border-border-default rounded-md text-[9px] font-display font-bold uppercase tracking-widest text-text-muted transition-[transform,color,border-color,box-shadow] duration-base ease-standard group-hover:scale-110 group-hover:text-action-primaryHover group-hover:border-action-primary/50 group-hover:shadow-glow-brand inline-block origin-center"
+              className="px-3 py-1 bg-bg-surfaceMuted border border-border-default rounded-md text-[9px] font-display font-bold uppercase tracking-widest text-text-muted transition-[transform,color,border-color,box-shadow] duration-base ease-standard group-hover:scale-110 group-hover:text-action-primaryHover group-hover:border-action-primary/50 inline-block origin-center"
             >
               {badge}
             </span>
@@ -61,12 +61,18 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
       )}
 
       {isInternal ? (
-        <Link href={href as any} className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
+        <Link
+          href={href as any}
+          className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
+        >
           {actionText}
           <span className="ml-3 block w-6 h-[2px] bg-action-primary transition-all duration-300 group-hover/link:w-12 shadow-glow-brand"></span>
         </Link>
       ) : (
-        <a href={href} className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto">
+        <a
+          href={href}
+          className="text-text-primary font-display font-bold uppercase text-xs tracking-widest flex items-center group/link mt-auto focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
+        >
           {actionText}
           <span className="ml-3 block w-6 h-[2px] bg-action-primary transition-all duration-300 group-hover/link:w-12 shadow-glow-brand"></span>
         </a>

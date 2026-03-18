@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import { Navbar } from '../../components/layout/Navbar';
@@ -165,29 +165,29 @@ export default function CentroTecnicoPage() {
       <Section id="hub-tecnico" variant="default">
         <Container className="space-y-10">
           <SectionTitle
-            subtitle="Mapa TÃ©cnico"
-            title="Tudo o que vocÃª precisa, em uma Ãºnica trilha"
+            subtitle="Mapa Tecnico"
+            title="Tudo o que voce precisa, em uma unica trilha"
             description="Comece pelo guia geral, aprofunde por categoria e valide o C.A. antes de fechar o pedido."
           />
           <div className="grid md:grid-cols-3 gap-8">
             <DecisionCard
               eyebrow="Guia Geral"
-              title="Guia TÃ©cnico de EPI"
-              description="Conceitos, categorias por Ã¡rea do corpo e responsabilidades da NR-06."
+              title="Guia Tecnico de EPI"
+              description="Conceitos, categorias por area do corpo e responsabilidades da NR-06."
               href="/epi"
-              actionText="Abrir guia tÃ©cnico"
+              actionText="Abrir guia tecnico"
             />
             <DecisionCard
               eyebrow="Por Categoria"
-              title="Guias TÃ©cnicos por Categoria"
-              description="Aprofunde por tipo de proteÃ§Ã£o com recomendaÃ§Ãµes e FAQ tÃ©cnico."
+              title="Guias Tecnicos por Categoria"
+              description="Aprofunde por tipo de protecao com recomendacoes e FAQ tecnico."
               href="/epi/categorias"
               actionText="Ver categorias"
             />
             <DecisionCard
-              eyebrow="ValidaÃ§Ã£o"
-              title="Validar Certificado de AprovaÃ§Ã£o"
-              description="Passo a passo para checar situaÃ§Ã£o, validade e restriÃ§Ãµes no CAEPI."
+              eyebrow="Validacao"
+              title="Validar Certificado de Aprovacao"
+              description="Passo a passo para checar situacao, validade e restricoes no CAEPI."
               href="/centro-tecnico#como-validar"
               actionText="Ver como validar"
             />
@@ -411,4 +411,5 @@ export default function CentroTecnicoPage() {
     </main>
   );
 }
+
 

@@ -19,6 +19,16 @@ type CategoryPageProps = {
   params: { categoria: string };
 };
 
+export function generateMetadata({ params }: CategoryPageProps) {
+  const data = CATEGORY_PAGES[params.categoria as CategoryKey];
+  if (!data) return {};
+
+  return {
+    title: `${data.heroTitle} | Segura EPI`,
+    description: data.shortDescription,
+  };
+}
+
 export default function CategoryPage({ params }: CategoryPageProps) {
   const data = CATEGORY_PAGES[params.categoria as CategoryKey];
   if (!data) return notFound();

@@ -11,15 +11,22 @@ import { CONTACT_INFO } from '../../lib/constants';
 
 const TARGET_URL = 'https://catalogo.seguraepi.com.br';
 
+const buildTargetUrl = (search = '') => `${TARGET_URL}${search || ''}`;
+
 export default function CatalogoRedirectPage() {
   const [autoRedirect, setAutoRedirect] = useState(true);
   const [seconds, setSeconds] = useState(4);
+  const [targetUrl, setTargetUrl] = useState(TARGET_URL);
 
   useEffect(() => {
+    const search = window.location.search;
+    const nextUrl = buildTargetUrl(search);
+    setTargetUrl(nextUrl);
+
     if (!autoRedirect) return;
     const countdown = setInterval(() => setSeconds((s) => Math.max(0, s - 1)), 1000);
     const timer = setTimeout(() => {
-      window.location.href = TARGET_URL;
+      window.location.href = nextUrl;
     }, seconds * 1000);
     return () => {
       clearInterval(countdown);
@@ -42,7 +49,7 @@ export default function CatalogoRedirectPage() {
 
           <div className="space-y-6 bg-white p-8 md:p-10 rounded-3xl border border-slate-200 shadow-elevation-1">
             <div className="flex flex-wrap gap-3">
-              <Button href={TARGET_URL} variant="primary" className="px-8" target="_blank" rel="noopener noreferrer">
+              <Button href={targetUrl} variant="primary" className="px-8" target="_blank" rel="noopener noreferrer">
                 Acessar catálogo B2B
               </Button>
               <Button href="/centro-tecnico" variant="outline" className="px-8">

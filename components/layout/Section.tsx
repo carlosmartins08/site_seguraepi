@@ -11,7 +11,7 @@ interface SectionProps {
 
 export const Section: React.FC<SectionProps> = ({ id, children, className, variant = 'default' }) => {
   const variantStyles = {
-    default: "bg-white",
+    default: "bg-bg-surface",
     dark: "bg-bg-inverse text-white",
     offwhite: "bg-bg-surfaceMuted",
     immersive: "bg-bg-inverse text-white rounded-t-2xl"

@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { Button } from '../actions/Button';
@@ -12,18 +12,24 @@ export const CaSearch: React.FC<CaSearchProps> = ({ defaultQuery = 'ca' }) => {
 
   return (
     <div className="bg-slate-900/60 rounded-3xl p-4 md:p-6 border border-white/10 shadow-inner shadow-black/20 mb-8">
-      <label className="flex items-center gap-2 text-slate-200 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3">
+      <label
+        htmlFor="ca-search"
+        className="flex items-center gap-2 text-slate-200 text-xs font-display font-bold uppercase tracking-[0.25em] mb-3"
+      >
         <svg className="w-4 h-4 text-action-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
         </svg>
-        Validação Técnica
+        Validacao Tecnica
       </label>
       <div className="flex flex-col md:flex-row gap-4 items-stretch">
         <div className="relative flex-1">
           <input
+            id="ca-search"
+            name="ca_search"
+            type="search"
             value={caSearch}
             onChange={(e) => setCaSearch(e.target.value)}
-            placeholder={'Digite o número do C.A. ou o nome do produto...'}
+            placeholder={'Digite o numero do C.A. ou o nome do produto...'}
             className="w-full rounded-2xl bg-slate-800/70 border border-slate-700 text-white px-5 py-4 placeholder:text-slate-500 focus:outline-none focus:border-action-primary focus:ring-2 focus:ring-focus-ring transition-all"
           />
           <div className="absolute right-4 top-1/2 -translate-y-1/2 text-action-primary">

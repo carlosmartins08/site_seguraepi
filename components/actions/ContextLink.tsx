@@ -21,7 +21,7 @@ export const ContextLink: React.FC<ContextLinkProps> = ({ children, href, classN
         href={href as any}
         onClick={onClick}
         className={cn(
-          "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover",
+          "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
           className
         )}
         {...(rest as any)}
@@ -39,7 +39,7 @@ export const ContextLink: React.FC<ContextLinkProps> = ({ children, href, classN
       href={href} 
       onClick={onClick}
       className={cn(
-        "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover",
+        "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
         className
       )}
       {...rest}

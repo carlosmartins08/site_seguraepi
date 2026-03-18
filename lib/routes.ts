@@ -13,6 +13,7 @@ export const ROUTES = {
   policyReturns: '/politica-de-trocas-e-devolucoes',
   privacyPolicy: '/politica-de-privacidade',
   termsOfUse: '/termos-de-uso',
+  thanks: '/obrigado',
   pickupExpress: '/retirada-expressa',
   about: '/sobre-segura-epi',
   careers: '/trabalhe-conosco',
@@ -21,7 +22,7 @@ export const ROUTES = {
 
 export const LEGACY_ROUTES = ['/retira', '/retira-em-loja'] as const;
 
-export const SITEMAP_EXCLUDE = [...LEGACY_ROUTES, ROUTES.chat] as const;
+export const SITEMAP_EXCLUDE = [...LEGACY_ROUTES, ROUTES.chat, ROUTES.thanks] as const;
 
 export const DYNAMIC_ROUTE_PREFIXES = ['/epi/'] as const;
 
