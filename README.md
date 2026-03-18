@@ -1,6 +1,6 @@
 # Site Segura EPI
 
-Projeto institucional em Next.js 16 (App Router) com React 19, focado em UX B2B e consistencia via design system (tokens + Tailwind).
+Projeto institucional em Next.js 16 (App Router) com foco em UX B2B, governanca de rotas, i18n local e integracao de atendimento online (WBOT + WhatsApp).
 
 ## Requisitos
 - Node.js 18+
@@ -11,38 +11,54 @@ Projeto institucional em Next.js 16 (App Router) com React 19, focado em UX B2B 
 - `npm run dev` - desenvolvimento (Next).
 - `npm run build` - build de producao (valida TypeScript + rotas tipadas).
 - `npm run start` - serve o build.
-- `npm run lint:design` - lint de design (spacing/radius/arbitrários/cores soltas).
+- `npm run lint:design` - lint de design system (tokens, spacing, radius, cores soltas).
+- `npm run lint:routes` - valida rotas internas contra `lib/routes.ts`.
 
 ## Estrutura
 - `app/` - rotas e layouts do App Router.
 - `components/`, `hooks/`, `lib/` - UI, hooks e helpers.
-- `styles/` - CSS global e utilitarios (inclui reduced motion e overrides de integracoes).
-- `src/styles/tokens.ts` - valores do design system (fonte de verdade).
-- `tailwind.config.cjs` - exposicao dos tokens como classes Tailwind semanticas.
-- `design-system.md` - regras, escalas e governanca (intencao do sistema).
+- `styles/` - CSS global e utilitarios (reduced motion, overrides de integracoes).
+- `src/styles/tokens.ts` - valores do design system.
+- `tailwind.config.cjs` - exposicao dos tokens como classes Tailwind.
+- `design-system.md` - regras, escalas e governanca.
 
-## Checklist de design (lint)
-- Sem valores arbitrários `[...]` para spacing/radius em classes Tailwind.
-- Evitar cores soltas em JSX (hex/rgba); prefira tokens/classe semântica.
-- `npm run lint:design` deve seguir limpo antes de publicar.
+## Governanca de rotas
+Centralizada em `lib/routes.ts`:
+- `ROUTES` (canonica)
+- `LEGACY_ROUTES` (redirect)
+- `SITEMAP_EXCLUDE`
+- `buildUrl()` para query string
 
-## Regras de arquitetura (importantes para nao quebrar build)
-- **Client Components:** arquivos que usam hooks (`useEffect`, `useState`, etc.) precisam do `'use client';` como **primeiro statement** do arquivo (sem comentario/linha em branco antes).
-- **Typed Routes:** `next.config.js` esta com `typedRoutes: true`. Links internos via `next/link` precisam apontar para rotas existentes (ver `.next/types/link.d.ts`). Rotas legadas curtas (ex.: `/retira`) sao tratadas com redirect em `app/retira/page.tsx`.
-- **Design System:** evite hex/valores arbitrarios em componentes. Use classes semanticas (`bg-*`, `text-*`, `border-*`, `shadow-*`, `duration-*`, `ease-*`) mapeadas para tokens.
+Validador de rotas: `tools/lint-routes.ts` (rodar `npm run lint:routes`).
 
-## Consentimento (LGPD)
-- Estado fica em `localStorage` com chave `segura-epi-consent` (ver `lib/consent.ts`).
-- `components/analytics/ConsentScriptGate.tsx` controla scripts por preferencia e aplica defaults (ex.: `necessary` carrega mesmo antes do usuario escolher).
+## I18n (PT/EN/ES)
+I18n local via `localStorage`:
+- `hooks/useI18n.tsx` (contexto + `document.documentElement.lang`)
+- `lib/i18n/locales.ts` (locales e storage key)
+- `lib/i18n/resources.ts` (labels nav/footer/status)
+- `lib/i18n/home.ts` (conteudo da Home por idioma)
 
-## Atendimento online (WBOT)
-- Script carregado globalmente em `app/layout.tsx` via `ConsentScriptGate` com `preference="necessary"`.
-- O WBOT exige `token` como atributo literal no `<script>` (nao `data-token`).
-- Wrapper para abrir chat com fallback WhatsApp: `lib/wbot.ts` (`openWbotChat`).
-- CTA pronto para uso: `components/chat/OnlineChatButton.tsx`.
-- Overrides visuais minimos do widget ficam em `styles/segura-ui.css`.
+Nao existem rotas `/en` ou `/es`; o toggle e apenas client-side.
+
+## Chat e atendimento
+- FAB global: `components/actions/FloatingChatButton.tsx` (offline pre-chat + WhatsApp).
+- Contexto de navegacao: `lib/chat-context.ts` (sessionStorage).
+- Prefill offline: `lib/chat-prefill.ts` (sessionStorage).
+- Formulario de orcamento: `components/home/LeadForm.tsx` -> `/obrigado` -> abre chat.
+- Pagina de sucesso: `app/obrigado` (nao indexavel).
+
+## LGPD e legal
+- Conteudo legal: `lib/legal.tsx` (Politica/Termos).
+- Paginas: `/politica-de-privacidade` e `/termos-de-uso`.
+- Modal legal: `components/layout/LegalModal.tsx`.
+
+## SEO/GEO e JSON-LD
+Helpers em `lib/seo/schema.ts` + componente `components/seo/JsonLd.tsx`:
+- `Organization`, `LocalBusiness`, `WebSite.SearchAction`
+- `FAQPage` e `BreadcrumbList` nas paginas com FAQ
 
 ## Documentacao
-- `docs/ARCHITECTURE.md` - arquitetura, regras e padroes.
-- `docs/INTEGRATIONS_WBOT.md` - integracao do WBOT (token, consent, fallback, troubleshooting).
-- `docs/IMPROVEMENTS.md` - registro das melhorias aplicadas e proximos passos.
+- `docs/ARCHITECTURE.md` - regras, padroes e guardrails.
+- `docs/INTEGRATIONS_WBOT.md` - integracao e troubleshooting do chat.
+- `docs/IMPROVEMENTS.md` - registro das melhorias aplicadas.
+- `docs/MAINTENANCE.md` - guia de manutencao e atualizacoes.

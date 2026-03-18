@@ -1,74 +1,52 @@
 # Integracao WBOT (Atendimento Online)
 
-Este projeto integra o widget do WBOT para atendimento online, como alternativa primaria ao WhatsApp (que fica como fallback).
+O WBOT e o motor do atendimento online. A UX e controlada pelo FAB customizado, com fallback para WhatsApp e pre-chat offline.
 
 ## Onde esta integrado
-- Script do WBOT: carregado globalmente em `app/layout.tsx`.
-- Gate de consentimento: `components/analytics/ConsentScriptGate.tsx`.
-- Wrapper para abrir chat com fallback: `lib/wbot.ts` (`openWbotChat`).
-- CTA pronto: `components/chat/OnlineChatButton.tsx`.
-- Overrides visuais e reduced-motion: `styles/segura-ui.css`.
+- Script WBOT: `app/layout.tsx` via `ConsentScriptGate`
+- Polyfill `$.each`: `app/layout.tsx` (beforeInteractive)
+- FAB customizado: `components/actions/FloatingChatButton.tsx`
+- Helper de abertura: `lib/wbot.ts` (`openWbotChat`, `buildWhatsappLink`)
+- Overrides visuais: `styles/segura-ui.css`
 
-## Regra do token (critico)
-O WBOT le o token do atributo literal `token` do `<script>`:
+## Token (critico)
+O WBOT le o token no atributo literal `token` do `<script>`:
 
 ```html
 <script src="https://wbot.chat/index.js" token="SEU_TOKEN"></script>
 ```
 
-No projeto, isso e feito via `ConsentScriptGate`:
-- `src="https://wbot.chat/index.js"`
-- `token="..."`
-- `id="wbot-chat-script"` (dedupe)
+No projeto, isso e feito via `ConsentScriptGate` em `app/layout.tsx`.
 
 ## Consentimento
-O WBOT foi tratado como **necessary** (carrega mesmo antes de o usuario salvar preferencias).
-- `ConsentScriptGate` aplica defaults via `defaultPreferences` quando ainda nao existe consent salvo.
+O WBOT esta marcado como **necessary**:
+- Carrega mesmo antes do usuario escolher preferencias de cookies.
+- Para exigir opt-in, alterar `preference` em `app/layout.tsx`.
 
-Se a politica do produto mudar (ex.: exigir opt-in), a troca deve ser feita em `app/layout.tsx`:
-- alterar `preference="necessary"` para `marketing`
-- ou carregar apenas sob demanda (ao clicar).
+## FAB customizado (primeira experiencia)
+O FAB substitui o launcher nativo do WBOT:
+- `components/actions/FloatingChatButton.tsx`
+- Oculta o botao nativo com CSS (`#wbot-open-chat { display: none; }`).
+- Offline: abre pre-chat e envia WhatsApp com mensagem pre-preenchida.
+- Online: abre WBOT com fallback WhatsApp (se script nao carregou).
 
-## Polyfill de $.each (sem jQuery inteiro)
-O script do WBOT usa `$.each` em um trecho. Para evitar erro no console e comportamento inconsistente, existe um polyfill minimo em `app/layout.tsx` com `strategy="beforeInteractive"`.
+## Contexto e Prefill
+SessionStorage:
+- `chat_context` (`lib/chat-context.ts`): pagina, query, intent, origem, timestamp.
+- `chat_prefill` (`lib/chat-prefill.ts`): nome, empresa, WhatsApp, assunto.
 
-Escopo do polyfill:
-- cria apenas `window.$.each` (nao injeta jQuery completo).
+O contexto e anexado ao fallback do WhatsApp para evitar repeticao de informacoes.
 
-## Como abrir o chat (com fallback)
-Use o wrapper:
-- `openWbotChat({ fallbackHref: CONTACT_INFO.whatsapp, trackEvent, trackParams })`
+## Mobile
+O widget WBOT e forçado a fullscreen em mobile via `styles/segura-ui.css`.
 
-Componente pronto (CTA):
-- `components/chat/OnlineChatButton.tsx`
+## Troubleshooting (checklist)
+1) WBOT nao abre:
+- Verifique `script[src="https://wbot.chat/index.js"]` e atributo `token`.
+- Confirme se `ConsentScriptGate` carregou.
 
-Exemplo:
-```tsx
-<OnlineChatButton variant="primary" trackEvent="cta_home_chat">
-  Atendimento online
-</OnlineChatButton>
-```
+2) CTA abre WhatsApp ao inves do WBOT:
+- O wrapper faz fallback quando `window.WBOTopenChat` nao existe (script falhou ou ainda nao carregou).
 
-## Estilos do widget (Design System)
-Os overrides ficam em `styles/segura-ui.css` e seguem principios:
-- fontes do projeto (Inter/Poppins via CSS variables do Next Font)
-- radius/elevation coerentes
-- focus ring equivalente ao `focus.ring`
-- reduced-motion respeitado
-
-Evite:
-- sobrescrever CSS do WBOT em componentes.
-- hardcode de hex em componentes para ajustes do widget.
-
-## Troubleshooting (checklist rapido)
-1) Botao do WBOT nao aparece:
-- verifique se o `script[src="https://wbot.chat/index.js"]` carregou.
-- confirme atributo `token="..."` (nao `data-token`).
-- desative bloqueadores (adblock) para validar.
-
-2) Clicar no CTA abre WhatsApp em vez do chat:
-- o wrapper faz fallback quando `window.WBOTopenChat` nao existe (script ainda nao carregou ou falhou).
-
-3) Erro sobre jQuery no console:
-- confirme que o polyfill `wbot-jquery-each-polyfill` existe no HTML e roda antes do WBOT.
-
+3) Erro de jQuery no console:
+- O polyfill `wbot-jquery-each-polyfill` deve existir no `app/layout.tsx`.

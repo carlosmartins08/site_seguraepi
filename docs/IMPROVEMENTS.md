@@ -1,43 +1,43 @@
-# Melhorias aplicadas (jornada)
+# Melhorias aplicadas (historico resumido)
 
-Este documento registra as correcoes e melhorias aplicadas no projeto para:
-- estabilizar build (Next App Router + React hooks)
-- alinhar UI com o design system (tokens, motion, radius, acessibilidade)
-- incorporar atendimento online (WBOT) como canal primario com fallback WhatsApp
+Registro das principais evolucoes para manutencao e onboarding tecnico.
 
-## Correcoes criticas (build/arquitetura)
-- Client Components: `'use client';` ajustado para ser **primeiro statement** em arquivos que usam hooks React.
-- Typed Routes (Next `typedRoutes: true`):
-  - rotas internas agora respeitam o arquivo gerado `.next/types/link.d.ts`.
-  - adicionada rota legada `/retira` como redirect para `/retirada-expressa` (`app/retira/page.tsx`).
+## Governanca de rotas
+- `lib/routes.ts` centraliza rotas canonicas e legadas.
+- `buildUrl()` padroniza query strings.
+- `tools/lint-routes.ts` valida rotas internas (script `npm run lint:routes`).
+- `/chat` criada como rota utilitaria e removida do sitemap.
+- `/obrigado` criada para pos-conversao (noindex).
 
-## Consistencia com Design System
-- Motion:
-  - padronizacao de duracoes/easing (uso de `duration-base/slow` e `ease-standard` quando aplicavel).
-  - reduced motion reforcado em `styles/segura-ui.css`.
-- Radius:
-  - remocao de valores fora da escala (ex.: `rounded-4xl`, `md:rounded-t-[5rem]`) em componentes/paginas principais.
-- Sombras/glow:
-  - remocao de sombras hardcoded onde havia alternativa via token (ex.: uso de `shadow-glow-brand`).
+## Conteudo e paginas
+- Home reestruturada com novo posicionamento B2B e CTAs.
+- Paginas institucionais atualizadas: Como Comprar, Retirada Expressa, Politicas, Sobre, Trabalhe Conosco.
+- Guias por categoria em `/epi/[categoria]` com novos slugs.
+- Pagina 404 personalizada com busca e atalhos.
 
-## Navegacao interna (performance/UX)
-- Uso de `next/link` para links internos em componentes chave (ex.: navbar e cards), evitando full reload.
+## Chat e conversao
+- FAB global com status online/offline e pre-chat offline.
+- Contexto e prefill via sessionStorage (`chat_context`, `chat_prefill`).
+- Formulario de orcamento direciona para `/obrigado` e abre chat.
 
-## Atendimento online (WBOT)
-- Script do WBOT carregado no `app/layout.tsx` via `ConsentScriptGate` como `necessary`.
-- Token corrigido para atributo literal `token` (requisito do WBOT).
-- Polyfill minimo de `$.each` (sem jQuery completo) para eliminar erro e risco funcional.
-- Remocao do `WbotInitializer` antigo para evitar conflito com `window.WBOTdata`.
-- Wrapper `lib/wbot.ts` e tipagem global `types/wbot.d.ts`.
-- CTAs principais migrados para abrir WBOT com fallback WhatsApp (`components/chat/OnlineChatButton.tsx`).
-- Overrides visuais do widget em `styles/segura-ui.css` (fontes, radius, focus, reduced motion).
+## I18n (PT/EN/ES)
+- Toggle local (localStorage) com labels em navbar/footer/status.
+- Conteudo da Home por idioma (`lib/i18n/home.ts`).
+- Atualizacao dinamica de `document.documentElement.lang`.
 
-## Componentes ajustados (exemplos)
-- `components/actions/Button.tsx`: agora suporta modo link (`href`) e modo action (`<button>` sem `href`) com tracking.
-- `components/cards/VideoCard.tsx`: removidas classes inexistentes e alinhado a tokens/motion/focus.
+## SEO/GEO
+- JSON-LD centralizado em `lib/seo/schema.ts`.
+- FAQPage e BreadcrumbList em paginas com FAQ.
+- Organization/LocalBusiness/WebSite no layout.
+- SearchAction com `/catalogo?busca=`.
 
-## Limitacoes conhecidas / proximos passos
-- `CookieConsent`/`LegalLayer` hoje esta acoplado ao `app/page.tsx` (home). Se a necessidade for banner/legal em todas as rotas, mover para `app/layout.tsx` (refatoracao controlada).
-- Alguns estilos inline em `LegalModal` ainda usam hex (por serem CSS-in-JS isolados); ideal migrar para tokens/vars.
-- Fazer sweep final para remover `transition-all` e duracoes fora do motion system em componentes secundarios.
+## Acessibilidade e performance
+- Contraste reforcado em secoes escuras.
+- `aria-live` para status dinamicos.
+- `cv-auto` (content-visibility) em secoes abaixo da dobra.
+- `QuickSummary` + `LastUpdated` em paginas longas.
 
+## LGPD e legal
+- Politica de Privacidade e Termos com paginas publicas.
+- Modal legal atualizado e linkado.
+- Cookie consent alinhado com LGPD.
