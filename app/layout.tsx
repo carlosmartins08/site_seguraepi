@@ -8,6 +8,7 @@ import { buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/jsonld';
 import { Providers } from './providers';
 import { ConsentScriptGate } from '../components/analytics/ConsentScriptGate';
 import { LegalLayer } from '../components/home/LegalLayer';
+import { FloatingChatButton } from '../components/actions/FloatingChatButton';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -73,6 +74,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable}`}>
         <a href="#main-content" className="skip-link">Pular para o conteudo principal</a>
         <Providers>{children}</Providers>
+        <FloatingChatButton />
         <LegalLayer />
         <Script
           id="wbot-jquery-each-polyfill"

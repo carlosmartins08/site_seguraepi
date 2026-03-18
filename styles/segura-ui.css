@@ -191,3 +191,20 @@ h1, h2, h3, h4, .font-display {
     transition: none !important;
   }
 }
+
+/* Hide native WBOT launcher when using custom FAB */
+#wbot-open-chat {
+  display: none !important;
+}
+
+@media (max-width: 640px) {
+  #wbot-chat-container,
+  #wbot-chat {
+    width: 100vw !important;
+    height: 100vh !important;
+    bottom: 0 !important;
+    right: 0 !important;
+    left: 0 !important;
+    border-radius: 0 !important;
+  }
+}

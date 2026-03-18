@@ -9,6 +9,7 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { ROUTES, buildUrl } from '../../lib/routes';
 import { buildWhatsappLink, openWbotChat } from '../../lib/wbot';
 import { buildLeadMessage, clearStoredLead, getStoredLead } from '../../lib/lead';
+import { buildChatContextMessage, clearChatContext, getChatContext } from '../../lib/chat-context';
 
 export default function ClientPage() {
   const didTrigger = useRef(false);
@@ -19,10 +20,17 @@ export default function ClientPage() {
 
     let fallbackHref = CONTACT_INFO.whatsapp;
     const payload = getStoredLead();
+    const context = getChatContext();
+    const contextMessage = buildChatContextMessage(context);
     if (payload) {
       const message = buildLeadMessage(payload);
-      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, message);
+      const enriched = contextMessage ? `${message}\n\n${contextMessage}` : message;
+      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, enriched);
       clearStoredLead();
+      clearChatContext();
+    } else if (contextMessage) {
+      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, contextMessage);
+      clearChatContext();
     }
 
     openWbotChat({

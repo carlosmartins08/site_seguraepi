@@ -10,6 +10,8 @@ import { buildWhatsappLink, openWbotChat } from '../../lib/wbot';
 import { CONTACT_INFO } from '../../lib/constants';
 import { ROUTES } from '../../lib/routes';
 import { buildLeadMessage, clearStoredLead, getStoredLead } from '../../lib/lead';
+import { buildChatContextMessage, clearChatContext, getChatContext } from '../../lib/chat-context';
+import { buildChatPrefillMessage, clearChatPrefill, getChatPrefill } from '../../lib/chat-prefill';
 
 export default function ClientPage() {
   const [attempted, setAttempted] = useState(false);
@@ -21,10 +23,25 @@ export default function ClientPage() {
 
     let fallbackHref = CONTACT_INFO.whatsapp;
     const payload = getStoredLead();
+    const prefill = getChatPrefill();
+    const context = getChatContext();
+    const contextMessage = buildChatContextMessage(context);
     if (payload) {
       const message = buildLeadMessage(payload);
-      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, message);
+      const enriched = contextMessage ? `${message}\n\n${contextMessage}` : message;
+      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, enriched);
       clearStoredLead();
+      clearChatContext();
+      clearChatPrefill();
+    } else if (prefill) {
+      const message = buildChatPrefillMessage(prefill);
+      const enriched = contextMessage ? `${message}\n\n${contextMessage}` : message;
+      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, enriched);
+      clearChatPrefill();
+      clearChatContext();
+    } else if (contextMessage) {
+      fallbackHref = buildWhatsappLink(CONTACT_INFO.whatsapp, contextMessage);
+      clearChatContext();
     }
 
     const didOpen = openWbotChat({
@@ -65,6 +82,8 @@ export default function ClientPage() {
                 className="px-8 py-4 shadow-glow-brand"
                 trackEvent="cta_chat_manual"
                 trackParams={{ surface: 'chat_route' }}
+                intent="chat-route"
+                origem="chat-route"
               >
                 Abrir atendimento online
               </OnlineChatButton>
