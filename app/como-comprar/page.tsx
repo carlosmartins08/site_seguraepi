@@ -18,7 +18,7 @@ import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
 
 const bullet = (text: string, key: React.Key) => (
-  <li key={key} className="flex items-start gap-3 text-slate-600">
+  <li key={key} className="flex items-start gap-3 text-text-body">
     <span className="mt-1 h-2 w-2 rounded-full bg-action-primary" aria-hidden />
     <span>{text}</span>
   </li>
@@ -47,9 +47,9 @@ export default function ComoComprarPage() {
       />
       <Navbar variant="light" />
 
-      <Section id="como-comprar-hero" variant="dark" className="pt-nav pb-28 relative overflow-hidden">
+      <Section id="como-comprar-hero" variant="dark" className="pt-nav pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.12),transparent_40%),radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.05),transparent_40%)]" />
-        <Container className="relative z-10 grid lg:grid-cols-12 gap-12 items-center">
+        <Container size="wide" className="relative z-10 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-8">
             <SectionTitle
               subtitle="Onboarding B2B"
@@ -58,12 +58,12 @@ export default function ComoComprarPage() {
               light
             />
             <div className="flex flex-wrap gap-4">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary">Falar com um consultor</Button>
-              <Button href="/catalogo" variant="outline" className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-text-primary">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Falar com um consultor</Button>
+              <Button href="/catalogo" variant="outline" size="lg" className="bg-white/10 text-white border-white/30 hover:bg-white hover:text-text-primary">
                 Ver catalogo
               </Button>
             </div>
-            <div className="flex items-center gap-4 text-slate-300 text-sm">
+            <div className="flex items-center gap-4 text-text-soft text-sm">
               <SeguraLogo section="inline" variant="dark" size="sm" padding="tight" decorative />
               <span>Revisao trimestral para clientes com volume acima de R$ 30 mil.</span>
             </div>
@@ -78,10 +78,10 @@ export default function ComoComprarPage() {
             />
             <LastUpdated variant="dark" date={AUTHORITY_INFO.updatedAt} />
           </div>
-          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-3xl p-8 shadow-elevation-2 backdrop-blur-xl">
-            <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-4">Prazos</p>
-            <h3 className="text-3xl font-display font-black text-white mb-4">Liberacao em ate 24h uteis</h3>
-            <p className="text-slate-200 text-sm leading-relaxed">
+          <div className="lg:col-span-5 bg-white/5 border border-white/10 rounded-2xl p-8 shadow-elevation-2 backdrop-blur-xl">
+            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px] mb-4">Prazos</p>
+            <h3 className="text-3xl font-display font-semibold text-white mb-4">Liberacao em ate 24h uteis</h3>
+            <p className="text-text-faint text-sm leading-relaxed">
               Nosso time libera o cadastro em ate 24 horas uteis apos o envio de toda a documentacao necessaria.
             </p>
           </div>
@@ -97,10 +97,10 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-elevation-1">
+            <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8 shadow-elevation-1">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra a vista (Cadastro rapido)</p>
               <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro rapido</h3>
-              <p className="text-slate-600 mb-4">Ideal para quem tem urgencia. Cadastro simplificado com dados comerciais e fiscais.</p>
+              <p className="text-text-body mb-4">Ideal para quem tem urgencia. Cadastro simplificado com dados comerciais e fiscais.</p>
               <ul className="space-y-3 text-sm">
                 {[
                   'Sem necessidade de analise de credito aprofundada.',
@@ -110,10 +110,10 @@ export default function ComoComprarPage() {
               </ul>
             </div>
 
-            <div className="rounded-3xl border border-action-primary bg-white p-8 shadow-glow-brand">
+            <div className="rounded-2xl border border-action-primary bg-bg-surface p-8 shadow-elevation-2">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px] mb-3">Compra faturada / boleto</p>
               <h3 className="text-2xl font-display font-black text-text-primary mb-3">Cadastro completo + credito</h3>
-              <p className="text-slate-600 mb-4">Para quem busca prazo. Analise de credito segura para definir limite compativel com o porte e historico da empresa.</p>
+              <p className="text-text-body mb-4">Para quem busca prazo. Analise de credito segura para definir limite compativel com o porte e historico da empresa.</p>
               <ul className="space-y-3 text-sm">
                 {[
                   'Analise de credito com retorno em ate 24h uteis.',
@@ -124,18 +124,18 @@ export default function ComoComprarPage() {
             </div>
           </div>
 
-          <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-elevation-1">
+          <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8 shadow-elevation-1">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="space-y-3 max-w-2xl">
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Modalidade presencial</p>
                 <h3 className="text-2xl font-display font-black text-text-primary">Retirada expressa na loja</h3>
-                <p className="text-slate-600">
+                <p className="text-text-body">
                   Feche o pedido com o consultor e retire na unidade com o pedido separado e conferido.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-                <Button href="/retirada-expressa" variant="primary" className="w-full sm:w-auto">Ver retirada expressa</Button>
-                <Button href={CONTACT_INFO.whatsapp} variant="outline" className="w-full sm:w-auto">Falar com consultor</Button>
+                <Button href="/retirada-expressa" variant="primary" size="lg" className="w-full sm:w-auto">Ver retirada expressa</Button>
+                <Button href={CONTACT_INFO.whatsapp} variant="outline" size="lg" className="w-full sm:w-auto">Falar com consultor</Button>
               </div>
             </div>
           </div>
@@ -151,7 +151,7 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-8 border border-slate-200 rounded-3xl bg-bg-surfaceMuted/60">
+            <div className="p-8 border border-border-subtle rounded-2xl bg-bg-surfaceMuted/60">
               <h4 className="text-xl font-display font-bold text-text-primary mb-4">Dados fiscais</h4>
               <ul className="space-y-3 text-sm">
                 {[
@@ -161,7 +161,7 @@ export default function ComoComprarPage() {
                 ].map((item) => bullet(item, item))}
               </ul>
             </div>
-            <div className="p-8 border border-slate-200 rounded-3xl bg-white">
+            <div className="p-8 border border-border-subtle rounded-2xl bg-bg-surface">
               <h4 className="text-xl font-display font-bold text-text-primary mb-4">Contatos e enderecos</h4>
               <ul className="space-y-3 text-sm">
                 {[
@@ -171,7 +171,7 @@ export default function ComoComprarPage() {
                   'Numero aproximado de funcionarios para personalizar o atendimento.',
                 ].map((item) => bullet(item, item))}
               </ul>
-              <p className="text-slate-500 text-xs mt-4">
+              <p className="text-text-muted text-xs mt-4">
                 Dica: informar o CNAE correto e o numero de funcionarios agiliza a analise.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function ComoComprarPage() {
               title="Revisao trimestral para manter o limite alinhado"
               description="Clientes com volume acima de R$ 30 mil passam por revisao de cadastro a cada 3 meses."
             />
-            <ul className="space-y-3 text-sm text-slate-600">
+            <ul className="space-y-3 text-sm text-text-body">
               {[
                 'A revisao garante limite compativel com o crescimento da demanda.',
                 'A analise considera historico e perfil da empresa.',
@@ -195,9 +195,9 @@ export default function ComoComprarPage() {
               ].map((item) => bullet(item, item))}
             </ul>
           </div>
-          <div className="lg:col-span-5 bg-white p-8 rounded-3xl border border-slate-200 shadow-elevation-1">
+          <div className="lg:col-span-5 bg-bg-surface p-8 rounded-2xl border border-border-subtle shadow-elevation-1">
             <h4 className="text-xl font-display font-bold text-text-primary mb-3">Perguntas frequentes</h4>
-            <div className="space-y-4 text-sm text-slate-600">
+            <div className="space-y-4 text-sm text-text-body">
               {faqItems.map((item) => (
                 <div key={item.q}>
                   <p className="font-display font-bold text-text-primary">{item.q}</p>
@@ -209,17 +209,17 @@ export default function ComoComprarPage() {
         </Container>
       </Section>
 
-      <Section id="cta-final" variant="default" className="pb-28 cv-auto">
-        <Container className="bg-bg-inverse text-white rounded-2xl p-10 md:p-14 shadow-elevation-2 border border-white/10">
+      <Section id="cta-final" variant="default" className="pb-24 cv-auto">
+        <Container className="bg-bg-inverse text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-border-inverse">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-[11px]">Pronto para comprar</p>
               <h3 className="text-3xl md:text-4xl font-display font-black leading-tight">Envie sua documentacao agora e acelere a primeira compra</h3>
-              <p className="text-slate-300 text-base">Separar a documentacao evita pendencias e garante liberacao dentro de 24 horas uteis.</p>
+              <p className="text-text-soft text-base">Separar a documentacao evita pendencias e garante liberacao dentro de 24 horas uteis.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 w-full sm:w-auto">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="w-full sm:w-auto">Enviar pelo WhatsApp</Button>
-              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline" className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary">Enviar por email</Button>
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg" className="w-full sm:w-auto">Enviar pelo WhatsApp</Button>
+              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline" size="lg" className="w-full sm:w-auto text-white border-white/40 hover:text-text-primary">Enviar por email</Button>
             </div>
           </div>
         </Container>
@@ -228,4 +228,7 @@ export default function ComoComprarPage() {
     </main>
   );
 }
+
+
+
 

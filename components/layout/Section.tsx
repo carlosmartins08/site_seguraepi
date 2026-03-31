@@ -12,16 +12,16 @@ interface SectionProps {
 export const Section: React.FC<SectionProps> = ({ id, children, className, variant = 'default' }) => {
   const variantStyles = {
     default: "bg-bg-surface",
-    dark: "bg-bg-inverse text-white",
-    offwhite: "bg-bg-surfaceMuted",
-    immersive: "bg-bg-inverse text-white rounded-t-2xl"
+    dark: "bg-bg-inverse text-text-inverse",
+    offwhite: "bg-bg-canvas",
+    immersive: "bg-bg-deep text-text-inverse rounded-t-2xl"
   };
 
   return (
     <section 
       id={id} 
       className={cn(
-        "py-20 md:py-24 transition-colors duration-slow ease-standard", 
+        "py-16 md:py-20 transition-colors duration-slow ease-standard", 
         variantStyles[variant],
         className
       )}

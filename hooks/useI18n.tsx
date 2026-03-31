@@ -1,7 +1,7 @@
 'use client';
 
 import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { DEFAULT_LOCALE, LOCALE_LABELS, Locale, STORAGE_KEY_LOCALE } from '../lib/i18n/locales';
+import { DEFAULT_LOCALE, LOCALE_LABELS, Locale, STORAGE_KEY_LOCALE, SUPPORTED_LOCALES } from '../lib/i18n/locales';
 import { getResource } from '../lib/i18n/resources';
 
 type I18nContextValue = {
@@ -19,15 +19,21 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [locale, setLocaleState] = useState<Locale>(DEFAULT_LOCALE);
 
   useEffect(() => {
+    if (SUPPORTED_LOCALES.length <= 1) {
+      setLocaleState(DEFAULT_LOCALE);
+      return;
+    }
+
     const stored = typeof window !== 'undefined' ? (localStorage.getItem(STORAGE_KEY_LOCALE) as Locale | null) : null;
-    if (stored === 'pt' || stored === 'en' || stored === 'es') {
+    if (stored && SUPPORTED_LOCALES.includes(stored)) {
       setLocaleState(stored);
     }
   }, []);
 
   const setLocale = useCallback((next: Locale) => {
+    if (!SUPPORTED_LOCALES.includes(next)) return;
     setLocaleState(next);
-    if (typeof window !== 'undefined') {
+    if (typeof window !== 'undefined' && SUPPORTED_LOCALES.length > 1) {
       localStorage.setItem(STORAGE_KEY_LOCALE, next);
     }
   }, []);
@@ -45,7 +51,8 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const formatDate = useCallback(
     (date: string | number | Date, opts?: Intl.DateTimeFormatOptions) => {
-      return new Intl.DateTimeFormat(locale === 'pt' ? 'pt-BR' : 'en-US', opts).format(new Date(date));
+      const lang = locale === 'pt' ? 'pt-BR' : locale === 'es' ? 'es-ES' : 'en-US';
+      return new Intl.DateTimeFormat(lang, opts).format(new Date(date));
     },
     [locale]
   );
@@ -63,7 +70,7 @@ export const I18nProvider: React.FC<{ children: React.ReactNode }> = ({ children
       t,
       formatDate,
       labels: LOCALE_LABELS,
-      availableLocales: ['pt', 'en', 'es'],
+      availableLocales: SUPPORTED_LOCALES,
     }),
     [locale, setLocale, t, formatDate]
   );

@@ -7,6 +7,7 @@ import { SITE_NAME, SITE_URL, DEFAULT_TITLE, DEFAULT_DESCRIPTION, OG_IMAGE } fro
 import { buildLocalBusinessJsonLd, buildOrganizationJsonLd, buildWebSiteJsonLd } from '../lib/seo/schema';
 import { Providers } from './providers';
 import { ConsentScriptGate } from '../components/analytics/ConsentScriptGate';
+import { AnalyticsScripts } from '../components/analytics/AnalyticsScripts';
 import { LegalLayer } from '../components/home/LegalLayer';
 import { FloatingChatButton } from '../components/actions/FloatingChatButton';
 
@@ -113,6 +114,7 @@ export default function RootLayout({
           src="https://wbot.chat/index.js"
           token="4cdc9640da67dbd6e38fa5ef324befd6"
         />
+        <AnalyticsScripts />
       </body>
     </html>
   );

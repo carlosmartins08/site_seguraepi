@@ -1,5 +1,5 @@
 # SeguraEPI Intelligence Design System
-**Versão:** 2.0 (Industrial Premium B2B + Technical Authority)  
+**Vers?o:** 2.1 (Industrial Premium B2B + Technical Authority)  
 **Missão:** Interface de alta confiança para compra técnica de EPI: conformidade (C.A./NR), previsibilidade (logística/estoque) e conversão sem fricção.
 
 ### Governança de tokens (fonte de verdade)
@@ -25,22 +25,30 @@
 ## 1.1 Cores — Base (brand + neutrals + status)
 **Brand**  
 - `brand.500` = `#FF9B21` (Segura Orange)  
-- `brand.600` = `#F38A00` (hover/pressed mais “técnico”)
+- `brand.600` = `#F08A00` (hover/pressed mais ?t?cnico?)  
+- `brand.700` = `#D97706` (pressed/active)  
 
 **Neutrals (Slate)**  
-- `neutral.950` = `#0F172A`  
+- `neutral.950` = `#0B1220`  
 - `neutral.900` = `#111827`  
 - `neutral.800` = `#1F2937`  
 - `neutral.700` = `#334155`  
+- `neutral.600` = `#475569`  
 - `neutral.500` = `#64748B`  
 - `neutral.400` = `#94A3B8`  
+- `neutral.300` = `#CBD5E1`  
 - `neutral.200` = `#E2E8F0`  
 - `neutral.100` = `#F1F5F9`  
 - `neutral.50`  = `#F8FAFC`
 
 **Status**  
 - `status.success` = `#10B981`  
+- `status.successSoft` = `#D1FAE5`  
+- `status.successStrong` = `#047857`  
 - `status.warning` = `#F59E0B`  
+- `status.warningSoft` = `#FFFBEB`  
+- `status.warningBorder` = `#FDE68A`  
+- `status.warningStrong` = `#92400E`  
 - `status.danger`  = `#EF4444`  
 - `status.info`    = `#3B82F6`
 
@@ -48,29 +56,37 @@
 
 ## 1.2 Cores — Semânticas
 **Backgrounds**  
-- `bg.canvas` = `neutral.50`  
+- `bg.canvas` = `#F6F8FB`  
 - `bg.surface` = `#FFFFFF`  
 - `bg.surfaceMuted` = `neutral.100`  
+- `bg.soft` = `#E7EDF3`  
 - `bg.inverse` = `neutral.950`  
-- `bg.overlay` = `rgba(15, 23, 42, 0.6)` (modal/overlay)
+- `bg.deep` = `#05070D`  
+- `bg.overlay` = `rgba(11, 18, 32, 0.6)` (modal/overlay)
 
 **Text**  
 - `text.primary` = `neutral.950`  
-- `text.secondary` = `neutral.700`  
+- `text.secondary` = `neutral.800`  
+- `text.body` = `neutral.600`  
 - `text.muted` = `neutral.500`  
+- `text.subtle` = `neutral.400`  
+- `text.soft` = `neutral.300`  
+- `text.faint` = `neutral.200`  
 - `text.inverse` = `#FFFFFF`  
 - `text.onBrand` = `neutral.950` (em fundo brand)
 
 **Borders**  
 - `border.default` = `neutral.200`  
-- `border.muted` = `neutral.100`  
-- `border.strong` = `neutral.400`  
-- `border.inverse` = `rgba(248, 250, 252, 0.14)`
+- `border.muted` = `#EEF2F7`  
+- `border.subtle` = `#D4DEE8`  
+- `border.strong` = `#A6B2C2`  
+- `border.dark` = `neutral.700`  
+- `border.inverse` = `rgba(248, 250, 252, 0.16)`
 
 **Actions**  
 - `action.primary` = `brand.500`  
 - `action.primaryHover` = `brand.600`  
-- `action.primaryPressed` = `#E07A00`  
+- `action.primaryPressed` = `brand.700`  
 - `action.secondary` = `neutral.950`  
 - `action.secondaryHover` = `neutral.900`  
 - `action.ghostHover` = `neutral.100`
@@ -98,10 +114,13 @@ Base 4px
 - `space.4 = 16`  
 - `space.5 = 20`  
 - `space.6 = 24`  
+- `space.7 = 28`  
 - `space.8 = 32`  
 - `space.10 = 40`  
 - `space.12 = 48`  
+- `space.14 = 56`  
 - `space.16 = 64`  
+- `space.18 = 72`  
 - `space.20 = 80`  
 - `space.24 = 96`
 
@@ -123,22 +142,22 @@ Base 4px
 
 ## 2.2 Escala tipográfica (desktop; mobile reduz 10–18%)
 **Display**  
-- `type.displayXL` = 56 / line 1.05 / tracking -0.02 / weight 900  
-- `type.displayLG` = 44 / line 1.08 / tracking -0.015 / weight 800
+`type.displayXL` = 54 / line 1.08 / tracking -0.02 / weight 900  
+`type.displayLG` = 42 / line 1.10 / tracking -0.015 / weight 800
 
 **Titles**  
-- `type.titleXL` = 32 / line 1.2 / tracking -0.01 / weight 800  
-- `type.titleLG` = 24 / line 1.25 / tracking -0.005 / weight 800  
-- `type.titleMD` = 20 / line 1.3 / tracking 0 / weight 700
+`type.titleXL` = 32 / line 1.25 / tracking -0.01 / weight 800  
+`type.titleLG` = 24 / line 1.3 / tracking -0.005 / weight 800  
+`type.titleMD` = 20 / line 1.35 / tracking 0 / weight 700
 
 **Body**  
-- `type.bodyLG` = 18 / line 1.6 / weight 500  
-- `type.bodyMD` = 16 / line 1.6 / weight 400  
-- `type.bodySM` = 14 / line 1.55 / weight 400
+`type.bodyLG` = 18 / line 1.7 / weight 500  
+`type.bodyMD` = 16 / line 1.7 / weight 400  
+`type.bodySM` = 14 / line 1.6 / weight 400
 
 **Labels**  
-- `type.labelMD` = 12 / line 1.2 / tracking 0.10 / weight 600 (caps permitido)  
-- `type.labelSM` = 11 / line 1.2 / tracking 0.12 / weight 600 (caps)
+`type.labelMD` = 12 / line 1.3 / tracking 0.08 / weight 600 (caps permitido)  
+`type.labelSM` = 11 / line 1.3 / tracking 0.10 / weight 600 (caps)
 
 ## 2.3 Regras de uppercase (anti-“gritaria”)
 - **Permitido**: `label*`, `NRChip`, microheadings curtos (até 5–7 palavras).  

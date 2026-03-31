@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { SeguraLogo } from '../brand/SeguraLogo';
+import { Button } from '../actions/Button';
 import { CONTACT_INFO } from '../../lib/constants';
 import { mailtoHref } from '../../lib/contact';
 import { useI18n } from '../../hooks/useI18n';
@@ -34,16 +35,16 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
       {/* Modal Container */}
       <div className="relative w-full max-w-4xl max-h-[90vh] bg-white rounded-xl md:rounded-2xl shadow-elevation-2 animate-pop overflow-hidden flex flex-col border border-white/10">
         {/* Header Section */}
-        <div className="p-8 md:p-10 border-b border-slate-100 flex items-center justify-between shrink-0 bg-white relative z-10">
+        <div className="p-8 md:p-10 border-b border-border-muted flex items-center justify-between shrink-0 bg-white relative z-10">
           <div className="flex items-center gap-6">
             <div className="p-3 bg-bg-surfaceMuted rounded-2xl">
               <SeguraLogo section="modal" variant="icon-only" size="sm" padding="tight" />
             </div>
             <div>
-              <span className="text-action-primary font-display font-bold text-[10px] uppercase tracking-[0.3em] block mb-1">
+              <span className="text-action-primary font-display font-semibold text-[11px] uppercase tracking-[0.18em] block mb-1">
                 Portal de Conformidade
               </span>
-              <h2 className="text-2xl md:text-3xl font-display font-black text-text-primary uppercase tracking-tight leading-none">
+              <h2 className="text-2xl md:text-3xl font-display font-semibold text-text-primary leading-tight">
                 {title}
               </h2>
             </div>
@@ -65,11 +66,11 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
         </div>
 
         {/* Content Section */}
-        <div className="p-10 md:p-16 overflow-y-auto custom-scrollbar flex-grow bg-white text-slate-600">
+        <div className="p-10 md:p-16 overflow-y-auto custom-scrollbar flex-grow bg-white text-text-body">
           <div className="max-w-3xl mx-auto font-sans leading-relaxed text-base md:text-lg">
             <div className="prose prose-slate prose-lg max-w-none">{content}</div>
 
-            <div className="mt-12 pt-12 border-t border-slate-100 italic text-sm text-slate-400">
+            <div className="mt-12 pt-12 border-t border-border-muted italic text-sm text-text-subtle">
               * Ultima atualizacao em {lastUpdateLabel}. Segura EPI e Servicos segue rigorosamente a Lei Geral de
               Protecao de Dados (13.709/2018). Duvidas sobre seus dados? Contate{' '}
               <a className="underline hover:text-action-primary" href={mailtoHref(CONTACT_INFO.email)}>
@@ -81,16 +82,18 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
         </div>
 
         {/* Action Footer */}
-        <div className="p-8 md:p-10 bg-bg-surfaceMuted border-t border-slate-100 shrink-0 flex flex-col sm:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] font-display font-bold text-slate-400 uppercase tracking-widest text-center sm:text-left">
+        <div className="p-8 md:p-10 bg-bg-surfaceMuted border-t border-border-muted shrink-0 flex flex-col sm:flex-row items-center justify-between gap-6">
+          <p className="text-xs font-medium text-text-subtle text-center sm:text-left">
             Sua aceitacao confirma a leitura integral destes termos.
           </p>
-          <button
+          <Button
+            variant="primary"
+            size="lg"
+            className="w-full sm:w-auto"
             onClick={onClose}
-            className="bg-bg-inverse text-white px-12 py-5 font-display font-bold uppercase text-xs tracking-[0.2em] rounded-2xl shadow-elevation-1 hover:bg-action-primary hover:shadow-glow-brand transition-all active:scale-95 w-full sm:w-auto"
           >
             Compreendi e Aceito
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -107,4 +110,6 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
     </div>
   );
 };
+
+
 

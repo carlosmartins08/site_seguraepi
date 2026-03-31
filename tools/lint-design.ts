@@ -14,13 +14,14 @@ const exts = new Set(['.ts', '.tsx']);
 const allowedSpacing = new Set(
   Array.from({ length: 25 }, (_, i) => String(i * 4)), // 0..96 em passos de 4px
 );
-const allowedRadius = new Set(['sm', 'md', 'lg', 'xl', '2xl', '3xl', 'full']);
+const allowedRadius = new Set(['sm', 'md', 'lg', 'xl', '2xl', 'full']);
 const allowedDuration = new Set(['fast', 'base', 'slow']);
 const allowedEase = new Set(['standard', 'emphasized']);
 const ignoreFiles = new Set([
   path.join('src', 'styles', 'tokens.ts'),
   path.join('app', 'opengraph-image.tsx'),
   path.join('app', 'twitter-image.tsx'),
+  path.join('app', 'epi', '[categoria]', 'opengraph-image.tsx'),
 ]);
 
 const findings: Finding[] = [];

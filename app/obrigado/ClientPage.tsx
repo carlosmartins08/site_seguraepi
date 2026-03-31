@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useRef } from 'react';
 import { Navbar } from '../../components/layout/Navbar';
@@ -33,11 +33,15 @@ export default function ClientPage() {
       clearChatContext();
     }
 
-    openWbotChat({
+    const didOpen = openWbotChat({
       trackEvent: 'route_thanks_autostart',
       trackParams: { surface: 'thanks' },
       fallbackHref,
     });
+
+    if (!didOpen && fallbackHref) {
+      window.location.assign(fallbackHref);
+    }
   }, []);
 
   const phoneDigits = CONTACT_INFO.phone.replace(/\D/g, '');
@@ -47,80 +51,81 @@ export default function ClientPage() {
     <main className="min-h-screen bg-white">
       <Navbar variant="light" />
 
-      <Section id="thanks-hero" variant="offwhite" className="pt-nav pb-16">
-        <Container className="max-w-4xl space-y-6">
-          <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
+      <Section id="thanks-hero" variant="offwhite" className="pt-nav pb-14">
+        <Container size="narrow" className="space-y-6">
+          <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
             Pos-conversao
           </p>
-          <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
+          <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
             Solicitacao Recebida com Sucesso!
           </h1>
-          <p className="text-slate-600 text-lg leading-relaxed">
+          <p className="text-text-body text-base md:text-lg leading-relaxed">
             Obrigado por escolher a Segura EPI. Seu pedido de contato ja esta com nosso time.
           </p>
         </Container>
       </Section>
 
       <Section id="thanks-content" variant="default" className="pt-10 pb-20">
-        <Container className="max-w-5xl space-y-12">
+        <Container size="default" className="max-w-5xl space-y-12">
           <div className="space-y-4">
             <h2 className="text-2xl md:text-3xl font-display font-bold text-text-primary">
               O que acontece agora?
             </h2>
-            <p className="text-slate-600 text-base md:text-lg leading-relaxed">
+            <p className="text-text-body text-base md:text-lg leading-relaxed">
               Nossa equipe de especialistas ja recebeu seus dados e iniciou a analise da sua demanda. Prezamos pela
               agilidade, por isso confira abaixo os proximos passos.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">Se voce solicitou uma Cotacao</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mt-3">
+              <p className="text-text-body text-sm leading-relaxed mt-3">
                 Um consultor de solucoes entra em contato via WhatsApp ou e-mail para entender sua necessidade e enviar
                 a proposta formalizada.
               </p>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">Se voce enviou dados para Cadastro</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mt-3">
+              <p className="text-text-body text-sm leading-relaxed mt-3">
                 O departamento financeiro valida suas informacoes (CNPJ/Sintegra). O prazo maximo de analise e de ate
                 24 horas uteis.
               </p>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">Se voce falou conosco no WhatsApp</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mt-3">
+              <p className="text-text-body text-sm leading-relaxed mt-3">
                 Aguarde um instante. Devido ao alto volume de atendimentos, um humano respondera em breve. Horario de
-                atendimento: segunda a sexta, das 07h25 as 17h18.
+                atendimento: {CONTACT_INFO.supportTime}.
               </p>
             </div>
           </div>
 
-          <div className="bg-bg-inverse text-white border border-white/10 rounded-3xl p-8 md:p-10 shadow-elevation-2">
-            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
+          <div className="bg-bg-inverse text-white border border-border-inverse rounded-2xl p-8 md:p-10 shadow-elevation-2">
+            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
               Inovacao Segura EPI
             </p>
-            <h3 className="text-2xl md:text-3xl font-display font-black mt-4">
+            <h3 className="text-2xl md:text-3xl font-display font-semibold mt-4">
               Conheca a Neo Evolution
             </h3>
-            <p className="text-slate-200 text-base md:text-lg leading-relaxed mt-3">
+            <p className="text-text-faint text-base md:text-lg leading-relaxed mt-3">
               A unica palmilha antiestatica moldada a laser em 3 minutos. Leve essa tecnologia para sua empresa.
             </p>
             <Button
               href={buildUrl(ROUTES.chat, { intent: 'neo-evolution', origem: 'obrigado' })}
               variant="primary"
-              className="px-8 py-4 mt-6"
+              size="lg"
+              className="mt-6"
               trackEvent="cta_thanks_neo"
             >
               Ver tecnologia
             </Button>
           </div>
 
-          <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <p className="text-text-primary font-display font-bold uppercase tracking-[0.2em] text-xs">Duvida urgente?</p>
-              <p className="text-slate-600 text-sm">Ligue para nossa central agora mesmo.</p>
+              <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-xs">Duvida urgente?</p>
+              <p className="text-text-body text-sm">Ligue para nossa central agora mesmo.</p>
             </div>
             <a
               href={phoneHref}
@@ -134,3 +139,6 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+

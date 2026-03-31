@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useState } from 'react';
 import { cn } from '../../lib/cn';
@@ -14,7 +14,7 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
   return (
     <div className="grid lg:grid-cols-2 gap-6">
       {items.map((item, index) => (
-        <div key={item.q} className="bg-white rounded-3xl border border-border-default p-6 md:p-8 shadow-elevation-1">
+        <div key={item.q} className="bg-bg-surface rounded-2xl border border-border-subtle p-6 md:p-8 shadow-elevation-1">
           <button
             type="button"
             onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
@@ -22,9 +22,9 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
             aria-controls={`faq-panel-${index}`}
             className="w-full flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
           >
-            <h3 className="text-xl md:text-2xl font-display font-black text-text-primary tracking-tight">{item.q}</h3>
+            <h3 className="text-lg md:text-xl font-display font-semibold text-text-primary tracking-tight">{item.q}</h3>
             <svg
-              className={cn("w-6 h-6 transition-transform", openFaqIndex === index && "rotate-180")}
+              className={cn("w-5 h-5 transition-transform", openFaqIndex === index && "rotate-180")}
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -32,17 +32,23 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
               <path d="M19 9l-7 7-7-7" strokeWidth={2} />
             </svg>
           </button>
-          {openFaqIndex === index && (
-            <p
-              id={`faq-panel-${index}`}
-              role="region"
-              className="mt-6 pt-6 border-t border-slate-50 text-slate-600 text-lg leading-relaxed"
-            >
+          <div
+            id={`faq-panel-${index}`}
+            role="region"
+            className={cn(
+              "mt-4 grid transition-[grid-template-rows,opacity] duration-base ease-standard",
+              openFaqIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+            )}
+          >
+            <p className="overflow-hidden text-text-body text-sm md:text-base leading-relaxed border-t border-border-muted pt-4">
               {item.a}
             </p>
-          )}
+          </div>
         </div>
       ))}
     </div>
   );
 };
+
+
+

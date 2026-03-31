@@ -21,13 +21,13 @@ export const ContextLink: React.FC<ContextLinkProps> = ({ children, href, classN
         href={href as any}
         onClick={onClick}
         className={cn(
-          "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
+          "text-text-primary font-sans font-semibold text-sm inline-flex items-center gap-2 group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
           className
         )}
         {...(rest as any)}
       >
         {children}
-        <svg className="ml-3 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
         </svg>
       </Link>
@@ -39,13 +39,13 @@ export const ContextLink: React.FC<ContextLinkProps> = ({ children, href, classN
       href={href} 
       onClick={onClick}
       className={cn(
-        "text-text-primary font-display font-bold uppercase text-[10px] tracking-widest inline-flex items-center group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
+        "text-text-primary font-sans font-semibold text-sm inline-flex items-center gap-2 group transition-colors hover:text-action-primaryHover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface",
         className
       )}
       {...rest}
     >
       {children}
-      <svg className="ml-3 w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <svg className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg>
     </a>

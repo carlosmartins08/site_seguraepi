@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React from 'react';
 import Image from 'next/image';
@@ -8,12 +8,16 @@ import { Container } from '../../components/layout/Container';
 import { SectionTitle } from '../../components/typography/SectionTitle';
 import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
+import { JsonLd } from '../../components/seo/JsonLd';
+import { buildBreadcrumbJsonLd } from '../../lib/seo/schema';
+import { SITE_URL } from '../../lib/seo/site';
+import { ROUTES } from '../../lib/routes';
 import { CONTACT_INFO } from '../../lib/constants';
 
 const heroBadges = [
   { label: 'Seguranca com proposito', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Protecao com alma', color: 'bg-slate-900 text-white' },
-  { label: 'Tecnologia + humanidade', color: 'bg-emerald-100 text-emerald-700' },
+  { label: 'Protecao com alma', color: 'bg-bg-inverse text-white' },
+  { label: 'Tecnologia + humanidade', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
 const valores = [
@@ -52,10 +56,10 @@ const DiretrizCard = ({
   title: string;
   desc: string;
 }) => (
-  <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+  <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
     <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">{label}</p>
     <h4 className="text-xl font-display font-bold text-text-primary">{title}</h4>
-    <p className="text-slate-600 leading-relaxed">{desc}</p>
+    <p className="text-text-body leading-relaxed">{desc}</p>
   </div>
 );
 
@@ -72,6 +76,10 @@ const IconBullet = ({ icon }: { icon: string }) => {
 export default function ClientPage() {
   return (
     <main className="bg-white min-h-screen">
+      <JsonLd data={buildBreadcrumbJsonLd([
+        { name: 'Home', url: SITE_URL },
+        { name: 'Sobre a Segura EPI', url: `${SITE_URL}${ROUTES.about}` },
+      ])} />
       <Navbar variant="light" />
 
       <Section id="hero-sobre" variant="offwhite" className="pt-nav pb-16 relative overflow-hidden">
@@ -95,7 +103,7 @@ export default function ClientPage() {
               <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
                 Seguranca com Proposito, Protecao com Alma
               </h1>
-              <p className="text-slate-600 text-lg leading-relaxed mt-4 max-w-3xl">
+              <p className="text-text-body text-lg leading-relaxed mt-4 max-w-3xl">
                 Cada trabalhador carrega sonhos, historias e o desejo de voltar para casa em seguranca. Nas ruas, nas
                 obras, nas alturas ou no chao de fabrica, entregamos confianca, conhecimento e cuidado.
               </p>
@@ -130,15 +138,15 @@ export default function ClientPage() {
             description="Cada trabalhador carrega sonhos, historias e a responsabilidade de voltar para casa em seguranca."
           />
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-4">
-              <p className="text-slate-600 leading-relaxed">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-4">
+              <p className="text-text-body leading-relaxed">
                 Nao vendemos apenas capacete, luva ou cinto. Entregamos confianca, conhecimento e cuidado para quem esta
                 na obra, na altura ou no chao de fabrica.
               </p>
             </div>
-            <div className="p-6 rounded-3xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
+            <div className="p-6 rounded-xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
               <h3 className="text-xl font-display font-bold text-text-primary">Nossa Historia</h3>
-              <p className="text-slate-600 leading-relaxed">
+              <p className="text-text-body leading-relaxed">
                 A Segura EPI nasceu da observacao de uma falha e da coragem de preenche-la. Transformamos nossa
                 experiencia na construcao civil e no comercio em uma missao clara: proteger pessoas com inteligencia e
                 empatia.
@@ -186,14 +194,14 @@ export default function ClientPage() {
             {valores.map((valor) => (
               <div
                 key={valor.title}
-                className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white flex gap-4 items-start"
+                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white flex gap-4 items-start"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <IconBullet icon={valor.icon} />
                 </div>
                 <div className="space-y-2">
                   <h4 className="text-lg font-display font-bold text-text-primary">{valor.title}</h4>
-                  <p className="text-slate-600 leading-relaxed text-sm">{valor.desc}</p>
+                  <p className="text-text-body leading-relaxed text-sm">{valor.desc}</p>
                 </div>
               </div>
             ))}
@@ -209,12 +217,12 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-3 gap-6">
             {motivos.map((motivo) => (
-              <div key={motivo.title} className="p-6 rounded-3xl border border-slate-100 shadow-elevation-1 bg-white space-y-3">
+              <div key={motivo.title} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
                 <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
                   <IconBullet icon={motivo.icon} />
                 </div>
                 <h4 className="text-lg font-display font-bold text-text-primary">{motivo.title}</h4>
-                <p className="text-slate-600 leading-relaxed text-sm">{motivo.desc}</p>
+                <p className="text-text-body leading-relaxed text-sm">{motivo.desc}</p>
               </div>
             ))}
           </div>
@@ -223,7 +231,7 @@ export default function ClientPage() {
 
       <Section id="compromisso" variant="default">
         <Container className="max-w-5xl">
-          <div className="bg-slate-900 text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
+          <div className="bg-bg-inverse text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
             <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">
               &quot;Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.&quot;
@@ -243,3 +251,8 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+
+
+

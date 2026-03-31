@@ -5,8 +5,8 @@
 
 :root {
   --segura-primary: #FF9B21;
-  --segura-dark: #0F172A;
-  --nav-offset: 112px;
+  --segura-dark: #0B1220;
+  --nav-offset: 96px;
 }
 
 body {
@@ -25,7 +25,7 @@ section[id] {
 
 @media (min-width: 1024px) {
   :root {
-    --nav-offset: 152px;
+    --nav-offset: 128px;
   }
 }
 
@@ -38,7 +38,7 @@ section[id] {
   overflow: hidden;
   z-index: 200;
   background: #fff;
-  color: #0F172A;
+  color: var(--segura-dark);
   padding: 12px 16px;
   border-radius: 12px;
   font-weight: 700;

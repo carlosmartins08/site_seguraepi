@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(xargs grep:*)",
+      "Bash(find . -path ./node_modules -prune -o -path ./.next -prune -o -name opengraph* -o -name icon* -o -name favicon*)",
+      "Bash(find ./components -name *seo* -o -name *JsonLd* -o -name *meta*)"
+    ]
+  }
+}

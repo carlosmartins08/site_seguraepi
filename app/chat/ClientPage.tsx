@@ -10,7 +10,7 @@ import { buildWhatsappLink, openWbotChat } from '../../lib/wbot';
 import { CONTACT_INFO } from '../../lib/constants';
 import { ROUTES } from '../../lib/routes';
 import { buildLeadMessage, clearStoredLead, getStoredLead } from '../../lib/lead';
-import { buildChatContextMessage, clearChatContext, getChatContext } from '../../lib/chat-context';
+import { buildChatContextMessage, clearChatContext, getChatContext, storeChatContext } from '../../lib/chat-context';
 import { buildChatPrefillMessage, clearChatPrefill, getChatPrefill } from '../../lib/chat-prefill';
 
 export default function ClientPage() {
@@ -20,6 +20,15 @@ export default function ClientPage() {
   useEffect(() => {
     if (didTrigger.current) return;
     didTrigger.current = true;
+
+    const params = new URLSearchParams(window.location.search);
+    const intent = params.get('intent') ?? undefined;
+    const origem = params.get('origem') ?? undefined;
+    const existingContext = getChatContext();
+
+    if ((intent || origem) && !existingContext) {
+      storeChatContext({ intent, origem });
+    }
 
     let fallbackHref = CONTACT_INFO.whatsapp;
     const payload = getStoredLead();
@@ -63,14 +72,14 @@ export default function ClientPage() {
 
       <Section id="chat-bridge" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-3xl">
-          <div className="bg-white border border-slate-100 rounded-3xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
+          <div className="bg-white border border-border-muted rounded-xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
               Atendimento online
             </p>
             <h1 className="text-2xl md:text-4xl font-display font-black text-text-primary uppercase tracking-tight">
               {attempted && opened ? 'Abrindo o chat agora' : 'Preparando seu atendimento'}
             </h1>
-            <p className="text-slate-600 text-sm md:text-base leading-relaxed">
+            <p className="text-text-body text-sm md:text-base leading-relaxed">
               {attempted
                 ? 'Se o chat nao abriu automaticamente, use uma das opcoes abaixo.'
                 : 'Aguarde um instante enquanto conectamos voce ao especialista.'}
@@ -109,3 +118,6 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+

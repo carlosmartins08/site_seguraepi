@@ -4,6 +4,7 @@ export type ChatPrefillPayload = {
   whatsapp?: string;
   subject?: string;
   createdAt?: string;
+  consentAt?: string;
 };
 
 export const CHAT_PREFILL_KEY = 'chat_prefill';
@@ -36,6 +37,7 @@ export function buildChatPrefillMessage(payload: ChatPrefillPayload): string {
   if (payload.company) lines.push(`Empresa: ${payload.company}`);
   if (payload.whatsapp) lines.push(`WhatsApp: ${payload.whatsapp}`);
   if (payload.subject) lines.push(`Assunto: ${payload.subject}`);
+  if (payload.consentAt) lines.push(`Consentimento LGPD: Sim (${payload.consentAt})`);
 
   return lines.join('\n');
 }

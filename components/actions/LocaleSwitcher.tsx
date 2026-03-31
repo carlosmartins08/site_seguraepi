@@ -9,6 +9,8 @@ interface LocaleSwitcherProps {
 export const LocaleSwitcher: React.FC<LocaleSwitcherProps> = ({ compact = false }) => {
   const { locale, setLocale, labels, availableLocales } = useI18n();
 
+  if (availableLocales.length <= 1) return null;
+
   return (
     <div
       className={cn(

@@ -53,9 +53,11 @@ Sitemap:
 ## I18n local
 Sem rotas `/en` ou `/es`. Toggle client-side:
 - `hooks/useI18n.tsx` (contexto + `document.documentElement.lang`)
-- `lib/i18n/locales.ts` (locales + `STORAGE_KEY_LOCALE`)
+- `lib/i18n/locales.ts` (`SUPPORTED_LOCALES` + `STORAGE_KEY_LOCALE`)
 - `lib/i18n/resources.ts` (labels nav/footer/status)
 - `lib/i18n/home.ts` (conteudo da Home por idioma)
+
+Observacao: `SUPPORTED_LOCALES` esta restrito a `['pt']` enquanto nao houver traducao completa das paginas.
 
 ## Chat e UX de atendimento
 Componentes e helpers:

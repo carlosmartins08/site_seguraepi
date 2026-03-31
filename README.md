@@ -32,13 +32,13 @@ Centralizada em `lib/routes.ts`:
 Validador de rotas: `tools/lint-routes.ts` (rodar `npm run lint:routes`).
 
 ## I18n (PT/EN/ES)
-I18n local via `localStorage`:
+I18n local via `localStorage`, com escopo controlado:
 - `hooks/useI18n.tsx` (contexto + `document.documentElement.lang`)
-- `lib/i18n/locales.ts` (locales e storage key)
+- `lib/i18n/locales.ts` (`SUPPORTED_LOCALES` e storage key)
 - `lib/i18n/resources.ts` (labels nav/footer/status)
 - `lib/i18n/home.ts` (conteudo da Home por idioma)
 
-Nao existem rotas `/en` ou `/es`; o toggle e apenas client-side.
+Atualmente o `SUPPORTED_LOCALES` esta restrito a `['pt']` para evitar experiencia parcialmente traduzida. Expanda somente quando todas as paginas estiverem localizadas.
 
 ## Chat e atendimento
 - FAB global: `components/actions/FloatingChatButton.tsx` (offline pre-chat + WhatsApp).

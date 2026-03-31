@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '../../lib/cn';
 
 interface LastUpdatedProps {
@@ -24,8 +24,8 @@ export const LastUpdated: React.FC<LastUpdatedProps> = ({
   return (
     <p
       className={cn(
-        'text-[11px] font-display font-bold uppercase tracking-[0.2em]',
-        isDark ? 'text-slate-300' : 'text-slate-500',
+        'text-xs font-sans font-medium tracking-wide',
+        isDark ? 'text-text-faint' : 'text-text-muted',
         className
       )}
     >
@@ -33,3 +33,4 @@ export const LastUpdated: React.FC<LastUpdatedProps> = ({
     </p>
   );
 };
+

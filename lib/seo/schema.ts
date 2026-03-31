@@ -49,6 +49,14 @@ export const buildLocalBusinessJsonLd = () => ({
     postalCode: '58108-096',
     addressCountry: 'BR',
   },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+      opens: '08:00',
+      closes: '18:00',
+    },
+  ],
   sameAs,
 });
 
@@ -59,7 +67,7 @@ export const buildWebSiteJsonLd = () => ({
   url: SITE_URL,
   potentialAction: {
     '@type': 'SearchAction',
-    target: `${SITE_URL}/catalogo?busca={search_term_string}`,
+    target: `https://catalogo.seguraepi.com.br?busca={search_term_string}`,
     'query-input': 'required name=search_term_string',
   },
 });
@@ -86,4 +94,50 @@ export const buildBreadcrumbJsonLd = (items: Array<{ name: string; url: string }
     name: item.name,
     item: item.url,
   })),
+});
+
+export const buildSpeakableJsonLd = (url: string, cssSelectors: string[] = ['h1', '.speakable']) => ({
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  url,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: cssSelectors,
+  },
+});
+
+export const buildTechArticleJsonLd = ({
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+}: {
+  headline: string;
+  description: string;
+  url: string;
+  datePublished: string;
+  dateModified: string;
+}) => ({
+  '@context': 'https://schema.org',
+  '@type': 'TechArticle',
+  headline,
+  description,
+  url,
+  datePublished,
+  dateModified,
+  author: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+  },
+  publisher: {
+    '@type': 'Organization',
+    name: SITE_NAME,
+    url: SITE_URL,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${SITE_URL}/brand/logo-icon-color.png`,
+    },
+  },
 });

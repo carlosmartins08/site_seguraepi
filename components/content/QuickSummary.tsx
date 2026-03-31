@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { cn } from '../../lib/cn';
 
 interface QuickSummaryProps {
@@ -20,12 +20,12 @@ export const QuickSummary: React.FC<QuickSummaryProps> = ({
     <div
       className={cn(
         'rounded-2xl border p-5 md:p-6 shadow-elevation-1',
-        isDark ? 'bg-white/10 border-white/10 text-slate-200' : 'bg-bg-surfaceMuted border-slate-200 text-slate-600',
+        isDark ? 'bg-white/10 border-white/10 text-text-faint' : 'bg-bg-surfaceMuted border-border-subtle text-text-body',
         className
       )}
     >
       <p className={cn(
-        'text-[10px] font-display font-bold uppercase tracking-[0.25em]',
+        'text-[11px] font-display font-semibold uppercase tracking-[0.18em]',
         isDark ? 'text-action-primary' : 'text-action-primary'
       )}>
         {title}
@@ -41,3 +41,5 @@ export const QuickSummary: React.FC<QuickSummaryProps> = ({
     </div>
   );
 };
+
+

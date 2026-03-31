@@ -73,7 +73,7 @@ export function useBusinessStatus(): BusinessStatus {
       const timeLabel = `${CONTACT_INFO.businessHours.open.toString().padStart(2, '0')}:00h`;
 
       let message = '';
-      if (label === 'Hoje') {
+      if (label === todayLabel) {
         const diffHours = Math.floor((openTimeInMinutes - currentTimeInMinutes) / 60);
         const diffMins = (openTimeInMinutes - currentTimeInMinutes) % 60;
 

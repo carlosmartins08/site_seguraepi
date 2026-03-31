@@ -1,4 +1,4 @@
-'use client';
+﻿'use client';
 
 import React, { useEffect, useState } from 'react';
 import { cn } from '../../lib/cn';
@@ -19,6 +19,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
   const [isVisible, setIsVisible] = useState(false);
   const [isManaging, setIsManaging] = useState(false);
   const [preferences, setPreferences] = useState<Record<PreferenceKey, boolean>>(defaultPreferences);
+  const analyticsEnabled = Boolean(process.env.NEXT_PUBLIC_GA_ID || process.env.NEXT_PUBLIC_GTM_ID);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -79,7 +80,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
 
   return (
     <div className="fixed bottom-0 left-0 right-0 z-[100] p-4 md:p-8 animate-slide-up">
-      <div className="max-w-7xl mx-auto bg-bg-inverse/95 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-3xl shadow-elevation-2 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto bg-bg-inverse/95 backdrop-blur-xl border border-white/10 p-6 md:p-10 rounded-xl shadow-elevation-2 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-32 h-32 bg-action-primary/10 rounded-full blur-3xl -ml-16 -mt-16" />
 
         <div className="flex flex-col lg:flex-row items-center justify-between gap-8 relative z-10">
@@ -91,7 +92,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
               </span>
             </div>
             <h3 className="text-white font-display font-bold text-lg mb-3">Sua seguranca comeca com a transparencia</h3>
-            <p className="text-slate-300 text-sm leading-relaxed font-sans max-w-4xl">
+            <p className="text-text-soft text-sm leading-relaxed font-sans max-w-4xl">
               Utilizamos cookies para otimizar sua jornada tecnica, medir performance e personalizar ofertas de EPI.
               Ao prosseguir, voce concorda com nossa{' '}
               <button onClick={onOpenPrivacy} className="text-action-primary font-bold hover:underline underline-offset-4 transition-all">
@@ -100,12 +101,12 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
               em conformidade com a LGPD.
             </p>
 
-            {isManaging && (
+            {isManaging && analyticsEnabled && (
               <div className="mt-6 bg-white/5 border border-white/10 rounded-2xl p-4 md:p-5 space-y-4">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="text-white font-display text-sm uppercase tracking-[0.2em]">Necessarios</p>
-                    <p className="text-slate-300 text-xs">Essenciais para funcionamento seguro do site.</p>
+                    <p className="text-text-soft text-xs">Essenciais para funcionamento seguro do site.</p>
                   </div>
                   <span className="text-action-primary font-display text-[10px] uppercase tracking-widest">Sempre ativos</span>
                 </div>
@@ -116,7 +117,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
                       <p className="text-white font-display text-sm uppercase tracking-[0.2em]">
                         {key === 'analytics' ? 'Metricas' : 'Marketing'}
                       </p>
-                      <p className="text-slate-300 text-xs">
+                      <p className="text-text-soft text-xs">
                         {key === 'analytics'
                           ? 'Ajuda a melhorar performance e usabilidade.'
                           : 'Personaliza ofertas e remarketing responsavel.'}
@@ -151,7 +152,7 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
                   </button>
                   <button
                     onClick={() => setIsManaging(false)}
-                    className="text-slate-300 font-display font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors"
+                    className="text-text-soft font-display font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors"
                   >
                     Voltar
                   </button>
@@ -163,23 +164,27 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
           <div className="flex flex-col gap-3 sm:flex-row flex-wrap items-center justify-end shrink-0 w-full lg:w-auto">
             {!isManaging && (
               <>
+                {analyticsEnabled && (
+                  <button
+                    onClick={() => setIsManaging(true)}
+                    className="text-text-soft font-display font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors py-3"
+                  >
+                    Gerenciar preferencias
+                  </button>
+                )}
+                {analyticsEnabled && (
+                  <button
+                    onClick={handleRejectNonEssential}
+                    className="bg-white/10 text-white px-8 py-4 font-display font-bold uppercase text-xs tracking-widest rounded-xl border border-white/15 hover:border-action-primary hover:text-action-primaryHover hover:bg-white transition-all active:scale-95 w-full lg:w-auto"
+                  >
+                    Recusar nao essenciais
+                  </button>
+                )}
                 <button
-                  onClick={() => setIsManaging(true)}
-                  className="text-slate-300 font-display font-bold text-[10px] uppercase tracking-widest hover:text-white transition-colors py-3"
-                >
-                  Gerenciar preferencias
-                </button>
-                <button
-                  onClick={handleRejectNonEssential}
-                  className="bg-white/10 text-white px-8 py-4 font-display font-bold uppercase text-xs tracking-widest rounded-xl border border-white/15 hover:border-action-primary hover:text-action-primaryHover hover:bg-white transition-all active:scale-95 w-full lg:w-auto"
-                >
-                  Recusar nao essenciais
-                </button>
-                <button
-                  onClick={handleAcceptAll}
+                  onClick={analyticsEnabled ? handleAcceptAll : handleRejectNonEssential}
                   className="bg-action-primary text-white px-10 py-4 font-display font-bold uppercase text-xs tracking-widest rounded-xl shadow-glow-brand hover:bg-white hover:text-action-primaryHover transition-all active:scale-95 w-full lg:w-auto"
                 >
-                  Aceitar todos
+                  {analyticsEnabled ? 'Aceitar todos' : 'Continuar'}
                 </button>
               </>
             )}
@@ -189,3 +194,5 @@ export const CookieConsent: React.FC<CookieConsentProps> = ({ onOpenPrivacy }) =
     </div>
   );
 };
+
+

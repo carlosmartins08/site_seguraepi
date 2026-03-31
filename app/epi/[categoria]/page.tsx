@@ -30,9 +30,26 @@ export function generateMetadata({ params }: CategoryPageProps) {
   const data = CATEGORY_PAGES[params.categoria as CategoryKey];
   if (!data) return {};
 
+  const pageUrl = `${SITE_URL}${ROUTES.epi}/${params.categoria}`;
+  const title = `${data.heroTitle} | Segura EPI`;
+
   return {
-    title: `${data.heroTitle} | Segura EPI`,
+    title,
     description: data.shortDescription,
+    alternates: {
+      canonical: pageUrl,
+    },
+    openGraph: {
+      title,
+      description: data.shortDescription,
+      url: pageUrl,
+      type: 'article' as const,
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      title,
+      description: data.shortDescription,
+    },
   };
 }
 
@@ -76,14 +93,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight uppercase tracking-tight">
               {data.heroTitle}
             </h1>
-            <p className="text-slate-600 text-lg leading-relaxed">{data.heroSubtitle}</p>
+            <p className="text-text-body text-lg leading-relaxed">{data.heroSubtitle}</p>
           </div>
 
           <div className="flex flex-wrap gap-3">
             {data.badges.map((badge) => (
               <span
                 key={badge}
-                className="px-4 py-2 rounded-full border border-slate-200 bg-white text-[10px] font-display font-bold uppercase tracking-[0.25em] text-slate-600"
+                className="px-4 py-2 rounded-full border border-border-default bg-white text-[10px] font-display font-bold uppercase tracking-[0.25em] text-text-body"
               >
                 {badge}
               </span>
@@ -100,9 +117,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           <SectionTitle subtitle={indicationsSubtitle} title={indicationsTitle} description={indicationsDescription} />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             {data.indications.map((item) => (
-              <div key={item.title} className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+              <div key={item.title} className="bg-white border border-border-muted rounded-2xl p-6 shadow-elevation-1">
                 <h3 className="text-lg font-display font-bold text-text-primary">{item.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed mt-3">{item.desc}</p>
+                <p className="text-text-body text-sm leading-relaxed mt-3">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -112,14 +129,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.spotlight && (
         <Section id="spotlight" variant="dark" className="pt-16 pb-16">
           <Container className="max-w-5xl">
-            <div className="bg-slate-950 border border-white/10 rounded-3xl p-8 md:p-12 text-white">
+            <div className="bg-bg-deep border border-white/10 rounded-xl p-8 md:p-12 text-white">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
                 {data.spotlight.subtitle ?? 'Destaque tecnico'}
               </p>
               <h2 className="text-2xl md:text-4xl font-display font-black uppercase tracking-tight mt-4">
                 {data.spotlight.title}
               </h2>
-              <p className="text-slate-200 text-lg leading-relaxed mt-4">{data.spotlight.description}</p>
+              <p className="text-text-faint text-lg leading-relaxed mt-4">{data.spotlight.description}</p>
               {data.spotlight.ctaLabel && spotlightHref && (
                 <Button
                   href={spotlightHref}
@@ -138,9 +155,9 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.compliance && (
         <Section id="compliance" variant="offwhite" className="pt-10 pb-10">
           <Container className="max-w-5xl">
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-white border border-border-muted rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">{data.compliance.title}</h3>
-              <p className="text-slate-600 text-sm leading-relaxed mt-2">{data.compliance.description}</p>
+              <p className="text-text-body text-sm leading-relaxed mt-2">{data.compliance.description}</p>
             </div>
           </Container>
         </Section>
@@ -149,17 +166,17 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <Section id="orientacoes" variant="default" className="pt-16 pb-16">
         <Container className="max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-white border border-border-muted rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">Aplicacoes comuns</h3>
-              <ul className="mt-4 space-y-2 text-slate-600 text-sm">
+              <ul className="mt-4 space-y-2 text-text-body text-sm">
                 {data.commonUses.map((item) => (
                   <li key={item}>- {item}</li>
                 ))}
               </ul>
             </div>
-            <div className="bg-white border border-slate-100 rounded-2xl p-6 shadow-elevation-1">
+            <div className="bg-white border border-border-muted rounded-2xl p-6 shadow-elevation-1">
               <h3 className="text-lg font-display font-bold text-text-primary">Erros comuns</h3>
-              <ul className="mt-4 space-y-2 text-slate-600 text-sm">
+              <ul className="mt-4 space-y-2 text-text-body text-sm">
                 {data.commonMistakes.map((item) => (
                   <li key={item}>- {item}</li>
                 ))}
@@ -176,7 +193,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
             {data.segments.map((segment) => (
               <span
                 key={segment}
-                className="px-4 py-2 rounded-full border border-slate-200 bg-white text-[11px] font-display font-bold uppercase tracking-[0.25em] text-slate-600"
+                className="px-4 py-2 rounded-full border border-border-default bg-white text-[11px] font-display font-bold uppercase tracking-[0.25em] text-text-body"
               >
                 {segment}
               </span>
@@ -208,7 +225,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.cta && ctaHref && (
         <Section id="cta" variant="dark" className="pt-16 pb-16 cv-auto">
           <Container className="max-w-5xl">
-            <div className="bg-slate-950 border border-white/10 rounded-3xl p-8 md:p-12 text-white">
+            <div className="bg-bg-deep border border-white/10 rounded-xl p-8 md:p-12 text-white">
               {data.cta.eyebrow && (
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
                   {data.cta.eyebrow}
@@ -218,7 +235,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 {data.cta.title}
               </h2>
               {data.cta.description && (
-                <p className="text-slate-200 text-lg leading-relaxed mt-4">{data.cta.description}</p>
+                <p className="text-text-faint text-lg leading-relaxed mt-4">{data.cta.description}</p>
               )}
               <Button
                 href={ctaHref}
@@ -235,3 +252,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     </main>
   );
 }
+
+
+
+

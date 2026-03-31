@@ -4,6 +4,7 @@ import { HomeClient } from '../components/home/HomeClient';
 import { JsonLd } from '../components/seo/JsonLd';
 import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../lib/seo/schema';
 import { getHomeContent } from '../lib/i18n/home';
+import { DEFAULT_LOCALE } from '../lib/i18n/locales';
 
 export const metadata = {
   title: 'EPI com C.A. Ativo, Consultoria Tecnica e Logistica Agil B2B | Segura EPI',
@@ -28,7 +29,7 @@ export const metadata = {
 };
 
 export default function HomePage() {
-  const faqItems = getHomeContent('pt').faq.items;
+  const faqItems = getHomeContent(DEFAULT_LOCALE).faq.items;
   const breadcrumb = buildBreadcrumbJsonLd([
     { name: 'Home', url: SITE_URL },
   ]);

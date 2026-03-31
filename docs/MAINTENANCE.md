@@ -36,6 +36,7 @@ Arquivos principais:
 - `lib/i18n/home.ts` (conteudo da Home por idioma)
 
 O toggle e local (localStorage `segura-epi-locale`).
+Atualmente `SUPPORTED_LOCALES` esta restrito a `['pt']`. Expanda somente com traducao completa.
 
 ## Autoridade tecnica (E-E-A-T)
 Dados base:

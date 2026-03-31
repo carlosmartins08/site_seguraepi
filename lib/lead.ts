@@ -7,6 +7,7 @@ export type LeadPayload = {
   items?: string;
   source?: string;
   createdAt?: string;
+  consentAt?: string;
 };
 
 export const LEAD_STORAGE_KEY = 'lead_orcamento';
@@ -37,6 +38,7 @@ export function buildLeadMessage(payload: LeadPayload): string {
   if (payload.whatsapp) lines.push(`WhatsApp: ${payload.whatsapp}`);
   if (payload.items) lines.push(`Itens: ${payload.items}`);
   if (payload.source) lines.push(`Origem: ${payload.source}`);
+  if (payload.consentAt) lines.push(`Consentimento LGPD: Sim (${payload.consentAt})`);
 
   return lines.join('\n');
 }

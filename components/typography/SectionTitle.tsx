@@ -19,31 +19,31 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
 }) => {
   return (
     <div className={cn(
-      "mb-12",
+      "mb-10",
       alignment === 'center' ? "text-center mx-auto max-w-3xl" : "text-left"
     )}>
       {subtitle && (
-        <span className="text-action-primary font-display font-bold uppercase tracking-[0.2em] text-xs mb-3 block">
+        <span className="text-action-primary font-display font-bold uppercase tracking-[0.18em] text-[11px] mb-3 block">
           {subtitle}
         </span>
       )}
       <h2 className={cn(
-        "text-3xl md:text-5xl font-display font-extrabold leading-tight mb-4",
+        "text-2xl md:text-4xl font-display font-bold leading-tight mb-4",
         light ? "text-text-inverse" : "text-text-primary"
       )}>
         {title}
       </h2>
       {description && (
         <p className={cn(
-          "text-lg leading-relaxed max-w-2xl",
+          "text-base md:text-lg leading-relaxed max-w-2xl",
           alignment === 'center' ? "mx-auto" : "",
-          light ? "text-text-inverse/70" : "text-text-secondary"
+          light ? "text-text-faint" : "text-text-body"
         )}>
           {description}
         </p>
       )}
       <div className={cn(
-        "w-16 h-1.5 bg-action-primary mt-6 rounded-full",
+        "w-12 h-1 bg-action-primary mt-5 rounded-full",
         alignment === 'center' ? "mx-auto" : ""
       )} />
     </div>
