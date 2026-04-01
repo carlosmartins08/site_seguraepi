@@ -31,7 +31,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           <div className="md:col-span-1">
             <SeguraLogo section="footer" variant="mono-white" size="lg" padding="relaxed" className="mb-8" />
             <p className="text-text-faint text-sm leading-relaxed font-sans mb-8">
-              Especialistas em protecao industrial e servicos tecnicos B2B. Consultoria baseada em risco e conformidade.
+              Especialistas em proteção industrial e serviços técnicos B2B. Consultoria baseada em risco e conformidade.
             </p>
             <div className="space-y-4">
               <a
@@ -67,7 +67,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
             </div>
             <div className="mt-10">
               <h4 className="font-display font-semibold text-xs uppercase tracking-[0.18em] mb-4 text-action-primary">
-                {t('footer.certificationsTitle', 'Certificacoes')}
+                {t('footer.certificationsTitle', 'Certificações')}
               </h4>
               <div className="grid grid-cols-2 gap-4">
                 <div className="border border-white/10 p-3 rounded-xl text-center text-xs font-semibold uppercase tracking-wide text-white/60">NR-06</div>
@@ -77,25 +77,25 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
           </div>
           <div>
             <h4 className="font-display font-semibold text-xs uppercase tracking-[0.18em] mb-6 text-action-primary">
-              {t('footer.solutionsTitle', 'Solucoes')}
+              {t('footer.solutionsTitle', 'Soluções')}
             </h4>
             <ul className="space-y-4 text-sm text-text-faint font-sans">
-              <li><Link href={ROUTES.catalog} className="hover:text-action-primaryHover transition-colors">{t('footer.catalog', 'Catalogo completo B2B')}</Link></li>
+              <li><Link href={ROUTES.catalog} className="hover:text-action-primaryHover transition-colors">{t('footer.catalog', 'Catálogo completo B2B')}</Link></li>
               <li><Link href={ROUTES.epiCategories} className="hover:text-action-primaryHover transition-colors">{t('footer.epiCategories', 'EPI por categoria')}</Link></li>
               <li><Link href="/#segmentos" className="hover:text-action-primaryHover transition-colors">{t('footer.sectors', 'Segmentos atendidos')}</Link></li>
-              <li><Link href={ROUTES.center} className="hover:text-action-primaryHover transition-colors">{t('footer.center', 'Centro tecnico')}</Link></li>
+              <li><Link href={ROUTES.center} className="hover:text-action-primaryHover transition-colors">{t('footer.center', 'Centro técnico')}</Link></li>
               <li><Link href="/#faq" className="hover:text-action-primaryHover transition-colors">{t('footer.faq', 'FAQ')}</Link></li>
             </ul>
           </div>
           <div>
             <h4 className="font-display font-semibold text-xs uppercase tracking-[0.18em] mb-6 text-action-primary">
-              {t('footer.purchaseTitle', 'Compra & Logistica')}
+              {t('footer.purchaseTitle', 'Compra & Logística')}
             </h4>
             <ul className="space-y-4 text-sm text-text-faint font-sans">
               <li><Link href={ROUTES.howToBuy} className="hover:text-action-primaryHover transition-colors">{t('footer.howToBuy', 'Como comprar')}</Link></li>
               <li><Link href={ROUTES.pickupExpress} className="hover:text-action-primaryHover transition-colors">{t('footer.pickup', 'Retirada expressa')}</Link></li>
-              <li><Link href={ROUTES.policyDelivery} className="hover:text-action-primaryHover transition-colors">{t('footer.policyDelivery', 'Politica de entrega e frete')}</Link></li>
-              <li><Link href={ROUTES.policyReturns} className="hover:text-action-primaryHover transition-colors">{t('footer.policyReturns', 'Politica de trocas e devolucoes')}</Link></li>
+              <li><Link href={ROUTES.policyDelivery} className="hover:text-action-primaryHover transition-colors">{t('footer.policyDelivery', 'Política de entrega e frete')}</Link></li>
+              <li><Link href={ROUTES.policyReturns} className="hover:text-action-primaryHover transition-colors">{t('footer.policyReturns', 'Política de trocas e devoluções')}</Link></li>
               <li><Link href={ROUTES.chat} className="hover:text-action-primaryHover transition-colors">{t('footer.chat', 'Atendimento online')}</Link></li>
             </ul>
           </div>
@@ -106,14 +106,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
             <ul className="space-y-4 text-sm text-text-faint font-sans">
               <li><Link href={ROUTES.about} className="hover:text-action-primaryHover transition-colors">{t('footer.about', 'Quem somos')}</Link></li>
               <li><Link href={ROUTES.careers} className="hover:text-action-primaryHover transition-colors">{t('footer.careers', 'Trabalhe conosco')}</Link></li>
-              <li><Link href={ROUTES.privacyPolicy} className="hover:text-action-primaryHover transition-colors">{t('footer.privacy', 'Politica de privacidade')}</Link></li>
+              <li><Link href={ROUTES.privacyPolicy} className="hover:text-action-primaryHover transition-colors">{t('footer.privacy', 'Política de privacidade')}</Link></li>
               <li><Link href={ROUTES.termsOfUse} className="hover:text-action-primaryHover transition-colors">{t('footer.terms', 'Termos de uso')}</Link></li>
               <li>
                 <button
                   onClick={onOpenPrivacy}
                   className="hover:text-action-primaryHover transition-colors text-left"
                 >
-                  {t('footer.cookies', 'Preferencias de cookies')}
+                  {t('footer.cookies', 'Preferências de cookies')}
                 </button>
               </li>
             </ul>
@@ -121,7 +121,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenTerms }) =>
         </div>
         <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-10">
           <div className="text-text-faint text-xs font-semibold tracking-wide">
-            &copy; {new Date().getFullYear()} Segura EPI & Servicos. Todos os direitos reservados.
+            &copy; {new Date().getFullYear()} Segura EPI & Serviços. Todos os direitos reservados.
           </div>
           <div className="flex gap-6">
             {socialLinks.map((social) => (

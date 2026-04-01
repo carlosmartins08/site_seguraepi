@@ -54,13 +54,13 @@ export default function ClientPage() {
       <Section id="thanks-hero" variant="offwhite" className="pt-nav pb-14">
         <Container size="narrow" className="space-y-6">
           <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
-            Pos-conversao
+            Pós-conversão
           </p>
           <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
-            Solicitacao Recebida com Sucesso!
+            Solicitação Recebida com Sucesso!
           </h1>
           <p className="text-text-body text-base md:text-lg leading-relaxed">
-            Obrigado por escolher a Segura EPI. Seu pedido de contato ja esta com nosso time.
+            Obrigado por escolher a Segura EPI. Seu pedido de contato já está com nosso time.
           </p>
         </Container>
       </Section>
@@ -72,30 +72,30 @@ export default function ClientPage() {
               O que acontece agora?
             </h2>
             <p className="text-text-body text-base md:text-lg leading-relaxed">
-              Nossa equipe de especialistas ja recebeu seus dados e iniciou a analise da sua demanda. Prezamos pela
-              agilidade, por isso confira abaixo os proximos passos.
+              Nossa equipe de especialistas já recebeu seus dados e iniciou a análise da sua demanda. Prezamos pela
+              agilidade, por isso confira abaixo os próximos passos.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se voce solicitou uma Cotacao</h3>
+              <h3 className="text-lg font-display font-bold text-text-primary">Se você solicitou uma Cotação</h3>
               <p className="text-text-body text-sm leading-relaxed mt-3">
-                Um consultor de solucoes entra em contato via WhatsApp ou e-mail para entender sua necessidade e enviar
+                Um consultor de soluções entra em contato via WhatsApp ou e-mail para entender sua necessidade e enviar
                 a proposta formalizada.
               </p>
             </div>
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se voce enviou dados para Cadastro</h3>
+              <h3 className="text-lg font-display font-bold text-text-primary">Se você enviou dados para Cadastro</h3>
               <p className="text-text-body text-sm leading-relaxed mt-3">
-                O departamento financeiro valida suas informacoes (CNPJ/Sintegra). O prazo maximo de analise e de ate
-                24 horas uteis.
+                O departamento financeiro valida suas informações (CNPJ/Sintegra). O prazo máximo de análise é de até
+                24 horas úteis.
               </p>
             </div>
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se voce falou conosco no WhatsApp</h3>
+              <h3 className="text-lg font-display font-bold text-text-primary">Se você falou conosco no WhatsApp</h3>
               <p className="text-text-body text-sm leading-relaxed mt-3">
-                Aguarde um instante. Devido ao alto volume de atendimentos, um humano respondera em breve. Horario de
+                Aguarde um instante. Devido ao alto volume de atendimentos, um humano responderá em breve. Horário de
                 atendimento: {CONTACT_INFO.supportTime}.
               </p>
             </div>
@@ -103,13 +103,13 @@ export default function ClientPage() {
 
           <div className="bg-bg-inverse text-white border border-border-inverse rounded-2xl p-8 md:p-10 shadow-elevation-2">
             <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
-              Inovacao Segura EPI
+              Inovação Segura EPI
             </p>
             <h3 className="text-2xl md:text-3xl font-display font-semibold mt-4">
-              Conheca a Neo Evolution
+              Conheça a Neo Evolution
             </h3>
             <p className="text-text-faint text-base md:text-lg leading-relaxed mt-3">
-              A unica palmilha antiestatica moldada a laser em 3 minutos. Leve essa tecnologia para sua empresa.
+              A única palmilha antiestática moldada a laser em 3 minutos. Leve essa tecnologia para sua empresa.
             </p>
             <Button
               href={buildUrl(ROUTES.chat, { intent: 'neo-evolution', origem: 'obrigado' })}
@@ -124,7 +124,7 @@ export default function ClientPage() {
 
           <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-xs">Duvida urgente?</p>
+              <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-xs">Dúvida urgente?</p>
               <p className="text-text-body text-sm">Ligue para nossa central agora mesmo.</p>
             </div>
             <a

@@ -19,42 +19,42 @@ export default function NotFoundPage() {
               Erro 404
             </p>
             <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
-              Ops! Parece que voce saiu da area segura.
+              Ops! Parece que você saiu da área segura.
             </h1>
             <p className="text-text-body text-lg leading-relaxed">
-              A pagina que voce procura nao foi encontrada ou mudou de endereco. Assim como em uma obra ou industria,
-              seguir a rota correta e fundamental. Vamos te colocar de volta no caminho certo.
+              A página que você procura não foi encontrada ou mudou de endereço. Assim como em uma obra ou indústria,
+              seguir a rota correta é fundamental. Vamos te colocar de volta no caminho certo.
             </p>
           </div>
 
           <form action={ROUTES.catalog} method="get" className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-8 shadow-elevation-1">
             <label htmlFor="search-404" className="text-xs font-semibold text-text-muted">
-              Vamos encontrar o que voce precisa
+              Vamos encontrar o que você precisa
             </label>
             <div className="mt-4 flex flex-col md:flex-row gap-4">
               <input
                 id="search-404"
                 name="busca"
                 type="search"
-                placeholder="Digite o nome do produto (ex: Bota Bracol, Luva Nitrilica) ou o CA..."
+                placeholder="Digite o nome do produto (ex: Bota Bracol, Luva Nitrílica) ou o CA..."
                 className={cn('flex-1', fieldBase)}
               />
               <Button type="submit" variant="primary" size="lg" className="shadow-glow-brand">
-                Buscar no catalogo
+                Buscar no catálogo
               </Button>
             </div>
           </form>
 
           <div className="space-y-4">
             <p className="text-text-primary font-display font-bold uppercase tracking-[0.2em] text-xs">
-              Atalhos rapidos
+              Atalhos rápidos
             </p>
             <div className="flex flex-wrap gap-3">
               <Button href={`/epi/${'calcados'}`} variant="outline" size="sm">
-                Protecao dos Pes
+                Proteção dos Pés
               </Button>
               <Button href={`/epi/${'protecao-maos'}`} variant="outline" size="sm">
-                Protecao das Maos
+                Proteção das Mãos
               </Button>
               <Button href={`/epi/${'trabalho-em-altura'}`} variant="outline" size="sm">
                 Trabalho em Altura

@@ -16,36 +16,36 @@ import { ROUTES } from '../../lib/routes';
 import { FaqList, FaqItem } from '../../components/home/FaqList';
 
 export const metadata = {
-  title: 'Politica de Trocas e Devolucoes | Segura EPI',
+  title: 'Política de Trocas e Devoluções | Segura EPI',
   description:
-    'Conheca os prazos e condicoes para trocas e devolucoes na Segura EPI, com conferencia no ato, garantia e logistica reversa segura.',
+    'Conheça os prazos e condições para trocas e devoluções na Segura EPI, com conferência no ato, garantia e logística reversa segura.',
   alternates: {
     canonical: `${SITE_URL}${ROUTES.policyReturns}`,
   },
 };
 
 const badges = [
-  { label: 'Conferencia no ato', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Garantia ate 7 dias', color: 'bg-status-successSoft text-status-successStrong' },
-  { label: 'Troca de numeracao 30 dias', color: 'bg-bg-inverse text-white' },
+  { label: 'Conferência no ato', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'Garantia até 7 dias', color: 'bg-status-successSoft text-status-successStrong' },
+  { label: 'Troca de numeração 30 dias', color: 'bg-bg-inverse text-white' },
 ];
 
 const faqItems: FaqItem[] = [
   {
     q: 'O que fazer se notei que o pedido veio errado depois que o motorista foi embora?',
-    a: 'Conforme nossa politica, divergencias comerciais (preco, quantidade, item errado) devem ser conferidas no ato da entrega. Reclamacoes posteriores nao sao aceitas. Recomendamos reforcar o processo de conferencia no recebimento.',
+    a: 'Conforme nossa política, divergências comerciais (preço, quantidade, item errado) devem ser conferidas no ato da entrega. Reclamações posteriores não são aceitas. Recomendamos reforçar o processo de conferência no recebimento.',
   },
   {
-    q: 'Como emitir a Nota Fiscal de Devolucao?',
-    a: 'A devolucao deve ser acompanhada de uma Nota Fiscal de Devolucao (total ou parcial) emitida pela sua empresa. O motorista so esta autorizado a trazer a mercadoria de volta mediante a entrega deste documento fiscal impresso.',
+    q: 'Como emitir a Nota Fiscal de Devolução?',
+    a: 'A devolução deve ser acompanhada de uma Nota Fiscal de Devolução (total ou parcial) emitida pela sua empresa. O motorista só está autorizado a trazer a mercadoria de volta mediante a entrega deste documento fiscal impresso.',
   },
 ];
 
 const summaryItems = [
-  'Conferencia obrigatoria no ato da entrega.',
-  'Garantia: ate 7 dias com a Segura EPI.',
-  'Troca de numeracao em ate 30 dias.',
-  'Nota de devolucao e logistica reversa formal.',
+  'Conferência obrigatória no ato da entrega.',
+  'Garantia: até 7 dias com a Segura EPI.',
+  'Troca de numeração em até 30 dias.',
+  'Nota de devolução e logística reversa formal.',
 ];
 
 export default function PoliticaTrocasPage() {
@@ -56,7 +56,7 @@ export default function PoliticaTrocasPage() {
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: 'Home', url: SITE_URL },
-          { name: 'Politica de Trocas e Devolucoes', url: `${SITE_URL}${ROUTES.policyReturns}` },
+          { name: 'Política de Trocas e Devoluções', url: `${SITE_URL}${ROUTES.policyReturns}` },
         ])}
       />
       {/* Hero */}
@@ -65,14 +65,14 @@ export default function PoliticaTrocasPage() {
           <div className="space-y-8">
             <div>
               <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px] mb-3">
-                Politica de Trocas e Devolucoes
+                Política de Trocas e Devoluções
               </p>
               <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
-                Politica de Trocas e Devolucoes | Segura EPI
+                Política de Trocas e Devoluções | Segura EPI
               </h1>
               <p className="text-text-body text-base md:text-lg leading-relaxed mt-4 max-w-3xl">
-                Baseada no Codigo de Defesa do Consumidor e nas melhores praticas logisticas para garantir transparencia,
-                agilidade e seguranca fiscal.
+                Baseada no Código de Defesa do Consumidor e nas melhores práticas logísticas para garantir transparência,
+                agilidade e segurança fiscal.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -90,7 +90,7 @@ export default function PoliticaTrocasPage() {
                 Falar com atendimento
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
-                Ver catalogo de EPIs
+                Ver catálogo de EPIs
               </ContextLink>
             </div>
             <QuickSummary items={summaryItems} />
@@ -103,18 +103,18 @@ export default function PoliticaTrocasPage() {
       <Section id="conferencia" variant="default">
         <Container className="max-w-5xl">
           <SectionTitle
-            subtitle="1. Conferencia Obrigatoria no Ato da Entrega"
-            title="Conferencia imediata evita divergencias"
-            description="Devolucoes por desacordo comercial sao aceitas apenas no ato do recebimento."
+            subtitle="1. Conferência Obrigatória no Ato da Entrega"
+            title="Conferência imediata evita divergências"
+            description="Devoluções por desacordo comercial são aceitas apenas no ato do recebimento."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4">
               {[
-                'Divergencia de preco ou quantidade',
+                'Divergência de preço ou quantidade',
                 'Produto em desacordo com o pedido (item trocado)',
-                'Inversao de produtos',
-                'Avaria visivel na embalagem ou no produto',
-                'Erro no endereco ou dados da Nota Fiscal',
+                'Inversão de produtos',
+                'Avaria visível na embalagem ou no produto',
+                'Erro no endereço ou dados da Nota Fiscal',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3 text-text-body">
                   <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -125,9 +125,9 @@ export default function PoliticaTrocasPage() {
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
               <h3 className="text-xl font-display font-bold text-text-primary mb-4">Como proceder</h3>
               <p className="text-text-body leading-relaxed">
-                Caso identifique divergencia, informe imediatamente o motorista. Nossa logistica aciona a coordenacao
-                comercial em tempo real. Se a devolucao for inevitavel, ela deve ser feita no mesmo transporte, com a
-                Nota Fiscal de Devolucao impressa.
+                Caso identifique divergência, informe imediatamente o motorista. Nossa logística aciona a coordenação
+                comercial em tempo real. Se a devolução for inevitável, ela deve ser feita no mesmo transporte, com a
+                Nota Fiscal de Devolução impressa.
               </p>
             </div>
           </div>
@@ -138,25 +138,25 @@ export default function PoliticaTrocasPage() {
       <Section id="defeito" variant="offwhite">
         <Container className="max-w-5xl">
           <SectionTitle
-            subtitle="2. Devolucao por Defeito de Fabricacao (Garantia)"
+            subtitle="2. Devolução por Defeito de Fabricação (Garantia)"
             title="Qualidade total, com prazos claros"
-            description="Seguimos prazos legais e acionamos o fabricante quando necessario."
+            description="Seguimos prazos legais e acionamos o fabricante quando necessário."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
-              <h4 className="text-lg font-display font-bold text-text-primary">Ate 7 dias apos a NF</h4>
-              <p className="text-text-body leading-relaxed">A troca ou devolucao pode ser tratada diretamente com a Segura EPI.</p>
+              <h4 className="text-lg font-display font-bold text-text-primary">Até 7 dias após a NF</h4>
+              <p className="text-text-body leading-relaxed">A troca ou devolução pode ser tratada diretamente com a Segura EPI.</p>
             </div>
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
-              <h4 className="text-lg font-display font-bold text-text-primary">Apos 7 dias</h4>
+              <h4 className="text-lg font-display font-bold text-text-primary">Após 7 dias</h4>
               <p className="text-text-body leading-relaxed">
-                Direcionamos ao <ContextLink href="/chat" className="inline-flex text-text-body">SAC</ContextLink> para acionamento da garantia junto ao fabricante, seguindo o prazo tecnico de analise.
+                Direcionamos ao <ContextLink href="/chat" className="inline-flex text-text-body">SAC</ContextLink> para acionamento da garantia junto ao fabricante, seguindo o prazo técnico de análise.
               </p>
             </div>
           </div>
           <div className="mt-8 p-4 rounded-2xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-sm">
-            Produtos com Certificado de Aprovacao (CA) vencido nao sao passiveis de devolucao, salvo se vendidos nessa
-            condicao.
+            Produtos com Certificado de Aprovação (CA) vencido não são passíveis de devolução, salvo se vendidos nessa
+            condição.
           </div>
         </Container>
       </Section>
@@ -165,16 +165,16 @@ export default function PoliticaTrocasPage() {
       <Section id="tamanho" variant="default">
         <Container className="max-w-5xl">
           <SectionTitle
-            subtitle="3. Troca de Numeracao ou Tamanho"
-            title="Ajuste certo para seguranca real"
-            description="Prazo de ate 30 dias corridos a contar da emissao da Nota Fiscal."
+            subtitle="3. Troca de Numeração ou Tamanho"
+            title="Ajuste certo para segurança real"
+            description="Prazo de até 30 dias corridos a contar da emissão da Nota Fiscal."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-3 text-text-body">
               {[
-                'Produto sem indicios de uso',
+                'Produto sem indícios de uso',
                 'Embalagem original e etiquetas intactas',
-                'Apresentacao da Nota Fiscal de compra',
+                'Apresentação da Nota Fiscal de compra',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -185,7 +185,7 @@ export default function PoliticaTrocasPage() {
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
               <h4 className="text-lg font-display font-bold text-text-primary mb-3">Para quem vale</h4>
               <p className="text-text-body leading-relaxed">
-                Botas de seguranca, uniformes e <ContextLink href="/catalogo" className="inline-flex text-text-body">EPIs</ContextLink> que dependem de ajuste. Troca simples para manter o uso correto.
+                Botas de segurança, uniformes e <ContextLink href="/catalogo" className="inline-flex text-text-body">EPIs</ContextLink> que dependem de ajuste. Troca simples para manter o uso correto.
               </p>
             </div>
           </div>
@@ -196,17 +196,17 @@ export default function PoliticaTrocasPage() {
       <Section id="requisitos-nota" variant="offwhite">
         <Container className="max-w-5xl">
           <SectionTitle
-            subtitle="Requisitos da Nota de Devolucao"
-            title="Documentacao fiscal obrigatoria"
-            description="A nota deve anular os efeitos da venda original e manter a conformidade tributaria."
+            subtitle="Requisitos da Nota de Devolução"
+            title="Documentação fiscal obrigatória"
+            description="A nota deve anular os efeitos da venda original e manter a conformidade tributária."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-4 text-text-body">
               {[
-                'Anulacao de efeitos da operacao original, inclusive tributarios',
-                'Referencia da chave de acesso da nota fiscal original no campo especifico',
+                'Anulação de efeitos da operação original, inclusive tributários',
+                'Referência da chave de acesso da nota fiscal original no campo específico',
                 'Impostos (ICMS, IPI, PIS, COFINS) identicos aos da nota original',
-                'CFOP de devolucao de compra (ex.: 5.202 ou 6.202)',
+                'CFOP de devolução de compra (ex.: 5.202 ou 6.202)',
               ].map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -215,10 +215,10 @@ export default function PoliticaTrocasPage() {
               ))}
             </div>
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
-              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Cliente nao contribuinte</h4>
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Cliente não contribuinte</h4>
               <p className="text-text-body leading-relaxed">
-                Caso o cliente nao seja contribuinte, a Segura EPI se responsabiliza pela gestao dos processos
-                administrativos da devolucao.
+                Caso o cliente não seja contribuinte, a Segura EPI se responsabiliza pela gestão dos processos
+                administrativos da devolução.
               </p>
             </div>
           </div>
@@ -229,21 +229,21 @@ export default function PoliticaTrocasPage() {
       <Section id="logistica-reversa" variant="offwhite">
         <Container className="max-w-5xl">
           <SectionTitle
-            subtitle="4. Logistica Reversa e Retirada"
-            title="Fluxo seguro e rastreavel"
-            description="Devolucoes e trocas seguem controle fiscal e de seguranca."
+            subtitle="4. Logística Reversa e Retirada"
+            title="Fluxo seguro e rastreável"
+            description="Devoluções e trocas seguem controle fiscal e de segurança."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
               <h4 className="text-lg font-display font-bold text-text-primary mb-3">Retiradas</h4>
               <p className="text-text-body leading-relaxed">
-                Devem ser realizadas por transportadoras parceiras ou frota propria Segura EPI.
+                Devem ser realizadas por transportadoras parceiras ou frota própria Segura EPI.
               </p>
             </div>
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
-              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Restricao</h4>
+              <h4 className="text-lg font-display font-bold text-text-primary mb-3">Restrição</h4>
               <p className="text-text-body leading-relaxed">
-                Nao e permitida a retirada ou envio de trocas via motoristas de aplicativo (Uber, 99 etc.).
+                Não é permitida a retirada ou envio de trocas via motoristas de aplicativo (Uber, 99 etc.).
               </p>
             </div>
           </div>
@@ -262,10 +262,10 @@ export default function PoliticaTrocasPage() {
         <Container>
           <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
             <h3 className="text-2xl font-display font-semibold text-text-inverse">Precisa de apoio com uma troca?</h3>
-            <p className="text-text-faint mt-2">Fale com o time comercial para orientar a melhor logistica.</p>
+            <p className="text-text-faint mt-2">Fale com o time comercial para orientar a melhor logística.</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Falar no WhatsApp</Button>
-              <Button href={ROUTES.chat} variant="outline" size="lg" className="text-text-inverse border-white/40">
+              <Button href={ROUTES.chat} variant="outline-inverse" size="lg">
                 Abrir atendimento
               </Button>
             </div>
@@ -275,6 +275,5 @@ export default function PoliticaTrocasPage() {
     </main>
   );
 }
-
 
 

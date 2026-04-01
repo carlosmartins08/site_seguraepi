@@ -19,30 +19,30 @@ import { SITE_URL } from '../../lib/seo/site';
 
 const badges = [
   { label: 'Retirada expressa', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Sem filas no balcao', color: 'bg-bg-inverse text-white' },
-  { label: 'Cortes de liberacao claros', color: 'bg-status-successSoft text-status-successStrong' },
+  { label: 'Sem filas no balcão', color: 'bg-bg-inverse text-white' },
+  { label: 'Cortes de liberação claros', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
 const cortes = [
-  { pedido: 'Ate 12:00 (manha)', retirada: 'Mesmo dia, a partir das 14:00' },
-  { pedido: 'Apos 12:00 (tarde)', retirada: 'Dia seguinte, a partir das 09:00' },
+  { pedido: 'Até 12:00 (manhã)', retirada: 'Mesmo dia, a partir das 14:00' },
+  { pedido: 'Após 12:00 (tarde)', retirada: 'Dia seguinte, a partir das 09:00' },
 ];
 
 const fluxo = [
-  'Compra via WhatsApp: voce fecha o pedido com seu consultor pelo canal oficial.',
-  'Notificacao de disponibilidade: voce recebe a confirmacao de que o pedido esta disponivel para retirada.',
-  'Separacao logistica: nossa equipe prepara e confere o pedido no estoque.',
-  'Retirada rapida: dirija-se a recepcao, informe o numero do pedido e retire a caixa conferida.',
+  'Compra via WhatsApp: você fecha o pedido com seu consultor pelo canal oficial.',
+  'Notificação de disponibilidade: você recebe a confirmação de que o pedido está disponível para retirada.',
+  'Separação logística: nossa equipe prepara e confere o pedido no estoque.',
+  'Retirada rápida: dirija-se à recepção, informe o número do pedido e retire a caixa conferida.',
 ];
 
 const faqItems = [
   {
-    q: 'Posso comprar e retirar na hora direto no balcao?',
-    a: 'Nossa recepcao fisica e dedicada exclusivamente a entrega de pedidos prontos. Compras, orcamentos e duvidas devem ser tratados previamente pelo WhatsApp com nossos especialistas.',
+    q: 'Posso comprar e retirar na hora direto no balcão?',
+    a: 'Nossa recepção física é dedicada exclusivamente à entrega de pedidos prontos. Compras, orçamentos e dúvidas devem ser tratados previamente pelo WhatsApp com nossos especialistas.',
   },
   {
     q: 'Posso enviar um portador (Uber/Motoqueiro)?',
-    a: 'Sim. Basta que o pedido esteja com status "Disponivel para Retirada" e que o portador tenha o numero do pedido e nome do cliente em maos.',
+    a: 'Sim. Basta que o pedido esteja com status "Disponível para Retirada" e que o portador tenha o número do pedido e nome do cliente em mãos.',
   },
 ];
 
@@ -62,7 +62,7 @@ export default function ClientPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1600&q=80"
-            alt="Recepcao organizada para retirada de pedidos"
+            alt="Recepção organizada para retirada de pedidos"
             fill
             priority
             className="object-cover opacity-20"
@@ -77,11 +77,11 @@ export default function ClientPage() {
                 Retirada Expressa na Loja | Segura EPI
               </p>
               <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
-                Retire sem filas e sem espera no balcao.
+                Retire sem filas e sem espera no balcão.
               </h1>
               <p className="text-text-body text-base md:text-lg leading-relaxed mt-4 max-w-3xl">
-                Nosso objetivo e que voce passe na loja apenas para pegar sua mercadoria. O processo segue regras claras de
-                horario e fluxo para garantir agilidade.
+                Nosso objetivo é que você passe na loja apenas para pegar sua mercadoria. O processo segue regras claras de
+                horário e fluxo para garantir agilidade.
               </p>
             </div>
 
@@ -101,15 +101,15 @@ export default function ClientPage() {
                 Fechar pedido no WhatsApp
               </Button>
               <ContextLink href={ROUTES.catalog} className="text-sm">
-                Ver catalogo de EPIs
+                Ver catálogo de EPIs
               </ContextLink>
             </div>
 
             <QuickSummary
               items={[
-                'Pedido via WhatsApp e confirmacao de disponibilidade.',
-                'Cortes claros: ate 12h retira 14h; apos 12h retira 9h.',
-                'Reserva por 24h apos confirmacao.',
+                'Pedido via WhatsApp e confirmação de disponibilidade.',
+                'Cortes claros: até 12h retira 14h; após 12h retira 9h.',
+                'Reserva por 24h após confirmação.',
               ]}
             />
             <LastUpdated date={AUTHORITY_INFO.updatedAt} />
@@ -121,7 +121,7 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="1. O Fluxo: Do Pedido a Retirada"
-            title="Recepcao exclusiva para entrega rapida"
+            title="Recepção exclusiva para entrega rápida"
             description="Todo o processo acontece antes da sua chegada."
           />
           <div className="grid md:grid-cols-2 gap-8">
@@ -136,7 +136,7 @@ export default function ClientPage() {
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
               <h3 className="text-xl font-display font-bold text-text-primary mb-3">Por que funciona?</h3>
               <p className="text-text-body leading-relaxed">
-                A separacao e conferencia acontecem antes da sua chegada. Quando voce chega, o pedido ja esta pronto.
+                A separação e conferência acontecem antes da sua chegada. Quando você chega, o pedido já está pronto.
               </p>
             </div>
           </div>
@@ -146,9 +146,9 @@ export default function ClientPage() {
       <Section id="cortes" variant="offwhite">
         <Container className="max-w-6xl">
           <SectionTitle
-            subtitle="2. Prazos de Liberacao (Corte Logistico)"
-            title="Programacao clara para retirada"
-            description="Disponibilidade conforme o horario do pedido."
+            subtitle="2. Prazos de Liberação (Corte Logístico)"
+            title="Programação clara para retirada"
+            description="Disponibilidade conforme o horário do pedido."
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cortes.map((corte) => (
@@ -159,7 +159,7 @@ export default function ClientPage() {
                   </div>
                   <div>
                     <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">
-                      Horario do pedido
+                      Horário do pedido
                     </p>
                     <h4 className="text-lg font-display font-bold text-text-primary">{corte.pedido}</h4>
                   </div>
@@ -179,17 +179,17 @@ export default function ClientPage() {
           <SectionTitle
             subtitle="3. Prazo Limite para Retirada"
             title="Reserva por 24 horas"
-            description="Aguarde a confirmacao do vendedor antes de se deslocar."
+            description="Aguarde a confirmação do vendedor antes de se deslocar."
           />
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
               <p className="text-text-body leading-relaxed">
-                Apos a notificacao de disponibilidade, o pedido fica reservado por 24 horas. Se nao houver retirada, os
-                itens podem retornar ao estoque e sera necessario novo alinhamento com seu vendedor.
+                Após a notificação de disponibilidade, o pedido fica reservado por 24 horas. Se não houver retirada, os
+                itens podem retornar ao estoque e será necessário novo alinhamento com seu vendedor.
               </p>
             </div>
             <div className="p-6 rounded-xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-sm">
-              Importante: aguarde sempre a confirmacao de disponibilidade antes de ir a loja.
+              Importante: aguarde sempre a confirmação de disponibilidade antes de ir à loja.
             </div>
           </div>
         </Container>
@@ -197,7 +197,7 @@ export default function ClientPage() {
 
       <Section id="faq-retirada" variant="offwhite" className="cv-auto">
         <Container className="max-w-6xl">
-          <SectionTitle subtitle="4. Duvidas Frequentes sobre Retirada" title="Retirada sem atrito" />
+          <SectionTitle subtitle="4. Dúvidas Frequentes sobre Retirada" title="Retirada sem atrito" />
           <div className="grid md:grid-cols-2 gap-8">
             {faqItems.map((item) => (
               <div key={item.q} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">

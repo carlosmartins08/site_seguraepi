@@ -6,7 +6,7 @@
 :root {
   --segura-primary: #FF9B21;
   --segura-dark: #0B1220;
-  --nav-offset: 96px;
+  --nav-offset: 112px;
 }
 
 body {
@@ -20,12 +20,12 @@ section[id] {
 }
 
 .pt-nav {
-  padding-top: var(--nav-offset);
+  padding-top: var(--nav-offset) !important;
 }
 
 @media (min-width: 1024px) {
   :root {
-    --nav-offset: 128px;
+    --nav-offset: 160px;
   }
 }
 

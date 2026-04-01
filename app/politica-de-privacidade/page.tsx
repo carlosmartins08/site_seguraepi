@@ -15,7 +15,7 @@ import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
 
 export const metadata = {
-  title: 'Politica de Privacidade | Segura EPI',
+  title: 'Política de Privacidade | Segura EPI',
   description:
     'Saiba como a Segura EPI coleta, usa e protege dados em conformidade com a LGPD.',
   alternates: {
@@ -26,9 +26,9 @@ export const metadata = {
 export default function PoliticaDePrivacidadePage() {
   const { title, content, updatedAt } = LEGAL_TEXTS.privacy;
   const summaryItems = [
-    'Coleta de dados para cadastro, faturamento e logistica.',
-    'Uso exclusivo para pedidos, credito e comunicacoes.',
-    'Compartilhamento apenas com parceiros e obrigacoes legais.',
+    'Coleta de dados para cadastro, faturamento e logística.',
+    'Uso exclusivo para pedidos, crédito e comunicações.',
+    'Compartilhamento apenas com parceiros e obrigações legais.',
     'Direitos do titular e canal com DPO.',
   ];
 
@@ -38,7 +38,7 @@ export default function PoliticaDePrivacidadePage() {
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: 'Home', url: SITE_URL },
-          { name: 'Politica de Privacidade', url: `${SITE_URL}${ROUTES.privacyPolicy}` },
+          { name: 'Política de Privacidade', url: `${SITE_URL}${ROUTES.privacyPolicy}` },
         ])}
       />
       <Section id="privacy-hero" variant="offwhite" className="pt-nav pb-14">
@@ -70,8 +70,8 @@ export default function PoliticaDePrivacidadePage() {
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Falar no WhatsApp</Button>
-              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline" size="lg" className="text-text-inverse border-white/40">
-                Enviar email
+              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline-inverse" size="lg">
+                Enviar e-mail
               </Button>
             </div>
           </div>

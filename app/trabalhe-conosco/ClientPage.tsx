@@ -16,40 +16,40 @@ import { CONTACT_INFO } from '../../lib/constants';
 import { SeguraIcon } from '../../components/icons/SeguraIcon';
 
 const heroBadges = [
-  { label: 'Etica inegociavel', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'Ética inegociável', color: 'bg-action-primary/15 text-action-primary' },
   { label: 'Alta performance', color: 'bg-bg-inverse text-white' },
   { label: 'Compromisso com a vida', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
 const cultura: { title: string; desc: string; icon: 'shield' | 'heart' | 'book' | 'spark' }[] = [
-  { title: 'Etica inegociavel', desc: 'A transparencia guia todas as nossas decisoes, do estoque a venda.', icon: 'shield' },
-  { title: 'Foco no cliente', desc: 'Nao vendemos apenas produtos, entregamos solucoes que salvam vidas.', icon: 'heart' },
-  { title: 'Crenca e humildade', desc: 'Trabalho duro, aprendizado continuo e respeito as pessoas.', icon: 'book' },
-  { title: 'Alta performance', desc: 'Metas, dados e resultados. Aqui, o merito e reconhecido.', icon: 'spark' },
+  { title: 'Ética inegociável', desc: 'A transparência guia todas as nossas decisões, do estoque à venda.', icon: 'shield' },
+  { title: 'Foco no cliente', desc: 'Não vendemos apenas produtos, entregamos soluções que salvam vidas.', icon: 'heart' },
+  { title: 'Crença e humildade', desc: 'Trabalho duro, aprendizado contínuo e respeito às pessoas.', icon: 'book' },
+  { title: 'Alta performance', desc: 'Metas, dados e resultados. Aqui, o mérito é reconhecido.', icon: 'spark' },
 ];
 
 const areas: { title: string; desc: string; icon: 'bolt' | 'truck' | 'check' }[] = [
   {
     title: 'Comercial e Vendas',
-    desc: 'Consultores e SDRs (pre-vendas) com perfil consultivo, resiliente e negociacao B2B para abrir portas e fechar contratos.',
+    desc: 'Consultores e SDRs (pré-vendas) com perfil consultivo, resiliente e negociação B2B para abrir portas e fechar contratos.',
     icon: 'bolt',
   },
   {
-    title: 'Logistica e Operacoes',
-    desc: 'Profissionais organizados para garantir prazo, conferencia rigorosa e processos eficientes que sustentam a operacao.',
+    title: 'Logística e Operações',
+    desc: 'Profissionais organizados para garantir prazo, conferência rigorosa e processos eficientes que sustentam a operação.',
     icon: 'truck',
   },
   {
     title: 'Administrativo e Financeiro',
-    desc: 'Compras, Fiscal, RH e Financeiro com perfis analiticos, eticos e detalhistas, guardioes da conformidade.',
+    desc: 'Compras, Fiscal, RH e Financeiro com perfis analíticos, éticos e detalhistas, guardiões da conformidade.',
     icon: 'check',
   },
 ];
 
 const beneficios = [
-  'Salario compativel com o mercado + variavel (para cargos elegiveis).',
-  'Plano de Saude e Odontologico (apos experiencia).',
-  'Vale-Refeicao.',
+  'Salário compatível com o mercado + variável (para cargos elegíveis).',
+  'Plano de Saúde e Odontológico (após experiência).',
+  'Vale-Refeição.',
   'Seguro de Vida.',
   'Plano de Carreira Estruturado.',
 ];
@@ -85,8 +85,8 @@ export default function ClientPage() {
                 Construa sua carreira protegendo vidas.
               </h1>
               <p className="text-text-body text-lg leading-relaxed mt-4 max-w-3xl">
-                Somos a Segura EPI. Uma empresa lider em distribuicao, movida por etica, alta performance e o compromisso
-                de levar seguranca para quem constroi o futuro. Se voce busca crescimento e proposito, seu lugar e aqui.
+                Somos a Segura EPI. Uma empresa líder em distribuição, movida por ética, alta performance e o compromisso
+                de levar segurança para quem constrói o futuro. Se você busca crescimento e propósito, seu lugar é aqui.
               </p>
             </div>
 
@@ -118,7 +118,7 @@ export default function ClientPage() {
           <SectionTitle
             subtitle="Nossa Cultura"
             title="Por que trabalhar aqui?"
-            description="Baseado nos valores inegociaveis do nosso Codigo de Conduta."
+            description="Baseado nos valores inegociáveis do nosso Código de Conduta."
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cultura.map((item) => (
@@ -142,9 +142,9 @@ export default function ClientPage() {
       <Section id="areas" variant="offwhite">
         <Container className="max-w-6xl">
           <SectionTitle
-            subtitle="Areas de atuacao"
+            subtitle="Áreas de atuação"
             title="Perfis que buscamos"
-            description="Para atrair os perfis especificos dos nossos ICPs e manter o padrao de excelencia."
+            description="Para atrair os perfis específicos dos nossos ICPs e manter o padrão de excelência."
           />
           <div className="grid md:grid-cols-3 gap-6">
             {areas.map((area) => (
@@ -167,7 +167,7 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="O que oferecemos"
-            title="Beneficios e crescimento estruturado"
+            title="Benefícios e crescimento estruturado"
             description="Valorizamos quem caminha conosco e entregamos estrutura para evoluir."
           />
           <div className="grid md:grid-cols-2 gap-6">
@@ -191,7 +191,7 @@ export default function ClientPage() {
             <ul className="space-y-3 text-text-faint leading-relaxed">
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
-                Envie seu curriculo para <a className="underline hover:text-action-primaryHover" href="mailto:rh@seguraepi.com.br">rh@seguraepi.com.br</a>.
+                Envie seu currículo para <a className="underline hover:text-action-primaryHover" href="mailto:rh@seguraepi.com.br">rh@seguraepi.com.br</a>.
               </li>
               <li className="flex items-start gap-3">
                 <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -204,10 +204,10 @@ export default function ClientPage() {
             </ul>
             <div className="flex flex-wrap gap-3">
               <Button href="mailto:rh@seguraepi.com.br" variant="primary" size="lg" className="shadow-glow-brand">
-                Enviar curriculo
+                Enviar currículo
               </Button>
               <ContextLink href="/catalogo" className="text-sm text-white">
-                Conhecer nossas solucoes
+                Conhecer nossas soluções
               </ContextLink>
             </div>
           </div>
@@ -217,6 +217,4 @@ export default function ClientPage() {
     </main>
   );
 }
-
-
 

@@ -36,7 +36,7 @@ export const MOCK_PRODUCTS: Product[] = [
     shortDesc: "Couro tratado para maior durabilidade e conforto térmico.",
     tags: ["Couro", "Resistente"]
   },
-  
+
   // Proteção Respiratória
   {
     id: "respirador-pff2-valvulado",

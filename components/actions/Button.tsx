@@ -7,7 +7,7 @@ import { track } from '../../lib/analytics/track';
 
 type CommonProps = {
   children: React.ReactNode;
-  variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+  variant?: 'primary' | 'secondary' | 'outline' | 'ghost' | 'outline-inverse' | 'ghost-inverse';
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   trackEvent?: string;
@@ -35,7 +35,9 @@ export const Button: React.FC<ButtonProps> = (props) => {
     primary: "bg-action-primary text-text-onBrand shadow-elevation-1 hover:bg-action-primaryHover active:bg-action-primaryPressed",
     secondary: "bg-action-secondary text-text-inverse hover:bg-action-secondaryHover",
     outline: "bg-transparent border border-border-strong text-text-primary hover:border-action-primary hover:text-action-primaryHover",
-    ghost: "bg-transparent text-text-primary hover:bg-bg-surfaceMuted"
+    ghost: "bg-transparent text-text-primary hover:bg-bg-surfaceMuted",
+    'outline-inverse': "bg-transparent border border-white/40 text-white hover:border-action-primary hover:text-action-primaryHover",
+    'ghost-inverse': "bg-transparent text-white border border-white/20 hover:bg-white/10 hover:border-white/40",
   };
 
   const sizes = {

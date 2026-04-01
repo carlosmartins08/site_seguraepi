@@ -2,9 +2,9 @@ import React from 'react';
 import ClientPage from './ClientPage';
 
 export const metadata = {
-  title: 'Solicitacao Recebida com Sucesso | Segura EPI',
+  title: 'Solicitação Recebida com Sucesso | Segura EPI',
   description:
-    'Recebemos sua solicitacao. Nossa equipe tecnica ja iniciou a analise e entrara em contato rapidamente.',
+    'Recebemos sua solicitação. Nossa equipe técnica já iniciou a análise e entrará em contato rapidamente.',
   robots: {
     index: false,
     follow: false,

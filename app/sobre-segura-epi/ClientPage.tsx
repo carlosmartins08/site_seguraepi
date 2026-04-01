@@ -15,33 +15,33 @@ import { ROUTES } from '../../lib/routes';
 import { CONTACT_INFO } from '../../lib/constants';
 
 const heroBadges = [
-  { label: 'Seguranca com proposito', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Protecao com alma', color: 'bg-bg-inverse text-white' },
+  { label: 'Segurança com propósito', color: 'bg-action-primary/15 text-action-primary' },
+  { label: 'Proteção com alma', color: 'bg-bg-inverse text-white' },
   { label: 'Tecnologia + humanidade', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
 const valores = [
-  { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. A empatia guia nossas decisoes.', icon: 'heart' },
-  { title: 'Excelencia Tecnica', desc: 'O conhecimento e nossa principal ferramenta de transformacao e protecao.', icon: 'shield' },
-  { title: 'Confiabilidade', desc: 'Etica, compromisso e respeito sao a base de cada entrega que fazemos.', icon: 'check' },
-  { title: 'Educacao', desc: 'Formamos clientes e equipes mais conscientes, preparados e seguros.', icon: 'book' },
-  { title: 'Inovacao', desc: 'Buscamos continuamente tecnologias (como a Neo Evolution) e praticas mais eficazes.', icon: 'spark' },
-  { title: 'Colaboracao', desc: 'Trabalhamos lado a lado com clientes, parceiros e colaboradores.', icon: 'users' },
+  { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. A empatia guia nossas decisões.', icon: 'heart' },
+  { title: 'Excelência Técnica', desc: 'O conhecimento é nossa principal ferramenta de transformação e proteção.', icon: 'shield' },
+  { title: 'Confiabilidade', desc: 'Ética, compromisso e respeito são a base de cada entrega que fazemos.', icon: 'check' },
+  { title: 'Educação', desc: 'Formamos clientes e equipes mais conscientes, preparados e seguros.', icon: 'book' },
+  { title: 'Inovação', desc: 'Buscamos continuamente tecnologias (como a Neo Evolution) e práticas mais eficazes.', icon: 'spark' },
+  { title: 'Colaboração', desc: 'Trabalhamos lado a lado com clientes, parceiros e colaboradores.', icon: 'users' },
 ];
 
 const motivos = [
   {
-    title: 'Autoridade Tecnica',
-    desc: 'Somos especialistas. Nossa equipe atua como mentora tecnica para garantir a escolha correta do EPI.',
+    title: 'Autoridade Técnica',
+    desc: 'Somos especialistas. Nossa equipe atua como mentora técnica para garantir a escolha correta do EPI.',
     icon: 'shield',
   },
   {
     title: 'Olhar Humano',
-    desc: 'Entendemos a dor do trabalhador e a responsabilidade do gestor. Somos uma rede de seguranca para ambos.',
+    desc: 'Entendemos a dor do trabalhador e a responsabilidade do gestor. Somos uma rede de segurança para ambos.',
     icon: 'heart',
   },
   {
-    title: 'Inovacao Constante',
+    title: 'Inovação Constante',
     desc: 'Conectamos tecnologia e humanidade para oferecer o melhor do mercado.',
     icon: 'spark',
   },
@@ -86,7 +86,7 @@ export default function ClientPage() {
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1503389152951-9f343605f61e?auto=format&fit=crop&w=1600&q=80"
-            alt="Equipe de seguranca em obra"
+            alt="Equipe de segurança em obra"
             fill
             priority
             className="object-cover opacity-20"
@@ -101,11 +101,11 @@ export default function ClientPage() {
                 Sobre a Segura EPI
               </p>
               <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
-                Seguranca com Proposito, Protecao com Alma
+                Segurança com Propósito, Proteção com Alma
               </h1>
               <p className="text-text-body text-lg leading-relaxed mt-4 max-w-3xl">
-                Cada trabalhador carrega sonhos, historias e o desejo de voltar para casa em seguranca. Nas ruas, nas
-                obras, nas alturas ou no chao de fabrica, entregamos confianca, conhecimento e cuidado.
+                Cada trabalhador carrega sonhos, histórias e o desejo de voltar para casa em segurança. Nas ruas, nas
+                obras, nas alturas ou no chão de fábrica, entregamos confiança, conhecimento e cuidado.
               </p>
             </div>
             <div className="flex flex-wrap gap-3">
@@ -120,10 +120,10 @@ export default function ClientPage() {
             </div>
             <div className="flex flex-wrap gap-3">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
-                Falar com um consultor tecnico
+                Falar com um consultor técnico
               </Button>
               <ContextLink href="/catalogo" className="text-sm">
-                Ver catalogo
+                Ver catálogo
               </ContextLink>
             </div>
           </div>
@@ -133,22 +133,22 @@ export default function ClientPage() {
       <Section id="essencia" variant="default">
         <Container className="max-w-6xl">
           <SectionTitle
-            subtitle="Nossa Essencia"
-            title="Seguranca e um valor inegociavel"
-            description="Cada trabalhador carrega sonhos, historias e a responsabilidade de voltar para casa em seguranca."
+            subtitle="Nossa Essência"
+            title="Segurança é um valor inegociável"
+            description="Cada trabalhador carrega sonhos, histórias e a responsabilidade de voltar para casa em segurança."
           />
           <div className="grid md:grid-cols-2 gap-10">
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-4">
               <p className="text-text-body leading-relaxed">
-                Nao vendemos apenas capacete, luva ou cinto. Entregamos confianca, conhecimento e cuidado para quem esta
-                na obra, na altura ou no chao de fabrica.
+                Não vendemos apenas capacete, luva ou cinto. Entregamos confiança, conhecimento e cuidado para quem está
+                na obra, na altura ou no chão de fábrica.
               </p>
             </div>
             <div className="p-6 rounded-xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
-              <h3 className="text-xl font-display font-bold text-text-primary">Nossa Historia</h3>
+              <h3 className="text-xl font-display font-bold text-text-primary">Nossa História</h3>
               <p className="text-text-body leading-relaxed">
-                A Segura EPI nasceu da observacao de uma falha e da coragem de preenche-la. Transformamos nossa
-                experiencia na construcao civil e no comercio em uma missao clara: proteger pessoas com inteligencia e
+                A Segura EPI nasceu da observação de uma falha e da coragem de preenchê-la. Transformamos nossa
+                experiência na construção civil e no comércio em uma missão clara: proteger pessoas com inteligência e
                 empatia.
               </p>
             </div>
@@ -160,24 +160,24 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="Nosso Posicionamento"
-            title="Nao vendemos apenas equipamentos. Entregamos seguranca com inteligencia, cuidado e compromisso."
-            description="Somos mais do que uma distribuidora; somos um ecossistema de solucoes. Orientamos, ensinamos e caminhamos juntos."
+            title="Não vendemos apenas equipamentos. Entregamos segurança com inteligência, cuidado e compromisso."
+            description="Somos mais do que uma distribuidora; somos um ecossistema de soluções. Orientamos, ensinamos e caminhamos juntos."
           />
           <div className="grid md:grid-cols-3 gap-6">
             <DiretrizCard
-              label="Proposito"
-              title="Proteger vidas com consciencia"
-              desc="Transformar a seguranca do trabalho em algo humano e estrategico, cuidando das pessoas que constroem o pais."
+              label="Propósito"
+              title="Proteger vidas com consciência"
+              desc="Transformar a segurança do trabalho em algo humano e estratégico, cuidando das pessoas que constroem o país."
             />
             <DiretrizCard
-              label="Missao"
-              title="Solucoes completas em SST"
-              desc="Produtos de alta performance, consultoria tecnica e gestao com foco no bem-estar das pessoas e na eficiencia das empresas."
+              label="Missão"
+              title="Soluções completas em SST"
+              desc="Produtos de alta performance, consultoria técnica e gestão com foco no bem-estar das pessoas e na eficiência das empresas."
             />
             <DiretrizCard
-              label="Visao"
-              title="Referencia nacional em protecao"
-              desc="Ser referencia nacional em solucoes integradas de protecao individual e coletiva, reconhecida pela excelencia no atendimento, inovacao tecnica e compromisso absoluto com a vida."
+              label="Visão"
+              title="Referência nacional em proteção"
+              desc="Ser referência nacional em soluções integradas de proteção individual e coletiva, reconhecida pela excelência no atendimento, inovação técnica e compromisso absoluto com a vida."
             />
           </div>
         </Container>
@@ -188,7 +188,7 @@ export default function ClientPage() {
           <SectionTitle
             subtitle="Valores"
             title="O DNA da Segura EPI"
-            description="Principios que guiam cada decisao e entrega."
+            description="Princípios que guiam cada decisão e entrega."
           />
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {valores.map((valor) => (
@@ -213,7 +213,7 @@ export default function ClientPage() {
         <Container className="max-w-6xl">
           <SectionTitle
             subtitle="Por que confiar na Segura EPI?"
-            title="Autoridade tecnica, olhar humano e inovacao constante"
+            title="Autoridade técnica, olhar humano e inovação constante"
           />
           <div className="grid md:grid-cols-3 gap-6">
             {motivos.map((motivo) => (
@@ -238,10 +238,10 @@ export default function ClientPage() {
             </h3>
             <div className="flex flex-wrap gap-3">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
-                Falar com um mentor tecnico
+                Falar com um mentor técnico
               </Button>
               <ContextLink href="/catalogo" className="text-sm text-white">
-                Explorar catalogo de EPIs
+                Explorar catálogo de EPIs
               </ContextLink>
             </div>
           </div>
@@ -251,7 +251,6 @@ export default function ClientPage() {
     </main>
   );
 }
-
 
 
 

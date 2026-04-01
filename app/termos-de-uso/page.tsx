@@ -17,7 +17,7 @@ import { ROUTES } from '../../lib/routes';
 export const metadata = {
   title: 'Termos de Uso | Segura EPI',
   description:
-    'Termos e condicoes para uso do site da Segura EPI.',
+    'Termos e condições para uso do site da Segura EPI.',
   alternates: {
     canonical: `${SITE_URL}${ROUTES.termsOfUse}`,
   },
@@ -26,9 +26,9 @@ export const metadata = {
 export default function TermosDeUsoPage() {
   const { title, content, updatedAt } = LEGAL_TEXTS.terms;
   const summaryItems = [
-    'Site B2B para catalogo e contato comercial.',
-    'Cadastro com informacoes verdadeiras e documentos.',
-    'Conteudo e marca protegidos por propriedade intelectual.',
+    'Site B2B para catálogo e contato comercial.',
+    'Cadastro com informações verdadeiras e documentos.',
+    'Conteúdo e marca protegidos por propriedade intelectual.',
     'Termos podem ser alterados; foro Cabedelo/PB.',
   ];
 
@@ -65,11 +65,11 @@ export default function TermosDeUsoPage() {
         <Container>
           <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
             <h3 className="text-2xl font-display font-semibold text-text-inverse">Precisa de esclarecimento?</h3>
-            <p className="text-text-faint mt-2">Estamos disponiveis para orientar sobre prazos, pedidos e responsabilidades.</p>
+            <p className="text-text-faint mt-2">Estamos disponíveis para orientar sobre prazos, pedidos e responsabilidades.</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Falar no WhatsApp</Button>
-              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline" size="lg" className="text-text-inverse border-white/40">
-                Enviar email
+              <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline-inverse" size="lg">
+                Enviar e-mail
               </Button>
             </div>
           </div>

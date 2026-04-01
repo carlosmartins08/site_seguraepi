@@ -1,4 +1,3 @@
-
 import { Product, MOCK_PRODUCTS } from './products';
 
 export function applyFilters(
@@ -6,12 +5,12 @@ export function applyFilters(
   filters: { category?: string; segment?: string }
 ): Product[] {
   return products.filter((product) => {
-    const matchCategory = filters.category 
-      ? product.categoryKey === filters.category 
+    const matchCategory = filters.category
+      ? product.categoryKey === filters.category
       : true;
     
-    const matchSegment = filters.segment 
-      ? product.segmentKeys.includes(filters.segment) 
+    const matchSegment = filters.segment
+      ? product.segmentKeys.includes(filters.segment)
       : true;
 
     return matchCategory && matchSegment;

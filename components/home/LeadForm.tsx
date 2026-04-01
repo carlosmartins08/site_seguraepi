@@ -37,8 +37,8 @@ export const LeadForm: React.FC = () => {
   const errors = useMemo(
     () => ({
       name: form.name.trim() ? '' : 'Informe o nome do comprador.',
-      company: form.company.trim() ? '' : 'Informe a razao social.',
-      whatsapp: form.whatsapp.trim() ? '' : 'Informe um WhatsApp valido.',
+      company: form.company.trim() ? '' : 'Informe a razão social.',
+      whatsapp: form.whatsapp.trim() ? '' : 'Informe um WhatsApp válido.',
     }),
     [form]
   );
@@ -69,8 +69,8 @@ export const LeadForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-10 shadow-elevation-1 space-y-8">
       <div className="space-y-2">
-        <h3 className="text-lg font-display font-semibold text-text-primary">Dados para atendimento rapido</h3>
-        <p className="text-sm text-text-body">Preencha o minimo necessario para o consultor montar a proposta.</p>
+        <h3 className="text-lg font-display font-semibold text-text-primary">Dados para atendimento rápido</h3>
+        <p className="text-sm text-text-body">Preencha o mínimo necessário para o consultor montar a proposta.</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
@@ -87,7 +87,7 @@ export const LeadForm: React.FC = () => {
           />
         </Field>
 
-        <Field id="lead-company" label="Empresa (razao social)" required error={touched.company ? errors.company : ''}>
+        <Field id="lead-company" label="Empresa (razão social)" required error={touched.company ? errors.company : ''}>
           <input
             id="lead-company"
             name="lead_company"
@@ -100,7 +100,7 @@ export const LeadForm: React.FC = () => {
           />
         </Field>
 
-        <Field id="lead-cnpj" label="CNPJ (opcional)" hint="Se tiver em maos, acelera a analise.">
+        <Field id="lead-cnpj" label="CNPJ (opcional)" hint="Se tiver em mãos, acelera a análise.">
           <input
             id="lead-cnpj"
             name="lead_cnpj"
@@ -122,9 +122,9 @@ export const LeadForm: React.FC = () => {
             className={fieldBase}
           >
             <option value="">Selecione</option>
-            <option value="Construcao">Construcao</option>
-            <option value="Industria">Industria</option>
-            <option value="Logistica">Logistica</option>
+            <option value="Construcao">Construção</option>
+            <option value="Industria">Indústria</option>
+            <option value="Logistica">Logística</option>
             <option value="Outros">Outros</option>
           </select>
         </Field>
@@ -157,7 +157,7 @@ export const LeadForm: React.FC = () => {
             value={form.items}
             onChange={handleChange('items')}
             rows={4}
-            placeholder="Ex: 30 botas NR-35, 50 luvas nitrilicas, 20 respiradores PFF2"
+            placeholder="Ex: 30 botas NR-35, 50 luvas nitrílicas, 20 respiradores PFF2"
             className={fieldBase}
           />
         </Field>
@@ -173,9 +173,9 @@ export const LeadForm: React.FC = () => {
             className="mt-0.5 h-4 w-4 rounded border-border-default text-action-primary focus:ring-focus-ring"
           />
           <span>
-            Ao enviar, voce concorda com o tratamento dos dados conforme a{' '}
+            Ao enviar, você concorda com o tratamento dos dados conforme a{' '}
             <a className="underline hover:text-action-primary" href={ROUTES.privacyPolicy}>
-              Politica de Privacidade
+              Política de Privacidade
             </a>.
           </span>
         </label>

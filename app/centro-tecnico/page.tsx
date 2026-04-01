@@ -184,29 +184,29 @@ export default function CentroTecnicoPage() {
       <Section id="hub-tecnico" variant="default">
         <Container className="space-y-10">
           <SectionTitle
-            subtitle="Mapa Tecnico"
-            title="Tudo o que voce precisa, em uma unica trilha"
+            subtitle="Mapa Técnico"
+            title="Tudo o que você precisa, em uma única trilha"
             description="Comece pelo guia geral, aprofunde por categoria e valide o C.A. antes de fechar o pedido."
           />
           <div className="grid md:grid-cols-3 gap-8">
             <DecisionCard
               eyebrow="Guia Geral"
-              title="Guia Tecnico de EPI"
-              description="Conceitos, categorias por area do corpo e responsabilidades da NR-06."
+              title="Guia Técnico de EPI"
+              description="Conceitos, categorias por área do corpo e responsabilidades da NR-06."
               href="/epi"
-              actionText="Abrir guia tecnico"
+              actionText="Abrir guia técnico"
             />
             <DecisionCard
               eyebrow="Por Categoria"
-              title="Guias Tecnicos por Categoria"
-              description="Aprofunde por tipo de protecao com recomendacoes e FAQ tecnico."
+              title="Guias Técnicos por Categoria"
+              description="Aprofunde por tipo de proteção com recomendações e FAQ técnico."
               href="/epi/categorias"
               actionText="Ver categorias"
             />
             <DecisionCard
-              eyebrow="Validacao"
-              title="Validar Certificado de Aprovacao"
-              description="Passo a passo para checar situacao, validade e restricoes no CAEPI."
+              eyebrow="Validação"
+              title="Validar Certificado de Aprovação"
+              description="Passo a passo para checar situação, validade e restrições no CAEPI."
               href="/centro-tecnico#como-validar"
               actionText="Ver como validar"
             />
@@ -395,7 +395,7 @@ export default function CentroTecnicoPage() {
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">Antes de comprar</p>
-              <h3 className="text-3xl md:text-4xl font-display font-semibold leading-tight">Valide, consulte e so entao feche o pedido</h3>
+              <h3 className="text-3xl md:text-4xl font-display font-semibold leading-tight">Valide, consulte e só então feche o pedido</h3>
               <p className="text-text-soft text-base">
                 Validar C.A., confirmar norma e registrar treinamento evita autuações e devoluções por especificação errada.
               </p>

@@ -51,18 +51,16 @@ export const HomeClient: React.FC = () => {
               </Button>
               <Button
                 href={buildUrl(ROUTES.catalog, { origem: 'home-hero' })}
-                variant="outline"
+                variant="outline-inverse"
                 size="lg"
-                className="text-text-inverse border-white/40 hover:text-action-primaryHover"
                 trackEvent="cta_home_hero_catalogo"
               >
                 {content.hero.ctas.tertiary}
               </Button>
               <Button
                 href={buildUrl(ROUTES.chat, { intent: 'validar-especificacao', origem: 'home-hero' })}
-                variant="ghost"
+                variant="ghost-inverse"
                 size="lg"
-                className="text-text-inverse border border-white/10"
                 trackEvent="cta_home_hero_validar"
               >
                 {content.hero.ctas.secondary}
@@ -276,9 +274,8 @@ export const HomeClient: React.FC = () => {
               </Button>
               <Button
                 href={buildUrl(ROUTES.chat, { intent: 'representante', origem: 'home-expansao' })}
-                variant="outline"
+                variant="outline-inverse"
                 size="lg"
-                className="text-text-inverse border-white/40 hover:text-action-primaryHover"
                 trackEvent="cta_home_modelo"
               >
                 {content.expansion.ctaSecondary}

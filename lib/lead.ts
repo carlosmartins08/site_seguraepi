@@ -29,7 +29,7 @@ export function clearStoredLead(): void {
 }
 
 export function buildLeadMessage(payload: LeadPayload): string {
-  const lines: string[] = ['Solicitacao de orcamento B2B'];
+  const lines: string[] = ['Solicitação de orçamento B2B'];
 
   if (payload.name) lines.push(`Nome: ${payload.name}`);
   if (payload.company) lines.push(`Empresa: ${payload.company}`);

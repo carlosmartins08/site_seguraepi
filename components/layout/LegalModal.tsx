@@ -71,8 +71,8 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
             <div className="prose prose-slate prose-lg max-w-none">{content}</div>
 
             <div className="mt-12 pt-12 border-t border-border-muted italic text-sm text-text-subtle">
-              * Ultima atualizacao em {lastUpdateLabel}. Segura EPI e Servicos segue rigorosamente a Lei Geral de
-              Protecao de Dados (13.709/2018). Duvidas sobre seus dados? Contate{' '}
+              * Última atualização em {lastUpdateLabel}. Segura EPI e Serviços segue rigorosamente a Lei Geral de
+              Proteção de Dados (13.709/2018). Dúvidas sobre seus dados? Contate{' '}
               <a className="underline hover:text-action-primary" href={mailtoHref(CONTACT_INFO.email)}>
                 {CONTACT_INFO.email}
               </a>
@@ -84,7 +84,7 @@ export const LegalModal: React.FC<LegalModalProps> = ({ isOpen, onClose, title, 
         {/* Action Footer */}
         <div className="p-8 md:p-10 bg-bg-surfaceMuted border-t border-border-muted shrink-0 flex flex-col sm:flex-row items-center justify-between gap-6">
           <p className="text-xs font-medium text-text-subtle text-center sm:text-left">
-            Sua aceitacao confirma a leitura integral destes termos.
+            Sua aceitação confirma a leitura integral destes termos.
           </p>
           <Button
             variant="primary"

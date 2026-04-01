@@ -87,17 +87,17 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   }, [isMobileMenuOpen]);
 
   const navLinks: Array<{ name: string; href: Route; showDesktop?: boolean }> = [
-    { name: t('nav.home', 'Inicio'), href: ROUTES.home, showDesktop: false },
-    { name: t('nav.catalog', 'Catalogo'), href: ROUTES.catalog },
+    { name: t('nav.home', 'Início'), href: ROUTES.home, showDesktop: false },
+    { name: t('nav.catalog', 'Catálogo'), href: ROUTES.catalog },
     { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
-    { name: t('nav.center', 'Centro Tecnico'), href: ROUTES.center },
+    { name: t('nav.center', 'Centro Técnico'), href: ROUTES.center },
     { name: t('nav.howToBuy', 'Como Comprar'), href: ROUTES.howToBuy },
     { name: t('nav.about', 'Quem Somos'), href: ROUTES.about },
   ];
 
   const supportLabel = t('nav.support', 'Suporte B2B');
-  const priorityLabel = t('nav.priorityLogistics', 'Logistica prioritaria em');
-  const directoryLabel = t('nav.directory', 'Diretorio de Navegacao');
+  const priorityLabel = t('nav.priorityLogistics', 'Logística prioritária em');
+  const directoryLabel = t('nav.directory', 'Diretório de Navegação');
   const chatLabel = t('nav.chat', 'Atendimento online');
   const teamOnlineLabel = t('nav.teamOnlineNow', 'Time comercial online agora');
   const supportBlockLabel = t('nav.supportBlock', 'Suporte Industrial');
@@ -305,7 +305,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                   className="text-2xl md:text-4xl font-display font-semibold text-white tracking-tight hover:text-action-primaryHover transition-all duration-500 flex items-center group relative"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <span className="opacity-10 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-2xl md:text-4xl">0{i + 1}</span>
+                  <span className="mr-3 opacity-20 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-2xl md:text-4xl">0{i + 1}</span>
                   {link.name}
                   <span className="ml-6 w-0 h-1 bg-action-primary transition-all duration-700 group-hover:w-24 shadow-glow-brand" />
                 </Link>

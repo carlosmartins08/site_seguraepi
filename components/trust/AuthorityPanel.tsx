@@ -64,7 +64,7 @@ export const AuthorityPanel: React.FC<AuthorityPanelProps> = ({
         <div className="space-y-3">
           <p className="text-[11px] font-display font-semibold uppercase tracking-[0.18em] text-text-muted">{updatedLabel}</p>
           <p className="text-sm text-text-body">{AUTHORITY_INFO.updatedAt}</p>
-          <p className="text-xs text-text-muted">Conteudo revisado por equipe tecnica.</p>
+          <p className="text-xs text-text-muted">Conteúdo revisado por equipe técnica.</p>
         </div>
       </div>
     </div>

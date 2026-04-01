@@ -57,14 +57,14 @@ export default function CategoryPage({ params }: CategoryPageProps) {
   const data = CATEGORY_PAGES[params.categoria as CategoryKey];
   if (!data) return notFound();
 
-  const indicationsSubtitle = data.indicationsSection?.subtitle ?? 'Indicacoes tecnicas';
+  const indicationsSubtitle = data.indicationsSection?.subtitle ?? 'Indicações técnicas';
   const indicationsTitle = data.indicationsSection?.title ?? 'Onde este EPI se aplica';
   const indicationsDescription = data.indicationsSection?.description;
   const faqItems: FaqItem[] = data.faq.map((item) => ({ q: item.q, a: item.a }));
   const summaryItems = [
-    `Indicacoes: ${data.indications.map((item) => item.title).slice(0, 2).join(', ')}.`,
-    data.compliance?.title ?? 'Itens com CA ativo e rastreavel.',
-    'Aplicacoes comuns e erros evitados para reduzir risco.',
+    `Indicações: ${data.indications.map((item) => item.title).slice(0, 2).join(', ')}.`,
+    data.compliance?.title ?? 'Itens com CA ativo e rastreável.',
+    'Aplicações comuns e erros evitados para reduzir risco.',
     'FAQ com suporte consultivo por categoria.',
   ];
 
@@ -88,7 +88,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <Container className="max-w-5xl space-y-6">
           <div className="space-y-4">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
-              Categoria tecnica
+              Categoria técnica
             </p>
             <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight uppercase tracking-tight">
               {data.heroTitle}
@@ -131,7 +131,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           <Container className="max-w-5xl">
             <div className="bg-bg-deep border border-white/10 rounded-xl p-8 md:p-12 text-white">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
-                {data.spotlight.subtitle ?? 'Destaque tecnico'}
+                {data.spotlight.subtitle ?? 'Destaque técnico'}
               </p>
               <h2 className="text-2xl md:text-4xl font-display font-black uppercase tracking-tight mt-4">
                 {data.spotlight.title}
@@ -167,7 +167,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
         <Container className="max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8">
             <div className="bg-white border border-border-muted rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Aplicacoes comuns</h3>
+              <h3 className="text-lg font-display font-bold text-text-primary">Aplicações comuns</h3>
               <ul className="mt-4 space-y-2 text-text-body text-sm">
                 {data.commonUses.map((item) => (
                   <li key={item}>- {item}</li>
@@ -188,7 +188,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
 
       <Section id="segmentos" variant="offwhite" className="pt-16 pb-16">
         <Container className="max-w-6xl">
-          <SectionTitle subtitle="Segmentos atendidos" title="Onde esta categoria e mais aplicada" />
+          <SectionTitle subtitle="Segmentos atendidos" title="Onde esta categoria é mais aplicada" />
           <div className="flex flex-wrap gap-3 mt-8">
             {data.segments.map((segment) => (
               <span
@@ -205,19 +205,19 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <Section id="autoridade" variant="default" className="pt-16 pb-16 cv-auto">
         <Container className="max-w-6xl">
           <AuthorityPanel
-            subtitle="Autoridade tecnica"
-            title="Conteudo revisado por especialistas em EPI"
-            description="Orientacoes alinhadas as normas vigentes e boas praticas de seguranca do trabalho."
-            leadLabel="Responsavel tecnico"
+            subtitle="Autoridade técnica"
+            title="Conteúdo revisado por especialistas em EPI"
+            description="Orientações alinhadas às normas vigentes e boas práticas de segurança do trabalho."
+            leadLabel="Responsável técnico"
             sourcesLabel="Fontes consultadas"
-            updatedLabel="Ultima atualizacao"
+            updatedLabel="Última atualização"
           />
         </Container>
       </Section>
 
       <Section id="faq" variant="default" className="pt-16 pb-16 cv-auto">
         <Container className="max-w-5xl">
-          <SectionTitle subtitle="FAQ" title="FAQ - Duvidas Frequentes" />
+          <SectionTitle subtitle="FAQ" title="FAQ - Dúvidas Frequentes" />
           <FaqList items={faqItems} />
         </Container>
       </Section>
@@ -252,7 +252,5 @@ export default function CategoryPage({ params }: CategoryPageProps) {
     </main>
   );
 }
-
-
 
 

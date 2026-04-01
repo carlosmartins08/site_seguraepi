@@ -81,8 +81,8 @@ export default function ClientPage() {
             </h1>
             <p className="text-text-body text-sm md:text-base leading-relaxed">
               {attempted
-                ? 'Se o chat nao abriu automaticamente, use uma das opcoes abaixo.'
-                : 'Aguarde um instante enquanto conectamos voce ao especialista.'}
+                ? 'Se o chat não abriu automaticamente, use uma das opções abaixo.'
+                : 'Aguarde um instante enquanto conectamos você ao especialista.'}
             </p>
 
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
