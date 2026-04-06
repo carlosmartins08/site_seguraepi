@@ -13,6 +13,38 @@ interface BusinessStatus {
   };
 }
 
+const BUSINESS_TIMEZONE = 'America/Sao_Paulo';
+const WEEKDAY_INDEX: Record<string, number> = {
+  Sun: 0,
+  Mon: 1,
+  Tue: 2,
+  Wed: 3,
+  Thu: 4,
+  Fri: 5,
+  Sat: 6,
+};
+
+function getBusinessTimeParts(date: Date) {
+  const formatter = new Intl.DateTimeFormat('en-US', {
+    timeZone: BUSINESS_TIMEZONE,
+    weekday: 'short',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  });
+
+  const parts = formatter.formatToParts(date);
+  const weekday = parts.find((p) => p.type === 'weekday')?.value ?? 'Mon';
+  const hour = Number(parts.find((p) => p.type === 'hour')?.value ?? '0');
+  const minute = Number(parts.find((p) => p.type === 'minute')?.value ?? '0');
+
+  return {
+    day: WEEKDAY_INDEX[weekday] ?? 1,
+    hour,
+    minute,
+  };
+}
+
 export function useBusinessStatus(): BusinessStatus {
   const { t } = useI18n();
   const [status, setStatus] = useState<BusinessStatus>({
@@ -23,10 +55,8 @@ export function useBusinessStatus(): BusinessStatus {
   useEffect(() => {
     const calculateStatus = () => {
       const now = new Date();
-      const day = now.getDay(); // 0 = Sunday, 1 = Monday, ..., 6 = Saturday
-      const hour = now.getHours();
-      const minutes = now.getMinutes();
-      const currentTimeInMinutes = hour * 60 + minutes;
+      const { day, hour, minute } = getBusinessTimeParts(now);
+      const currentTimeInMinutes = hour * 60 + minute;
 
       const openTimeInMinutes = CONTACT_INFO.businessHours.open * 60;
       const closeTimeInMinutes = CONTACT_INFO.businessHours.close * 60;

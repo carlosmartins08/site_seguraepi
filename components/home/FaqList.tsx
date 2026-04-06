@@ -22,7 +22,7 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
             aria-controls={`faq-panel-${index}`}
             className="w-full flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
           >
-            <h3 className="text-lg md:text-xl font-display font-semibold text-text-primary tracking-tight">{item.q}</h3>
+            <h3 className="text-titleMD font-display font-semibold text-text-primary tracking-tight">{item.q}</h3>
             <svg
               className={cn("w-5 h-5 transition-transform", openFaqIndex === index && "rotate-180")}
               fill="none"
@@ -40,7 +40,7 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
               openFaqIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
             )}
           >
-            <p className="overflow-hidden text-text-body text-sm md:text-base leading-relaxed border-t border-border-muted pt-4">
+            <p className="overflow-hidden text-text-body text-bodySM md:text-bodyMD leading-relaxed border-t border-border-muted pt-4">
               {item.a}
             </p>
           </div>

@@ -23,19 +23,19 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
       alignment === 'center' ? "text-center mx-auto max-w-3xl" : "text-left"
     )}>
       {subtitle && (
-        <span className="text-action-primary font-display font-bold uppercase tracking-[0.18em] text-[11px] mb-3 block">
+        <span className="text-action-primary font-display uppercase text-labelSM mb-3 block">
           {subtitle}
         </span>
       )}
       <h2 className={cn(
-        "text-2xl md:text-4xl font-display font-bold leading-tight mb-4",
+        "text-titleLG md:text-titleXL font-display font-bold leading-tight mb-4",
         light ? "text-text-inverse" : "text-text-primary"
       )}>
         {title}
       </h2>
       {description && (
         <p className={cn(
-          "text-base md:text-lg leading-relaxed max-w-2xl",
+          "text-bodyMD md:text-bodyLG leading-relaxed max-w-2xl",
           alignment === 'center' ? "mx-auto" : "",
           light ? "text-text-faint" : "text-text-body"
         )}>

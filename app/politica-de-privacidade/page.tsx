@@ -33,7 +33,7 @@ export default function PoliticaDePrivacidadePage() {
   ];
 
   return (
-    <main className="bg-white">
+    <main id="main-content" className="bg-bg-surface">
       <Navbar variant="light" />
       <JsonLd
         data={buildBreadcrumbJsonLd([
@@ -64,8 +64,8 @@ export default function PoliticaDePrivacidadePage() {
       <Section id="privacy-cta" variant="dark" className="pb-20">
         <Container>
           <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
-            <h3 className="text-2xl font-display font-semibold text-text-inverse">Precisa falar sobre dados?</h3>
-            <p className="text-text-faint mt-2">
+            <h3 className="text-titleLG font-display font-semibold text-text-inverse">Precisa falar sobre dados?</h3>
+            <p className="text-text-faint text-bodySM mt-2">
               Nosso time responde rapidamente sobre LGPD, uso e armazenamento de dados.
             </p>
             <div className="flex flex-wrap gap-3 mt-6">
@@ -80,3 +80,4 @@ export default function PoliticaDePrivacidadePage() {
     </main>
   );
 }
+

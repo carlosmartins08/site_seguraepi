@@ -15,8 +15,8 @@ import { ROUTES } from '../../lib/routes';
 import { CONTACT_INFO } from '../../lib/constants';
 
 const heroBadges = [
-  { label: 'Segurança com propósito', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Proteção com alma', color: 'bg-bg-inverse text-white' },
+  { label: 'Segurança com propósito', color: 'bg-action-primary/10 text-action-primary' },
+  { label: 'Proteção com alma', color: 'bg-bg-inverse text-text-inverse' },
   { label: 'Tecnologia + humanidade', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
@@ -56,10 +56,10 @@ const DiretrizCard = ({
   title: string;
   desc: string;
 }) => (
-  <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
-    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">{label}</p>
-    <h4 className="text-xl font-display font-bold text-text-primary">{title}</h4>
-    <p className="text-text-body leading-relaxed">{desc}</p>
+  <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+    <p className="text-labelMD font-display font-bold uppercase tracking-[0.25em] text-action-primary">{label}</p>
+    <h4 className="text-titleMD font-display font-bold text-text-primary">{title}</h4>
+    <p className="text-text-body text-bodyMD leading-relaxed">{desc}</p>
   </div>
 );
 
@@ -75,7 +75,7 @@ const IconBullet = ({ icon }: { icon: string }) => {
 
 export default function ClientPage() {
   return (
-    <main className="bg-white min-h-screen">
+    <main id="main-content" className="bg-bg-surface min-h-screen">
       <JsonLd data={buildBreadcrumbJsonLd([
         { name: 'Home', url: SITE_URL },
         { name: 'Sobre a Segura EPI', url: `${SITE_URL}${ROUTES.about}` },
@@ -97,13 +97,13 @@ export default function ClientPage() {
         <Container className="relative max-w-5xl">
           <div className="space-y-8">
             <div>
-              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px] mb-3">
+              <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM mb-3">
                 Sobre a Segura EPI
               </p>
-              <h1 className="text-3xl md:text-5xl font-display font-black text-text-primary leading-tight">
+              <h1 className="text-titleXL md:text-displayXL font-display font-black text-text-primary leading-tight">
                 Segurança com Propósito, Proteção com Alma
               </h1>
-              <p className="text-text-body text-lg leading-relaxed mt-4 max-w-3xl">
+              <p className="text-text-body text-bodyLG leading-relaxed mt-4 max-w-3xl">
                 Cada trabalhador carrega sonhos, histórias e o desejo de voltar para casa em segurança. Nas ruas, nas
                 obras, nas alturas ou no chão de fábrica, entregamos confiança, conhecimento e cuidado.
               </p>
@@ -112,17 +112,17 @@ export default function ClientPage() {
               {heroBadges.map((badge) => (
                 <span
                   key={badge.label}
-                  className={`px-4 py-2 rounded-full text-[11px] font-display font-bold uppercase tracking-[0.2em] border ${badge.color} border-black/5`}
+                  className={`px-4 py-2 rounded-full text-labelSM font-display font-bold uppercase tracking-[0.2em] border ${badge.color} border-black/10`}
                 >
                   {badge.label}
                 </span>
               ))}
             </div>
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-bodySM shadow-glow-brand">
                 Falar com um consultor técnico
               </Button>
-              <ContextLink href="/catalogo" className="text-sm">
+              <ContextLink href="/catalogo" className="text-bodySM">
                 Ver catálogo
               </ContextLink>
             </div>
@@ -138,15 +138,15 @@ export default function ClientPage() {
             description="Cada trabalhador carrega sonhos, histórias e a responsabilidade de voltar para casa em segurança."
           />
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-4">
-              <p className="text-text-body leading-relaxed">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-4">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Não vendemos apenas capacete, luva ou cinto. Entregamos confiança, conhecimento e cuidado para quem está
                 na obra, na altura ou no chão de fábrica.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-action-primary/30 bg-action-primary/5 shadow-elevation-1 space-y-3">
-              <h3 className="text-xl font-display font-bold text-text-primary">Nossa História</h3>
-              <p className="text-text-body leading-relaxed">
+            <div className="p-6 rounded-xl border border-action-primary/20 bg-action-primary/10 shadow-elevation-1 space-y-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Nossa História</h3>
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 A Segura EPI nasceu da observação de uma falha e da coragem de preenchê-la. Transformamos nossa
                 experiência na construção civil e no comércio em uma missão clara: proteger pessoas com inteligência e
                 empatia.
@@ -194,14 +194,14 @@ export default function ClientPage() {
             {valores.map((valor) => (
               <div
                 key={valor.title}
-                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white flex gap-4 items-start"
+                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex gap-4 items-start"
               >
-                <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <IconBullet icon={valor.icon} />
                 </div>
                 <div className="space-y-2">
-                  <h4 className="text-lg font-display font-bold text-text-primary">{valor.title}</h4>
-                  <p className="text-text-body leading-relaxed text-sm">{valor.desc}</p>
+                  <h4 className="text-titleMD font-display font-bold text-text-primary">{valor.title}</h4>
+                  <p className="text-text-body text-bodySM leading-relaxed">{valor.desc}</p>
                 </div>
               </div>
             ))}
@@ -217,12 +217,12 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-3 gap-6">
             {motivos.map((motivo) => (
-              <div key={motivo.title} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
-                <div className="w-11 h-11 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+              <div key={motivo.title} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+                <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <IconBullet icon={motivo.icon} />
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">{motivo.title}</h4>
-                <p className="text-text-body leading-relaxed text-sm">{motivo.desc}</p>
+                <h4 className="text-titleMD font-display font-bold text-text-primary">{motivo.title}</h4>
+                <p className="text-text-body text-bodySM leading-relaxed">{motivo.desc}</p>
               </div>
             ))}
           </div>
@@ -231,16 +231,16 @@ export default function ClientPage() {
 
       <Section id="compromisso" variant="default">
         <Container className="max-w-5xl">
-          <div className="bg-bg-inverse text-white rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-white/10 space-y-6">
-            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">Nosso compromisso final</p>
-            <h3 className="text-2xl md:text-4xl font-display font-black leading-tight">
+          <div className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-bg-surface/10 space-y-6">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">Nosso compromisso final</p>
+            <h3 className="text-titleLG md:text-displayXL font-display font-black leading-tight">
               &quot;Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.&quot;
             </h3>
             <div className="flex flex-wrap gap-3">
-              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-sm shadow-glow-brand">
+              <Button href={CONTACT_INFO.whatsapp} variant="primary" className="px-8 py-4 text-bodySM shadow-glow-brand">
                 Falar com um mentor técnico
               </Button>
-              <ContextLink href="/catalogo" className="text-sm text-white">
+              <ContextLink href="/catalogo" className="text-bodySM text-text-inverse">
                 Explorar catálogo de EPIs
               </ContextLink>
             </div>
@@ -251,6 +251,8 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
 
 
 

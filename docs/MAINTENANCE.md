@@ -2,6 +2,12 @@
 
 Este documento orienta como atualizar conteudo, integracoes e configuracoes sem quebrar rotas ou o design system.
 
+## Variaveis de ambiente
+- `NEXT_PUBLIC_WBOT_TOKEN` - token do WBOT
+- `NEXT_PUBLIC_GA_ID` - Google Analytics (opcional)
+- `NEXT_PUBLIC_GTM_ID` - Google Tag Manager (opcional)
+- `LEAD_WEBHOOK_URL` - webhook para leads (producao)
+
 ## Conteudo institucional
 Paginas principais:
 - `/como-comprar` -> `app/como-comprar/page.tsx`
@@ -14,8 +20,8 @@ Paginas principais:
 - `/trabalhe-conosco` -> `app/trabalhe-conosco/ClientPage.tsx`
 
 Recomendacao:
-- Atualize textos mantendo layout.
-- Ajuste `metadata` quando alterar titulo/descricao.
+- Atualize textos mantendo layout
+- Ajuste `metadata` quando alterar titulo/descricao
 
 ## Guias por categoria
 Fonte de dados:
@@ -68,6 +74,11 @@ Helpers:
 - `lib/chat-prefill.ts` (sessionStorage `chat_prefill`)
 - `lib/lead.ts` (sessionStorage `lead_orcamento`)
 
+Leads:
+- `app/api/lead/route.ts` (POST)
+- Em ambiente local grava em `data/leads.json`
+- Em producao use `LEAD_WEBHOOK_URL`
+
 Rotas:
 - `/chat` (utilitario)
 - `/obrigado` (pos-conversao, noindex)
@@ -80,7 +91,7 @@ Helpers:
 - `lib/contact.ts` (tel/mailto)
 
 Use `phoneHref()` e `mailtoHref()` sempre que renderizar telefone/email.
-`useBusinessStatus` usa `CONTACT_INFO.businessHours` e `CONTACT_INFO.supportTime`.
+`useBusinessStatus` usa `CONTACT_INFO.businessHours` e timezone `America/Sao_Paulo`.
 
 ## LGPD e legal
 Conteudo:
@@ -91,7 +102,30 @@ Paginas:
 - `/politica-de-privacidade`
 - `/termos-de-uso`
 
-Atualize o email do DPO em `lib/legal.tsx` e no modal, se necessario.
+Preferencias de cookies:
+- Reabertura via footer usando `CONSENT_OPEN_EVENT`
+
+## A11y
+- Toda pagina deve manter `id="main-content"` no `<main>`
+
+## Tipografia e opacidades semanticas
+- Headings, labels e body devem usar tokens: `text-display*`, `text-title*`, `text-body*`, `text-label*`.
+- Evite tamanhos crus (`text-sm`, `text-lg`, `text-2xl`, etc.) em componentes e paginas.
+- Opacidades semanticas sao permitidas apenas em `bg-*` e `border-*` com escala fixa `/10`, `/20`, `/40`.
+- Textos `text-*/*` nao entram na normalizacao de opacidade.
+
+## Checklist de QA (manual)
+- Navegacao: Header/Footer, CTA principais e rotas criticas (`/catalogo`, `/chat`, `/obrigado`).
+- Formularios: estados `loading/erro/sucesso`, mensagens claras e feedback visivel.
+- Consentimento: banner LGPD + reabertura via footer.
+- Responsivo: hero, cards, tabelas tecnicas e FAQ.
+- Acessibilidade: focus visivel, `aria-live` em status dinamicos.
+
+## Seguranca e boas praticas
+- Nao expor tokens/segredos no client (use variaveis de ambiente e endpoints server-side).
+- Evitar hardcode de URLs internas; use `ROUTES` + `buildUrl()`.
+- Preferir classes semanticas; evitar hex/valores arbitrarios.
+- Validar entradas no `app/api/lead` e manter `LEAD_WEBHOOK_URL` apenas em ambiente seguro.
 
 ## Testes recomendados
 - `npm run lint:routes`

@@ -18,8 +18,8 @@ import { buildBreadcrumbJsonLd, buildFaqJsonLd } from '../../lib/seo/schema';
 import { SITE_URL } from '../../lib/seo/site';
 
 const badges = [
-  { label: 'Retirada expressa', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'Sem filas no balcão', color: 'bg-bg-inverse text-white' },
+  { label: 'Retirada expressa', color: 'bg-action-primary/10 text-action-primary' },
+  { label: 'Sem filas no balcão', color: 'bg-bg-inverse text-text-inverse' },
   { label: 'Cortes de liberação claros', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
@@ -48,7 +48,7 @@ const faqItems = [
 
 export default function ClientPage() {
   return (
-    <main className="bg-white min-h-screen">
+    <main id="main-content" className="bg-bg-surface min-h-screen">
       <JsonLd data={buildFaqJsonLd(faqItems)} />
       <JsonLd
         data={buildBreadcrumbJsonLd([
@@ -73,13 +73,13 @@ export default function ClientPage() {
         <Container size="default" className="relative max-w-5xl">
           <div className="space-y-8">
             <div>
-              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px] mb-3">
+              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM mb-3">
                 Retirada Expressa na Loja | Segura EPI
               </p>
-              <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
+              <h1 className="text-titleXL md:text-displayXL font-display font-semibold text-text-primary leading-tight">
                 Retire sem filas e sem espera no balcão.
               </h1>
-              <p className="text-text-body text-base md:text-lg leading-relaxed mt-4 max-w-3xl">
+              <p className="text-text-body text-bodyMD md:text-bodyLG leading-relaxed mt-4 max-w-3xl">
                 Nosso objetivo é que você passe na loja apenas para pegar sua mercadoria. O processo segue regras claras de
                 horário e fluxo para garantir agilidade.
               </p>
@@ -89,7 +89,7 @@ export default function ClientPage() {
               {badges.map((badge) => (
                 <span
                   key={badge.label}
-                  className={`px-4 py-2 rounded-full text-[11px] font-semibold border ${badge.color} border-black/5`}
+                  className={`px-4 py-2 rounded-full text-labelSM font-semibold border ${badge.color} border-black/10`}
                 >
                   {badge.label}
                 </span>
@@ -100,7 +100,7 @@ export default function ClientPage() {
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg" className="shadow-glow-brand">
                 Fechar pedido no WhatsApp
               </Button>
-              <ContextLink href={ROUTES.catalog} className="text-sm">
+              <ContextLink href={ROUTES.catalog} className="text-bodySM">
                 Ver catálogo de EPIs
               </ContextLink>
             </div>
@@ -125,7 +125,7 @@ export default function ClientPage() {
             description="Todo o processo acontece antes da sua chegada."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-4 text-text-body">
+            <div className="space-y-4 text-text-body text-bodySM">
               {fluxo.map((item) => (
                 <div key={item} className="flex items-start gap-3">
                   <span className="w-2 h-2 rounded-full bg-action-primary mt-2" />
@@ -134,8 +134,8 @@ export default function ClientPage() {
               ))}
             </div>
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
-              <h3 className="text-xl font-display font-bold text-text-primary mb-3">Por que funciona?</h3>
-              <p className="text-text-body leading-relaxed">
+              <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Por que funciona?</h3>
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 A separação e conferência acontecem antes da sua chegada. Quando você chega, o pedido já está pronto.
               </p>
             </div>
@@ -152,19 +152,19 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cortes.map((corte) => (
-              <div key={corte.pedido} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
+              <div key={corte.pedido} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
                 <div className="flex items-center gap-3 mb-2">
-                  <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                   </div>
                   <div>
-                    <p className="text-xs font-display font-bold uppercase tracking-[0.25em] text-action-primary">
+                    <p className="text-labelMD font-display font-bold uppercase tracking-[0.25em] text-action-primary">
                       Horário do pedido
                     </p>
-                    <h4 className="text-lg font-display font-bold text-text-primary">{corte.pedido}</h4>
+                    <h4 className="text-titleMD font-display font-bold text-text-primary">{corte.pedido}</h4>
                   </div>
                 </div>
-                <p className="text-text-body leading-relaxed">
+                <p className="text-text-body text-bodyMD leading-relaxed">
                   <span className="font-display font-bold text-text-primary">Disponibilidade: </span>
                   {corte.retirada}
                 </p>
@@ -182,13 +182,13 @@ export default function ClientPage() {
             description="Aguarde a confirmação do vendedor antes de se deslocar."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
-              <p className="text-text-body leading-relaxed">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Após a notificação de disponibilidade, o pedido fica reservado por 24 horas. Se não houver retirada, os
                 itens podem retornar ao estoque e será necessário novo alinhamento com seu vendedor.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-sm">
+            <div className="p-6 rounded-xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-bodySM">
               Importante: aguarde sempre a confirmação de disponibilidade antes de ir à loja.
             </div>
           </div>
@@ -200,14 +200,14 @@ export default function ClientPage() {
           <SectionTitle subtitle="4. Dúvidas Frequentes sobre Retirada" title="Retirada sem atrito" />
           <div className="grid md:grid-cols-2 gap-8">
             {faqItems.map((item) => (
-              <div key={item.q} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
+              <div key={item.q} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                  <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
                   </div>
-                  <h4 className="text-lg font-display font-bold text-text-primary">{item.q}</h4>
+                  <h4 className="text-titleMD font-display font-bold text-text-primary">{item.q}</h4>
                 </div>
-                <p className="text-text-body leading-relaxed">{item.a}</p>
+                <p className="text-text-body text-bodyMD leading-relaxed">{item.a}</p>
               </div>
             ))}
           </div>
@@ -217,6 +217,10 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+
+
 
 
 

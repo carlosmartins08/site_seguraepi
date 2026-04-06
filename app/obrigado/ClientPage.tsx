@@ -48,18 +48,18 @@ export default function ClientPage() {
   const phoneHref = phoneDigits ? `tel:${phoneDigits}` : `tel:${CONTACT_INFO.phone}`;
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-bg-surface">
       <Navbar variant="light" />
 
       <Section id="thanks-hero" variant="offwhite" className="pt-nav pb-14">
         <Container size="narrow" className="space-y-6">
-          <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
+          <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">
             Pós-conversão
           </p>
-          <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
+          <h1 className="text-titleXL md:text-displayXL font-display font-semibold text-text-primary leading-tight">
             Solicitação Recebida com Sucesso!
           </h1>
-          <p className="text-text-body text-base md:text-lg leading-relaxed">
+          <p className="text-text-body text-bodyMD md:text-bodyLG leading-relaxed">
             Obrigado por escolher a Segura EPI. Seu pedido de contato já está com nosso time.
           </p>
         </Container>
@@ -68,10 +68,10 @@ export default function ClientPage() {
       <Section id="thanks-content" variant="default" className="pt-10 pb-20">
         <Container size="default" className="max-w-5xl space-y-12">
           <div className="space-y-4">
-            <h2 className="text-2xl md:text-3xl font-display font-bold text-text-primary">
+            <h2 className="text-titleLG md:text-titleXL font-display font-bold text-text-primary">
               O que acontece agora?
             </h2>
-            <p className="text-text-body text-base md:text-lg leading-relaxed">
+            <p className="text-text-body text-bodyMD md:text-bodyLG leading-relaxed">
               Nossa equipe de especialistas já recebeu seus dados e iniciou a análise da sua demanda. Prezamos pela
               agilidade, por isso confira abaixo os próximos passos.
             </p>
@@ -79,36 +79,36 @@ export default function ClientPage() {
 
           <div className="grid md:grid-cols-3 gap-6">
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se você solicitou uma Cotação</h3>
-              <p className="text-text-body text-sm leading-relaxed mt-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Se você solicitou uma Cotação</h3>
+              <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 Um consultor de soluções entra em contato via WhatsApp ou e-mail para entender sua necessidade e enviar
                 a proposta formalizada.
               </p>
             </div>
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se você enviou dados para Cadastro</h3>
-              <p className="text-text-body text-sm leading-relaxed mt-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Se você enviou dados para Cadastro</h3>
+              <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 O departamento financeiro valida suas informações (CNPJ/Sintegra). O prazo máximo de análise é de até
                 24 horas úteis.
               </p>
             </div>
             <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-              <h3 className="text-lg font-display font-bold text-text-primary">Se você falou conosco no WhatsApp</h3>
-              <p className="text-text-body text-sm leading-relaxed mt-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Se você falou conosco no WhatsApp</h3>
+              <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 Aguarde um instante. Devido ao alto volume de atendimentos, um humano responderá em breve. Horário de
                 atendimento: {CONTACT_INFO.supportTime}.
               </p>
             </div>
           </div>
 
-          <div className="bg-bg-inverse text-white border border-border-inverse rounded-2xl p-8 md:p-10 shadow-elevation-2">
-            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
+          <div className="bg-bg-inverse text-text-inverse border border-border-inverse rounded-2xl p-8 md:p-10 shadow-elevation-2">
+            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">
               Inovação Segura EPI
             </p>
-            <h3 className="text-2xl md:text-3xl font-display font-semibold mt-4">
+            <h3 className="text-titleLG md:text-titleXL font-display font-semibold mt-4">
               Conheça a Neo Evolution
             </h3>
-            <p className="text-text-faint text-base md:text-lg leading-relaxed mt-3">
+            <p className="text-text-faint text-bodyMD md:text-bodyLG leading-relaxed mt-3">
               A única palmilha antiestática moldada a laser em 3 minutos. Leve essa tecnologia para sua empresa.
             </p>
             <Button
@@ -124,12 +124,12 @@ export default function ClientPage() {
 
           <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
-              <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-xs">Dúvida urgente?</p>
-              <p className="text-text-body text-sm">Ligue para nossa central agora mesmo.</p>
+              <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-labelMD">Dúvida urgente?</p>
+              <p className="text-text-body text-bodySM">Ligue para nossa central agora mesmo.</p>
             </div>
             <a
               href={phoneHref}
-              className="text-text-primary font-display font-bold uppercase tracking-[0.2em] text-sm hover:text-action-primaryHover transition-colors"
+              className="text-text-primary font-display font-bold uppercase tracking-[0.2em] text-bodySM hover:text-action-primaryHover transition-colors"
             >
               {CONTACT_INFO.phone}
             </a>
@@ -139,6 +139,9 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+
 
 
 

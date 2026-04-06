@@ -150,11 +150,11 @@ export const tokens = {
   },
 
   radius: {
-    sm: "8px",
-    md: "12px",
-    lg: "16px",
-    xl: "20px",
-    "2xl": "28px",
+    sm: "10px",
+    md: "14px",
+    lg: "18px",
+    xl: "24px",
+    "2xl": "32px",
   },
 
   elevation: {

@@ -36,14 +36,14 @@ export const Button: React.FC<ButtonProps> = (props) => {
     secondary: "bg-action-secondary text-text-inverse hover:bg-action-secondaryHover",
     outline: "bg-transparent border border-border-strong text-text-primary hover:border-action-primary hover:text-action-primaryHover",
     ghost: "bg-transparent text-text-primary hover:bg-bg-surfaceMuted",
-    'outline-inverse': "bg-transparent border border-white/40 text-white hover:border-action-primary hover:text-action-primaryHover",
-    'ghost-inverse': "bg-transparent text-white border border-white/20 hover:bg-white/10 hover:border-white/40",
+    'outline-inverse': "bg-transparent border border-bg-surface/40 text-text-inverse hover:border-action-primary hover:text-action-primaryHover",
+    'ghost-inverse': "bg-transparent text-text-inverse border border-bg-surface/20 hover:bg-bg-surface/10 hover:border-bg-surface/40",
   };
 
   const sizes = {
-    sm: "px-4 py-2 text-xs rounded-sm",
-    md: "px-6 py-3 text-sm rounded-md",
-    lg: "px-8 py-4 text-base rounded-lg",
+    sm: "px-4 py-2 text-labelMD rounded-sm",
+    md: "px-6 py-3 text-bodySM rounded-md",
+    lg: "px-8 py-4 text-bodyMD rounded-lg",
   };
 
   if (typeof (props as any).href === 'string') {
@@ -95,3 +95,4 @@ export const Button: React.FC<ButtonProps> = (props) => {
     </button>
   );
 };
+

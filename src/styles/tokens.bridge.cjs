@@ -55,7 +55,7 @@ exports.tokens = {
     },
   },
   spacing: { 0:'0px',1:'4px',2:'8px',3:'12px',4:'16px',5:'20px',6:'24px',7:'28px',8:'32px',10:'40px',12:'48px',14:'56px',16:'64px',18:'72px',20:'80px',24:'96px' },
-  radius: { sm:'8px', md:'12px', lg:'16px', xl:'20px', '2xl':'28px' },
+  radius: { sm:'10px', md:'14px', lg:'18px', xl:'24px', '2xl':'32px' },
   elevation: {
     shadow1: '0 6px 18px -12px rgba(15,23,42,0.25)',
     shadow2: '0 18px 40px -20px rgba(15,23,42,0.35)',

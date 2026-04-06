@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React from 'react';
 import { Navbar } from '../layout/Navbar';
@@ -30,13 +30,13 @@ export const HomeClient: React.FC = () => {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.18),transparent_35%),radial-gradient(circle_at_80%_10%,rgba(255,255,255,0.06),transparent_40%)]" />
         <Container className="relative z-10 max-w-5xl">
           <div className="space-y-7">
-            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
+            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">
               {content.hero.eyebrow}
             </p>
-            <h1 className="text-4xl md:text-6xl font-display font-bold leading-tight text-text-inverse">
+            <h1 className="text-displayLG md:text-displayXL font-display font-bold leading-tight text-text-inverse">
               {content.hero.title}
             </h1>
-            <p className="text-text-faint text-lg md:text-xl leading-relaxed">
+            <p className="text-text-faint text-bodyLG leading-relaxed">
               {content.hero.description}
             </p>
             <div className="flex flex-wrap gap-3">
@@ -69,7 +69,7 @@ export const HomeClient: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
               {content.microProofs.map((item) => (
-                <div key={item} className="bg-white/10 border border-white/10 rounded-xl px-4 py-3 text-xs font-semibold text-text-faint">
+                <div key={item} className="bg-bg-surface/10 border border-bg-surface/10 rounded-xl px-4 py-3 text-labelMD font-semibold text-text-faint">
                   {item}
                 </div>
               ))}
@@ -93,7 +93,7 @@ export const HomeClient: React.FC = () => {
 
       <Section id="centro-tecnico" variant="dark" className="reveal">
         <Container>
-          <div className="bg-bg-deep border border-white/10 rounded-2xl p-8 md:p-12">
+          <div className="bg-bg-deep border border-bg-surface/10 rounded-2xl p-8 md:p-12">
             <SectionTitle
               subtitle={content.center.subtitle}
               title={content.center.title}
@@ -178,9 +178,9 @@ export const HomeClient: React.FC = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
             {content.sectors.items.map((sector) => (
               <div key={sector.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-                <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">{sector.focus}</p>
-                <h3 className="text-lg font-display font-semibold text-text-primary mt-3">{sector.title}</h3>
-                <p className="text-text-body text-sm leading-relaxed mt-3">{sector.description}</p>
+                <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{sector.focus}</p>
+                <h3 className="text-titleMD font-display font-semibold text-text-primary mt-3">{sector.title}</h3>
+                <p className="text-text-body text-bodySM leading-relaxed mt-3">{sector.description}</p>
               </div>
             ))}
           </div>
@@ -197,8 +197,8 @@ export const HomeClient: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             {content.clarity.points.map((item) => (
               <div key={item.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-                <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">{item.title}</p>
-                <p className="text-text-body text-sm leading-relaxed mt-3">{item.description}</p>
+                <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{item.title}</p>
+                <p className="text-text-body text-bodySM leading-relaxed mt-3">{item.description}</p>
               </div>
             ))}
           </div>
@@ -238,8 +238,8 @@ export const HomeClient: React.FC = () => {
           <div className="grid md:grid-cols-2 gap-6 mt-10">
             {content.cases.items.map((item) => (
               <div key={item.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
-                <h3 className="text-lg font-display font-semibold text-text-primary">{item.title}</h3>
-                <p className="text-text-body text-sm leading-relaxed mt-3">{item.description}</p>
+                <h3 className="text-titleMD font-display font-semibold text-text-primary">{item.title}</h3>
+                <p className="text-text-body text-bodySM leading-relaxed mt-3">{item.description}</p>
               </div>
             ))}
           </div>
@@ -255,7 +255,7 @@ export const HomeClient: React.FC = () => {
 
       <Section id="expansao" variant="dark" className="reveal cv-auto">
         <Container>
-          <div className="bg-bg-deep border border-white/10 rounded-2xl p-8 md:p-12">
+          <div className="bg-bg-deep border border-bg-surface/10 rounded-2xl p-8 md:p-12">
             <SectionTitle
               subtitle={content.expansion.subtitle}
               title={content.expansion.title}
@@ -287,3 +287,4 @@ export const HomeClient: React.FC = () => {
     </main>
   );
 };
+

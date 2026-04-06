@@ -67,19 +67,19 @@ export default function ClientPage() {
   }, []);
 
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-bg-surface">
       <Navbar variant="light" />
 
       <Section id="chat-bridge" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-3xl">
-          <div className="bg-white border border-border-muted rounded-xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
-            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[10px]">
+          <div className="bg-bg-surface border border-border-muted rounded-xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">
               Atendimento online
             </p>
-            <h1 className="text-2xl md:text-4xl font-display font-black text-text-primary uppercase tracking-tight">
+            <h1 className="text-titleLG md:text-displayXL font-display font-black text-text-primary uppercase tracking-tight">
               {attempted && opened ? 'Abrindo o chat agora' : 'Preparando seu atendimento'}
             </h1>
-            <p className="text-text-body text-sm md:text-base leading-relaxed">
+            <p className="text-text-body text-bodySM md:text-bodyMD leading-relaxed">
               {attempted
                 ? 'Se o chat não abriu automaticamente, use uma das opções abaixo.'
                 : 'Aguarde um instante enquanto conectamos você ao especialista.'}
@@ -118,6 +118,9 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
+
 
 
 

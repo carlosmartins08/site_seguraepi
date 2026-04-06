@@ -18,6 +18,23 @@ type PrefillState = {
   subject: string;
 };
 
+const onlyDigits = (value: string) => value.replace(/\D/g, '');
+
+const formatWhatsApp = (value: string) => {
+  const digits = onlyDigits(value).slice(0, 11);
+  if (!digits) return '';
+  const ddd = digits.slice(0, 2);
+  const middle = digits.length > 10 ? digits.slice(2, 7) : digits.slice(2, 6);
+  const end = digits.length > 10 ? digits.slice(7, 11) : digits.slice(6, 10);
+
+  let result = '';
+  if (ddd) result += `(${ddd}`;
+  if (ddd.length === 2) result += ') ';
+  if (middle) result += middle;
+  if (end) result += `-${end}`;
+  return result;
+};
+
 const DEFAULT_PREFILL: PrefillState = {
   name: '',
   company: '',
@@ -85,7 +102,9 @@ export const FloatingChatButton: React.FC = () => {
   const handlePrefillChange =
     (field: keyof PrefillState) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-      setPrefill((prev) => ({ ...prev, [field]: event.target.value }));
+      const raw = event.target.value;
+      const nextValue = field === 'whatsapp' ? formatWhatsApp(raw) : raw;
+      setPrefill((prev) => ({ ...prev, [field]: nextValue }));
     };
 
   const handlePrefillSubmit = (event: React.FormEvent) => {
@@ -137,11 +156,11 @@ export const FloatingChatButton: React.FC = () => {
         >
           <div className="flex items-start justify-between gap-4">
             <div>
-              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px]">
+              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">
                 Atendimento offline
               </p>
-              <h4 className="text-lg font-display font-semibold text-text-primary mt-2">Deixe sua mensagem</h4>
-              <p className="text-text-body text-xs mt-2" aria-live="polite">
+              <h4 className="text-titleMD font-display font-semibold text-text-primary mt-2">Deixe sua mensagem</h4>
+              <p className="text-text-body text-bodySM mt-2" aria-live="polite">
                 {statusMessage}. Assim que voltarmos, nossa equipe responde pelo WhatsApp.
               </p>
             </div>
@@ -203,7 +222,7 @@ export const FloatingChatButton: React.FC = () => {
               />
             </Field>
 
-            <label className="flex items-start gap-3 text-[11px] text-text-muted">
+            <label className="flex items-start gap-3 text-labelSM text-text-muted">
               <input
                 type="checkbox"
                 checked={prefillConsent}
@@ -224,7 +243,7 @@ export const FloatingChatButton: React.FC = () => {
                 href={ROUTES.privacyPolicy}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[11px] text-text-muted hover:text-action-primary transition-colors"
+                className="text-labelSM text-text-muted hover:text-action-primary transition-colors"
               >
                 Politica de Privacidade
               </a>
@@ -277,10 +296,10 @@ export const FloatingChatButton: React.FC = () => {
           />
         </div>
         <div className="text-left">
-          <p className="text-xs font-semibold">
+          <p className="text-labelMD font-semibold">
             {isOnline ? 'Consultoria online' : 'Deixe sua mensagem'}
           </p>
-          <p className="text-[11px] text-text-inverse/80 font-sans">
+          <p className="text-labelSM text-text-inverse/80 font-sans">
             {isOnline ? 'Atendemos em tempo real' : 'Retornamos em horario comercial'}
           </p>
         </div>

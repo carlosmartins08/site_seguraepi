@@ -97,7 +97,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: "cinturao-paraquedista-nr35",
     name: "Cinturão Paraquedista NR-35",
-    categoryKey: "protecao-altural",
+    categoryKey: "trabalho-em-altura",
     segmentKeys: ["construcao-civil", "manutencao", "eventos-servicos"],
     shortDesc: "Padrão industrial para retenção de queda e posicionamento.",
     tags: ["NR-35", "5 Pontos"],
@@ -106,7 +106,7 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: "talabarte-duplo-absorvedor",
     name: "Talabarte Duplo com Absorvedor",
-    categoryKey: "protecao-altural",
+    categoryKey: "trabalho-em-altura",
     segmentKeys: ["construcao-civil", "industria"],
     shortDesc: "Garante ancoragem constante com redução de força de impacto.",
     tags: ["Y-Lanyard", "Segurança"]
@@ -116,17 +116,9 @@ export const MOCK_PRODUCTS: Product[] = [
   {
     id: "botina-seguranca-composite",
     name: "Botina de Segurança Composite",
-    categoryKey: "protecao-pes",
+    categoryKey: "calcados",
     segmentKeys: ["industria", "logistica", "alimenticia"],
     shortDesc: "Biqueira não metálica com solado antiderrapante bidensidade.",
     tags: ["Pés", "Eletricista"]
-  },
-  {
-    id: "capacete-aba-frontal",
-    name: "Capacete Aba Frontal",
-    categoryKey: "protecao-cabeca",
-    segmentKeys: ["construcao-civil", "manutencao"],
-    shortDesc: "Proteção contra impactos de objetos sobre o crânio.",
-    tags: ["Cabeça", "Ajustável"]
   }
 ];

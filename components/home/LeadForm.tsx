@@ -16,6 +16,40 @@ type LeadFormState = {
   items: string;
 };
 
+const onlyDigits = (value: string) => value.replace(/\D/g, '');
+
+const formatWhatsApp = (value: string) => {
+  const digits = onlyDigits(value).slice(0, 11);
+  if (!digits) return '';
+  const ddd = digits.slice(0, 2);
+  const middle = digits.length > 10 ? digits.slice(2, 7) : digits.slice(2, 6);
+  const end = digits.length > 10 ? digits.slice(7, 11) : digits.slice(6, 10);
+
+  let result = '';
+  if (ddd) result += `(${ddd}`;
+  if (ddd.length === 2) result += ') ';
+  if (middle) result += middle;
+  if (end) result += `-${end}`;
+  return result;
+};
+
+const formatCnpj = (value: string) => {
+  const digits = onlyDigits(value).slice(0, 14);
+  if (!digits) return '';
+  const p1 = digits.slice(0, 2);
+  const p2 = digits.slice(2, 5);
+  const p3 = digits.slice(5, 8);
+  const p4 = digits.slice(8, 12);
+  const p5 = digits.slice(12, 14);
+
+  let result = p1;
+  if (p2) result += `.${p2}`;
+  if (p3) result += `.${p3}`;
+  if (p4) result += `/${p4}`;
+  if (p5) result += `-${p5}`;
+  return result;
+};
+
 export const LeadForm: React.FC = () => {
   const [form, setForm] = useState<LeadFormState>({
     name: '',
@@ -31,14 +65,22 @@ export const LeadForm: React.FC = () => {
   const handleChange =
     (field: keyof LeadFormState) =>
     (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-      setForm((prev) => ({ ...prev, [field]: event.target.value }));
+      const raw = event.target.value;
+      const nextValue =
+        field === 'whatsapp'
+          ? formatWhatsApp(raw)
+          : field === 'cnpj'
+            ? formatCnpj(raw)
+            : raw;
+      setForm((prev) => ({ ...prev, [field]: nextValue }));
     };
 
   const errors = useMemo(
     () => ({
       name: form.name.trim() ? '' : 'Informe o nome do comprador.',
       company: form.company.trim() ? '' : 'Informe a razão social.',
-      whatsapp: form.whatsapp.trim() ? '' : 'Informe um WhatsApp válido.',
+      whatsapp: onlyDigits(form.whatsapp).length >= 10 ? '' : 'Informe um WhatsApp válido.',
+      cnpj: form.cnpj && onlyDigits(form.cnpj).length < 14 ? 'CNPJ incompleto.' : '',
     }),
     [form]
   );
@@ -50,7 +92,7 @@ export const LeadForm: React.FC = () => {
 
     if (typeof window === 'undefined') return;
     if (hasErrors || !consent) {
-      setTouched({ name: true, company: true, whatsapp: true });
+      setTouched({ name: true, company: true, whatsapp: true, cnpj: true });
       return;
     }
 
@@ -61,6 +103,23 @@ export const LeadForm: React.FC = () => {
       consentAt: consent ? new Date().toISOString() : undefined,
     };
 
+    try {
+      const body = JSON.stringify(payload);
+      if (navigator.sendBeacon) {
+        const blob = new Blob([body], { type: 'application/json' });
+        navigator.sendBeacon('/api/lead', blob);
+      } else {
+        fetch('/api/lead', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body,
+          keepalive: true,
+        }).catch(() => null);
+      }
+    } catch {
+      // Ignore submit errors; WhatsApp flow remains the primary fallback.
+    }
+
     window.sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(payload));
     storeChatContext({ intent: 'lead-form', origem: 'home-orcamento' });
     window.location.href = ROUTES.thanks;
@@ -69,8 +128,8 @@ export const LeadForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-10 shadow-elevation-1 space-y-8">
       <div className="space-y-2">
-        <h3 className="text-lg font-display font-semibold text-text-primary">Dados para atendimento rápido</h3>
-        <p className="text-sm text-text-body">Preencha o mínimo necessário para o consultor montar a proposta.</p>
+        <h3 className="text-titleMD font-display font-semibold text-text-primary">Dados para atendimento rápido</h3>
+        <p className="text-bodySM text-text-body">Preencha o mínimo necessário para o consultor montar a proposta.</p>
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
@@ -100,12 +159,18 @@ export const LeadForm: React.FC = () => {
           />
         </Field>
 
-        <Field id="lead-cnpj" label="CNPJ (opcional)" hint="Se tiver em mãos, acelera a análise.">
+        <Field
+          id="lead-cnpj"
+          label="CNPJ (opcional)"
+          hint="Se tiver em mãos, acelera a análise."
+          error={touched.cnpj ? errors.cnpj : ''}
+        >
           <input
             id="lead-cnpj"
             name="lead_cnpj"
             value={form.cnpj}
             onChange={handleChange('cnpj')}
+            onBlur={() => setTouched((prev) => ({ ...prev, cnpj: true }))}
             placeholder="00.000.000/0000-00"
             inputMode="numeric"
             autoComplete="off"
@@ -164,7 +229,7 @@ export const LeadForm: React.FC = () => {
       </div>
 
       <div className="flex flex-col gap-4">
-        <label className="flex items-start gap-3 text-xs text-text-body">
+        <label className="flex items-start gap-3 text-bodySM text-text-body">
           <input
             type="checkbox"
             checked={consent}

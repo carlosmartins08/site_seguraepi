@@ -33,7 +33,7 @@ export default function TermosDeUsoPage() {
   ];
 
   return (
-    <main className="bg-white">
+    <main id="main-content" className="bg-bg-surface">
       <Navbar variant="light" />
       <JsonLd
         data={buildBreadcrumbJsonLd([
@@ -64,8 +64,8 @@ export default function TermosDeUsoPage() {
       <Section id="terms-cta" variant="dark" className="pb-20">
         <Container>
           <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
-            <h3 className="text-2xl font-display font-semibold text-text-inverse">Precisa de esclarecimento?</h3>
-            <p className="text-text-faint mt-2">Estamos disponíveis para orientar sobre prazos, pedidos e responsabilidades.</p>
+            <h3 className="text-titleLG font-display font-semibold text-text-inverse">Precisa de esclarecimento?</h3>
+            <p className="text-text-faint text-bodySM mt-2">Estamos disponíveis para orientar sobre prazos, pedidos e responsabilidades.</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Falar no WhatsApp</Button>
               <Button href={mailtoHref(CONTACT_INFO.email)} variant="outline-inverse" size="lg">
@@ -78,3 +78,4 @@ export default function TermosDeUsoPage() {
     </main>
   );
 }
+

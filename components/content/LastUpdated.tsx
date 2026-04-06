@@ -24,7 +24,7 @@ export const LastUpdated: React.FC<LastUpdatedProps> = ({
   return (
     <p
       className={cn(
-        'text-xs font-sans font-medium tracking-wide',
+        'text-bodySM font-sans font-medium tracking-wide',
         isDark ? 'text-text-faint' : 'text-text-muted',
         className
       )}

@@ -18,8 +18,8 @@ import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
 
 const badges = [
-  { label: 'Logística GJP + Nordeste', color: 'bg-action-primary/15 text-action-primary' },
-  { label: 'CIF ou FOB conforme sua operação', color: 'bg-bg-inverse text-white' },
+  { label: 'Logística GJP + Nordeste', color: 'bg-action-primary/10 text-action-primary' },
+  { label: 'CIF ou FOB conforme sua operação', color: 'bg-bg-inverse text-text-inverse' },
   { label: 'Conferência no recebimento', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
@@ -32,7 +32,7 @@ const summaryItems = [
 
 export default function ClientPage() {
   return (
-    <main className="bg-white min-h-screen">
+    <main id="main-content" className="bg-bg-surface min-h-screen">
       <JsonLd
         data={buildBreadcrumbJsonLd([
           { name: 'Home', url: SITE_URL },
@@ -56,13 +56,13 @@ export default function ClientPage() {
         <Container size="default" className="relative max-w-5xl">
           <div className="space-y-8">
             <div>
-              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-[11px] mb-3">
+              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM mb-3">
                 Política de Entrega e Frete
               </p>
-              <h1 className="text-3xl md:text-4xl font-display font-semibold text-text-primary leading-tight">
+              <h1 className="text-titleXL md:text-displayXL font-display font-semibold text-text-primary leading-tight">
                 Logística estruturada para entregar com integridade e prazo.
               </h1>
-              <p className="text-text-body text-base md:text-lg leading-relaxed mt-4 max-w-3xl">
+              <p className="text-text-body text-bodyMD md:text-bodyLG leading-relaxed mt-4 max-w-3xl">
                 Atendemos desde demandas locais na Grande João Pessoa até grandes pedidos industriais no Nordeste.
                 Nosso compromisso é que o EPI chegue dentro do prazo acordado e em perfeito estado.
               </p>
@@ -72,7 +72,7 @@ export default function ClientPage() {
               {badges.map((badge) => (
                 <span
                   key={badge.label}
-                  className={`px-4 py-2 rounded-full text-[11px] font-semibold border ${badge.color} border-black/5`}
+                  className={`px-4 py-2 rounded-full text-labelSM font-semibold border ${badge.color} border-black/10`}
                 >
                   {badge.label}
                 </span>
@@ -83,7 +83,7 @@ export default function ClientPage() {
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">
                 Consultar frete agora
               </Button>
-              <ContextLink href="/catalogo" className="text-sm">
+              <ContextLink href="/catalogo" className="text-bodySM">
                 Ver catálogo
               </ContextLink>
             </div>
@@ -104,24 +104,24 @@ export default function ClientPage() {
           <div className="grid md:grid-cols-2 gap-8">
             <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
               <div className="flex items-center gap-3 mb-3">
-                <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
                 </div>
-                <h3 className="text-xl font-display font-bold text-text-primary">Grande João Pessoa</h3>
+                <h3 className="text-titleMD font-display font-bold text-text-primary">Grande João Pessoa</h3>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Para pedidos acima de R$ 500,00, oferecemos entrega gratuita via rota própria. Consulte seu vendedor
                 para verificar a disponibilidade de rota para o seu bairro.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
                 </div>
-                <h3 className="text-xl font-display font-bold text-text-primary">Demais regiões</h3>
+                <h3 className="text-titleMD font-display font-bold text-text-primary">Demais regiões</h3>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Trabalhamos com transportadoras parceiras que garantem prazos competitivos e rastreabilidade da carga.
               </p>
             </div>
@@ -137,26 +137,26 @@ export default function ClientPage() {
             description="Escolha a modalidade que melhor atende sua necessidade."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">Frete CIF</h4>
+                <h4 className="text-titleMD font-display font-bold text-text-primary">Frete CIF</h4>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Pago pela Segura EPI em negociações específicas ou rotas promocionais. Assumimos pagamento e gestão da
                 entrega até sua porta.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white space-y-3">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">Frete FOB</h4>
+                <h4 className="text-titleMD font-display font-bold text-text-primary">Frete FOB</h4>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Pago pelo cliente. Você indica a transportadora de confiança para coletar no nosso CD. Nossa equipe
                 deixa a carga paletizada ou embalada, pronta para coleta.
               </p>
@@ -173,7 +173,7 @@ export default function ClientPage() {
             description="A verificação na hora é a maior garantia de segurança."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="space-y-3 text-text-body">
+            <div className="space-y-3 text-text-body text-bodySM">
               {[
                 'Conte os volumes e compare com a Nota Fiscal e o Conhecimento de Transporte.',
                 'Avalie a embalagem: sinais de violação, avaria ou umidade.',
@@ -186,7 +186,7 @@ export default function ClientPage() {
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-sm">
+            <div className="p-6 rounded-xl border border-status-warningBorder bg-status-warningSoft text-status-warningStrong text-bodySM">
               Não aceitaremos reclamações de divergência de volume após a saída do entregador. A ressalva no comprovante
               é essencial para abrir o chamado.
             </div>
@@ -202,25 +202,25 @@ export default function ClientPage() {
             description="O prazo começa a contar a partir do faturamento do pedido."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
               <div className="flex items-center gap-3 mb-2">
-                <div className="w-10 h-10 rounded-xl bg-action-primary/15 text-action-primary flex items-center justify-center">
+                <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">Rotas locais (frota própria)</h4>
+                <h4 className="text-titleMD font-display font-bold text-text-primary">Rotas locais (frota própria)</h4>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Entregas conforme cronograma da frota própria. Consulte os dias da sua região.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-white">
+            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
                 </div>
-                <h4 className="text-lg font-display font-bold text-text-primary">Transportadoras</h4>
+                <h4 className="text-titleMD font-display font-bold text-text-primary">Transportadoras</h4>
               </div>
-              <p className="text-text-body leading-relaxed">
+              <p className="text-text-body text-bodyMD leading-relaxed">
                 Prazos conforme a tabela da transportadora contratada, variando conforme a cidade de destino.
               </p>
             </div>
@@ -231,8 +231,8 @@ export default function ClientPage() {
       <Section id="delivery-cta" variant="dark" className="pb-20">
         <Container>
           <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
-            <h3 className="text-2xl font-display font-semibold text-text-inverse">Quer validar prazo e rota?</h3>
-            <p className="text-text-faint mt-2">Nosso time confirma SLA e melhor modalidade de entrega.</p>
+            <h3 className="text-titleLG font-display font-semibold text-text-inverse">Quer validar prazo e rota?</h3>
+            <p className="text-text-faint text-bodySM mt-2">Nosso time confirma SLA e melhor modalidade de entrega.</p>
             <div className="flex flex-wrap gap-3 mt-6">
               <Button href={CONTACT_INFO.whatsapp} variant="primary" size="lg">Consultar frete</Button>
               <Button href={ROUTES.chat} variant="outline-inverse" size="lg">
@@ -245,6 +245,8 @@ export default function ClientPage() {
     </main>
   );
 }
+
+
 
 
 

@@ -60,6 +60,8 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  const wbotToken = process.env.NEXT_PUBLIC_WBOT_TOKEN;
+
   return (
     <html lang="pt-BR">
       <head>
@@ -108,12 +110,14 @@ export default function RootLayout({
             `,
           }}
         />
-        <ConsentScriptGate
-          preference="necessary"
-          id="wbot-chat-script"
-          src="https://wbot.chat/index.js"
-          token="4cdc9640da67dbd6e38fa5ef324befd6"
-        />
+        {wbotToken ? (
+          <ConsentScriptGate
+            preference="necessary"
+            id="wbot-chat-script"
+            src="https://wbot.chat/index.js"
+            token={wbotToken}
+          />
+        ) : null}
         <AnalyticsScripts />
       </body>
     </html>

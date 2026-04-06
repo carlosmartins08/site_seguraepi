@@ -115,17 +115,17 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               href={CONTACT_INFO.googleMapsLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-medium text-text-soft hover:text-action-primaryHover transition-colors group"
+              className="flex items-center gap-2 text-labelMD font-medium text-text-soft hover:text-action-primaryHover transition-colors group"
             >
               <svg className="w-3 h-3 text-action-primary group-hover:scale-125 transition-transform" fill="currentColor" viewBox="0 0 20 20">
                 <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
               </svg>
               {CONTACT_INFO.address}
             </a>
-            <div className="w-[1px] h-3 bg-white/10" />
+            <div className="w-[1px] h-3 bg-bg-surface/10" />
             <a
               href={phoneHref(CONTACT_INFO.phone)}
-              className="flex items-center gap-2 text-xs font-medium text-text-soft hover:text-action-primaryHover transition-colors"
+              className="flex items-center gap-2 text-labelMD font-medium text-text-soft hover:text-action-primaryHover transition-colors"
             >
               <svg className="w-3 h-3 text-action-primary" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
@@ -135,10 +135,10 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           </div>
           <div className="flex items-center gap-4">
             <LocaleSwitcher compact />
-            <div className="flex items-center gap-2 px-3 py-1 bg-white/5 rounded-full border border-white/10 transition-all duration-700">
+            <div className="flex items-center gap-2 px-3 py-1 bg-bg-surface/10 rounded-full border border-bg-surface/10 transition-all duration-700">
               <span className="w-1.5 h-1.5 bg-action-primary rounded-full animate-pulse"></span>
-              <span className="text-xs font-medium text-text-soft">
-                {priorityLabel} <span className="text-white">{CONTACT_INFO.priorityRegion}</span>
+              <span className="text-labelMD font-medium text-text-soft">
+                {priorityLabel} <span className="text-text-inverse">{CONTACT_INFO.priorityRegion}</span>
               </span>
             </div>
           </div>
@@ -148,7 +148,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
       <header className={cn(
         "fixed left-0 right-0 z-[70] transition-all duration-500 ease-in-out",
         isScrolled
-          ? "top-0 h-16 glass-header border-b border-border-default/50 shadow-elevation-1"
+          ? "top-0 h-16 glass-header border-b border-border-default/40 shadow-elevation-1"
           : "top-0 lg:top-10 h-24 bg-transparent border-b border-transparent"
       )}>
         {/* Scroll Progress Bar with Technical Glow */}
@@ -177,8 +177,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "relative py-2 text-sm font-medium transition-all group",
-                  isScrolled || variant === 'light' ? "text-text-primary hover:text-action-primaryHover" : "text-white hover:text-action-primaryHover"
+                  "relative py-2 text-bodySM font-medium transition-all group",
+                  isScrolled || variant === 'light' ? "text-text-primary hover:text-action-primaryHover" : "text-text-inverse hover:text-action-primaryHover"
                 )}
               >
                 {link.name}
@@ -193,10 +193,10 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             <div className={cn(
               "flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-700 group cursor-default relative overflow-hidden",
               isOnline
-                ? "bg-bg-surfaceMuted/50 border-border-default/50 hover:border-tech-compliance/30"
-                : "bg-bg-inverse/5 border-border-subtle/20"
+                ? "bg-bg-surfaceMuted/40 border-border-default/40 hover:border-tech-compliance/20"
+                : "bg-bg-inverse/10 border-border-subtle/20"
             )}>
-              {!isOnline && <div className="absolute inset-0 bg-action-primary/5 animate-pulse"></div>}
+              {!isOnline && <div className="absolute inset-0 bg-action-primary/10 animate-pulse"></div>}
 
               <span className="flex h-2 w-2 relative z-10">
                 {isOnline && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-compliance opacity-40"></span>}
@@ -208,7 +208,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               <span
                 aria-live="polite"
                 className={cn(
-                  "text-xs font-medium transition-colors relative z-10 whitespace-nowrap",
+                  "text-bodySM font-medium transition-colors relative z-10 whitespace-nowrap",
                   isOnline
                     ? (isScrolled || variant === 'light' ? "text-text-soft group-hover:text-tech-compliance" : "text-text-soft group-hover:text-tech-compliance")
                     : "text-text-soft italic"
@@ -245,7 +245,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               "lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all rounded-2xl",
               isScrolled || variant === 'light'
                 ? "bg-bg-surfaceMuted text-text-primary"
-                : "bg-white/5 text-white border border-white/10"
+                : "bg-bg-surface/10 text-text-inverse border border-bg-surface/10"
             )}
             aria-label="Abrir Menu"
             aria-expanded={isMobileMenuOpen}
@@ -270,15 +270,15 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-x-full"
         )}
       >
-        <div className="absolute top-0 right-0 w-96 h-96 bg-action-primary/5 rounded-full blur-[100px] -mr-48 -mt-48" />
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-action-primary/5 rounded-full blur-[80px] -ml-32 -mb-32" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-action-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
+        <div className="absolute bottom-0 left-0 w-64 h-64 bg-action-primary/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
         <Container className="h-full flex flex-col py-10 relative z-10">
           <div className="flex justify-between items-center mb-16">
             <SeguraLogo section="navbar" variant="dark" size="md" padding="tight" />
             <button
               onClick={() => setIsMobileMenuOpen(false)}
-              className="w-14 h-14 flex items-center justify-center text-white bg-white/5 border border-white/10 rounded-2xl hover:bg-action-primary transition-all duration-500"
+              className="w-14 h-14 flex items-center justify-center text-text-inverse bg-bg-surface/10 border border-bg-surface/10 rounded-2xl hover:bg-action-primary transition-all duration-500"
               aria-label="Fechar menu"
             >
               <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -288,7 +288,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           </div>
 
           <div className="flex flex-col flex-grow">
-            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.22em] text-xs mb-8 opacity-70">
+            <p className="text-action-primary font-display font-semibold uppercase tracking-[0.22em] text-labelMD mb-8 opacity-70">
               {directoryLabel}
             </p>
 
@@ -302,10 +302,10 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-2xl md:text-4xl font-display font-semibold text-white tracking-tight hover:text-action-primaryHover transition-all duration-500 flex items-center group relative"
+                  className="text-titleLG md:text-displayLG font-display font-semibold text-text-inverse tracking-tight hover:text-action-primaryHover transition-all duration-500 flex items-center group relative"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
-                  <span className="mr-3 opacity-20 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-2xl md:text-4xl">0{i + 1}</span>
+                  <span className="mr-3 opacity-20 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-titleLG md:text-displayLG">0{i + 1}</span>
                   {link.name}
                   <span className="ml-6 w-0 h-1 bg-action-primary transition-all duration-700 group-hover:w-24 shadow-glow-brand" />
                 </Link>
@@ -313,21 +313,21 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             </nav>
           </div>
 
-          <div className="mt-auto pt-10 border-t border-white/10 grid md:grid-cols-2 gap-10">
+          <div className="mt-auto pt-10 border-t border-bg-surface/10 grid md:grid-cols-2 gap-10">
             <div className="space-y-4">
-              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-xs">{supportBlockLabel}</p>
+              <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelMD">{supportBlockLabel}</p>
               <a
                 href={phoneHref(CONTACT_INFO.phone)}
-                className="text-white text-3xl font-display font-black tracking-tight leading-none hover:text-action-primaryHover transition-colors"
+                className="text-text-inverse text-titleXL font-display font-black tracking-tight leading-none hover:text-action-primaryHover transition-colors"
               >
                 {CONTACT_INFO.phone}
               </a>
-              <p className="text-text-soft text-xs font-sans">{CONTACT_INFO.supportTime}</p>
+              <p className="text-text-soft text-bodySM font-sans">{CONTACT_INFO.supportTime}</p>
             </div>
             <div className="flex flex-col gap-4">
               <Button
                 variant="primary"
-                className="w-full py-5 text-xs shadow-glow-brand"
+                className="w-full py-5 text-labelMD shadow-glow-brand"
                 onClick={() => {
                   storeChatContext({ intent: 'mobile-chat', origem: 'mobile_menu' });
                   openWbotChat({
@@ -339,12 +339,12 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               >
                 {chatLabel}
               </Button>
-              <div className="flex items-center justify-center gap-2 py-4 border border-white/5 rounded-2xl bg-white/5">
+              <div className="flex items-center justify-center gap-2 py-4 border border-bg-surface/10 rounded-2xl bg-bg-surface/10">
                 <span className={cn(
                   "h-2 w-2 rounded-full",
                   isOnline ? "bg-tech-compliance animate-pulse" : "bg-bg-canvas"
                 )}></span>
-                <span className="text-xs font-medium text-text-soft" aria-live="polite">
+                <span className="text-labelMD font-medium text-text-soft" aria-live="polite">
                   {isOnline ? teamOnlineLabel : statusMessage}
                 </span>
               </div>
@@ -355,6 +355,10 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
     </>
   );
 };
+
+
+
+
 
 
 

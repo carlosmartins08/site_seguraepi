@@ -26,7 +26,7 @@ const tableRows = [
 
 export default function GuiaEpiPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main id="main-content" className="min-h-screen bg-bg-surface">
       <JsonLd data={buildTechArticleJsonLd({
         headline: 'Equipamentos de Proteção Individual | Guia Técnico',
         description: 'Entenda o que é EPI segundo a NR-06, categorias por área do corpo, responsabilidades legais e como validar o Certificado de Aprovação (CA).',
@@ -44,9 +44,9 @@ export default function GuiaEpiPage() {
       <Section id="hero-epi" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-5xl space-y-8">
           <div className="space-y-4">
-            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-[11px]">Guia Técnico de Equipamentos de Proteção Individual</p>
-            <h1 className="text-4xl md:text-5xl font-display font-black text-text-primary leading-tight">O Que São Equipamentos de Proteção Individual (EPI)?</h1>
-            <p className="speakable text-text-body text-lg leading-relaxed">
+            <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">Guia Técnico de Equipamentos de Proteção Individual</p>
+            <h1 className="text-displayLG md:text-displayXL font-display font-black text-text-primary leading-tight">O Que São Equipamentos de Proteção Individual (EPI)?</h1>
+            <p className="speakable text-text-body text-bodyLG leading-relaxed">
               Conforme a Norma Regulamentadora nº 6 (NR-06), do Ministério do Trabalho e Emprego, EPI é todo dispositivo ou produto de uso individual destinado à proteção do trabalhador contra riscos capazes de ameaçar sua segurança e saúde no exercício da atividade laboral. É obrigatório sempre que as medidas de proteção coletiva não eliminarem totalmente o risco ou não forem suficientes para controlá-lo.
             </p>
             <ContextLink href="/centro-tecnico">Entenda como validar o CA no Centro Técnico</ContextLink>
@@ -62,21 +62,40 @@ export default function GuiaEpiPage() {
             description="Os EPIs são classificados conforme a parte do corpo protegida e o tipo de risco controlado."
           />
 
-          <div className="overflow-hidden rounded-xl border border-border-default shadow-elevation-1">
-            <div className="grid grid-cols-3 bg-bg-inverse text-white text-sm font-display uppercase tracking-[0.15em]">
+          <div className="overflow-hidden rounded-xl border border-border-default shadow-elevation-1 hidden md:block">
+            <div className="grid grid-cols-3 bg-bg-inverse text-text-inverse text-labelMD font-display uppercase tracking-[0.15em]">
               <div className="px-4 py-3">Categoria</div>
               <div className="px-4 py-3">Exemplos</div>
               <div className="px-4 py-3">Proteção contra</div>
             </div>
-            <div className="divide-y divide-slate-100">
+            <div className="divide-y divide-border-muted">
               {tableRows.map((row) => (
-                <div key={row[0]} className="grid grid-cols-3 text-sm text-text-secondary">
+                <div key={row[0]} className="grid grid-cols-3 text-bodySM text-text-secondary">
                   <div className="px-4 py-3 font-semibold text-text-primary">{row[0]}</div>
                   <div className="px-4 py-3">{row[1]}</div>
                   <div className="px-4 py-3">{row[2]}</div>
                 </div>
               ))}
             </div>
+          </div>
+
+          <div className="md:hidden space-y-4">
+            {tableRows.map((row) => (
+              <div key={row[0]} className="bg-bg-surface border border-border-default rounded-xl p-4 shadow-elevation-1 space-y-3">
+                <div>
+                  <p className="text-labelSM font-display font-bold uppercase tracking-[0.2em] text-text-muted">Categoria</p>
+                  <p className="text-text-primary font-semibold">{row[0]}</p>
+                </div>
+                <div>
+                  <p className="text-labelSM font-display font-bold uppercase tracking-[0.2em] text-text-muted">Exemplos</p>
+                  <p className="text-text-body text-bodySM leading-relaxed">{row[1]}</p>
+                </div>
+                <div>
+                  <p className="text-labelSM font-display font-bold uppercase tracking-[0.2em] text-text-muted">Proteção contra</p>
+                  <p className="text-text-body text-bodySM leading-relaxed">{row[2]}</p>
+                </div>
+              </div>
+            ))}
           </div>
 
           <Button href="/epi/categorias" variant="primary" className="px-8">
@@ -93,9 +112,9 @@ export default function GuiaEpiPage() {
             description="A legislação brasileira define deveres claros para empregadores e empregados."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 bg-white rounded-xl border border-border-default shadow-elevation-1 space-y-3">
-              <h3 className="text-lg font-display font-bold text-text-primary">Empregador</h3>
-              <ul className="space-y-2 text-text-body text-sm">
+            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Empregador</h3>
+              <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Fornecer EPI gratuitamente</li>
                 <li>Garantir adequação ao risco</li>
                 <li>Exigir uso correto</li>
@@ -103,9 +122,9 @@ export default function GuiaEpiPage() {
                 <li>Substituir quando danificado ou vencido</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded-xl border border-border-default shadow-elevation-1 space-y-3">
-              <h3 className="text-lg font-display font-bold text-text-primary">Empregado</h3>
-              <ul className="space-y-2 text-text-body text-sm">
+            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3">
+              <h3 className="text-titleMD font-display font-bold text-text-primary">Empregado</h3>
+              <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Utilizar apenas para a finalidade indicada</li>
                 <li>Zelar pela conservação</li>
                 <li>Comunicar irregularidades</li>
@@ -122,7 +141,7 @@ export default function GuiaEpiPage() {
             title="O que é o Certificado de Aprovação (CA)?"
             description="Nenhum EPI pode ser comercializado ou utilizado no Brasil sem o CA expedido pelo Ministério do Trabalho."
           />
-          <p className="text-text-body text-lg leading-relaxed">
+          <p className="text-text-body text-bodyLG leading-relaxed">
             O CA atesta que o equipamento foi testado e aprovado conforme critérios técnicos específicos. A validação deve ser feita diretamente na base oficial do governo.
           </p>
           <Button href="/centro-tecnico" variant="outline" className="w-full sm:w-auto">
@@ -139,16 +158,16 @@ export default function GuiaEpiPage() {
             description="A durabilidade depende de uso, ambiente, armazenamento e instruções do fabricante."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 bg-white rounded-xl border border-border-default shadow-elevation-1">
-              <ul className="space-y-3 text-text-body text-sm">
-                <li>✓ Inspeção visual diária</li>
-                <li>✓ Higienização conforme recomendação técnica</li>
-                <li>✓ Armazenamento em local seco e protegido</li>
-                <li>✓ Substituição imediata em caso de dano</li>
-                <li>✓ Verificação periódica da validade do CA</li>
+            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1">
+              <ul className="space-y-3 text-text-body text-bodySM">
+                <li>? Inspeção visual diária</li>
+                <li>? Higienização conforme recomendação técnica</li>
+                <li>? Armazenamento em local seco e protegido</li>
+                <li>? Substituição imediata em caso de dano</li>
+                <li>? Verificação periódica da validade do CA</li>
               </ul>
             </div>
-            <div className="p-6 bg-white rounded-xl border border-border-default shadow-elevation-1 text-text-body text-sm space-y-3">
+            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 text-text-body text-bodySM space-y-3">
               <p>A durabilidade do EPI varia com intensidade de uso, ambiente de trabalho e cuidados de conservação.</p>
               <p>Quando houver dúvida sobre integridade ou prazo, substitua e valide o CA antes de liberar para operação.</p>
             </div>
@@ -163,7 +182,7 @@ export default function GuiaEpiPage() {
             title="Especificação correta evita risco operacional"
             description="A escolha do EPI certo depende do risco real, da norma aplicável e da validade do CA."
           />
-          <p className="text-text-body text-lg leading-relaxed">
+          <p className="text-text-body text-bodyLG leading-relaxed">
             A Segura EPI atua como distribuidor consultivo, auxiliando empresas na validação técnica antes da aquisição. Validamos aplicação, norma, conformidade e responsabilidade legal para reduzir risco trabalhista e operacional.
           </p>
 
@@ -180,5 +199,6 @@ export default function GuiaEpiPage() {
     </main>
   );
 }
+
 
 

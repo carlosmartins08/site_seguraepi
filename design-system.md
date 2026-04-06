@@ -83,6 +83,11 @@
 - `border.dark` = `neutral.700`  
 - `border.inverse` = `rgba(248, 250, 252, 0.16)`
 
+**Opacidades semanticas (uso em Tailwind)**  
+- Somente em `bg-*` e `border-*` com escala fixa: `/10`, `/20`, `/40`.  
+- Evitar `/5`, `/15`, `/25`, `/30`, `/50`, `/60`.  
+- `text-*/*` nao entra nessa regra.  
+
 **Actions**  
 - `action.primary` = `brand.500`  
 - `action.primaryHover` = `brand.600`  
@@ -163,6 +168,12 @@ Base 4px
 - **Permitido**: `label*`, `NRChip`, microheadings curtos (até 5–7 palavras).  
 - **Evitar**: títulos longos, parágrafos, CTAs com mais de 2–3 palavras.  
 - **CTA ideal**: verbo + objeto (“Solicitar orçamento”, “Validar especificação”).
+
+## 2.4 Uso de tokens tipograficos (classes)
+- Headings: 	ext-displayXL, 	ext-displayLG, 	ext-titleXL, 	ext-titleLG, 	ext-titleMD.  
+- Body: 	ext-bodyLG, 	ext-bodyMD, 	ext-bodySM.  
+- Labels/Eyebrows: 	ext-labelMD, 	ext-labelSM (uppercase/tracking permitido).  
+- Evitar tamanhos crus (	ext-sm, 	ext-lg, 	ext-2xl, etc.).  
 
 ---
 
@@ -270,3 +281,4 @@ Base 4px
 
 ---
 *Este documento é a fonte de verdade. Atualizações devem ser validadas pelo Lead Frontend.*
+

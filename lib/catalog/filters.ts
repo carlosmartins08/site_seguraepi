@@ -1,4 +1,4 @@
-import { Product, MOCK_PRODUCTS } from './products';
+import { Product } from './products';
 
 export function applyFilters(
   products: Product[],
@@ -23,7 +23,9 @@ export const CATEGORIES_FILTER = [
   { label: "Respiratória", value: "protecao-respiratoria" },
   { label: "Auditiva", value: "protecao-auditiva" },
   { label: "Ocular", value: "protecao-ocular" },
-  { label: "Altura", value: "protecao-altural" }
+  { label: "Altura", value: "trabalho-em-altura" },
+  { label: "Calçados", value: "calcados" },
+  { label: "Sinalização", value: "sinalizacao" }
 ];
 
 export const SEGMENTS_FILTER = [

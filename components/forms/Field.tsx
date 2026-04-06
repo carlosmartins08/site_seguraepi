@@ -2,7 +2,7 @@ import React from 'react';
 import { cn } from '../../lib/cn';
 
 export const fieldBase =
-  'w-full rounded-md border border-border-default bg-bg-surface px-4 py-3 text-sm text-text-primary placeholder:text-text-subtle focus:outline-none focus:ring-2 focus:ring-focus-ring focus:border-action-primary transition-colors';
+  'w-full rounded-md border border-border-default bg-bg-surface px-4 py-3 text-bodySM text-text-primary placeholder:text-text-subtle focus:outline-none focus:ring-2 focus:ring-focus-ring focus:border-action-primary transition-colors';
 
 interface FieldProps {
   id: string;
@@ -25,15 +25,15 @@ export const Field: React.FC<FieldProps> = ({
 }) => {
   return (
     <div className={cn('space-y-2', className)}>
-      <label htmlFor={id} className="text-xs font-semibold text-text-muted">
+      <label htmlFor={id} className="text-labelMD font-semibold text-text-muted">
         {label}
         {required ? ' *' : ''}
       </label>
       {children}
       {error ? (
-        <p className="text-xs text-status-danger">{error}</p>
+        <p className="text-bodySM text-status-danger">{error}</p>
       ) : hint ? (
-        <p className="text-xs text-text-subtle">{hint}</p>
+        <p className="text-bodySM text-text-subtle">{hint}</p>
       ) : null}
     </div>
   );
