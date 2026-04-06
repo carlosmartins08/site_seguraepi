@@ -8,7 +8,7 @@ import { SectionTitle } from '../typography/SectionTitle';
 import { Button } from '../actions/Button';
 import { DecisionCard } from '../cards/DecisionCard';
 import { MethodStep } from '../method/MethodStep';
-import { ScrollReveal } from './ScrollReveal';
+import { Reveal } from '../motion/Reveal';
 import { FaqList, FaqItem } from './FaqList';
 import { LeadForm } from './LeadForm';
 import { ROUTES, buildUrl } from '../../lib/routes';
@@ -23,7 +23,7 @@ export const HomeClient: React.FC = () => {
   return (
     <main className="relative" id="main-content">
       <Navbar variant="dark" />
-      <ScrollReveal />
+      <Reveal />
 
       <Section id="hero" variant="dark" className="pt-nav pb-20 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-bg-deep via-bg-inverse to-black opacity-90" />
@@ -46,6 +46,7 @@ export const HomeClient: React.FC = () => {
                 size="lg"
                 className="shadow-glow-brand"
                 trackEvent="cta_home_hero_orcamento"
+                motion
               >
                 {content.hero.ctas.primary}
               </Button>
@@ -54,6 +55,7 @@ export const HomeClient: React.FC = () => {
                 variant="outline-inverse"
                 size="lg"
                 trackEvent="cta_home_hero_catalogo"
+                motion
               >
                 {content.hero.ctas.tertiary}
               </Button>
@@ -62,6 +64,7 @@ export const HomeClient: React.FC = () => {
                 variant="ghost-inverse"
                 size="lg"
                 trackEvent="cta_home_hero_validar"
+                motion
               >
                 {content.hero.ctas.secondary}
               </Button>
@@ -107,6 +110,7 @@ export const HomeClient: React.FC = () => {
               size="lg"
               className="mt-6"
               trackEvent="cta_home_centro_tecnico_2"
+              motion
             >
               {content.center.cta}
             </Button>
@@ -121,9 +125,11 @@ export const HomeClient: React.FC = () => {
             title={content.process.title}
             description={content.process.description}
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mt-10" data-reveal="stagger">
             {content.process.steps.map((step) => (
-              <MethodStep key={step.number} number={step.number} title={step.title} description={step.description} />
+              <div key={step.number} className="reveal" data-reveal-item>
+                <MethodStep number={step.number} title={step.title} description={step.description} />
+              </div>
             ))}
           </div>
         </Container>
@@ -136,10 +142,12 @@ export const HomeClient: React.FC = () => {
             title={content.categories.title}
             description={content.categories.description}
           />
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10" data-reveal="stagger">
             {content.categories.items.map((item) => (
               <DecisionCard
                 key={item.title}
+                className="reveal h-full"
+                data-reveal-item
                 title={item.title}
                 description={item.description}
                 href={buildUrl(ROUTES.catalog, { origem: 'home-categorias', categoria: item.slug })}
@@ -153,6 +161,7 @@ export const HomeClient: React.FC = () => {
               variant="primary"
               size="lg"
               trackEvent="cta_home_catalogo"
+              motion
             >
               {content.categories.ctaPrimary}
             </Button>
@@ -161,6 +170,7 @@ export const HomeClient: React.FC = () => {
               variant="outline"
               size="lg"
               trackEvent="cta_home_lista_itens"
+              motion
             >
               {content.categories.ctaSecondary}
             </Button>
@@ -175,9 +185,13 @@ export const HomeClient: React.FC = () => {
             title={content.sectors.title}
             description={content.sectors.description}
           />
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10" data-reveal="stagger">
             {content.sectors.items.map((sector) => (
-              <div key={sector.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+              <div
+                key={sector.title}
+                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                data-reveal-item
+              >
                 <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{sector.focus}</p>
                 <h3 className="text-titleMD font-display font-semibold text-text-primary mt-3">{sector.title}</h3>
                 <p className="text-text-body text-bodySM leading-relaxed mt-3">{sector.description}</p>
@@ -194,9 +208,13 @@ export const HomeClient: React.FC = () => {
             title={content.clarity.title}
             description={content.clarity.description}
           />
-          <div className="grid md:grid-cols-2 gap-6 mt-10">
+          <div className="grid md:grid-cols-2 gap-6 mt-10" data-reveal="stagger">
             {content.clarity.points.map((item) => (
-              <div key={item.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+              <div
+                key={item.title}
+                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                data-reveal-item
+              >
                 <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{item.title}</p>
                 <p className="text-text-body text-bodySM leading-relaxed mt-3">{item.description}</p>
               </div>
@@ -208,6 +226,7 @@ export const HomeClient: React.FC = () => {
               variant="primary"
               size="lg"
               trackEvent="cta_home_centro_tecnico"
+              motion
             >
               {content.clarity.cta}
             </Button>
@@ -235,9 +254,13 @@ export const HomeClient: React.FC = () => {
             title={content.cases.title}
             description={content.cases.description}
           />
-          <div className="grid md:grid-cols-2 gap-6 mt-10">
+          <div className="grid md:grid-cols-2 gap-6 mt-10" data-reveal="stagger">
             {content.cases.items.map((item) => (
-              <div key={item.title} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+              <div
+                key={item.title}
+                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                data-reveal-item
+              >
                 <h3 className="text-titleMD font-display font-semibold text-text-primary">{item.title}</h3>
                 <p className="text-text-body text-bodySM leading-relaxed mt-3">{item.description}</p>
               </div>
@@ -269,6 +292,7 @@ export const HomeClient: React.FC = () => {
                 variant="primary"
                 size="lg"
                 trackEvent="cta_home_parceiro"
+                motion
               >
                 {content.expansion.ctaPrimary}
               </Button>
@@ -277,6 +301,7 @@ export const HomeClient: React.FC = () => {
                 variant="outline-inverse"
                 size="lg"
                 trackEvent="cta_home_modelo"
+                motion
               >
                 {content.expansion.ctaSecondary}
               </Button>

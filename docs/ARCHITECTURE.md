@@ -100,6 +100,7 @@ Renderizacao via `components/seo/JsonLd.tsx`.
 - `prefers-reduced-motion` em `styles/segura-ui.css`
 - `cv-auto` (content-visibility) para secoes abaixo da dobra
 - `QuickSummary` + `LastUpdated` em paginas longas
+- Fallback sem JS para `.reveal`: HTML inicia com `no-js`, `NoJs` troca para `js`; sem JS, `html.no-js .reveal` permanece visivel
 
 ## Integracoes de terceiros
 - WBOT carregado via `ConsentScriptGate` (ver `docs/INTEGRATIONS_WBOT.md`)

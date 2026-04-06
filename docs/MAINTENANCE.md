@@ -107,6 +107,7 @@ Preferencias de cookies:
 
 ## A11y
 - Toda pagina deve manter `id="main-content"` no `<main>`
+- Fallback sem JS para `.reveal`: o HTML inicia com `no-js`; se o JS falhar, o conteudo fica visivel (`html.no-js .reveal`).
 
 ## Tipografia e opacidades semanticas
 - Headings, labels e body devem usar tokens: `text-display*`, `text-title*`, `text-body*`, `text-label*`.

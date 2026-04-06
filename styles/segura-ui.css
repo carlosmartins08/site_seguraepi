@@ -120,6 +120,12 @@ h1, h2, h3, h4, .font-display {
   will-change: opacity, transform;
 }
 
+html.no-js .reveal {
+  opacity: 1;
+  transform: translateY(0);
+  transition: none;
+}
+
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);

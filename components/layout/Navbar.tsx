@@ -15,6 +15,7 @@ import { openWbotChat } from '../../lib/wbot';
 import { LocaleSwitcher } from '../actions/LocaleSwitcher';
 import { ROUTES } from '../../lib/routes';
 import { storeChatContext } from '../../lib/chat-context';
+import { animateOverlayOpen, animateOverlayClose } from '../../lib/motion/overlay';
 
 interface NavbarProps {
   variant?: 'light' | 'dark';
@@ -25,6 +26,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
   const overlayRef = useRef<HTMLDivElement | null>(null);
+  const menuItemsRef = useRef<HTMLElement | null>(null);
+  const overlayAnimationRef = useRef<ReturnType<typeof animateOverlayOpen> | null>(null);
   const { isOpen: isOnline, message: statusMessage } = useBusinessStatus();
   const { t } = useI18n();
 
@@ -84,6 +87,21 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleKeyDown);
     };
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    const overlay = overlayRef.current;
+    if (!overlay) return;
+
+    const items = menuItemsRef.current
+      ? Array.from(menuItemsRef.current.querySelectorAll<HTMLElement>('[data-motion=\"menu-item\"]'))
+      : [];
+
+    overlayAnimationRef.current?.cancel?.();
+    overlayAnimationRef.current =
+      isMobileMenuOpen
+        ? animateOverlayOpen({ overlay, items })
+        : animateOverlayClose({ overlay, items });
   }, [isMobileMenuOpen]);
 
   const navLinks: Array<{ name: string; href: Route; showDesktop?: boolean }> = [
@@ -266,8 +284,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         aria-modal="true"
         aria-hidden={!isMobileMenuOpen}
         className={cn(
-          "fixed inset-0 z-[100] bg-bg-inverse transition-all duration-700 ease-in-out",
-          isMobileMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none translate-x-full"
+          "fixed inset-0 z-[100] bg-bg-inverse opacity-0 translate-x-full",
+          isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         )}
       >
         <div className="absolute top-0 right-0 w-96 h-96 bg-action-primary/10 rounded-full blur-[100px] -mr-48 -mt-48" />
@@ -296,13 +314,14 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               <LocaleSwitcher />
             </div>
 
-            <nav className="flex flex-col gap-6 md:gap-8">
+            <nav ref={menuItemsRef as React.Ref<HTMLElement>} className="flex flex-col gap-6 md:gap-8">
               {navLinks.map((link, i) => (
                 <Link
                   key={link.name}
                   href={link.href}
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="text-titleLG md:text-displayLG font-display font-semibold text-text-inverse tracking-tight hover:text-action-primaryHover transition-all duration-500 flex items-center group relative"
+                  data-motion="menu-item"
                   style={{ transitionDelay: `${i * 100}ms` }}
                 >
                   <span className="mr-3 opacity-20 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-titleLG md:text-displayLG">0{i + 1}</span>

@@ -1,9 +1,10 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { cn } from '../../lib/cn';
 import { track } from '../../lib/analytics/track';
+import { attachButtonFeedback } from '../../lib/motion/feedback';
 
 type CommonProps = {
   children: React.ReactNode;
@@ -12,6 +13,7 @@ type CommonProps = {
   className?: string;
   trackEvent?: string;
   trackParams?: Record<string, any>;
+  motion?: boolean;
 };
 
 type AnchorButtonProps = CommonProps &
@@ -29,7 +31,18 @@ type ActionButtonProps = CommonProps &
 export type ButtonProps = AnchorButtonProps | ActionButtonProps;
 
 export const Button: React.FC<ButtonProps> = (props) => {
-  const baseStyles = "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,border-color,color] duration-base ease-standard rounded-md hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface disabled:opacity-50 disabled:cursor-not-allowed";
+  const motion = Boolean((props as { motion?: boolean }).motion);
+  const motionRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (!motion || !motionRef.current) return;
+    return attachButtonFeedback(motionRef.current);
+  }, [motion]);
+
+  const baseStyles = cn(
+    "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,border-color,color] duration-base ease-standard rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface disabled:opacity-50 disabled:cursor-not-allowed",
+    !motion && "hover:-translate-y-0.5 active:scale-[0.98]"
+  );
   
   const variants = {
     primary: "bg-action-primary text-text-onBrand shadow-elevation-1 hover:bg-action-primaryHover active:bg-action-primaryPressed",
@@ -47,8 +60,8 @@ export const Button: React.FC<ButtonProps> = (props) => {
   };
 
   if (typeof (props as any).href === 'string') {
-    const { children, href, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, ...rest } =
-      props as AnchorButtonProps;
+    const { children, href, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, motion, ...rest } =
+      props as AnchorButtonProps & { motion?: boolean };
 
     const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
       if (trackEvent) track(trackEvent, { href, ...trackParams });
@@ -63,6 +76,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
           href={href as any}
           className={cn(baseStyles, sizes[size], variants[variant], className)}
           onClick={handleClick}
+          ref={motionRef as React.Ref<HTMLAnchorElement>}
           {...(rest as any)}
         >
           {children}
@@ -71,14 +85,20 @@ export const Button: React.FC<ButtonProps> = (props) => {
     }
 
     return (
-      <a href={href} className={cn(baseStyles, sizes[size], variants[variant], className)} onClick={handleClick} {...rest}>
+      <a
+        href={href}
+        className={cn(baseStyles, sizes[size], variants[variant], className)}
+        onClick={handleClick}
+        ref={motionRef as React.Ref<HTMLAnchorElement>}
+        {...rest}
+      >
         {children}
       </a>
     );
   }
 
-  const { children, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, type, ...rest } =
-    props as ActionButtonProps;
+  const { children, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, type, motion, ...rest } =
+    props as ActionButtonProps & { motion?: boolean };
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     if (trackEvent) track(trackEvent, { ...trackParams });
     onClick?.(e);
@@ -89,6 +109,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
       type={type ?? 'button'}
       className={cn(baseStyles, sizes[size], variants[variant], className)}
       onClick={handleClick}
+      ref={motionRef as React.Ref<HTMLButtonElement>}
       {...rest}
     >
       {children}

@@ -13,6 +13,7 @@ import { buildBreadcrumbJsonLd } from '../../lib/seo/schema';
 import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
 import { CONTACT_INFO } from '../../lib/constants';
+import { Icon, type IconName } from '../../components/icons/Icon';
 
 const heroBadges = [
   { label: 'Segurança com propósito', color: 'bg-action-primary/10 text-action-primary' },
@@ -20,25 +21,25 @@ const heroBadges = [
   { label: 'Tecnologia + humanidade', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
-const valores = [
-  { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. A empatia guia nossas decisões.', icon: 'heart' },
-  { title: 'Excelência Técnica', desc: 'O conhecimento é nossa principal ferramenta de transformação e proteção.', icon: 'shield' },
-  { title: 'Confiabilidade', desc: 'Ética, compromisso e respeito são a base de cada entrega que fazemos.', icon: 'check' },
-  { title: 'Educação', desc: 'Formamos clientes e equipes mais conscientes, preparados e seguros.', icon: 'book' },
+const valores: Array<{ title: string; desc: string; icon: IconName }> = [
+  { title: 'Humanidade', desc: 'Pessoas em primeiro lugar. A empatia guia nossas decisões.', icon: 'chat' },
+  { title: 'Excelência Técnica', desc: 'O conhecimento é nossa principal ferramenta de transformação e proteção.', icon: 'certificate' },
+  { title: 'Confiabilidade', desc: 'Ética, compromisso e respeito são a base de cada entrega que fazemos.', icon: 'shield-check' },
+  { title: 'Educação', desc: 'Formamos clientes e equipes mais conscientes, preparados e seguros.', icon: 'document-search' },
   { title: 'Inovação', desc: 'Buscamos continuamente tecnologias (como a Neo Evolution) e práticas mais eficazes.', icon: 'spark' },
-  { title: 'Colaboração', desc: 'Trabalhamos lado a lado com clientes, parceiros e colaboradores.', icon: 'users' },
+  { title: 'Colaboração', desc: 'Trabalhamos lado a lado com clientes, parceiros e colaboradores.', icon: 'user-gear' },
 ];
 
-const motivos = [
+const motivos: Array<{ title: string; desc: string; icon: IconName }> = [
   {
     title: 'Autoridade Técnica',
     desc: 'Somos especialistas. Nossa equipe atua como mentora técnica para garantir a escolha correta do EPI.',
-    icon: 'shield',
+    icon: 'shield-check',
   },
   {
     title: 'Olhar Humano',
     desc: 'Entendemos a dor do trabalhador e a responsabilidade do gestor. Somos uma rede de segurança para ambos.',
-    icon: 'heart',
+    icon: 'chat',
   },
   {
     title: 'Inovação Constante',
@@ -63,15 +64,9 @@ const DiretrizCard = ({
   </div>
 );
 
-const IconBullet = ({ icon }: { icon: string }) => {
-  if (icon === 'heart') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" /></svg>;
-  if (icon === 'shield') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>;
-  if (icon === 'check') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" strokeWidth={2.5} /></svg>;
-  if (icon === 'book') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v12m-7 0h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>;
-  if (icon === 'spark') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v4m0 10v4m9-9h-4M7 12H3m12.364 5.364l-2.828-2.828m0-4.072l2.828-2.828M8.464 8.464l-2.828 2.828m0 4.072l2.828 2.828" /></svg>;
-  if (icon === 'users') return <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 21v-2a4 4 0 00-3-3.87M9 21v-2a4 4 0 013-3.87M12 7a4 4 0 110 8 4 4 0 010-8z" /></svg>;
-  return null;
-};
+const IconBullet = ({ icon }: { icon: IconName }) => (
+  <Icon name={icon} className="w-5 h-5" aria-hidden />
+);
 
 export default function ClientPage() {
   return (

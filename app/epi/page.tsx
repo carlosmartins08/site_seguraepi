@@ -12,6 +12,7 @@ import { JsonLd } from '../../components/seo/JsonLd';
 import { buildTechArticleJsonLd, buildSpeakableJsonLd, buildBreadcrumbJsonLd } from '../../lib/seo/schema';
 import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
+import { Reveal } from '../../components/motion/Reveal';
 
 const tableRows = [
   ['Cabeça', 'Capacetes de segurança', 'Impactos, queda de objetos, risco elétrico'],
@@ -40,6 +41,7 @@ export default function GuiaEpiPage() {
         { name: 'Guia de EPI', url: `${SITE_URL}${ROUTES.epi}` },
       ])} />
       <Navbar variant="light" />
+      <Reveal />
 
       <Section id="hero-epi" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-5xl space-y-8">
@@ -54,7 +56,7 @@ export default function GuiaEpiPage() {
         </Container>
       </Section>
 
-      <Section id="classificacao" variant="default">
+      <Section id="classificacao" variant="default" className="reveal">
         <Container className="max-w-6xl space-y-10">
           <SectionTitle
             subtitle="Classificação dos EPIs por área do corpo"
@@ -79,9 +81,13 @@ export default function GuiaEpiPage() {
             </div>
           </div>
 
-          <div className="md:hidden space-y-4">
+          <div className="md:hidden space-y-4" data-reveal="stagger">
             {tableRows.map((row) => (
-              <div key={row[0]} className="bg-bg-surface border border-border-default rounded-xl p-4 shadow-elevation-1 space-y-3">
+              <div
+                key={row[0]}
+                className="reveal bg-bg-surface border border-border-default rounded-xl p-4 shadow-elevation-1 space-y-3"
+                data-reveal-item
+              >
                 <div>
                   <p className="text-labelSM font-display font-bold uppercase tracking-[0.2em] text-text-muted">Categoria</p>
                   <p className="text-text-primary font-semibold">{row[0]}</p>
@@ -98,21 +104,21 @@ export default function GuiaEpiPage() {
             ))}
           </div>
 
-          <Button href="/epi/categorias" variant="primary" className="px-8">
+          <Button href="/epi/categorias" variant="primary" className="px-8" motion>
             Ver categorias disponíveis no Catálogo B2B
           </Button>
         </Container>
       </Section>
 
-      <Section id="responsabilidades" variant="offwhite">
+      <Section id="responsabilidades" variant="offwhite" className="reveal">
         <Container className="max-w-5xl space-y-10">
           <SectionTitle
             subtitle="Responsabilidades legais"
             title="Responsabilidades previstas na NR-06"
             description="A legislação brasileira define deveres claros para empregadores e empregados."
           />
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3">
+          <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
+            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary">Empregador</h3>
               <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Fornecer EPI gratuitamente</li>
@@ -122,7 +128,7 @@ export default function GuiaEpiPage() {
                 <li>Substituir quando danificado ou vencido</li>
               </ul>
             </div>
-            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3">
+            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary">Empregado</h3>
               <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Utilizar apenas para a finalidade indicada</li>
@@ -134,7 +140,7 @@ export default function GuiaEpiPage() {
         </Container>
       </Section>
 
-      <Section id="certificado" variant="default">
+      <Section id="certificado" variant="default" className="reveal">
         <Container className="max-w-5xl space-y-8">
           <SectionTitle
             subtitle="Certificado de Aprovação (CA)"
@@ -144,21 +150,21 @@ export default function GuiaEpiPage() {
           <p className="text-text-body text-bodyLG leading-relaxed">
             O CA atesta que o equipamento foi testado e aprovado conforme critérios técnicos específicos. A validação deve ser feita diretamente na base oficial do governo.
           </p>
-          <Button href="/centro-tecnico" variant="outline" className="w-full sm:w-auto">
+          <Button href="/centro-tecnico" variant="outline" className="w-full sm:w-auto" motion>
             Validar um CA no Centro Técnico
           </Button>
         </Container>
       </Section>
 
-      <Section id="manutencao" variant="offwhite">
+      <Section id="manutencao" variant="offwhite" className="reveal">
         <Container className="max-w-5xl space-y-10">
           <SectionTitle
             subtitle="Critérios de troca e manutenção"
             title="Inspeção, conservação e substituição"
             description="A durabilidade depende de uso, ambiente, armazenamento e instruções do fabricante."
           />
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1">
+          <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
+            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1" data-reveal-item>
               <ul className="space-y-3 text-text-body text-bodySM">
                 <li>? Inspeção visual diária</li>
                 <li>? Higienização conforme recomendação técnica</li>
@@ -167,7 +173,7 @@ export default function GuiaEpiPage() {
                 <li>? Verificação periódica da validade do CA</li>
               </ul>
             </div>
-            <div className="p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 text-text-body text-bodySM space-y-3">
+            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 text-text-body text-bodySM space-y-3" data-reveal-item>
               <p>A durabilidade do EPI varia com intensidade de uso, ambiente de trabalho e cuidados de conservação.</p>
               <p>Quando houver dúvida sobre integridade ou prazo, substitua e valide o CA antes de liberar para operação.</p>
             </div>
@@ -175,7 +181,7 @@ export default function GuiaEpiPage() {
         </Container>
       </Section>
 
-      <Section id="posicionamento" variant="default" className="pb-28">
+      <Section id="posicionamento" variant="default" className="reveal pb-28">
         <Container className="max-w-5xl space-y-8">
           <SectionTitle
             subtitle="Posicionamento Segura EPI"
@@ -187,9 +193,9 @@ export default function GuiaEpiPage() {
           </p>
 
           <div className="flex flex-wrap gap-4">
-            <Button href="/centro-tecnico" variant="primary" className="px-7">Validar especificação</Button>
-            <Button href={CONTACT_INFO.whatsapp} variant="outline" className="px-7">Solicitar orçamento</Button>
-            <Button href="https://catalogo.seguraepi.com.br" variant="ghost" className="px-7 bg-bg-surfaceMuted text-text-primary">
+            <Button href="/centro-tecnico" variant="primary" className="px-7" motion>Validar especificação</Button>
+            <Button href={CONTACT_INFO.whatsapp} variant="outline" className="px-7" motion>Solicitar orçamento</Button>
+            <Button href="https://catalogo.seguraepi.com.br" variant="ghost" className="px-7 bg-bg-surfaceMuted text-text-primary" motion>
               Acessar Catálogo B2B
             </Button>
           </div>

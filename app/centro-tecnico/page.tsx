@@ -9,6 +9,7 @@ import { Button } from '../../components/actions/Button';
 import { ContextLink } from '../../components/actions/ContextLink';
 import { DecisionCard } from '../../components/cards/DecisionCard';
 import { SeguraLogo } from '../../components/brand/SeguraLogo';
+import { Reveal } from '../../components/motion/Reveal';
 import { CONTACT_INFO } from '../../lib/constants';
 import { JsonLd } from '../../components/seo/JsonLd';
 import { buildTechArticleJsonLd, buildSpeakableJsonLd, buildBreadcrumbJsonLd } from '../../lib/seo/schema';
@@ -115,6 +116,7 @@ export default function CentroTecnicoPage() {
         { name: 'Centro Técnico', url: `${SITE_URL}${ROUTES.center}` },
       ])} />
       <Navbar variant="dark" />
+      <Reveal />
 
       <Section id="centro-hero" variant="dark" className="pt-nav pb-24 relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,155,33,0.12),transparent_40%),radial-gradient(circle_at_80%_15%,rgba(255,255,255,0.06),transparent_40%)]" />
@@ -143,6 +145,7 @@ export default function CentroTecnicoPage() {
                 href="https://caepi.mte.gov.br/"
                 variant="primary"
                 size="lg"
+                motion
               >
                 Validar especificação
               </Button>
@@ -151,6 +154,7 @@ export default function CentroTecnicoPage() {
                 variant="outline"
                 size="lg"
                 className="bg-bg-surface/10 text-text-inverse border-bg-surface/20 hover:text-text-primary"
+                motion
               >
                 Acessar catálogo
               </Button>
@@ -181,20 +185,22 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="hub-tecnico" variant="default">
+      <Section id="hub-tecnico" variant="default" className="reveal">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="Mapa Técnico"
             title="Tudo o que você precisa, em uma única trilha"
             description="Comece pelo guia geral, aprofunde por categoria e valide o C.A. antes de fechar o pedido."
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-reveal="stagger">
             <DecisionCard
               eyebrow="Guia Geral"
               title="Guia Técnico de EPI"
               description="Conceitos, categorias por área do corpo e responsabilidades da NR-06."
               href="/epi"
               actionText="Abrir guia técnico"
+              className="reveal h-full"
+              data-reveal-item
             />
             <DecisionCard
               eyebrow="Por Categoria"
@@ -202,6 +208,8 @@ export default function CentroTecnicoPage() {
               description="Aprofunde por tipo de proteção com recomendações e FAQ técnico."
               href="/epi/categorias"
               actionText="Ver categorias"
+              className="reveal h-full"
+              data-reveal-item
             />
             <DecisionCard
               eyebrow="Validação"
@@ -209,20 +217,22 @@ export default function CentroTecnicoPage() {
               description="Passo a passo para checar situação, validade e restrições no CAEPI."
               href="/centro-tecnico#como-validar"
               actionText="Ver como validar"
+              className="reveal h-full"
+              data-reveal-item
             />
           </div>
         </Container>
       </Section>
 
-      <Section id="o-que-e-ca" variant="offwhite">
+      <Section id="o-que-e-ca" variant="offwhite" className="reveal">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="O que é o CA?"
             title="Certificado de Aprovação — licença oficial para comercializar e usar EPI"
             description="Documento emitido pelo Ministério do Trabalho que autoriza comercialização e uso. Sem C.A. válido, o EPI é irregular."
           />
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1">
+          <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
+            <div className="reveal p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Sem C.A. válido</h3>
               <ul className="space-y-3 text-text-body text-bodySM">
                 {caWithoutList.map((item) => (
@@ -233,7 +243,7 @@ export default function CentroTecnicoPage() {
                 ))}
               </ul>
             </div>
-            <div className="p-8 rounded-xl border border-action-primary/20 bg-bg-surface shadow-glow-brand">
+            <div className="reveal p-8 rounded-xl border border-action-primary/20 bg-bg-surface shadow-glow-brand" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Fonte oficial</h3>
               <p className="text-text-body leading-relaxed">
                 Ministério do Trabalho e Emprego — Sistema CAEPI. Sempre valide na base governamental antes de comprar,
@@ -252,18 +262,19 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="como-validar" variant="default">
+      <Section id="como-validar" variant="default" className="reveal">
         <Container className="space-y-12">
           <SectionTitle
             subtitle="Como validar um C.A."
             title="Passo técnico recomendado"
             description="Siga o fluxo abaixo para reduzir risco de autuação e garantir conformidade."
           />
-          <div className="grid md:grid-cols-2 gap-10">
+          <div className="grid md:grid-cols-2 gap-10" data-reveal="stagger">
             {validarSteps.map((step, index) => (
               <div
                 key={step.title}
-                className="p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1 flex gap-4"
+                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1 flex gap-4"
+                data-reveal-item
               >
                 <div className="h-10 w-10 rounded-2xl bg-action-primary/10 text-action-primary font-display font-black flex items-center justify-center">
                   {index + 1}
@@ -278,16 +289,20 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="erros-comuns" variant="offwhite">
+      <Section id="erros-comuns" variant="offwhite" className="reveal">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="Erros comuns"
             title="O que mais causa autuação ou falha de especificação"
             description="Evite decisões por preço, fora de norma ou sem checar validade do C.A."
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-reveal="stagger">
             {errosComuns.map((item) => (
-              <div key={item.title} className="p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1">
+              <div
+                key={item.title}
+                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1"
+                data-reveal-item
+              >
                 <h4 className="text-titleMD font-display font-bold text-text-primary mb-2">{item.title}</h4>
                 <p className="text-text-body text-bodySM leading-relaxed">{item.desc}</p>
               </div>
@@ -296,16 +311,20 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="normas" variant="default">
+      <Section id="normas" variant="default" className="reveal">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="Principais normas"
             title="NRs que direcionam a escolha de EPI"
             description="Mapeie o risco à norma aplicável para evitar especificações incorretas."
           />
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-3 gap-8" data-reveal="stagger">
             {normas.map((norma) => (
-              <div key={norma.sigla} className="p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1">
+              <div
+                key={norma.sigla}
+                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1"
+                data-reveal-item
+              >
                 <div className="flex items-center gap-3 mb-3">
                   <span className="px-3 py-1 rounded-full bg-action-primary/10 text-action-primary font-display font-bold text-labelMD tracking-[0.2em]">
                     {norma.sigla}
@@ -326,16 +345,16 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="epc-epi" variant="offwhite">
-        <Container className="grid md:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4">
+      <Section id="epc-epi" variant="offwhite" className="reveal">
+        <Container className="grid md:grid-cols-2 gap-10 items-center" data-reveal="stagger">
+          <div className="reveal space-y-4" data-reveal-item>
             <SectionTitle
               subtitle="EPC x EPI"
               title="Prioridade estratégica de proteção"
               description="A ordem correta: eliminar risco, controlar risco, proteger individualmente."
             />
           </div>
-          <div className="space-y-4 p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1">
+          <div className="reveal space-y-4 p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1" data-reveal-item>
             <div>
               <h4 className="text-titleMD font-display font-bold text-text-primary">EPC (Equipamento de Proteção Coletiva)</h4>
               <p className="text-text-body text-bodySM leading-relaxed">Protege vários trabalhadores e deve ser priorizado sempre que possível.</p>
@@ -354,18 +373,19 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="checklist" variant="default">
+      <Section id="checklist" variant="default" className="reveal">
         <Container className="space-y-10">
           <SectionTitle
             subtitle="Checklist técnico"
             title="Confirme antes de comprar"
             description="Use esta lista para reduzir retrabalho, atrasos e autuações."
           />
-          <ul className="grid md:grid-cols-2 gap-4 text-text-secondary text-bodySM">
+          <ul className="grid md:grid-cols-2 gap-4 text-text-secondary text-bodySM" data-reveal="stagger">
             {checklist.map((item) => (
               <li
                 key={item}
-                className="flex items-center gap-3 p-4 rounded-2xl border border-border-subtle bg-bg-surface shadow-elevation-1"
+                className="reveal flex items-center gap-3 p-4 rounded-2xl border border-border-subtle bg-bg-surface shadow-elevation-1"
+                data-reveal-item
               >
                 <span className="h-2.5 w-2.5 rounded-full bg-action-primary" aria-hidden />
                 <span>{item}</span>
@@ -375,7 +395,7 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="posicionamento" variant="offwhite">
+      <Section id="posicionamento" variant="offwhite" className="reveal">
         <Container className="space-y-6">
           <SectionTitle
             subtitle="Posicionamento Segura EPI"
@@ -390,7 +410,7 @@ export default function CentroTecnicoPage() {
         </Container>
       </Section>
 
-      <Section id="cta-final" variant="default" className="pb-24">
+      <Section id="cta-final" variant="default" className="reveal pb-24">
         <Container className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-border-inverse">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
@@ -406,6 +426,7 @@ export default function CentroTecnicoPage() {
                 variant="primary"
                 size="lg"
                 className="w-full sm:w-auto"
+                motion
               >
                 Validar especificação
               </Button>
@@ -414,6 +435,7 @@ export default function CentroTecnicoPage() {
                 variant="outline"
                 size="lg"
                 className="w-full sm:w-auto text-text-inverse border-bg-surface/40 hover:text-text-primary"
+                motion
               >
                 Solicitar orçamento
               </Button>
@@ -422,6 +444,7 @@ export default function CentroTecnicoPage() {
                 variant="ghost"
                 size="lg"
                 className="w-full sm:w-auto bg-bg-surface/10 text-text-inverse hover:text-text-primary"
+                motion
               >
                 Acessar catálogo B2B
               </Button>

@@ -10,6 +10,7 @@ import { ConsentScriptGate } from '../components/analytics/ConsentScriptGate';
 import { AnalyticsScripts } from '../components/analytics/AnalyticsScripts';
 import { LegalLayer } from '../components/home/LegalLayer';
 import { FloatingChatButton } from '../components/actions/FloatingChatButton';
+import { NoJs } from '../components/layout/NoJs';
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
@@ -63,8 +64,13 @@ export default function RootLayout({
   const wbotToken = process.env.NEXT_PUBLIC_WBOT_TOKEN;
 
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className="no-js">
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.remove('no-js');document.documentElement.classList.add('js');`,
+          }}
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(buildOrganizationJsonLd()) }}
@@ -81,6 +87,7 @@ export default function RootLayout({
       <body className={`${inter.variable} ${poppins.variable}`}>
         <a href="#main-content" className="skip-link">Pular para o conteudo principal</a>
         <Providers>
+          <NoJs />
           {children}
           <FloatingChatButton />
           <LegalLayer />

@@ -6,6 +6,7 @@ import { Container } from '../../../components/layout/Container';
 import { DecisionCard } from '../../../components/cards/DecisionCard';
 import { Button } from '../../../components/actions/Button';
 import { SeguraLogo } from '../../../components/brand/SeguraLogo';
+import { Reveal } from '../../../components/motion/Reveal';
 import { CATEGORY_ORDER, CATEGORY_PAGES } from '../../../lib/catalog/categories';
 import { ROUTES, buildUrl } from '../../../lib/routes';
 
@@ -14,6 +15,7 @@ export default function CategoryHubClientPage() {
 
   return (
     <main id="main-content" className="min-h-screen bg-bg-surface">
+      <Reveal />
       <header className="fixed top-0 left-0 right-0 z-[60] glass-header border-b border-border-muted h-20 flex items-center shadow-elevation-1">
         <Container className="w-full flex justify-between items-center">
           <a href={ROUTES.home} className="hover:opacity-80 transition-opacity">
@@ -21,7 +23,7 @@ export default function CategoryHubClientPage() {
           </a>
           <nav className="flex items-center gap-10">
             <a href={ROUTES.home} className="text-text-primary text-labelSM font-display font-bold uppercase tracking-widest hover:text-action-primaryHover transition-all">Home</a>
-            <Button href={ROUTES.catalog} variant="primary" className="py-2.5 px-6 text-labelSM">Ver catálogo</Button>
+            <Button href={ROUTES.catalog} variant="primary" className="py-2.5 px-6 text-labelSM" motion>Ver catálogo</Button>
           </nav>
         </Container>
       </header>
@@ -41,12 +43,14 @@ export default function CategoryHubClientPage() {
         </Container>
       </Section>
 
-      <Section id="hub-grid" variant="offwhite" className="pb-32 -mt-10">
+      <Section id="hub-grid" variant="offwhite" className="reveal pb-32 -mt-10">
         <Container>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8" data-reveal="stagger">
             {categories.map((cat) => (
               <DecisionCard
                 key={cat.key}
+                className="reveal h-full"
+                data-reveal-item
                 title={cat.name}
                 description={cat.shortDescription}
                 href={`${ROUTES.epi}/${cat.key}`}
@@ -54,11 +58,11 @@ export default function CategoryHubClientPage() {
               />
             ))}
 
-            <div className="rounded-xl bg-bg-inverse text-text-inverse p-10 flex flex-col justify-center items-start shadow-elevation-2 border border-bg-surface/10 group hover:-translate-y-2 transition-all duration-500">
+            <div className="reveal rounded-xl bg-bg-inverse text-text-inverse p-10 flex flex-col justify-center items-start shadow-elevation-2 border border-bg-surface/10 group hover:-translate-y-2 transition-all duration-500" data-reveal-item>
               <span className="text-action-primary font-display font-bold text-labelSM uppercase tracking-widest mb-4">Suporte inteligente</span>
               <h3 className="text-titleLG font-display font-bold mb-6">Dúvidas técnicas sobre riscos?</h3>
               <p className="text-text-soft text-bodySM mb-10 leading-relaxed font-sans">Nossos consultores utilizam dimensionamento inteligente para diagnosticar o risco do seu setor e indicar o mix ideal.</p>
-              <Button href={buildUrl(ROUTES.chat, { origem: 'epi-hub' })} variant="primary" className="w-full">Falar com consultor</Button>
+              <Button href={buildUrl(ROUTES.chat, { origem: 'epi-hub' })} variant="primary" className="w-full" motion>Falar com consultor</Button>
             </div>
           </div>
         </Container>

@@ -1,0 +1,70 @@
+[
+  {
+    "page": "home",
+    "checks": {
+      "main": true,
+      "header": true,
+      "footer": true,
+      "skipFocused": true,
+      "skipTarget": true,
+      "overflow": false,
+      "mobileOverflow": false,
+      "consentVisible": true,
+      "consentManage": null,
+      "footerConsent": false,
+      "leadFormErrors": true,
+      "htmlClass": "js"
+    }
+  },
+  {
+    "page": "centro-tecnico",
+    "checks": {
+      "main": true,
+      "header": true,
+      "footer": true,
+      "skipFocused": true,
+      "skipTarget": true,
+      "overflow": false,
+      "mobileOverflow": false,
+      "consentVisible": null,
+      "consentManage": null,
+      "footerConsent": null,
+      "leadFormErrors": null,
+      "htmlClass": "js"
+    }
+  },
+  {
+    "page": "como-comprar",
+    "checks": {
+      "main": true,
+      "header": true,
+      "footer": true,
+      "skipFocused": true,
+      "skipTarget": true,
+      "overflow": false,
+      "mobileOverflow": false,
+      "consentVisible": null,
+      "consentManage": null,
+      "footerConsent": null,
+      "leadFormErrors": null,
+      "htmlClass": "js"
+    }
+  },
+  {
+    "page": "politica-trocas",
+    "checks": {
+      "main": true,
+      "header": true,
+      "footer": true,
+      "skipFocused": true,
+      "skipTarget": true,
+      "overflow": false,
+      "mobileOverflow": false,
+      "consentVisible": null,
+      "consentManage": null,
+      "footerConsent": null,
+      "leadFormErrors": null,
+      "htmlClass": "js"
+    }
+  }
+]

@@ -1,9 +1,11 @@
+'use client';
 
 import React from 'react';
 import Link from 'next/link';
 import { cn } from '../../lib/cn';
+import { MotionCard } from '../motion/MotionCard';
 
-interface DecisionCardProps {
+interface DecisionCardProps extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   description: string;
   eyebrow?: string;
@@ -12,6 +14,7 @@ interface DecisionCardProps {
   href: string;
   actionText: string;
   className?: string;
+  motion?: boolean;
 }
 
 export const DecisionCard: React.FC<DecisionCardProps> = ({ 
@@ -22,15 +25,18 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
   icon, 
   href, 
   actionText, 
-  className 
+  className,
+  motion = true,
+  ...rest
 }) => {
   const isInternal = href.startsWith('/') && !href.startsWith('//');
+  const baseClasses = cn(
+    "rounded-xl bg-bg-surface p-6 md:p-7 border border-border-subtle shadow-elevation-1 transition-[transform,box-shadow,border-color] duration-base ease-standard group flex flex-col h-full",
+    motion ? "hover:shadow-elevation-2 hover:border-action-primary/40" : "hover:shadow-elevation-2 hover:-translate-y-0.5 hover:border-action-primary/40"
+  );
 
   return (
-    <div className={cn(
-      "rounded-xl bg-bg-surface p-6 md:p-7 border border-border-subtle shadow-elevation-1 transition-[transform,box-shadow,border-color] duration-base ease-standard group flex flex-col h-full hover:shadow-elevation-2 hover:-translate-y-0.5 hover:border-action-primary/40",
-      className
-    )}>
+    <MotionCard className={cn(baseClasses, className)} motion={motion} {...rest}>
       {eyebrow && (
         <span className="text-action-primary font-display font-bold uppercase tracking-[0.18em] text-labelSM mb-3 block">
           {eyebrow}
@@ -77,7 +83,7 @@ export const DecisionCard: React.FC<DecisionCardProps> = ({
           <span className="block w-6 h-[2px] bg-action-primary transition-all duration-300 group-hover/link:w-10"></span>
         </a>
       )}
-    </div>
+    </MotionCard>
   );
 };
 

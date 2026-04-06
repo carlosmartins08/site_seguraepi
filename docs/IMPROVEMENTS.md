@@ -52,3 +52,5 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Endpoint de lead com webhook opcional (`/api/lead` + `LEAD_WEBHOOK_URL`)
 - Timezone de status comercial fixado em `America/Sao_Paulo`
 - Tabela tecnica de `/epi` responsiva em mobile
+- Fallback sem JS para `.reveal` (conteudo visivel quando `html` permanece com `no-js`)
+- Validacao de consentimento reforcada no formulario de lead (erro visivel quando checkbox nao marcado)

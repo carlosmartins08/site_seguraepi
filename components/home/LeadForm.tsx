@@ -60,6 +60,7 @@ export const LeadForm: React.FC = () => {
     items: '',
   });
   const [consent, setConsent] = useState(false);
+  const [consentTouched, setConsentTouched] = useState(false);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
 
   const handleChange =
@@ -86,13 +87,19 @@ export const LeadForm: React.FC = () => {
   );
 
   const hasErrors = Object.values(errors).some(Boolean);
+  const hasConsentError = !consent;
+
+  const markErrors = () => {
+    setTouched({ name: true, company: true, whatsapp: true, cnpj: true });
+    if (!consent) setConsentTouched(true);
+  };
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
 
     if (typeof window === 'undefined') return;
-    if (hasErrors || !consent) {
-      setTouched({ name: true, company: true, whatsapp: true, cnpj: true });
+    if (hasErrors || hasConsentError) {
+      markErrors();
       return;
     }
 
@@ -233,8 +240,13 @@ export const LeadForm: React.FC = () => {
           <input
             type="checkbox"
             checked={consent}
-            onChange={(event) => setConsent(event.target.checked)}
-            required
+            onChange={(event) => {
+              setConsent(event.target.checked);
+              setConsentTouched(true);
+            }}
+            onBlur={() => setConsentTouched(true)}
+            aria-invalid={consentTouched && !consent}
+            aria-describedby={consentTouched && !consent ? 'lead-consent-error' : undefined}
             className="mt-0.5 h-4 w-4 rounded border-border-default text-action-primary focus:ring-focus-ring"
           />
           <span>
@@ -244,8 +256,21 @@ export const LeadForm: React.FC = () => {
             </a>.
           </span>
         </label>
+        {consentTouched && !consent ? (
+          <p id="lead-consent-error" className="text-bodySM text-status-danger">
+            Confirme a Política de Privacidade para continuar.
+          </p>
+        ) : null}
 
-        <Button type="submit" variant="primary" size="lg" className="w-full md:w-auto shadow-glow-brand">
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          className="w-full md:w-auto shadow-glow-brand"
+          onClick={() => {
+            if (hasErrors || hasConsentError) markErrors();
+          }}
+        >
           Receber atendimento consultivo no WhatsApp
         </Button>
       </div>
