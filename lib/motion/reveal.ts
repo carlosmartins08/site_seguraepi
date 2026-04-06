@@ -39,7 +39,7 @@ const animateElement = (element: HTMLElement, options: { delay?: number; distanc
     translateY: [distance, 0],
     duration,
     delay,
-    easing: motionPresets.easing.standard,
+    ease: motionPresets.easing.standard,
   });
 };
 
@@ -62,7 +62,7 @@ const animateStaggerGroup = (group: HTMLElement) => {
     translateY: [distance, 0],
     duration,
     delay: stagger(staggerGap, { start: delay }),
-    easing: motionPresets.easing.standard,
+    ease: motionPresets.easing.standard,
   });
 };
 

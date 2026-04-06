@@ -21,7 +21,7 @@ export const animateOverlayOpen = ({ overlay, items = [] }: OverlayAnimationTarg
   const timeline = createTimeline({
     autoplay: true,
     defaults: {
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     },
   });
 
@@ -61,7 +61,7 @@ export const animateOverlayClose = ({ overlay, items = [] }: OverlayAnimationTar
   const timeline = createTimeline({
     autoplay: true,
     defaults: {
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     },
   });
 

@@ -7,12 +7,14 @@ export type IconProps = Omit<LucideProps, 'ref'> & {
   name: IconName;
 };
 
+export type { IconName } from './icon-map';
+
 export const Icon = React.forwardRef<SVGSVGElement, IconProps>(
   ({ name, size = 20, className, ...rest }, ref) => {
     const IconComponent = ICON_MAP[name];
     if (!IconComponent) return null;
 
-    const hasLabel = Boolean(rest['aria-label'] || rest['aria-labelledby'] || rest.title);
+    const hasLabel = Boolean(rest['aria-label'] || rest['aria-labelledby']);
 
     return (
       <IconComponent

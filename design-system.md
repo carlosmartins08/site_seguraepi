@@ -213,8 +213,42 @@ Base 4px
 - **Accordion (FAQ):** height + opacity, duração `motion.base`.  
 - **Loading:** skeleton shimmer discreto (ou pulse leve); opcional barra 2px no topo.
 
+Implementação (Anime.js):
+- `lib/motion/presets.ts` centraliza durações/easing/distâncias.
+- `components/motion/Reveal` aplica entradas e stagger.
+- `Button` com prop `motion` e `components/motion/MotionCard` para microfeedback.
+- `lib/motion/overlay.ts` controla menu mobile com timeline curta.
+
 ## 4.4 Reduced motion (obrigatório)
 - Se `prefers-reduced-motion`, desativar ticker/marquee e entradas; manter só feedback básico (fade curto).
+
+---
+
+# 4.5) ICONOGRAFIA (Icon Kit)
+
+## 4.5.1 Base
+- Base única: `lucide-react`.
+- Uso obrigatório via `<Icon name=\"...\" />` ou `<AnimatedIcon />` (hover/click) em `components/icons/`.
+- Mapa técnico e union type em `components/icons/icon-map.ts`.
+- Evitar SVG solto; exceção apenas quando houver necessidade de logo oficial.
+
+## 4.5.2 Regras de uso
+- Ícone não substitui texto; ele reforça decisão.
+- Ícone nunca compete com CTA.
+- Cores: neutro ou brand; sem multicolor.
+- Tamanhos: 16px (texto), 20–24px (UI), 32–48px (cards).
+- Motion: apenas feedback curto (hover/click) e respeita `prefers-reduced-motion`.
+
+## 4.5.3 Nomes aprovados (mapa Segura EPI)
+- Core: `shield-check`, `certificate`, `clipboard-check`, `user-gear`, `truck-fast`, `chat`, `search`, `grid`.
+- Conversão: `whatsapp`, `file-quote`, `flask`, `arrow-right`, `spark`.
+- Centro Técnico: `document-search`, `shield-alert`, `check-circle`, `warning-triangle`, `database`, `tool`.
+- Categorias: `helmet`, `glasses`, `ear`, `mask`, `glove`, `shirt`, `boot`, `harness`.
+- Setores: `construction`, `industry`, `energy`, `health`, `logistics`.
+- Processos: `clock`, `box`, `map-pin`, `check-badge`, `refresh`.
+- Institucional: `phone`, `mail`, `instagram`, `linkedin`, `facebook`, `youtube`.
+
+Nota: ícones de redes sociais estão mapeados para glifos genéricos do Lucide; se necessário, substituir por logos oficiais em uma fase dedicada.
 
 ---
 

@@ -29,7 +29,7 @@ export const attachButtonFeedback = (
       translateY: enter ? hoverLift : 0,
       scale: enter ? hoverScale : 1,
       duration: motionPresets.duration.base,
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     });
   };
 
@@ -38,7 +38,7 @@ export const attachButtonFeedback = (
     pressAnimation = animate(element, {
       scale: pressed ? pressScale : 1,
       duration: motionPresets.duration.fast,
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     });
   };
 
@@ -84,7 +84,7 @@ export const attachCardFeedback = (
       translateY: enter ? hoverLift : 0,
       scale: enter ? hoverScale : 1,
       duration: motionPresets.duration.base,
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     });
   };
 
@@ -106,7 +106,7 @@ export type IconFeedbackOptions = {
 };
 
 export const attachIconFeedback = (
-  element: HTMLElement,
+  element: Element,
   options: IconFeedbackOptions = {}
 ) => {
   if (prefersReducedMotion()) return noop;
@@ -119,7 +119,7 @@ export const attachIconFeedback = (
     animation = animate(element, {
       scale: enter ? 1.08 : 1,
       duration: motionPresets.duration.fast,
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     });
   };
 
@@ -128,7 +128,7 @@ export const attachIconFeedback = (
     animation = animate(element, {
       rotate: [0, -8, 0],
       duration: motionPresets.duration.base,
-      easing: motionPresets.easing.standard,
+      ease: motionPresets.easing.standard,
     });
   };
 

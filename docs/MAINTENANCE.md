@@ -115,12 +115,21 @@ Preferencias de cookies:
 - Opacidades semanticas sao permitidas apenas em `bg-*` e `border-*` com escala fixa `/10`, `/20`, `/40`.
 - Textos `text-*/*` nao entram na normalizacao de opacidade.
 
+## Motion e iconografia
+- Entradas/stagger: use `components/motion/Reveal` + `.reveal` e `data-reveal`/`data-reveal-item`.
+- Microinteracao: `Button` com prop `motion` e `components/motion/MotionCard` (cards interativos).
+- Menu mobile: animacao controlada por `lib/motion/overlay.ts`.
+- Icones: usar `components/icons/Icon` + `components/icons/icon-map.ts` (sem SVG solto).
+- Respeitar `prefers-reduced-motion` em novas animacoes.
+
 ## Checklist de QA (manual)
 - Navegacao: Header/Footer, CTA principais e rotas criticas (`/catalogo`, `/chat`, `/obrigado`).
 - Formularios: estados `loading/erro/sucesso`, mensagens claras e feedback visivel.
 - Consentimento: banner LGPD + reabertura via footer.
 - Responsivo: hero, cards, tabelas tecnicas e FAQ.
 - Acessibilidade: focus visivel, `aria-live` em status dinamicos.
+- Motion: reveals, CTAs e menu mobile sem atraso excessivo.
+- Icones: consistencia de nomes e ausencia de SVG solto.
 
 ## Seguranca e boas praticas
 - Nao expor tokens/segredos no client (use variaveis de ambiente e endpoints server-side).

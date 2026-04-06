@@ -13,7 +13,7 @@ import { buildBreadcrumbJsonLd } from '../../lib/seo/schema';
 import { SITE_URL } from '../../lib/seo/site';
 import { ROUTES } from '../../lib/routes';
 import { CONTACT_INFO } from '../../lib/constants';
-import { SeguraIcon } from '../../components/icons/SeguraIcon';
+import { Icon, type IconName } from '../../components/icons/Icon';
 
 const heroBadges = [
   { label: 'Ética inegociável', color: 'bg-action-primary/10 text-action-primary' },
@@ -21,28 +21,28 @@ const heroBadges = [
   { label: 'Compromisso com a vida', color: 'bg-status-successSoft text-status-successStrong' },
 ];
 
-const cultura: { title: string; desc: string; icon: 'shield' | 'heart' | 'book' | 'spark' }[] = [
-  { title: 'Ética inegociável', desc: 'A transparência guia todas as nossas decisões, do estoque à venda.', icon: 'shield' },
-  { title: 'Foco no cliente', desc: 'Não vendemos apenas produtos, entregamos soluções que salvam vidas.', icon: 'heart' },
-  { title: 'Crença e humildade', desc: 'Trabalho duro, aprendizado contínuo e respeito às pessoas.', icon: 'book' },
+const cultura: Array<{ title: string; desc: string; icon: IconName }> = [
+  { title: 'Ética inegociável', desc: 'A transparência guia todas as nossas decisões, do estoque à venda.', icon: 'shield-check' },
+  { title: 'Foco no cliente', desc: 'Não vendemos apenas produtos, entregamos soluções que salvam vidas.', icon: 'chat' },
+  { title: 'Crença e humildade', desc: 'Trabalho duro, aprendizado contínuo e respeito às pessoas.', icon: 'clipboard-check' },
   { title: 'Alta performance', desc: 'Metas, dados e resultados. Aqui, o mérito é reconhecido.', icon: 'spark' },
 ];
 
-const areas: { title: string; desc: string; icon: 'bolt' | 'truck' | 'check' }[] = [
+const areas: Array<{ title: string; desc: string; icon: IconName }> = [
   {
     title: 'Comercial e Vendas',
     desc: 'Consultores e SDRs (pré-vendas) com perfil consultivo, resiliente e negociação B2B para abrir portas e fechar contratos.',
-    icon: 'bolt',
+    icon: 'file-quote',
   },
   {
     title: 'Logística e Operações',
     desc: 'Profissionais organizados para garantir prazo, conferência rigorosa e processos eficientes que sustentam a operação.',
-    icon: 'truck',
+    icon: 'truck-fast',
   },
   {
     title: 'Administrativo e Financeiro',
     desc: 'Compras, Fiscal, RH e Financeiro com perfis analíticos, éticos e detalhistas, guardiões da conformidade.',
-    icon: 'check',
+    icon: 'check-circle',
   },
 ];
 
@@ -127,7 +127,7 @@ export default function ClientPage() {
                 className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex gap-4 items-start hover:-translate-y-1 hover:shadow-glow-brand transition-all"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
-                  <SeguraIcon name={item.icon as any} />
+                  <Icon name={item.icon} className="w-5 h-5" aria-hidden />
                 </div>
                 <div className="space-y-2">
                   <h4 className="text-titleMD font-display font-bold text-text-primary uppercase tracking-tight">{item.title}</h4>
@@ -153,7 +153,7 @@ export default function ClientPage() {
                 className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex flex-col gap-3 hover:-translate-y-1 hover:shadow-glow-brand transition-all h-full"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
-                  <SeguraIcon name={area.icon as any} />
+                  <Icon name={area.icon} className="w-5 h-5" aria-hidden />
                 </div>
                 <h4 className="text-titleMD font-display font-bold text-text-primary uppercase tracking-tight">{area.title}</h4>
                 <p className="text-text-body text-bodySM leading-relaxed">{area.desc}</p>
@@ -174,7 +174,7 @@ export default function ClientPage() {
             {beneficios.map((beneficio) => (
               <div key={beneficio} className="p-5 rounded-2xl border border-border-muted shadow-elevation-1 bg-bg-surface flex items-start gap-3">
                 <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
-                  <SeguraIcon name="check" />
+                  <Icon name="check-badge" className="w-5 h-5" aria-hidden />
                 </div>
                 <p className="text-text-body text-bodySM leading-relaxed">{beneficio}</p>
               </div>

@@ -54,3 +54,6 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Tabela tecnica de `/epi` responsiva em mobile
 - Fallback sem JS para `.reveal` (conteudo visivel quando `html` permanece com `no-js`)
 - Validacao de consentimento reforcada no formulario de lead (erro visivel quando checkbox nao marcado)
+- Sistema de motion com Anime.js (`lib/motion/*`, `components/motion/Reveal`, `MotionCard`, `Button motion`)
+- Kit de icones consolidado via `lucide-react` (`components/icons/Icon` + `icon-map`)
+- Menu mobile animado por timeline curta (overlay)

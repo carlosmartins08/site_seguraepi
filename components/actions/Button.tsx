@@ -31,17 +31,17 @@ type ActionButtonProps = CommonProps &
 export type ButtonProps = AnchorButtonProps | ActionButtonProps;
 
 export const Button: React.FC<ButtonProps> = (props) => {
-  const motion = Boolean((props as { motion?: boolean }).motion);
+  const motionEnabled = Boolean((props as { motion?: boolean }).motion);
   const motionRef = useRef<HTMLElement | null>(null);
 
   useEffect(() => {
-    if (!motion || !motionRef.current) return;
+    if (!motionEnabled || !motionRef.current) return;
     return attachButtonFeedback(motionRef.current);
-  }, [motion]);
+  }, [motionEnabled]);
 
   const baseStyles = cn(
     "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,border-color,color] duration-base ease-standard rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface disabled:opacity-50 disabled:cursor-not-allowed",
-    !motion && "hover:-translate-y-0.5 active:scale-[0.98]"
+    !motionEnabled && "hover:-translate-y-0.5 active:scale-[0.98]"
   );
   
   const variants = {
@@ -60,7 +60,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
   };
 
   if (typeof (props as any).href === 'string') {
-    const { children, href, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, motion, ...rest } =
+    const { children, href, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, motion: motionProp, ...rest } =
       props as AnchorButtonProps & { motion?: boolean };
 
     const handleClick: React.MouseEventHandler<HTMLAnchorElement> = (e) => {
@@ -97,7 +97,7 @@ export const Button: React.FC<ButtonProps> = (props) => {
     );
   }
 
-  const { children, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, type, motion, ...rest } =
+  const { children, variant = 'primary', size = 'md', className, trackEvent, trackParams, onClick, type, motion: motionProp, ...rest } =
     props as ActionButtonProps & { motion?: boolean };
   const handleClick: React.MouseEventHandler<HTMLButtonElement> = (e) => {
     if (trackEvent) track(trackEvent, { ...trackParams });

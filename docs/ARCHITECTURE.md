@@ -9,6 +9,8 @@ Site institucional B2B com foco em autoridade tecnica (NR/CA), conversao para at
 - Next.js 16 (App Router) + React 19
 - Tailwind CSS com tokens semanticos
 - Design system em `design-system.md` + `src/styles/tokens.ts` + `tailwind.config.cjs`
+- Anime.js v4 para motion (entradas, stagger e overlays)
+- `lucide-react` como base unica de icones
 
 ## Estrutura de pastas
 - `app/`: rotas e layouts (App Router)
@@ -29,6 +31,8 @@ Regras:
 - Ajuste tokens apenas nos tres artefatos sincronizados.
 - Tipografia deve usar tokens (`text-display*`, `text-title*`, `text-body*`, `text-label*`). Evite tamanhos crus (`text-sm`, `text-lg`, `text-2xl`, etc.).
 - Opacidades semanticas sao permitidas apenas em `bg-*` e `border-*`, na escala fixa `/10`, `/20`, `/40`. Textos `text-*/*` nao entram nessa regra.
+- Icones devem usar `components/icons/Icon` (mapa em `components/icons/icon-map.ts`).
+- Motion deve usar `lib/motion/*` + `components/motion/*` (nada de animacao ad-hoc em tela).
 
 ## Client vs Server Components
 Qualquer arquivo com hooks React (`useEffect`, `useState`, `useRef`, etc.) precisa:
@@ -101,6 +105,13 @@ Renderizacao via `components/seo/JsonLd.tsx`.
 - `cv-auto` (content-visibility) para secoes abaixo da dobra
 - `QuickSummary` + `LastUpdated` em paginas longas
 - Fallback sem JS para `.reveal`: HTML inicia com `no-js`, `NoJs` troca para `js`; sem JS, `html.no-js .reveal` permanece visivel
+
+## Motion e Icones
+- Presets de motion: `lib/motion/presets.ts` (duracao, easing, distancia, stagger).
+- Entradas e stagger: `components/motion/Reveal` + `data-reveal`/`data-reveal-item`.
+- Microinteracao: `Button` com prop `motion` e `components/motion/MotionCard`.
+- Menu mobile: `lib/motion/overlay.ts` com timeline curta.
+- Icones: `components/icons/Icon` (base `lucide-react`) + `components/icons/icon-map.ts`.
 
 ## Integracoes de terceiros
 - WBOT carregado via `ConsentScriptGate` (ver `docs/INTEGRATIONS_WBOT.md`)
