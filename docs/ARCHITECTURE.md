@@ -57,7 +57,7 @@ Sitemap:
 - `app/sitemap.ts` gera URLs a partir de `ROUTES` + `CATEGORY_PAGES`
 - Exclui `SITEMAP_EXCLUDE` e rotas utilitarias
 - Rotas legadas atuais: `/retira` e `/retira-em-loja` (redirect)
-- `SITEMAP_EXCLUDE` inclui `/chat` e `/obrigado`
+- `SITEMAP_EXCLUDE` inclui `/catalogo`, `/chat` e `/obrigado`
 
 ## I18n local
 Sem rotas `/en` ou `/es`. Toggle client-side:
@@ -73,6 +73,8 @@ Observacao: `SUPPORTED_LOCALES` esta restrito a `['pt']` enquanto nao houver tra
 - API de lead: `app/api/lead/route.ts`
 - Armazenamento local: `data/leads.json` apenas em ambiente local
 - Producao: usar `LEAD_WEBHOOK_URL` para CRM/ERP
+- Monitor de funil: `app/api/funnel/event/route.ts` + `app/api/funnel/summary/route.ts`
+- Armazenamento local de funil: `data/funnel-events.ndjson` (ambiente local)
 
 ## Chat e UX de atendimento
 Componentes e helpers:
@@ -116,3 +118,9 @@ Renderizacao via `components/seo/JsonLd.tsx`.
 ## Integracoes de terceiros
 - WBOT carregado via `ConsentScriptGate` (ver `docs/INTEGRATIONS_WBOT.md`)
 - Overrides de UI do widget em `styles/segura-ui.css`
+- Analytics com consentimento:
+  - prioridade GTM quando `NEXT_PUBLIC_GTM_ID` existe
+  - GA direto (`gtag`) apenas sem GTM
+  - `page_view` manual no App Router via `components/analytics/RouteTracker.tsx`
+  - guia de operacao: `docs/GA4_GTM_PLAYBOOK.md`
+  - blueprint de implementacao GTM: `docs/GTM_CONTAINER_BLUEPRINT.md`

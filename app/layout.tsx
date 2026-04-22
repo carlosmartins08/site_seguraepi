@@ -64,7 +64,7 @@ export default function RootLayout({
   const wbotToken = process.env.NEXT_PUBLIC_WBOT_TOKEN;
 
   return (
-    <html lang="pt-BR" className="no-js">
+    <html lang="pt-BR" className="no-js" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

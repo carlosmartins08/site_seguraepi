@@ -7,6 +7,7 @@ Este documento orienta como atualizar conteudo, integracoes e configuracoes sem 
 - `NEXT_PUBLIC_GA_ID` - Google Analytics (opcional)
 - `NEXT_PUBLIC_GTM_ID` - Google Tag Manager (opcional)
 - `LEAD_WEBHOOK_URL` - webhook para leads (producao)
+- `FUNNEL_EVENTS_WEBHOOK_URL` - webhook opcional para eventos de funil (monitoramento externo)
 
 ## Conteudo institucional
 Paginas principais:
@@ -83,6 +84,35 @@ Rotas:
 - `/chat` (utilitario)
 - `/obrigado` (pos-conversao, noindex)
 
+Instrumentacao de funil (base atual):
+- `page_view` em `components/analytics/RouteTracker.tsx` (evento padrao GA4)
+- `route_view` em `components/analytics/RouteTracker.tsx`
+- `lead_submit_attempt`, `lead_submit_success`, `lead_submit_fail` em `components/home/LeadForm.tsx`
+- `chat_open_attempt`, `chat_open_success`, `chat_open_fallback`, `chat_open_fail` em `lib/wbot.ts`
+- exposicao de experimento em home: `exp_home_hero_exposure` em `components/home/HomeClient.tsx`
+
+Pipeline de analytics:
+- quando `NEXT_PUBLIC_GTM_ID` existe, GTM e o pipeline priorizado.
+- GA direto (`gtag`) e usado apenas quando GTM nao esta configurado.
+- guia operacional: `docs/GA4_GTM_PLAYBOOK.md`.
+- blueprint detalhado de container: `docs/GTM_CONTAINER_BLUEPRINT.md`.
+
+Experimento A/B da home:
+- arquivo de decisao: `lib/experiments/home-hero.ts`
+- variante forcada por query param: `?exp_home_hero=a` ou `?exp_home_hero=b`
+
+Observabilidade de lead:
+- `app/api/lead/route.ts` registra logs estruturados de falha:
+  - `lead_api_webhook_error`
+  - `lead_api_no_webhook`
+  - `lead_api_error`
+
+Painel minimo de funil:
+- ingestao de eventos: `app/api/funnel/event/route.ts`
+- resumo de funil: `app/api/funnel/summary/route.ts`
+- dashboard interno (noindex): `/painel-funil` em `app/painel-funil/page.tsx`
+- agregacao local: `lib/analytics/funnel-monitor.ts` (arquivo `data/funnel-events.ndjson`)
+
 ## Contatos
 Dados base:
 - `lib/constants.ts` (`CONTACT_INFO`)
@@ -142,3 +172,9 @@ Preferencias de cookies:
 - `npm run lint:design`
 - `npm run build`
 - Lighthouse (Home, Centro Tecnico, Como Comprar, Politica de Trocas)
+
+## Skills de governanca (local no projeto)
+- `docs/skills/route-flow-guardian/SKILL.md` - auditoria de coerencia de rotas, redirects, sitemap e caminhos.
+- `docs/skills/funnel-observability-guardian/SKILL.md` - contrato de eventos e observabilidade de funil.
+- `docs/skills/conversion-path-designer/SKILL.md` - melhoria de caminho de conversao por intencao.
+- Plano operacional: `docs/ROUTE_FLOW_CORRECTION_PLAN.md`.

@@ -13,6 +13,8 @@ export function isWbotReady(): boolean {
 export function openWbotChat(options: OpenWbotChatOptions = {}): boolean {
   const { fallbackHref, trackEvent, trackParams } = options;
 
+  track('chat_open_attempt', { channel: 'wbot', ...trackParams });
+
   if (trackEvent) {
     track(trackEvent, trackParams);
   }
@@ -20,6 +22,7 @@ export function openWbotChat(options: OpenWbotChatOptions = {}): boolean {
   if (isWbotReady()) {
     try {
       (window as any).WBOTopenChat();
+      track('chat_open_success', { channel: 'wbot', ...trackParams });
       return true;
     } catch {
       // Fallback below.
@@ -27,9 +30,12 @@ export function openWbotChat(options: OpenWbotChatOptions = {}): boolean {
   }
 
   if (fallbackHref) {
+    track('chat_open_fallback', { channel: 'whatsapp', ...trackParams });
     window.open(fallbackHref, '_blank', 'noopener,noreferrer');
+    return false;
   }
 
+  track('chat_open_fail', { channel: 'wbot', ...trackParams });
   return false;
 }
 

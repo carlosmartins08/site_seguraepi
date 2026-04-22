@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { Navbar } from '../layout/Navbar';
 import { Container } from '../layout/Container';
 import { Section } from '../layout/Section';
@@ -15,10 +15,86 @@ import { ROUTES, buildUrl } from '../../lib/routes';
 import { useI18n } from '../../hooks/useI18n';
 import { getHomeContent } from '../../lib/i18n/home';
 import { AuthorityPanel } from '../trust/AuthorityPanel';
+import { track } from '../../lib/analytics/track';
+import { resolveHomeHeroVariant, type HomeHeroVariant } from '../../lib/experiments/home-hero';
 
 export const HomeClient: React.FC = () => {
   const { locale } = useI18n();
   const content = getHomeContent(locale);
+  const [heroVariant, setHeroVariant] = useState<HomeHeroVariant>('control');
+
+  useEffect(() => {
+    const resolved = resolveHomeHeroVariant();
+    setHeroVariant(resolved);
+    track('exp_home_hero_exposure', {
+      experiment: 'home_hero_v1',
+      variant: resolved,
+      path: window.location.pathname,
+    });
+  }, []);
+
+  const heroCtas = useMemo(() => {
+    const baseParams = {
+      experiment: 'home_hero_v1',
+      exp_variant: heroVariant,
+    };
+
+    if (heroVariant === 'intent') {
+      return [
+        {
+          key: 'validar',
+          href: buildUrl(ROUTES.chat, { intent: 'validar-especificacao', origem: 'home-hero' }),
+          variant: 'primary' as const,
+          label: content.hero.ctas.secondary,
+          trackEvent: 'cta_home_hero_validar',
+          className: 'shadow-glow-brand',
+        },
+        {
+          key: 'orcamento',
+          href: buildUrl(ROUTES.chat, { intent: 'orcamento-rapido', origem: 'home-hero' }),
+          variant: 'outline-inverse' as const,
+          label: content.hero.ctas.primary,
+          trackEvent: 'cta_home_hero_orcamento',
+          className: '',
+        },
+        {
+          key: 'catalogo',
+          href: buildUrl(ROUTES.catalog, { origem: 'home-hero' }),
+          variant: 'ghost-inverse' as const,
+          label: content.hero.ctas.tertiary,
+          trackEvent: 'cta_home_hero_catalogo',
+          className: '',
+        },
+      ].map((item) => ({ ...item, trackParams: baseParams }));
+    }
+
+    return [
+      {
+        key: 'orcamento',
+        href: buildUrl(ROUTES.chat, { intent: 'orcamento-rapido', origem: 'home-hero' }),
+        variant: 'primary' as const,
+        label: content.hero.ctas.primary,
+        trackEvent: 'cta_home_hero_orcamento',
+        className: 'shadow-glow-brand',
+      },
+      {
+        key: 'catalogo',
+        href: buildUrl(ROUTES.catalog, { origem: 'home-hero' }),
+        variant: 'outline-inverse' as const,
+        label: content.hero.ctas.tertiary,
+        trackEvent: 'cta_home_hero_catalogo',
+        className: '',
+      },
+      {
+        key: 'validar',
+        href: buildUrl(ROUTES.chat, { intent: 'validar-especificacao', origem: 'home-hero' }),
+        variant: 'ghost-inverse' as const,
+        label: content.hero.ctas.secondary,
+        trackEvent: 'cta_home_hero_validar',
+        className: '',
+      },
+    ].map((item) => ({ ...item, trackParams: baseParams }));
+  }, [content.hero.ctas.primary, content.hero.ctas.secondary, content.hero.ctas.tertiary, heroVariant]);
 
   return (
     <main className="relative" id="main-content">
@@ -40,34 +116,20 @@ export const HomeClient: React.FC = () => {
               {content.hero.description}
             </p>
             <div className="flex flex-wrap gap-3">
-              <Button
-                href={buildUrl(ROUTES.chat, { intent: 'orcamento-rapido', origem: 'home-hero' })}
-                variant="primary"
-                size="lg"
-                className="shadow-glow-brand"
-                trackEvent="cta_home_hero_orcamento"
-                motion
-              >
-                {content.hero.ctas.primary}
-              </Button>
-              <Button
-                href={buildUrl(ROUTES.catalog, { origem: 'home-hero' })}
-                variant="outline-inverse"
-                size="lg"
-                trackEvent="cta_home_hero_catalogo"
-                motion
-              >
-                {content.hero.ctas.tertiary}
-              </Button>
-              <Button
-                href={buildUrl(ROUTES.chat, { intent: 'validar-especificacao', origem: 'home-hero' })}
-                variant="ghost-inverse"
-                size="lg"
-                trackEvent="cta_home_hero_validar"
-                motion
-              >
-                {content.hero.ctas.secondary}
-              </Button>
+              {heroCtas.map((cta) => (
+                <Button
+                  key={cta.key}
+                  href={cta.href}
+                  variant={cta.variant}
+                  size="lg"
+                  className={cta.className || undefined}
+                  trackEvent={cta.trackEvent}
+                  trackParams={cta.trackParams}
+                  motion
+                >
+                  {cta.label}
+                </Button>
+              ))}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">

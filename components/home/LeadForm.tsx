@@ -5,6 +5,7 @@ import { Button } from '../actions/Button';
 import { ROUTES } from '../../lib/routes';
 import { LEAD_STORAGE_KEY } from '../../lib/lead';
 import { storeChatContext } from '../../lib/chat-context';
+import { track } from '../../lib/analytics/track';
 import { Field, fieldBase } from '../forms/Field';
 
 type LeadFormState = {
@@ -50,6 +51,26 @@ const formatCnpj = (value: string) => {
   return result;
 };
 
+async function submitLead(payload: Record<string, unknown>): Promise<boolean> {
+  const controller = new AbortController();
+  const timeoutId = window.setTimeout(() => controller.abort(), 2500);
+
+  try {
+    const response = await fetch('/api/lead', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      keepalive: true,
+      signal: controller.signal,
+    });
+    return response.ok;
+  } catch {
+    return false;
+  } finally {
+    window.clearTimeout(timeoutId);
+  }
+}
+
 export const LeadForm: React.FC = () => {
   const [form, setForm] = useState<LeadFormState>({
     name: '',
@@ -94,7 +115,7 @@ export const LeadForm: React.FC = () => {
     if (!consent) setConsentTouched(true);
   };
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
     if (typeof window === 'undefined') return;
@@ -103,32 +124,20 @@ export const LeadForm: React.FC = () => {
       return;
     }
 
+    const source = 'home-orcamento';
     const payload = {
       ...form,
-      source: 'home-orcamento',
+      source,
       createdAt: new Date().toISOString(),
       consentAt: consent ? new Date().toISOString() : undefined,
     };
 
-    try {
-      const body = JSON.stringify(payload);
-      if (navigator.sendBeacon) {
-        const blob = new Blob([body], { type: 'application/json' });
-        navigator.sendBeacon('/api/lead', blob);
-      } else {
-        fetch('/api/lead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body,
-          keepalive: true,
-        }).catch(() => null);
-      }
-    } catch {
-      // Ignore submit errors; WhatsApp flow remains the primary fallback.
-    }
+    track('lead_submit_attempt', { source });
+    const didSubmit = await submitLead(payload);
+    track(didSubmit ? 'lead_submit_success' : 'lead_submit_fail', { source });
 
     window.sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(payload));
-    storeChatContext({ intent: 'lead-form', origem: 'home-orcamento' });
+    storeChatContext({ intent: 'lead-form', origem: source });
     window.location.href = ROUTES.thanks;
   };
 

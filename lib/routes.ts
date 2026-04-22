@@ -22,7 +22,7 @@ export const ROUTES = {
 
 export const LEGACY_ROUTES = ['/retira', '/retira-em-loja'] as const;
 
-export const SITEMAP_EXCLUDE = [...LEGACY_ROUTES, ROUTES.chat, ROUTES.thanks] as const;
+export const SITEMAP_EXCLUDE = [...LEGACY_ROUTES, ROUTES.catalog, ROUTES.chat, ROUTES.thanks] as const;
 
 export const DYNAMIC_ROUTE_PREFIXES = ['/epi/'] as const;
 

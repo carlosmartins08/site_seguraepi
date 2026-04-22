@@ -13,7 +13,6 @@ const excludedRoutes = new Set<string>(SITEMAP_EXCLUDE as readonly string[]);
 
 const ROUTE_CONFIG: Record<string, { lastModified: string; changeFrequency: SitemapEntry['changeFrequency']; priority: number }> = {
   [ROUTES.home]:          { lastModified: '2025-11-01', changeFrequency: 'weekly',  priority: 1.0 },
-  [ROUTES.catalog]:       { lastModified: '2025-11-01', changeFrequency: 'weekly',  priority: 0.9 },
   [ROUTES.epi]:           { lastModified: '2025-10-01', changeFrequency: 'monthly', priority: 0.9 },
   [ROUTES.epiCategories]: { lastModified: '2025-10-01', changeFrequency: 'monthly', priority: 0.8 },
   [ROUTES.center]:        { lastModified: '2025-10-01', changeFrequency: 'monthly', priority: 0.8 },

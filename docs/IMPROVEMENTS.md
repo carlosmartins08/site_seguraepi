@@ -57,3 +57,11 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Sistema de motion com Anime.js (`lib/motion/*`, `components/motion/Reveal`, `MotionCard`, `Button motion`)
 - Kit de icones consolidado via `lucide-react` (`components/icons/Icon` + `icon-map`)
 - Menu mobile animado por timeline curta (overlay)
+- Redirect permanente nas rotas legadas `/retira` e `/retira-em-loja`
+- Coerencia SEO: `/catalogo` removido do sitemap para alinhar com `noindex`
+- Reparo de encoding no conteudo de categorias (`lib/catalog/categories.ts`)
+- Evento global de navegacao `route_view` e contrato inicial de eventos de funil (lead/chat)
+- Logs estruturados no endpoint `/api/lead` para falhas de webhook e operacao
+- Monitor minimo de funil com APIs (`/api/funnel/event`, `/api/funnel/summary`) e painel interno (`/painel-funil`)
+- Experimento A/B no hero da home (variantes `control` x `intent`) com evento de exposicao
+- Pipeline GA-first: `page_view` manual para App Router + prioridade GTM quando configurado
