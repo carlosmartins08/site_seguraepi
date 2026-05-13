@@ -1,5 +1,7 @@
 import { NextResponse } from 'next/server';
 import { appendFunnelEvent } from '../../../../lib/analytics/funnel-monitor';
+import { checkRateLimit } from '../../../../lib/api/rate-limit';
+import { getClientIp, safeJsonByteLength } from '../../../../lib/api/request';
 
 type EventPayload = {
   event?: unknown;
@@ -11,6 +13,10 @@ type EventPayload = {
 };
 
 const MAX_EVENT_NAME_LENGTH = 80;
+const MAX_PARAMS_BYTES = 8 * 1024;
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 120;
+const API_ROUTE = '/api/funnel/event';
 
 function toSafeString(input: unknown): string | undefined {
   return typeof input === 'string' && input.trim() ? input.trim() : undefined;
@@ -21,6 +27,25 @@ function isValidEventName(input: string): boolean {
 }
 
 export async function POST(req: Request) {
+  const clientIp = getClientIp(req);
+  const rate = checkRateLimit({
+    key: `${API_ROUTE}:${clientIp}`,
+    limit: RATE_LIMIT_MAX_REQUESTS,
+    windowMs: RATE_LIMIT_WINDOW_MS,
+  });
+
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { ok: false, error: 'rate_limited' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.max(1, Math.ceil((rate.resetAtMs - Date.now()) / 1000))),
+        },
+      },
+    );
+  }
+
   try {
     const payload = (await req.json()) as EventPayload;
     const event = toSafeString(payload.event);
@@ -36,6 +61,9 @@ export async function POST(req: Request) {
       payload.params && typeof payload.params === 'object' && !Array.isArray(payload.params)
         ? (payload.params as Record<string, unknown>)
         : undefined;
+    if (params && safeJsonByteLength(params) > MAX_PARAMS_BYTES) {
+      return NextResponse.json({ ok: false, error: 'params_too_large' }, { status: 413 });
+    }
 
     await appendFunnelEvent({
       event,
@@ -53,6 +81,7 @@ export async function POST(req: Request) {
       '[funnel_event_error]',
       JSON.stringify({
         route: '/api/funnel/event',
+        clientIp,
         error: message,
         timestamp: new Date().toISOString(),
       }),

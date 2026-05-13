@@ -7,7 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint:design": "tsx tools/lint-design.ts",
-    "lint:routes": "tsx tools/lint-routes.ts"
+    "lint:routes": "tsx tools/lint-routes.ts",
+    "test:smoke": "playwright test tests/smoke.spec.ts",
+    "test:api": "playwright test tests/api-contract.spec.ts"
   },
   "dependencies": {
     "animejs": "^4.3.6",
@@ -17,6 +19,7 @@
     "react-dom": "^19.0.0"
   },
   "devDependencies": {
+    "@playwright/test": "^1.59.1",
     "@types/node": "^22.14.0",
     "@types/react": "19.2.14",
     "autoprefixer": "^10.4.18",

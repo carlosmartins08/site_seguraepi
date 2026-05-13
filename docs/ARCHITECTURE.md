@@ -73,6 +73,10 @@ Observacao: `SUPPORTED_LOCALES` esta restrito a `['pt']` enquanto nao houver tra
 - API de lead: `app/api/lead/route.ts`
 - Armazenamento local: `data/leads.json` apenas em ambiente local
 - Producao: usar `LEAD_WEBHOOK_URL` para CRM/ERP
+- Producao sem `LEAD_WEBHOOK_URL`: endpoint `/api/lead` retorna `503` (fail-fast)
+- Rate limit em APIs criticas:
+  - `/api/lead`: 20 req/min por IP (best-effort, memoria de processo)
+  - `/api/funnel/event`: 120 req/min por IP (best-effort, memoria de processo)
 - Monitor de funil: `app/api/funnel/event/route.ts` + `app/api/funnel/summary/route.ts`
 - Armazenamento local de funil: `data/funnel-events.ndjson` (ambiente local)
 
@@ -124,3 +128,11 @@ Renderizacao via `components/seo/JsonLd.tsx`.
   - `page_view` manual no App Router via `components/analytics/RouteTracker.tsx`
   - guia de operacao: `docs/GA4_GTM_PLAYBOOK.md`
   - blueprint de implementacao GTM: `docs/GTM_CONTAINER_BLUEPRINT.md`
+
+## Testes minimos (smoke + contrato)
+- Configuracao Playwright: `playwright.config.ts`
+- Smoke de rotas criticas + regra de heading: `tests/smoke.spec.ts`
+- Contratos basicos de API: `tests/api-contract.spec.ts`
+- Scripts:
+  - `npm run test:smoke`
+  - `npm run test:api`

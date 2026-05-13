@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 import { promises as fs } from 'fs';
 import path from 'path';
+import { checkRateLimit } from '../../../lib/api/rate-limit';
+import { getClientIp, isPlainObject, safeJsonByteLength } from '../../../lib/api/request';
 
 type LeadRecord = Record<string, unknown>;
 
@@ -8,6 +10,9 @@ const DATA_DIR = path.join(process.cwd(), 'data');
 const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
 const LEAD_WEBHOOK_URL = process.env.LEAD_WEBHOOK_URL;
 const API_ROUTE = '/api/lead';
+const MAX_PAYLOAD_BYTES = 12 * 1024;
+const RATE_LIMIT_WINDOW_MS = 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 20;
 
 function getSource(payload: LeadRecord): string {
   return typeof payload.source === 'string' ? payload.source : 'unknown';
@@ -25,9 +30,37 @@ async function readLeads(): Promise<LeadRecord[]> {
 
 export async function POST(req: Request) {
   let source = 'unknown';
+  const clientIp = getClientIp(req);
+  const rateKey = `${API_ROUTE}:${clientIp}`;
+  const rate = checkRateLimit({
+    key: rateKey,
+    limit: RATE_LIMIT_MAX_REQUESTS,
+    windowMs: RATE_LIMIT_WINDOW_MS,
+  });
+
+  if (!rate.allowed) {
+    return NextResponse.json(
+      { ok: false, error: 'rate_limited' },
+      {
+        status: 429,
+        headers: {
+          'Retry-After': String(Math.max(1, Math.ceil((rate.resetAtMs - Date.now()) / 1000))),
+        },
+      },
+    );
+  }
 
   try {
-    const payload = (await req.json()) as LeadRecord;
+    const body = (await req.json()) as unknown;
+    if (!isPlainObject(body)) {
+      return NextResponse.json({ ok: false, error: 'invalid_payload' }, { status: 400 });
+    }
+
+    if (safeJsonByteLength(body) > MAX_PAYLOAD_BYTES) {
+      return NextResponse.json({ ok: false, error: 'payload_too_large' }, { status: 413 });
+    }
+
+    const payload = body as LeadRecord;
     source = getSource(payload);
     const record = {
       id: crypto.randomUUID(),
@@ -64,10 +97,14 @@ export async function POST(req: Request) {
         JSON.stringify({
           route: API_ROUTE,
           source,
+          clientIp,
           timestamp: new Date().toISOString(),
         }),
       );
-      return NextResponse.json({ ok: true });
+      return NextResponse.json(
+        { ok: false, error: 'lead_webhook_not_configured' },
+        { status: 503 },
+      );
     }
 
     await fs.mkdir(DATA_DIR, { recursive: true });
@@ -83,6 +120,7 @@ export async function POST(req: Request) {
       JSON.stringify({
         route: API_ROUTE,
         source,
+        clientIp,
         error: message,
         timestamp: new Date().toISOString(),
       }),

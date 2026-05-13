@@ -72,3 +72,11 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Componentes base refinados para consistencia: `Button`, `Field`, `Section`, `SectionTitle`
 - Checklist operacional de qualidade visual adicionado em `docs/LAYOUT_QUALITY_CHECKLIST.md`
 - QA semantico de headings concluido com evidencias em `docs/HEADING_SEMANTIC_QA_REPORT.md`
+- Hardening de APIs criticas:
+  - rate limit por IP em `/api/lead` e `/api/funnel/event`
+  - validacao de payload e limites de tamanho
+  - fail-fast em producao quando `LEAD_WEBHOOK_URL` nao estiver configurado
+- Headers de seguranca HTTP adicionados em `next.config.js` (CSP, HSTS, X-Frame-Options, etc.)
+- Suite minima de testes adicionada com Playwright:
+  - smoke de rotas criticas e regra de `h1` unico
+  - contratos basicos de `/api/lead` e `/api/funnel/event`
