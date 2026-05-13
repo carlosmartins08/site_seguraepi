@@ -134,7 +134,7 @@ export const HomeClient: React.FC = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-4">
               {content.microProofs.map((item) => (
-                <div key={item} className="bg-bg-surface/10 border border-bg-surface/10 rounded-xl px-4 py-3 text-labelMD font-semibold text-text-faint">
+                <div key={item} className="rounded-md bg-bg-surface/10 border border-bg-surface/10 px-4 py-3 text-labelMD font-semibold text-text-faint">
                   {item}
                 </div>
               ))}
@@ -158,7 +158,7 @@ export const HomeClient: React.FC = () => {
 
       <Section id="centro-tecnico" variant="dark" className="reveal">
         <Container>
-          <div className="bg-bg-deep border border-bg-surface/10 rounded-2xl p-8 md:p-12">
+          <div className="ui-cta border-bg-surface/10">
             <SectionTitle
               subtitle={content.center.subtitle}
               title={content.center.title}
@@ -251,7 +251,7 @@ export const HomeClient: React.FC = () => {
             {content.sectors.items.map((sector) => (
               <div
                 key={sector.title}
-                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                className="reveal ui-card"
                 data-reveal-item
               >
                 <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{sector.focus}</p>
@@ -274,7 +274,7 @@ export const HomeClient: React.FC = () => {
             {content.clarity.points.map((item) => (
               <div
                 key={item.title}
-                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                className="reveal ui-card"
                 data-reveal-item
               >
                 <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">{item.title}</p>
@@ -320,7 +320,7 @@ export const HomeClient: React.FC = () => {
             {content.cases.items.map((item) => (
               <div
                 key={item.title}
-                className="reveal bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1"
+                className="reveal ui-card"
                 data-reveal-item
               >
                 <h3 className="text-titleMD font-display font-semibold text-text-primary">{item.title}</h3>
@@ -340,7 +340,7 @@ export const HomeClient: React.FC = () => {
 
       <Section id="expansao" variant="dark" className="reveal cv-auto">
         <Container>
-          <div className="bg-bg-deep border border-bg-surface/10 rounded-2xl p-8 md:p-12">
+          <div className="ui-cta border-bg-surface/10">
             <SectionTitle
               subtitle={content.expansion.subtitle}
               title={content.expansion.title}
