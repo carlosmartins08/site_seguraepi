@@ -64,7 +64,7 @@ export default function GuiaEpiPage() {
             description="Os EPIs são classificados conforme a parte do corpo protegida e o tipo de risco controlado."
           />
 
-          <div className="overflow-hidden rounded-xl border border-border-default shadow-elevation-1 hidden md:block">
+          <div className="overflow-hidden rounded-lg border border-border-default shadow-elevation-1 hidden md:block">
             <div className="grid grid-cols-3 bg-bg-inverse text-text-inverse text-labelMD font-display uppercase tracking-[0.15em]">
               <div className="px-4 py-3">Categoria</div>
               <div className="px-4 py-3">Exemplos</div>
@@ -85,7 +85,7 @@ export default function GuiaEpiPage() {
             {tableRows.map((row) => (
               <div
                 key={row[0]}
-                className="reveal bg-bg-surface border border-border-default rounded-xl p-4 shadow-elevation-1 space-y-3"
+                className="reveal rounded-lg bg-bg-surface border border-border-default p-4 shadow-elevation-1 space-y-3"
                 data-reveal-item
               >
                 <div>
@@ -118,7 +118,7 @@ export default function GuiaEpiPage() {
             description="A legislação brasileira define deveres claros para empregadores e empregados."
           />
           <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
-            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3" data-reveal-item>
+            <div className="reveal ui-card space-y-3" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary">Empregador</h3>
               <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Fornecer EPI gratuitamente</li>
@@ -128,7 +128,7 @@ export default function GuiaEpiPage() {
                 <li>Substituir quando danificado ou vencido</li>
               </ul>
             </div>
-            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 space-y-3" data-reveal-item>
+            <div className="reveal ui-card space-y-3" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary">Empregado</h3>
               <ul className="space-y-2 text-text-body text-bodySM">
                 <li>Utilizar apenas para a finalidade indicada</li>
@@ -164,16 +164,16 @@ export default function GuiaEpiPage() {
             description="A durabilidade depende de uso, ambiente, armazenamento e instruções do fabricante."
           />
           <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
-            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1" data-reveal-item>
+            <div className="reveal ui-card" data-reveal-item>
               <ul className="space-y-3 text-text-body text-bodySM">
-                <li>? Inspeção visual diária</li>
-                <li>? Higienização conforme recomendação técnica</li>
-                <li>? Armazenamento em local seco e protegido</li>
-                <li>? Substituição imediata em caso de dano</li>
-                <li>? Verificação periódica da validade do CA</li>
+                <li>- Inspeção visual diária</li>
+                <li>- Higienização conforme recomendação técnica</li>
+                <li>- Armazenamento em local seco e protegido</li>
+                <li>- Substituição imediata em caso de dano</li>
+                <li>- Verificação periódica da validade do CA</li>
               </ul>
             </div>
-            <div className="reveal p-6 bg-bg-surface rounded-xl border border-border-default shadow-elevation-1 text-text-body text-bodySM space-y-3" data-reveal-item>
+            <div className="reveal ui-card text-text-body text-bodySM space-y-3" data-reveal-item>
               <p>A durabilidade do EPI varia com intensidade de uso, ambiente de trabalho e cuidados de conservação.</p>
               <p>Quando houver dúvida sobre integridade ou prazo, substitua e valide o CA antes de liberar para operação.</p>
             </div>

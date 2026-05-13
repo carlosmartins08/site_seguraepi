@@ -124,7 +124,7 @@ export default function ClientPage() {
             {cultura.map((item) => (
               <div
                 key={item.title}
-                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex gap-4 items-start hover:-translate-y-1 hover:shadow-glow-brand transition-all"
+                className="ui-card flex gap-4 items-start hover:-translate-y-1 hover:shadow-glow-brand transition-all"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <Icon name={item.icon} className="w-5 h-5" aria-hidden />
@@ -150,7 +150,7 @@ export default function ClientPage() {
             {areas.map((area) => (
               <div
                 key={area.title}
-                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex flex-col gap-3 hover:-translate-y-1 hover:shadow-glow-brand transition-all h-full"
+                className="ui-card flex flex-col gap-3 hover:-translate-y-1 hover:shadow-glow-brand transition-all h-full"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <Icon name={area.icon} className="w-5 h-5" aria-hidden />
@@ -172,7 +172,7 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-2 gap-6">
             {beneficios.map((beneficio) => (
-              <div key={beneficio} className="p-5 rounded-2xl border border-border-muted shadow-elevation-1 bg-bg-surface flex items-start gap-3">
+              <div key={beneficio} className="ui-card p-5 flex items-start gap-3">
                 <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <Icon name="check-badge" className="w-5 h-5" aria-hidden />
                 </div>
@@ -185,7 +185,7 @@ export default function ClientPage() {
 
       <Section id="candidatar" variant="offwhite">
         <Container className="max-w-5xl">
-          <div className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-bg-surface/10 space-y-6">
+          <div className="ui-cta border-bg-surface/10 space-y-6">
             <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">Como se candidatar</p>
             <h3 className="text-titleLG md:text-titleXL font-display font-semibold leading-tight">Quer fazer parte do time Segura EPI?</h3>
             <ul className="space-y-3 text-text-faint text-bodySM leading-relaxed">

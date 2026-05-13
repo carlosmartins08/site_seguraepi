@@ -124,6 +124,7 @@ export default function CentroTecnicoPage() {
           <div className="lg:col-span-7 space-y-8">
             <div className="speakable">
               <SectionTitle
+                as="h1"
                 subtitle="Centro Técnico Segura EPI"
                 title="Especificação correta. Conformidade normativa. Segurança validada."
                 description="Valide C.A., confirme normas e escolha o EPI certo usando sempre a base oficial do governo."
@@ -232,7 +233,7 @@ export default function CentroTecnicoPage() {
             description="Documento emitido pelo Ministério do Trabalho que autoriza comercialização e uso. Sem C.A. válido, o EPI é irregular."
           />
           <div className="grid md:grid-cols-2 gap-8" data-reveal="stagger">
-            <div className="reveal p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1" data-reveal-item>
+            <div className="reveal ui-panel md:p-8" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Sem C.A. válido</h3>
               <ul className="space-y-3 text-text-body text-bodySM">
                 {caWithoutList.map((item) => (
@@ -243,7 +244,7 @@ export default function CentroTecnicoPage() {
                 ))}
               </ul>
             </div>
-            <div className="reveal p-8 rounded-xl border border-action-primary/20 bg-bg-surface shadow-glow-brand" data-reveal-item>
+            <div className="reveal rounded-lg border border-action-primary/20 bg-bg-surface p-8 shadow-glow-brand" data-reveal-item>
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Fonte oficial</h3>
               <p className="text-text-body leading-relaxed">
                 Ministério do Trabalho e Emprego — Sistema CAEPI. Sempre valide na base governamental antes de comprar,
@@ -273,7 +274,7 @@ export default function CentroTecnicoPage() {
             {validarSteps.map((step, index) => (
               <div
                 key={step.title}
-                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1 flex gap-4"
+                className="reveal ui-card flex gap-4"
                 data-reveal-item
               >
                 <div className="h-10 w-10 rounded-2xl bg-action-primary/10 text-action-primary font-display font-black flex items-center justify-center">
@@ -300,7 +301,7 @@ export default function CentroTecnicoPage() {
             {errosComuns.map((item) => (
               <div
                 key={item.title}
-                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1"
+                className="reveal ui-card"
                 data-reveal-item
               >
                 <h4 className="text-titleMD font-display font-bold text-text-primary mb-2">{item.title}</h4>
@@ -322,7 +323,7 @@ export default function CentroTecnicoPage() {
             {normas.map((norma) => (
               <div
                 key={norma.sigla}
-                className="reveal p-6 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1"
+                className="reveal ui-card"
                 data-reveal-item
               >
                 <div className="flex items-center gap-3 mb-3">
@@ -354,7 +355,7 @@ export default function CentroTecnicoPage() {
               description="A ordem correta: eliminar risco, controlar risco, proteger individualmente."
             />
           </div>
-          <div className="reveal space-y-4 p-8 rounded-xl border border-border-default bg-bg-surface shadow-elevation-1" data-reveal-item>
+          <div className="reveal ui-panel space-y-4 md:p-8" data-reveal-item>
             <div>
               <h4 className="text-titleMD font-display font-bold text-text-primary">EPC (Equipamento de Proteção Coletiva)</h4>
               <p className="text-text-body text-bodySM leading-relaxed">Protege vários trabalhadores e deve ser priorizado sempre que possível.</p>
@@ -411,7 +412,7 @@ export default function CentroTecnicoPage() {
       </Section>
 
       <Section id="cta-final" variant="default" className="reveal pb-24">
-        <Container className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-border-inverse">
+        <Container className="ui-cta">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">Antes de comprar</p>

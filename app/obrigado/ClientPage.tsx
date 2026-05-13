@@ -78,21 +78,21 @@ export default function ClientPage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">Se você solicitou uma Cotação</h3>
               <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 Um consultor de soluções entra em contato via WhatsApp ou e-mail para entender sua necessidade e enviar
                 a proposta formalizada.
               </p>
             </div>
-            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">Se você enviou dados para Cadastro</h3>
               <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 O departamento financeiro valida suas informações (CNPJ/Sintegra). O prazo máximo de análise é de até
                 24 horas úteis.
               </p>
             </div>
-            <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">Se você falou conosco no WhatsApp</h3>
               <p className="text-text-body text-bodySM leading-relaxed mt-3">
                 Aguarde um instante. Devido ao alto volume de atendimentos, um humano responderá em breve. Horário de
@@ -101,7 +101,7 @@ export default function ClientPage() {
             </div>
           </div>
 
-          <div className="bg-bg-inverse text-text-inverse border border-border-inverse rounded-2xl p-8 md:p-10 shadow-elevation-2">
+          <div className="ui-cta md:p-10">
             <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM">
               Inovação Segura EPI
             </p>
@@ -122,7 +122,7 @@ export default function ClientPage() {
             </Button>
           </div>
 
-          <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="ui-card flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-labelMD">Dúvida urgente?</p>
               <p className="text-text-body text-bodySM">Ligue para nossa central agora mesmo.</p>

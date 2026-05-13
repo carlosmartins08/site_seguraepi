@@ -122,7 +122,7 @@ export default function PoliticaTrocasPage() {
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
+            <div className="ui-card bg-bg-surfaceMuted">
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-4">Como proceder</h3>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Caso identifique divergência, informe imediatamente o motorista. Nossa logística aciona a coordenação
@@ -143,11 +143,11 @@ export default function PoliticaTrocasPage() {
             description="Seguimos prazos legais e acionamos o fabricante quando necessário."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+            <div className="ui-card space-y-3">
               <h4 className="text-titleMD font-display font-bold text-text-primary">Até 7 dias após a NF</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">A troca ou devolução pode ser tratada diretamente com a Segura EPI.</p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+            <div className="ui-card space-y-3">
               <h4 className="text-titleMD font-display font-bold text-text-primary">Após 7 dias</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Direcionamos ao <ContextLink href="/chat" className="inline-flex text-text-body">SAC</ContextLink> para acionamento da garantia junto ao fabricante, seguindo o prazo técnico de análise.
@@ -182,7 +182,7 @@ export default function PoliticaTrocasPage() {
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
+            <div className="ui-card bg-bg-surfaceMuted">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-3">Para quem vale</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Botas de segurança, uniformes e <ContextLink href="/catalogo" className="inline-flex text-text-body">EPIs</ContextLink> que dependem de ajuste. Troca simples para manter o uso correto.
@@ -214,7 +214,7 @@ export default function PoliticaTrocasPage() {
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-3">Cliente não contribuinte</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Caso o cliente não seja contribuinte, a Segura EPI se responsabiliza pela gestão dos processos
@@ -234,13 +234,13 @@ export default function PoliticaTrocasPage() {
             description="Devoluções e trocas seguem controle fiscal e de segurança."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-3">Retiradas</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Devem ser realizadas por transportadoras parceiras ou frota própria Segura EPI.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-3">Restrição</h4>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Não é permitida a retirada ou envio de trocas via motoristas de aplicativo (Uber, 99 etc.).
@@ -260,7 +260,7 @@ export default function PoliticaTrocasPage() {
 
       <Section id="policy-cta" variant="dark" className="pb-20">
         <Container>
-          <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
+          <div className="ui-cta">
             <h3 className="text-titleLG font-display font-semibold text-text-inverse">Precisa de apoio com uma troca?</h3>
             <p className="text-text-faint text-bodySM mt-2">Fale com o time comercial para orientar a melhor logística.</p>
             <div className="flex flex-wrap gap-3 mt-6">

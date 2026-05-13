@@ -27,7 +27,7 @@ export default function NotFoundPage() {
             </p>
           </div>
 
-          <form action={ROUTES.catalog} method="get" className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-8 shadow-elevation-1">
+          <form action={ROUTES.catalog} method="get" className="ui-panel md:p-8">
             <label htmlFor="search-404" className="text-labelMD font-semibold text-text-muted">
               Vamos encontrar o que você precisa
             </label>
@@ -65,7 +65,7 @@ export default function NotFoundPage() {
             </div>
           </div>
 
-          <div className="bg-bg-surface border border-border-subtle rounded-2xl p-6 shadow-elevation-1 flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+          <div className="ui-card flex flex-col md:flex-row md:items-center md:justify-between gap-4">
             <div>
               <p className="text-text-primary font-display font-semibold uppercase tracking-[0.18em] text-labelMD">
                 Precisa de ajuda humana?

@@ -133,7 +133,7 @@ export default function ClientPage() {
                 </div>
               ))}
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
+            <div className="ui-card bg-bg-surfaceMuted">
               <h3 className="text-titleMD font-display font-bold text-text-primary mb-3">Por que funciona?</h3>
               <p className="text-text-body text-bodyMD leading-relaxed">
                 A separação e conferência acontecem antes da sua chegada. Quando você chega, o pedido já está pronto.
@@ -152,7 +152,7 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-2 gap-6">
             {cortes.map((corte) => (
-              <div key={corte.pedido} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+              <div key={corte.pedido} className="ui-card">
                 <div className="flex items-center gap-3 mb-2">
                   <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -182,7 +182,7 @@ export default function ClientPage() {
             description="Aguarde a confirmação do vendedor antes de se deslocar."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Após a notificação de disponibilidade, o pedido fica reservado por 24 horas. Se não houver retirada, os
                 itens podem retornar ao estoque e será necessário novo alinhamento com seu vendedor.
@@ -200,7 +200,7 @@ export default function ClientPage() {
           <SectionTitle subtitle="4. Dúvidas Frequentes sobre Retirada" title="Retirada sem atrito" />
           <div className="grid md:grid-cols-2 gap-8">
             {faqItems.map((item) => (
-              <div key={item.q} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+              <div key={item.q} className="ui-card space-y-3">
                 <div className="flex items-center gap-3">
                   <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                     <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>

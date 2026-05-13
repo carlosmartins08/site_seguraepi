@@ -42,12 +42,13 @@ export default function CatalogoRedirectPage() {
       <Section id="catalog-bridge-hero" variant="offwhite" className="pt-nav pb-16">
         <Container size="default" className="max-w-5xl">
           <SectionTitle
+            as="h1"
             subtitle="Catálogo B2B"
             title="Estamos redirecionando para catalogo.seguraepi.com.br"
             description="O catálogo digital agora vive em um subdomínio dedicado, otimizado para compras B2B com login, lista técnica e SLA de atendimento."
           />
 
-          <div className="space-y-6 bg-bg-surface p-8 md:p-10 rounded-2xl border border-border-subtle shadow-elevation-1">
+          <div className="ui-panel space-y-6">
             <div className="flex flex-wrap gap-3">
               <Button href={targetUrl} variant="primary" size="lg" target="_blank" rel="noopener noreferrer">
                 Acessar catálogo B2B
@@ -99,15 +100,15 @@ export default function CatalogoRedirectPage() {
 
       <Section id="catalog-bridge-info" variant="default" className="pb-24">
         <Container className="grid md:grid-cols-3 gap-6 max-w-6xl">
-          <div className="p-6 rounded-2xl border border-border-subtle bg-bg-surface shadow-elevation-1">
+          <div className="ui-card">
             <h3 className="text-titleMD font-display font-bold text-text-primary mb-2">Por que subdominio?</h3>
             <p className="text-text-body text-bodySM leading-relaxed">Isolamos performance, login e segurança do catálogo B2B em infraestrutura própria.</p>
           </div>
-          <div className="p-6 rounded-2xl border border-border-subtle bg-bg-surface shadow-elevation-1">
+          <div className="ui-card">
             <h3 className="text-titleMD font-display font-bold text-text-primary mb-2">Sem vitrine de varejo</h3>
             <p className="text-text-body text-bodySM leading-relaxed">Aqui não exibimos preços avulsos; toda compra passa por curadoria técnica.</p>
           </div>
-          <div className="p-6 rounded-2xl border border-border-subtle bg-bg-surface shadow-elevation-1">
+          <div className="ui-card">
             <h3 className="text-titleMD font-display font-bold text-text-primary mb-2">Centro Técnico</h3>
             <p className="text-text-body text-bodySM leading-relaxed">Precisa validar CA, norma ou aplicação? Use o Centro Técnico antes de comprar.</p>
             <ContextLink href="/centro-tecnico" className="mt-2">Abrir Centro Técnico</ContextLink>

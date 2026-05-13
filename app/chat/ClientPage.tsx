@@ -72,7 +72,7 @@ export default function ClientPage() {
 
       <Section id="chat-bridge" variant="offwhite" className="pt-nav pb-20">
         <Container className="max-w-3xl">
-          <div className="bg-bg-surface border border-border-muted rounded-xl p-8 md:p-12 shadow-elevation-1 text-center space-y-6">
+          <div className="ui-panel text-center space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">
               Atendimento online
             </p>

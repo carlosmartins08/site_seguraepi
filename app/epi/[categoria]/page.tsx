@@ -117,7 +117,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
           <SectionTitle subtitle={indicationsSubtitle} title={indicationsTitle} description={indicationsDescription} />
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-10">
             {data.indications.map((item) => (
-              <div key={item.title} className="bg-bg-surface border border-border-muted rounded-2xl p-6 shadow-elevation-1">
+              <div key={item.title} className="ui-card">
                 <h3 className="text-titleMD font-display font-bold text-text-primary">{item.title}</h3>
                 <p className="text-text-body text-bodySM leading-relaxed mt-3">{item.desc}</p>
               </div>
@@ -129,7 +129,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.spotlight && (
         <Section id="spotlight" variant="dark" className="pt-16 pb-16">
           <Container className="max-w-5xl">
-            <div className="bg-bg-deep border border-bg-surface/10 rounded-xl p-8 md:p-12 text-text-inverse">
+            <div className="ui-cta border-bg-surface/10">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">
                 {data.spotlight.subtitle ?? 'Destaque técnico'}
               </p>
@@ -155,7 +155,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.compliance && (
         <Section id="compliance" variant="offwhite" className="pt-10 pb-10">
           <Container className="max-w-5xl">
-            <div className="bg-bg-surface border border-border-muted rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">{data.compliance.title}</h3>
               <p className="text-text-body text-bodySM leading-relaxed mt-2">{data.compliance.description}</p>
             </div>
@@ -166,7 +166,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       <Section id="orientacoes" variant="default" className="pt-16 pb-16">
         <Container className="max-w-6xl">
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="bg-bg-surface border border-border-muted rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">Aplicações comuns</h3>
               <ul className="mt-4 space-y-2 text-text-body text-bodySM">
                 {data.commonUses.map((item) => (
@@ -174,7 +174,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
                 ))}
               </ul>
             </div>
-            <div className="bg-bg-surface border border-border-muted rounded-2xl p-6 shadow-elevation-1">
+            <div className="ui-card">
               <h3 className="text-titleMD font-display font-bold text-text-primary">Erros comuns</h3>
               <ul className="mt-4 space-y-2 text-text-body text-bodySM">
                 {data.commonMistakes.map((item) => (
@@ -225,7 +225,7 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       {data.cta && ctaHref && (
         <Section id="cta" variant="dark" className="pt-16 pb-16 cv-auto">
           <Container className="max-w-5xl">
-            <div className="bg-bg-deep border border-bg-surface/10 rounded-xl p-8 md:p-12 text-text-inverse">
+            <div className="ui-cta border-bg-surface/10">
               {data.cta.eyebrow && (
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">
                   {data.cta.eyebrow}

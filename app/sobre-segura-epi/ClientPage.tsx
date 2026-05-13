@@ -57,7 +57,7 @@ const DiretrizCard = ({
   title: string;
   desc: string;
 }) => (
-  <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+  <div className="ui-card space-y-3">
     <p className="text-labelMD font-display font-bold uppercase tracking-[0.25em] text-action-primary">{label}</p>
     <h4 className="text-titleMD font-display font-bold text-text-primary">{title}</h4>
     <p className="text-text-body text-bodyMD leading-relaxed">{desc}</p>
@@ -133,7 +133,7 @@ export default function ClientPage() {
             description="Cada trabalhador carrega sonhos, histórias e a responsabilidade de voltar para casa em segurança."
           />
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-4">
+            <div className="ui-card space-y-4">
               <p className="text-text-body text-bodyMD leading-relaxed">
                 Não vendemos apenas capacete, luva ou cinto. Entregamos confiança, conhecimento e cuidado para quem está
                 na obra, na altura ou no chão de fábrica.
@@ -189,7 +189,7 @@ export default function ClientPage() {
             {valores.map((valor) => (
               <div
                 key={valor.title}
-                className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface flex gap-4 items-start"
+                className="ui-card flex gap-4 items-start"
               >
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <IconBullet icon={valor.icon} />
@@ -212,7 +212,7 @@ export default function ClientPage() {
           />
           <div className="grid md:grid-cols-3 gap-6">
             {motivos.map((motivo) => (
-              <div key={motivo.title} className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+              <div key={motivo.title} className="ui-card space-y-3">
                 <div className="w-11 h-11 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <IconBullet icon={motivo.icon} />
                 </div>
@@ -226,7 +226,7 @@ export default function ClientPage() {
 
       <Section id="compromisso" variant="default">
         <Container className="max-w-5xl">
-          <div className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-bg-surface/10 space-y-6">
+          <div className="ui-cta border-bg-surface/10 space-y-6">
             <p className="text-action-primary font-display font-bold uppercase tracking-[0.3em] text-labelSM">Nosso compromisso final</p>
             <h3 className="text-titleLG md:text-displayXL font-display font-black leading-tight">
               &quot;Conectamos tecnologia e humanidade para proteger o que mais importa: a vida.&quot;

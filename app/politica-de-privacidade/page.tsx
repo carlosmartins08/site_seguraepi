@@ -44,6 +44,7 @@ export default function PoliticaDePrivacidadePage() {
       <Section id="privacy-hero" variant="offwhite" className="pt-nav pb-14">
         <Container size="narrow">
           <SectionTitle
+            as="h1"
             subtitle="Privacidade"
             title={title}
             description={`Atualizado em ${updatedAt}.`}
@@ -63,7 +64,7 @@ export default function PoliticaDePrivacidadePage() {
 
       <Section id="privacy-cta" variant="dark" className="pb-20">
         <Container>
-          <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
+          <div className="ui-cta">
             <h3 className="text-titleLG font-display font-semibold text-text-inverse">Precisa falar sobre dados?</h3>
             <p className="text-text-faint text-bodySM mt-2">
               Nosso time responde rapidamente sobre LGPD, uso e armazenamento de dados.

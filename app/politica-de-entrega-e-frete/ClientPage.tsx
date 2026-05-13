@@ -102,7 +102,7 @@ export default function ClientPage() {
             description="Condições especiais para Grande João Pessoa e demais regiões."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surfaceMuted">
+            <div className="ui-card bg-bg-surfaceMuted">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7l9 5 9-5-9-5-9 5zm0 5l9 5 9-5m-9 5v5" /></svg>
@@ -114,7 +114,7 @@ export default function ClientPage() {
                 para verificar a disponibilidade de rota para o seu bairro.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
@@ -137,7 +137,7 @@ export default function ClientPage() {
             description="Escolha a modalidade que melhor atende sua necessidade."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+            <div className="ui-card space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -149,7 +149,7 @@ export default function ClientPage() {
                 entrega até sua porta.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface space-y-3">
+            <div className="ui-card space-y-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 13h2l1 3h11l1-3h2m-2-5h2l2 5v6a1 1 0 01-1 1h-3m-4 0H9m-4 0H4a1 1 0 01-1-1v-6l2-5h2" /></svg>
@@ -202,7 +202,7 @@ export default function ClientPage() {
             description="O prazo começa a contar a partir do faturamento do pedido."
           />
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-xl bg-action-primary/10 text-action-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
@@ -213,7 +213,7 @@ export default function ClientPage() {
                 Entregas conforme cronograma da frota própria. Consulte os dias da sua região.
               </p>
             </div>
-            <div className="p-6 rounded-xl border border-border-muted shadow-elevation-1 bg-bg-surface">
+            <div className="ui-card">
               <div className="flex items-center gap-3 mb-2">
                 <div className="w-10 h-10 rounded-xl bg-bg-inverse/10 text-text-primary flex items-center justify-center">
                   <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
@@ -230,7 +230,7 @@ export default function ClientPage() {
 
       <Section id="delivery-cta" variant="dark" className="pb-20">
         <Container>
-          <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
+          <div className="ui-cta">
             <h3 className="text-titleLG font-display font-semibold text-text-inverse">Quer validar prazo e rota?</h3>
             <p className="text-text-faint text-bodySM mt-2">Nosso time confirma SLA e melhor modalidade de entrega.</p>
             <div className="flex flex-wrap gap-3 mt-6">

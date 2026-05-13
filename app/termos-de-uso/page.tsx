@@ -44,6 +44,7 @@ export default function TermosDeUsoPage() {
       <Section id="terms-hero" variant="offwhite" className="pt-nav pb-14">
         <Container size="narrow">
           <SectionTitle
+            as="h1"
             subtitle="Termos"
             title={title}
             description={`Atualizado em ${updatedAt}.`}
@@ -63,7 +64,7 @@ export default function TermosDeUsoPage() {
 
       <Section id="terms-cta" variant="dark" className="pb-20">
         <Container>
-          <div className="bg-bg-deep border border-border-inverse rounded-2xl p-8 md:p-10">
+          <div className="ui-cta">
             <h3 className="text-titleLG font-display font-semibold text-text-inverse">Precisa de esclarecimento?</h3>
             <p className="text-text-faint text-bodySM mt-2">Estamos disponíveis para orientar sobre prazos, pedidos e responsabilidades.</p>
             <div className="flex flex-wrap gap-3 mt-6">

@@ -52,6 +52,7 @@ export default function ComoComprarPage() {
         <Container size="wide" className="relative z-10 grid lg:grid-cols-12 gap-10 items-center">
           <div className="lg:col-span-7 space-y-8">
             <SectionTitle
+              as="h1"
               subtitle="Onboarding B2B"
               title="Como Comprar e Cadastro de Clientes | Segura EPI"
               description="Processo de cadastro estruturado e transparente para liberar compras em até 24 horas úteis após o envio da documentação completa."
@@ -78,7 +79,7 @@ export default function ComoComprarPage() {
             />
             <LastUpdated variant="dark" date={AUTHORITY_INFO.updatedAt} />
           </div>
-          <div className="lg:col-span-5 bg-bg-surface/10 border border-bg-surface/10 rounded-2xl p-8 shadow-elevation-2 backdrop-blur-xl">
+          <div className="lg:col-span-5 rounded-2xl bg-bg-surface/10 border border-bg-surface/10 p-8 shadow-elevation-2 backdrop-blur-xl">
             <p className="text-action-primary font-display font-semibold uppercase tracking-[0.18em] text-labelSM mb-4">Prazos</p>
             <h3 className="text-titleXL font-display font-semibold text-text-inverse mb-4">Liberação em até 24h úteis</h3>
             <p className="text-text-faint text-bodySM leading-relaxed">
@@ -97,7 +98,7 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-8">
-            <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8 shadow-elevation-1">
+            <div className="ui-panel md:p-8">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-labelSM mb-3">Compra à vista (Cadastro rápido)</p>
               <h3 className="text-titleLG font-display font-black text-text-primary mb-3">Cadastro rápido</h3>
               <p className="text-text-body text-bodyMD mb-4">Ideal para quem tem urgência. Cadastro simplificado com dados comerciais e fiscais.</p>
@@ -124,7 +125,7 @@ export default function ComoComprarPage() {
             </div>
           </div>
 
-          <div className="rounded-2xl border border-border-subtle bg-bg-surface p-8 shadow-elevation-1">
+          <div className="ui-panel md:p-8">
             <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
               <div className="space-y-3 max-w-2xl">
                 <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-labelSM">Modalidade presencial</p>
@@ -151,7 +152,7 @@ export default function ComoComprarPage() {
           />
 
           <div className="grid md:grid-cols-2 gap-10">
-            <div className="p-8 border border-border-subtle rounded-2xl bg-bg-surfaceMuted/40">
+            <div className="ui-panel md:p-8 bg-bg-surfaceMuted/40">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-4">Dados fiscais</h4>
               <ul className="space-y-3 text-bodySM">
                 {[
@@ -161,7 +162,7 @@ export default function ComoComprarPage() {
                 ].map((item) => bullet(item, item))}
               </ul>
             </div>
-            <div className="p-8 border border-border-subtle rounded-2xl bg-bg-surface">
+            <div className="ui-panel md:p-8">
               <h4 className="text-titleMD font-display font-bold text-text-primary mb-4">Contatos e endereços</h4>
               <ul className="space-y-3 text-bodySM">
                 {[
@@ -195,7 +196,7 @@ export default function ComoComprarPage() {
               ].map((item) => bullet(item, item))}
             </ul>
           </div>
-          <div className="lg:col-span-5 bg-bg-surface p-8 rounded-2xl border border-border-subtle shadow-elevation-1">
+          <div className="lg:col-span-5 ui-panel md:p-8">
             <h4 className="text-titleMD font-display font-bold text-text-primary mb-3">Perguntas frequentes</h4>
             <div className="space-y-4 text-text-body text-bodySM">
               {faqItems.map((item) => (
@@ -210,7 +211,7 @@ export default function ComoComprarPage() {
       </Section>
 
       <Section id="cta-final" variant="default" className="pb-24 cv-auto">
-        <Container className="bg-bg-inverse text-text-inverse rounded-2xl p-8 md:p-12 shadow-elevation-2 border border-border-inverse">
+        <Container className="ui-cta">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div className="space-y-4 max-w-2xl">
               <p className="text-action-primary font-display font-bold uppercase tracking-[0.25em] text-labelSM">Pronto para comprar</p>
