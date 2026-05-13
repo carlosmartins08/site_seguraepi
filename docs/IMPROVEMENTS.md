@@ -65,3 +65,10 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Monitor minimo de funil com APIs (`/api/funnel/event`, `/api/funnel/summary`) e painel interno (`/painel-funil`)
 - Experimento A/B no hero da home (variantes `control` x `intent`) com evento de exposicao
 - Pipeline GA-first: `page_view` manual para App Router + prioridade GTM quando configurado
+
+## 2026-05
+- Core layout hardening (Home, Catalogo, EPI, EPI Categoria, Como Comprar, Chat, Centro Tecnico)
+- Padroes semanticos de bloco adicionados em `styles/segura-ui.css`: `ui-card`, `ui-panel`, `ui-cta`
+- Componentes base refinados para consistencia: `Button`, `Field`, `Section`, `SectionTitle`
+- Checklist operacional de qualidade visual adicionado em `docs/LAYOUT_QUALITY_CHECKLIST.md`
+- QA semantico de headings concluido com evidencias em `docs/HEADING_SEMANTIC_QA_REPORT.md`
