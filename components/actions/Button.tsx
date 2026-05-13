@@ -40,23 +40,23 @@ export const Button: React.FC<ButtonProps> = (props) => {
   }, [motionEnabled]);
 
   const baseStyles = cn(
-    "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,border-color,color] duration-base ease-standard rounded-md focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface disabled:opacity-50 disabled:cursor-not-allowed",
+    "inline-flex items-center justify-center gap-2 font-sans font-semibold tracking-[0.01em] transition-[transform,box-shadow,background-color,border-color,color] duration-base ease-standard rounded-md border border-transparent focus:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface disabled:opacity-50 disabled:cursor-not-allowed",
     !motionEnabled && "hover:-translate-y-0.5 active:scale-[0.98]"
   );
   
   const variants = {
-    primary: "bg-action-primary text-text-onBrand shadow-elevation-1 hover:bg-action-primaryHover active:bg-action-primaryPressed",
-    secondary: "bg-action-secondary text-text-inverse hover:bg-action-secondaryHover",
-    outline: "bg-transparent border border-border-strong text-text-primary hover:border-action-primary hover:text-action-primaryHover",
+    primary: "bg-action-primary text-text-onBrand shadow-elevation-1 hover:bg-action-primaryHover hover:shadow-elevation-2 active:bg-action-primaryPressed",
+    secondary: "bg-action-secondary text-text-inverse shadow-elevation-1 hover:bg-action-secondaryHover hover:shadow-elevation-2",
+    outline: "bg-transparent border-border-strong text-text-primary hover:border-action-primary hover:text-action-primaryHover hover:bg-bg-surfaceMuted",
     ghost: "bg-transparent text-text-primary hover:bg-bg-surfaceMuted",
-    'outline-inverse': "bg-transparent border border-bg-surface/40 text-text-inverse hover:border-action-primary hover:text-action-primaryHover",
-    'ghost-inverse': "bg-transparent text-text-inverse border border-bg-surface/20 hover:bg-bg-surface/10 hover:border-bg-surface/40",
+    'outline-inverse': "bg-transparent border-bg-surface/40 text-text-inverse hover:border-action-primary hover:text-action-primaryHover hover:bg-bg-surface/10",
+    'ghost-inverse': "bg-transparent text-text-inverse border-bg-surface/20 hover:bg-bg-surface/10 hover:border-bg-surface/40",
   };
 
   const sizes = {
     sm: "px-4 py-2 text-labelMD rounded-sm",
     md: "px-6 py-3 text-bodySM rounded-md",
-    lg: "px-8 py-4 text-bodyMD rounded-lg",
+    lg: "px-8 py-4 text-bodyMD rounded-md",
   };
 
   if (typeof (props as any).href === 'string') {

@@ -4,14 +4,12 @@
 */
 
 :root {
-  --segura-primary: #FF9B21;
-  --segura-dark: #0B1220;
   --nav-offset: 112px;
 }
 
 body {
+  @apply text-text-primary;
   font-family: var(--font-inter), 'Inter', sans-serif;
-  color: var(--segura-dark);
   scroll-behavior: smooth;
 }
 
@@ -37,13 +35,12 @@ section[id] {
   height: 1px;
   overflow: hidden;
   z-index: 200;
-  background: #fff;
-  color: var(--segura-dark);
+  @apply bg-bg-surface text-text-primary shadow-elevation-1;
   padding: 12px 16px;
   border-radius: 12px;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  box-shadow: none;
 }
 
 .skip-link:focus {
@@ -56,6 +53,18 @@ section[id] {
 
 h1, h2, h3, h4, .font-display {
   font-family: var(--font-poppins), 'Poppins', sans-serif;
+}
+
+.ui-card {
+  @apply rounded-lg border border-border-subtle bg-bg-surface p-6 shadow-elevation-1;
+}
+
+.ui-panel {
+  @apply rounded-2xl border border-border-subtle bg-bg-surface p-8 md:p-10 shadow-elevation-1;
+}
+
+.ui-cta {
+  @apply rounded-2xl border border-border-inverse bg-bg-deep p-8 md:p-12 text-text-inverse shadow-elevation-2;
 }
 
 /* Animações Design System */
@@ -184,8 +193,8 @@ html.no-js .reveal {
 
 #wbot-open-chat {
   border-radius: 24px !important;
-  background: var(--segura-primary) !important;
-  color: var(--segura-dark) !important;
+  background: #ff9b21 !important;
+  color: #0b1220 !important;
   border: 1px solid rgba(255, 155, 33, 0.25) !important;
   box-shadow:
     0 18px 40px -20px rgba(15, 23, 42, 0.35),

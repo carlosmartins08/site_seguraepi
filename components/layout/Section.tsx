@@ -21,7 +21,7 @@ export const Section: React.FC<SectionProps> = ({ id, children, className, varia
     <section 
       id={id} 
       className={cn(
-        "py-16 md:py-20 transition-colors duration-slow ease-standard", 
+        "py-16 md:py-20 lg:py-24 transition-colors duration-slow ease-standard",
         variantStyles[variant],
         className
       )}
