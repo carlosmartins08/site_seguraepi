@@ -21,8 +21,10 @@ Projeto institucional B2B em Next.js 16 (App Router) com foco em autoridade tecn
 - `npm run dev` - desenvolvimento (Next)
 - `npm run build` - build de producao (valida TypeScript + rotas tipadas)
 - `npm run start` - serve o build
+- `npm run typecheck` - valida tipagem TypeScript
 - `npm run lint:design` - lint de design system (tokens, spacing, radius, cores soltas)
 - `npm run lint:routes` - valida rotas internas contra `lib/routes.ts`
+- `npm run quality` - roda typecheck + lint de design + lint de rotas
 
 ## Variaveis de ambiente
 - `NEXT_PUBLIC_WBOT_TOKEN` - token do WBOT (obrigatorio para chat online)
@@ -89,3 +91,4 @@ Helpers em `lib/seo/schema.ts` + componente `components/seo/JsonLd.tsx`:
 - `docs/INTEGRATIONS_WBOT.md` - integracao e troubleshooting do chat
 - `docs/IMPROVEMENTS.md` - registro das melhorias aplicadas
 - `docs/MAINTENANCE.md` - guia de manutencao e atualizacoes
+- `docs/RELEASE_CHECKLIST.md` - checklist objetivo para deploy seguro

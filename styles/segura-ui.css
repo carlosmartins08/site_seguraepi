@@ -67,7 +67,27 @@ h1, h2, h3, h4, .font-display {
   @apply rounded-2xl border border-border-inverse bg-bg-deep p-8 md:p-12 text-text-inverse shadow-elevation-2;
 }
 
-/* Animações Design System */
+.ui-interactive {
+  @apply transition-all duration-base ease-standard;
+}
+
+.ui-press {
+  @apply active:scale-[0.98];
+}
+
+.ui-lift {
+  @apply hover:-translate-y-0.5;
+}
+
+.ui-link {
+  @apply transition-colors duration-base ease-standard hover:text-action-primaryHover;
+}
+
+.ui-icon-shift {
+  @apply transition-transform duration-base ease-standard group-hover:translate-x-1;
+}
+
+/* Animacoes Design System */
 @keyframes pop {
   0% { transform: scale(0.95); opacity: 0; }
   100% { transform: scale(1); opacity: 1; }

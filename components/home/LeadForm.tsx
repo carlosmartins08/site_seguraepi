@@ -143,9 +143,13 @@ export const LeadForm: React.FC = () => {
 
   return (
     <form onSubmit={handleSubmit} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-10 shadow-elevation-1 space-y-8">
-      <div className="space-y-2">
+      <div className="space-y-3">
         <h3 className="text-titleMD font-display font-semibold text-text-primary">Dados para atendimento rápido</h3>
         <p className="text-bodySM text-text-body">Preencha o mínimo necessário para o consultor montar a proposta.</p>
+        <div className="flex flex-wrap gap-2 pt-1">
+          <span className="inline-flex items-center rounded-full border border-border-muted bg-bg-surfaceMuted px-3 py-1 text-labelSM text-text-body">Resposta em horário comercial</span>
+          <span className="inline-flex items-center rounded-full border border-border-muted bg-bg-surfaceMuted px-3 py-1 text-labelSM text-text-body">Sem compromisso de compra</span>
+        </div>
       </div>
 
       <div className="grid md:grid-cols-2 gap-5">
@@ -275,13 +279,16 @@ export const LeadForm: React.FC = () => {
           type="submit"
           variant="primary"
           size="lg"
-          className="w-full md:w-auto shadow-glow-brand"
+          className="w-full md:w-auto"
           onClick={() => {
             if (hasErrors || hasConsentError) markErrors();
           }}
         >
-          Receber atendimento consultivo no WhatsApp
+          Falar com consultor no WhatsApp
         </Button>
+        <p className="text-labelSM text-text-subtle">
+          Ao enviar, você será direcionado para o atendimento com seu contexto já preenchido.
+        </p>
       </div>
     </form>
   );

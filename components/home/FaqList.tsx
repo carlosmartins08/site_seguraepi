@@ -12,14 +12,23 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
   const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(0);
 
   return (
-    <div className="grid lg:grid-cols-2 gap-6">
+    <div className="flex flex-col gap-6">
       {items.map((item, index) => (
-        <div key={item.q} className="bg-bg-surface rounded-2xl border border-border-subtle p-6 md:p-8 shadow-elevation-1">
+        <div
+          key={item.q}
+          className={cn(
+            "bg-bg-surface rounded-2xl border p-6 md:p-8 transition-all duration-base ease-standard",
+            openFaqIndex === index
+              ? "border-action-primary shadow-elevation-2 ring-2 ring-action-primary/20"
+              : "border-border-subtle shadow-elevation-1"
+          )}
+        >
           <button
             type="button"
             onClick={() => setOpenFaqIndex(openFaqIndex === index ? null : index)}
             aria-expanded={openFaqIndex === index}
             aria-controls={`faq-panel-${index}`}
+            id={`faq-trigger-${index}`}
             className="w-full flex items-center justify-between text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-focus-ring focus-visible:ring-offset-2 focus-visible:ring-offset-bg-surface"
           >
             <h3 className="text-titleMD font-display font-semibold text-text-primary tracking-tight">{item.q}</h3>
@@ -35,6 +44,7 @@ export const FaqList: React.FC<{ items: FaqItem[] }> = ({ items }) => {
           <div
             id={`faq-panel-${index}`}
             role="region"
+            aria-labelledby={`faq-trigger-${index}`}
             className={cn(
               "mt-4 grid transition-[grid-template-rows,opacity] duration-base ease-standard",
               openFaqIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"

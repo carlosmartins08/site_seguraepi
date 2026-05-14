@@ -23,16 +23,16 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
 
   return (
     <div className={cn(
-      "mb-10 md:mb-12",
+      "mb-8 md:mb-10",
       alignment === 'center' ? "text-center mx-auto max-w-3xl" : "text-left"
     )}>
       {subtitle && (
-        <span className="text-action-primary font-display font-semibold uppercase tracking-[0.16em] text-labelSM mb-3 block">
+        <span className="text-action-primary font-display font-semibold uppercase tracking-[0.14em] text-labelSM mb-2 block">
           {subtitle}
         </span>
       )}
       <TitleTag className={cn(
-        "text-titleLG md:text-titleXL font-display font-bold leading-tight mb-4 md:mb-5",
+        "text-titleLG md:text-titleXL font-display font-bold leading-tight mb-3 md:mb-4",
         light ? "text-text-inverse" : "text-text-primary"
       )}>
         {title}
@@ -47,7 +47,7 @@ export const SectionTitle: React.FC<SectionTitleProps> = ({
         </p>
       )}
       <div className={cn(
-        "w-12 h-1 bg-action-primary mt-5 rounded-full",
+        "w-10 h-1 bg-action-primary mt-4 rounded-full",
         alignment === 'center' ? "mx-auto" : ""
       )} />
     </div>

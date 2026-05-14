@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import type { Route } from 'next';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Container } from './Container';
 import { SeguraLogo, LOGO_RULES } from '../brand/SeguraLogo';
 import { Button } from '../actions/Button';
@@ -22,6 +23,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
@@ -104,11 +106,11 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         : animateOverlayClose({ overlay, items });
   }, [isMobileMenuOpen]);
 
-  const navLinks: Array<{ name: string; href: Route; showDesktop?: boolean }> = [
+  const navLinks: Array<{ name: string; href: Route; desktopName?: string; showDesktop?: boolean }> = [
     { name: t('nav.home', 'Início'), href: ROUTES.home, showDesktop: false },
     { name: t('nav.catalog', 'Catálogo'), href: ROUTES.catalog },
-    { name: t('nav.epiCategories', 'EPI por Categoria'), href: ROUTES.epiCategories },
-    { name: t('nav.center', 'Centro Técnico'), href: ROUTES.center },
+    { name: t('nav.epiCategories', 'EPI por Categoria'), desktopName: t('nav.epiCategoriesShort', 'Categorias'), href: ROUTES.epiCategories },
+    { name: t('nav.center', 'Centro Técnico'), desktopName: t('nav.centerShort', 'Centro'), href: ROUTES.center },
     { name: t('nav.howToBuy', 'Como Comprar'), href: ROUTES.howToBuy },
     { name: t('nav.about', 'Quem Somos'), href: ROUTES.about },
   ];
@@ -119,6 +121,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
   const chatLabel = t('nav.chat', 'Atendimento online');
   const teamOnlineLabel = t('nav.teamOnlineNow', 'Time comercial online agora');
   const supportBlockLabel = t('nav.supportBlock', 'Suporte Industrial');
+  const isLinkActive = (href: Route) =>
+    pathname === href || (href !== ROUTES.home && pathname.startsWith(`${href}/`));
 
   return (
     <>
@@ -128,19 +132,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         isScrolled ? "-translate-y-full opacity-0" : "translate-y-0 opacity-100"
       )}>
         <Container className="h-10 flex justify-between items-center">
-          <div className="flex items-center gap-6">
-            <a
-              href={CONTACT_INFO.googleMapsLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-labelMD font-medium text-text-soft hover:text-action-primaryHover transition-colors group"
-            >
-              <svg className="w-3 h-3 text-action-primary group-hover:scale-125 transition-transform" fill="currentColor" viewBox="0 0 20 20">
-                <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
-              </svg>
-              {CONTACT_INFO.address}
-            </a>
-            <div className="w-[1px] h-3 bg-bg-surface/10" />
+          <div className="flex items-center gap-4">
             <a
               href={phoneHref(CONTACT_INFO.phone)}
               className="flex items-center gap-2 text-labelMD font-medium text-text-soft hover:text-action-primaryHover transition-colors"
@@ -153,8 +145,8 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           </div>
           <div className="flex items-center gap-4">
             <LocaleSwitcher compact />
-            <div className="flex items-center gap-2 px-3 py-1 bg-bg-surface/10 rounded-full border border-bg-surface/10 transition-all duration-700">
-              <span className="w-1.5 h-1.5 bg-action-primary rounded-full animate-pulse"></span>
+            <div className="flex items-center gap-2 px-3 py-1 bg-bg-surface/10 rounded-full border border-bg-surface/10">
+              <span className="w-1.5 h-1.5 bg-action-primary rounded-full"></span>
               <span className="text-labelMD font-medium text-text-soft">
                 {priorityLabel} <span className="text-text-inverse">{CONTACT_INFO.priorityRegion}</span>
               </span>
@@ -167,7 +159,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         "fixed left-0 right-0 z-[70] transition-all duration-500 ease-in-out",
         isScrolled
           ? "top-0 h-16 glass-header border-b border-border-default/40 shadow-elevation-1"
-          : "top-0 lg:top-10 h-24 bg-transparent border-b border-transparent"
+          : "top-0 xl:top-10 h-20 bg-transparent border-b border-transparent"
       )}>
         {/* Scroll Progress Bar with Technical Glow */}
         <div
@@ -176,7 +168,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         />
 
         <Container className="h-full flex items-center justify-between">
-          <Link href={ROUTES.home} className="hover:scale-105 transition-transform duration-500 relative z-10">
+          <Link href={ROUTES.home} className="ui-interactive hover:scale-105 relative z-10">
             <SeguraLogo
               section="navbar"
               variant={logoVariant}
@@ -187,37 +179,42 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           </Link>
 
           {/* Desktop Navigation Center */}
-          <nav className="hidden lg:flex items-center gap-8 xl:gap-12">
+          <nav className="hidden xl:flex items-center gap-2 rounded-full border border-border-default/40 bg-bg-surface/80 px-3 py-2 backdrop-blur-sm">
             {navLinks
               .filter((link) => link.showDesktop !== false)
-              .map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className={cn(
-                  "relative py-2 text-bodySM font-medium transition-all group",
-                  isScrolled || variant === 'light' ? "text-text-primary hover:text-action-primaryHover" : "text-text-inverse hover:text-action-primaryHover"
-                )}
-              >
-                {link.name}
-                {/* Magnetic Technical Underline */}
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-action-primary transition-all duration-500 group-hover:w-full shadow-glow-brand" />
-              </Link>
-              ))}
+              .map((link) => {
+                const isActive = isLinkActive(link.href);
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    aria-current={isActive ? 'page' : undefined}
+                    className={cn(
+                      "relative whitespace-nowrap rounded-full px-4 py-2 text-labelMD font-semibold ui-interactive group",
+                      isActive
+                        ? "bg-action-primary/15 text-action-primary border border-action-primary/30"
+                        : isScrolled || variant === 'light'
+                          ? "text-text-primary hover:text-action-primaryHover"
+                          : "text-text-inverse hover:text-action-primaryHover"
+                    )}
+                  >
+                    {link.desktopName ?? link.name}
+                    {/* Magnetic Technical Underline */}
+                    {!isActive && <span className="absolute left-4 right-4 -bottom-[1px] h-[2px] bg-action-primary opacity-0 transition-all duration-300 group-hover:opacity-100" />}
+                  </Link>
+                );
+              })}
           </nav>
 
           {/* Status & CTA Cluster */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-4">
             <div className={cn(
-              "flex items-center gap-3 px-4 py-2 rounded-full border transition-all duration-700 group cursor-default relative overflow-hidden",
+              "flex items-center gap-2.5 px-4 py-2 rounded-full border ui-interactive cursor-default",
               isOnline
-                ? "bg-bg-surfaceMuted/40 border-border-default/40 hover:border-tech-compliance/20"
+                ? "bg-bg-surfaceMuted/40 border-border-default/40"
                 : "bg-bg-inverse/10 border-border-subtle/20"
             )}>
-              {!isOnline && <div className="absolute inset-0 bg-action-primary/10 animate-pulse"></div>}
-
-              <span className="flex h-2 w-2 relative z-10">
-                {isOnline && <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-tech-compliance opacity-40"></span>}
+              <span className="flex h-2 w-2 relative">
                 <span className={cn(
                   "relative inline-flex rounded-full h-2 w-2",
                   isOnline ? "bg-tech-compliance" : "bg-text-subtle"
@@ -226,9 +223,9 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
               <span
                 aria-live="polite"
                 className={cn(
-                  "text-bodySM font-medium transition-colors relative z-10 whitespace-nowrap",
+                  "text-bodySM font-medium transition-colors whitespace-nowrap",
                   isOnline
-                    ? (isScrolled || variant === 'light' ? "text-text-soft group-hover:text-tech-compliance" : "text-text-soft group-hover:text-tech-compliance")
+                    ? "text-text-soft"
                     : "text-text-soft italic"
                 )}
               >
@@ -260,7 +257,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
           <button
             onClick={() => setIsMobileMenuOpen(true)}
             className={cn(
-              "lg:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 transition-all rounded-2xl",
+              "xl:hidden w-12 h-12 flex flex-col items-center justify-center gap-1.5 ui-interactive rounded-2xl",
               isScrolled || variant === 'light'
                 ? "bg-bg-surfaceMuted text-text-primary"
                 : "bg-bg-surface/10 text-text-inverse border border-bg-surface/10"
@@ -282,6 +279,7 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         id="mobile-menu"
         role="dialog"
         aria-modal="true"
+        aria-labelledby="mobile-menu-title"
         aria-hidden={!isMobileMenuOpen}
         className={cn(
           "fixed inset-0 z-[100] bg-bg-inverse opacity-0 translate-x-full",
@@ -292,6 +290,9 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
         <div className="absolute bottom-0 left-0 w-64 h-64 bg-action-primary/10 rounded-full blur-[80px] -ml-32 -mb-32" />
 
         <Container className="h-full flex flex-col py-10 relative z-10">
+          <h2 id="mobile-menu-title" className="sr-only">
+            {directoryLabel}
+          </h2>
           <div className="flex justify-between items-center mb-16">
             <SeguraLogo section="navbar" variant="dark" size="md" padding="tight" />
             <button
@@ -315,20 +316,33 @@ export const Navbar: React.FC<NavbarProps> = ({ variant = 'light' }) => {
             </div>
 
             <nav ref={menuItemsRef as React.Ref<HTMLElement>} className="flex flex-col gap-6 md:gap-8">
-              {navLinks.map((link, i) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-titleLG md:text-displayLG font-display font-semibold text-text-inverse tracking-tight hover:text-action-primaryHover transition-all duration-500 flex items-center group relative"
-                  data-motion="menu-item"
-                  style={{ transitionDelay: `${i * 100}ms` }}
-                >
-                  <span className="mr-3 opacity-20 group-hover:opacity-100 group-hover:mr-6 transition-all duration-500 text-titleLG md:text-displayLG">0{i + 1}</span>
-                  {link.name}
-                  <span className="ml-6 w-0 h-1 bg-action-primary transition-all duration-700 group-hover:w-24 shadow-glow-brand" />
-                </Link>
-              ))}
+              {navLinks.map((link, i) => {
+                  const isActive = isLinkActive(link.href);
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      aria-current={isActive ? 'page' : undefined}
+                      className={cn(
+                        "text-titleLG md:text-displayLG font-display font-semibold tracking-tight transition-all duration-500 flex items-center group relative",
+                        isActive ? "text-action-primaryHover" : "text-text-inverse hover:text-action-primaryHover"
+                      )}
+                      data-motion="menu-item"
+                      style={{ transitionDelay: `${i * 100}ms` }}
+                    >
+                      <span className={cn(
+                        "mr-3 transition-all duration-500 text-titleLG md:text-displayLG",
+                        isActive ? "opacity-100 mr-6" : "opacity-20 group-hover:opacity-100 group-hover:mr-6"
+                      )}>0{i + 1}</span>
+                      {link.name}
+                      <span className={cn(
+                        "ml-6 h-1 bg-action-primary transition-all duration-700 shadow-glow-brand",
+                        isActive ? "w-24" : "w-0 group-hover:w-24"
+                      )} />
+                    </Link>
+                  );
+                })}
             </nav>
           </div>
 
