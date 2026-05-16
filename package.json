@@ -10,6 +10,7 @@
     "quality": "npm run typecheck && npm run lint:design && npm run lint:routes",
     "lint:design": "tsx tools/lint-design.ts",
     "lint:routes": "tsx tools/lint-routes.ts",
+    "ops:replay-leads": "tsx tools/replay-lead-fallback.ts",
     "test:smoke": "playwright test tests/smoke.spec.ts --workers=1",
     "test:api": "playwright test tests/api-contract.spec.ts"
   },

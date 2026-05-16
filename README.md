@@ -87,8 +87,13 @@ Helpers em `lib/seo/schema.ts` + componente `components/seo/JsonLd.tsx`:
 - `FAQPage` e `BreadcrumbList` nas paginas com FAQ
 
 ## Documentacao
+- `CONTRIBUTING.md` - fluxo de contribuicao, padrao de commit e regras de mudanca
+- `docs/HANDOFF.md` - passagem de bastao tecnica (estado atual + onde mexer)
 - `docs/ARCHITECTURE.md` - regras, padroes e guardrails
+- `docs/DESIGN_IMPLEMENTATION_CONTRACT.md` - contrato Figma -> Codigo e restricoes do Design System
 - `docs/INTEGRATIONS_WBOT.md` - integracao e troubleshooting do chat
 - `docs/IMPROVEMENTS.md` - registro das melhorias aplicadas
 - `docs/MAINTENANCE.md` - guia de manutencao e atualizacoes
 - `docs/RELEASE_CHECKLIST.md` - checklist objetivo para deploy seguro
+- `docs/ALERTS_RUNBOOK.md` - alertas, resposta a incidente e replay de fallback
+

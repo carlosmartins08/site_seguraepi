@@ -1,4 +1,4 @@
-﻿'use client';
+'use client';
 
 import React, { useMemo, useState } from 'react';
 import { Button } from '../actions/Button';
@@ -16,6 +16,7 @@ type LeadFormState = {
   whatsapp: string;
   items: string;
 };
+const LEAD_FORM_DRAFT_KEY = 'lead_form_draft_v1';
 
 const onlyDigits = (value: string) => value.replace(/\D/g, '');
 
@@ -58,7 +59,10 @@ async function submitLead(payload: Record<string, unknown>): Promise<boolean> {
   try {
     const response = await fetch('/api/lead', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-idempotency-key': `lead-${Date.now()}-${Math.random().toString(36).slice(2, 10)}`,
+      },
       body: JSON.stringify(payload),
       keepalive: true,
       signal: controller.signal,
@@ -83,6 +87,26 @@ export const LeadForm: React.FC = () => {
   const [consent, setConsent] = useState(false);
   const [consentTouched, setConsentTouched] = useState(false);
   const [touched, setTouched] = useState<Record<string, boolean>>({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const raw = window.sessionStorage.getItem(LEAD_FORM_DRAFT_KEY);
+    if (!raw) return;
+    try {
+      const parsed = JSON.parse(raw) as { form?: LeadFormState; consent?: boolean };
+      if (parsed.form) setForm((prev) => ({ ...prev, ...parsed.form }));
+      if (typeof parsed.consent === 'boolean') setConsent(parsed.consent);
+    } catch {
+      // ignore invalid draft payload
+    }
+  }, []);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.sessionStorage.setItem(LEAD_FORM_DRAFT_KEY, JSON.stringify({ form, consent }));
+  }, [form, consent]);
 
   const handleChange =
     (field: keyof LeadFormState) =>
@@ -100,8 +124,8 @@ export const LeadForm: React.FC = () => {
   const errors = useMemo(
     () => ({
       name: form.name.trim() ? '' : 'Informe o nome do comprador.',
-      company: form.company.trim() ? '' : 'Informe a razão social.',
-      whatsapp: onlyDigits(form.whatsapp).length >= 10 ? '' : 'Informe um WhatsApp válido.',
+      company: form.company.trim() ? '' : 'Informe a razao social.',
+      whatsapp: onlyDigits(form.whatsapp).length >= 10 ? '' : 'Informe um WhatsApp valido.',
       cnpj: form.cnpj && onlyDigits(form.cnpj).length < 14 ? 'CNPJ incompleto.' : '',
     }),
     [form]
@@ -119,6 +143,7 @@ export const LeadForm: React.FC = () => {
     event.preventDefault();
 
     if (typeof window === 'undefined') return;
+    if (isSubmitting) return;
     if (hasErrors || hasConsentError) {
       markErrors();
       return;
@@ -132,11 +157,21 @@ export const LeadForm: React.FC = () => {
       consentAt: consent ? new Date().toISOString() : undefined,
     };
 
+    setIsSubmitting(true);
+    setSubmitError('');
     track('lead_submit_attempt', { source });
+
     const didSubmit = await submitLead(payload);
     track(didSubmit ? 'lead_submit_success' : 'lead_submit_fail', { source });
 
+    if (!didSubmit) {
+      setSubmitError('Nao foi possivel enviar agora. Verifique sua conexao e tente novamente.');
+      setIsSubmitting(false);
+      return;
+    }
+
     window.sessionStorage.setItem(LEAD_STORAGE_KEY, JSON.stringify(payload));
+    window.sessionStorage.removeItem(LEAD_FORM_DRAFT_KEY);
     storeChatContext({ intent: 'lead-form', origem: source });
     window.location.href = ROUTES.thanks;
   };
@@ -144,10 +179,10 @@ export const LeadForm: React.FC = () => {
   return (
     <form onSubmit={handleSubmit} className="bg-bg-surface border border-border-subtle rounded-2xl p-6 md:p-10 shadow-elevation-1 space-y-8">
       <div className="space-y-3">
-        <h3 className="text-titleMD font-display font-semibold text-text-primary">Dados para atendimento rápido</h3>
-        <p className="text-bodySM text-text-body">Preencha o mínimo necessário para o consultor montar a proposta.</p>
+        <h3 className="text-titleMD font-display font-semibold text-text-primary">Dados para atendimento rapido</h3>
+        <p className="text-bodySM text-text-body">Preencha o minimo necessario para o consultor montar a proposta.</p>
         <div className="flex flex-wrap gap-2 pt-1">
-          <span className="inline-flex items-center rounded-full border border-border-muted bg-bg-surfaceMuted px-3 py-1 text-labelSM text-text-body">Resposta em horário comercial</span>
+          <span className="inline-flex items-center rounded-full border border-border-muted bg-bg-surfaceMuted px-3 py-1 text-labelSM text-text-body">Resposta em horario comercial</span>
           <span className="inline-flex items-center rounded-full border border-border-muted bg-bg-surfaceMuted px-3 py-1 text-labelSM text-text-body">Sem compromisso de compra</span>
         </div>
       </div>
@@ -166,7 +201,7 @@ export const LeadForm: React.FC = () => {
           />
         </Field>
 
-        <Field id="lead-company" label="Empresa (razão social)" required error={touched.company ? errors.company : ''}>
+        <Field id="lead-company" label="Empresa (razao social)" required error={touched.company ? errors.company : ''}>
           <input
             id="lead-company"
             name="lead_company"
@@ -182,7 +217,7 @@ export const LeadForm: React.FC = () => {
         <Field
           id="lead-cnpj"
           label="CNPJ (opcional)"
-          hint="Se tiver em mãos, acelera a análise."
+          hint="Se tiver em maos, acelera a analise."
           error={touched.cnpj ? errors.cnpj : ''}
         >
           <input
@@ -207,9 +242,9 @@ export const LeadForm: React.FC = () => {
             className={fieldBase}
           >
             <option value="">Selecione</option>
-            <option value="Construcao">Construção</option>
-            <option value="Industria">Indústria</option>
-            <option value="Logistica">Logística</option>
+            <option value="Construcao">Construcao</option>
+            <option value="Industria">Industria</option>
+            <option value="Logistica">Logistica</option>
             <option value="Outros">Outros</option>
           </select>
         </Field>
@@ -242,7 +277,7 @@ export const LeadForm: React.FC = () => {
             value={form.items}
             onChange={handleChange('items')}
             rows={4}
-            placeholder="Ex: 30 botas NR-35, 50 luvas nitrílicas, 20 respiradores PFF2"
+            placeholder="Ex: 30 botas NR-35, 50 luvas nitrilicas, 20 respiradores PFF2"
             className={fieldBase}
           />
         </Field>
@@ -263,15 +298,15 @@ export const LeadForm: React.FC = () => {
             className="mt-0.5 h-4 w-4 rounded border-border-default text-action-primary focus:ring-focus-ring"
           />
           <span>
-            Ao enviar, você concorda com o tratamento dos dados conforme a{' '}
+            Ao enviar, voce concorda com o tratamento dos dados conforme a{' '}
             <a className="underline hover:text-action-primary" href={ROUTES.privacyPolicy}>
-              Política de Privacidade
+              Politica de Privacidade
             </a>.
           </span>
         </label>
         {consentTouched && !consent ? (
           <p id="lead-consent-error" className="text-bodySM text-status-danger">
-            Confirme a Política de Privacidade para continuar.
+            Confirme a Politica de Privacidade para continuar.
           </p>
         ) : null}
 
@@ -280,16 +315,24 @@ export const LeadForm: React.FC = () => {
           variant="primary"
           size="lg"
           className="w-full md:w-auto"
+          disabled={isSubmitting}
           onClick={() => {
             if (hasErrors || hasConsentError) markErrors();
           }}
         >
-          Falar com consultor no WhatsApp
+          {isSubmitting ? 'Enviando...' : 'Falar com consultor no WhatsApp'}
         </Button>
+        {submitError ? (
+          <p role="alert" className="text-bodySM text-status-danger">
+            {submitError}
+          </p>
+        ) : null}
         <p className="text-labelSM text-text-subtle">
-          Ao enviar, você será direcionado para o atendimento com seu contexto já preenchido.
+          Ao enviar, voce sera direcionado para o atendimento com seu contexto ja preenchido.
         </p>
       </div>
     </form>
   );
 };
+
+

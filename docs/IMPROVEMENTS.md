@@ -75,7 +75,7 @@ Registro das principais evolucoes para manutencao e onboarding tecnico.
 - Hardening de APIs criticas:
   - rate limit por IP em `/api/lead` e `/api/funnel/event`
   - validacao de payload e limites de tamanho
-  - fail-fast em producao quando `LEAD_WEBHOOK_URL` nao estiver configurado
+  - sem perda de lead em producao sem `LEAD_WEBHOOK_URL` (fila em `lead-fallback.ndjson` + resposta `202`)
 - Headers de seguranca HTTP adicionados em `next.config.js` (CSP, HSTS, X-Frame-Options, etc.)
 - Suite minima de testes adicionada com Playwright:
   - smoke de rotas criticas e regra de `h1` unico

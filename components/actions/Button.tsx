@@ -90,6 +90,16 @@ export const Button: React.FC<ButtonProps> = (props) => {
         className={cn(baseStyles, sizes[size], variants[variant], className)}
         onClick={handleClick}
         ref={motionRef as React.Ref<HTMLAnchorElement>}
+        target={
+          rest.target ??
+          (href.startsWith('http://') || href.startsWith('https://') ? '_blank' : undefined)
+        }
+        rel={
+          rest.rel ??
+          (href.startsWith('http://') || href.startsWith('https://')
+            ? 'noopener noreferrer'
+            : undefined)
+        }
         {...rest}
       >
         {children}

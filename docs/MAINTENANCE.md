@@ -78,7 +78,7 @@ Helpers:
 Leads:
 - `app/api/lead/route.ts` (POST)
 - Em ambiente local grava em `data/leads.json`
-- Em producao use `LEAD_WEBHOOK_URL`
+- Em producao, sem `LEAD_WEBHOOK_URL`, a API enfileira em `data/lead-fallback.ndjson` e responde `202`
 
 Rotas:
 - `/chat` (utilitario)
@@ -102,10 +102,12 @@ Experimento A/B da home:
 - variante forcada por query param: `?exp_home_hero=a` ou `?exp_home_hero=b`
 
 Observabilidade de lead:
-- `app/api/lead/route.ts` registra logs estruturados de falha:
-  - `lead_api_webhook_error`
-  - `lead_api_no_webhook`
-  - `lead_api_error`
+- `app/api/lead/route.ts` registra logs estruturados em `api_event` com:
+  - `route`, `status`, `code`, `durationMs`, `requestId`
+- fallback de entrega:
+  - arquivo: `data/lead-fallback.ndjson`
+  - replay operacional: `npm run ops:replay-leads`
+  - runbook: `docs/ALERTS_RUNBOOK.md`
 
 Painel minimo de funil:
 - ingestao de eventos: `app/api/funnel/event/route.ts`
@@ -173,8 +175,19 @@ Preferencias de cookies:
 - `npm run build`
 - Lighthouse (Home, Centro Tecnico, Como Comprar, Politica de Trocas)
 
+## Gate obrigatorio de PR (branch protection)
+- Branch `main` deve exigir status checks antes de merge.
+- Check obrigatorio: `CI / validate` (workflow `.github/workflows/ci.yml`).
+- Regra operacional: se `test:smoke` falhar no CI, PR nao deve ser aprovado.
+- Dono da release confirma essa regra em toda troca de repositorio/organizacao para evitar merge sem validacao.
+
 ## Skills de governanca (local no projeto)
 - `docs/skills/route-flow-guardian/SKILL.md` - auditoria de coerencia de rotas, redirects, sitemap e caminhos.
 - `docs/skills/funnel-observability-guardian/SKILL.md` - contrato de eventos e observabilidade de funil.
 - `docs/skills/conversion-path-designer/SKILL.md` - melhoria de caminho de conversao por intencao.
 - Plano operacional: `docs/ROUTE_FLOW_CORRECTION_PLAN.md`.
+
+## Contrato de implementacao de UI
+- Documento oficial: `docs/DESIGN_IMPLEMENTATION_CONTRACT.md`.
+- Todo PR com mudanca de interface deve preencher mapeamento Figma -> Codigo no template de PR.
+- Excecao de token/componente fora do sistema exige justificativa e prazo de convergencia.

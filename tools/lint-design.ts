@@ -1,4 +1,4 @@
-import fs from 'fs';
+﻿import fs from 'fs';
 import path from 'path';
 
 type Finding = {
@@ -11,18 +11,15 @@ type Finding = {
 const roots = ['app', 'components', 'hooks', 'lib', 'src'];
 const exts = new Set(['.ts', '.tsx']);
 
-const allowedSpacing = new Set(
-  Array.from({ length: 25 }, (_, i) => String(i * 4)), // 0..96 em passos de 4px
-);
 const allowedRadius = new Set(['sm', 'md', 'lg', 'xl', '2xl', 'full']);
-const allowedDuration = new Set(['fast', 'base', 'slow']);
-const allowedEase = new Set(['standard', 'emphasized']);
 const ignoreFiles = new Set([
   path.join('src', 'styles', 'tokens.ts'),
   path.join('app', 'opengraph-image.tsx'),
   path.join('app', 'twitter-image.tsx'),
   path.join('app', 'epi', '[categoria]', 'opengraph-image.tsx'),
 ]);
+
+const forbiddenRawTypography = /\btext-(xs|sm|base|lg|xl|[2-9]xl)\b/;
 
 const findings: Finding[] = [];
 
@@ -47,32 +44,46 @@ function lintFile(file: string) {
   if (ignoreFiles.has(path.normalize(file))) return;
   const content = fs.readFileSync(file, 'utf8');
   const lines = content.split(/\r?\n/);
+
   lines.forEach((line, idx) => {
     const lineNumber = idx + 1;
 
-    // Arbitrary spacing (square brackets)
     if (/(^|\s)(-)?(p|m|px|py|pl|pr|pt|pb|mx|my|ml|mr|mt|mb|gap|space-[xy])-\[/.test(line)) {
       addFinding(file, lineNumber, 'Arbitrary spacing value (use spacing tokens)', line);
     }
 
-    // Radius
-    if (/rounded-\[/.test(line)) addFinding(file, lineNumber, 'Radius arbitrário (rounded-[...])', line);
+    if (/rounded-\[/.test(line)) {
+      addFinding(file, lineNumber, 'Radius arbitrario (rounded-[...])', line);
+    }
+
     const radiusRegex = /rounded(?:-[trbl]{1,2})?-([a-z0-9]+)/g;
-    let rMatch: RegExpExecArray | null;
-    while ((rMatch = radiusRegex.exec(line)) !== null) {
-      const token = rMatch[1];
+    let radiusMatch: RegExpExecArray | null;
+    while ((radiusMatch = radiusRegex.exec(line)) !== null) {
+      const token = radiusMatch[1];
       if (token && !allowedRadius.has(token)) {
         addFinding(file, lineNumber, `Radius fora da escala (${token})`, line);
       }
     }
 
-    // Hex / rgba (evitar cores soltas em JSX/Tailwind) — ignorar gradientes arbitrários para não quebrar fundos existentes
+    if (forbiddenRawTypography.test(line)) {
+      addFinding(
+        file,
+        lineNumber,
+        'Tipografia crua detectada (use text-display*, text-title*, text-body* ou text-label*)',
+        line,
+      );
+    }
+
+    if (/(^|\s)(text|border|fill|stroke)-\[/.test(line)) {
+      addFinding(file, lineNumber, 'Cor arbitraria detectada (use token/classe semantica)', line);
+    }
+
     if (!line.includes('bg-[')) {
       if (/(#[0-9A-Fa-f]{3,8})/.test(line)) {
-        addFinding(file, lineNumber, 'Hex encontrado (use tokens/classe semântica)', line);
+        addFinding(file, lineNumber, 'Hex encontrado (use tokens/classe semantica)', line);
       }
       if (/rgba\(/i.test(line)) {
-        addFinding(file, lineNumber, 'RGBA encontrado (use tokens/classe semântica)', line);
+        addFinding(file, lineNumber, 'RGBA encontrado (use tokens/classe semantica)', line);
       }
     }
   });
@@ -87,24 +98,26 @@ function main() {
   files.forEach(lintFile);
 
   if (findings.length === 0) {
-    console.log('✔ Design lint: nenhum problema encontrado.');
+    console.log('Design lint: nenhum problema encontrado.');
     return;
   }
 
-  console.error(`✖ Design lint falhou (${findings.length} problemas)\n`);
+  console.error(`Design lint falhou (${findings.length} problemas)\n`);
+
   const byFile = new Map<string, Finding[]>();
-  for (const f of findings) {
-    if (!byFile.has(f.file)) byFile.set(f.file, []);
-    byFile.get(f.file)!.push(f);
+  for (const finding of findings) {
+    if (!byFile.has(finding.file)) byFile.set(finding.file, []);
+    byFile.get(finding.file)!.push(finding);
   }
 
   for (const [file, list] of byFile.entries()) {
-    console.error(`• ${file}`);
-    list.forEach((f) => {
-      console.error(`  - [${f.line}] ${f.message}`);
-      console.error(`    ${f.excerpt}`);
+    console.error(`- ${file}`);
+    list.forEach((finding) => {
+      console.error(`  - [${finding.line}] ${finding.message}`);
+      console.error(`    ${finding.excerpt}`);
     });
   }
+
   process.exitCode = 1;
 }
 

@@ -8,6 +8,10 @@ export type FunnelEventRecord = {
   url?: string;
   params?: Record<string, unknown>;
   source?: string;
+  requestId?: string;
+  route?: string;
+  status?: string;
+  durationMs?: number;
 };
 
 type WindowSummary = {
@@ -158,7 +162,7 @@ function buildAlerts(summary60m: WindowSummary, summary24h: WindowSummary): Funn
     alerts.push({
       severity: 'high',
       code: 'lead_fail_spike_60m',
-      message: 'Falha de envio de lead acima de 25% nos últimos 60 minutos.',
+      message: 'Falha de envio de lead acima de 25% nos ultimos 60 minutos.',
     });
   }
 
@@ -167,7 +171,7 @@ function buildAlerts(summary60m: WindowSummary, summary24h: WindowSummary): Funn
     alerts.push({
       severity: 'high',
       code: 'chat_fallback_spike_60m',
-      message: 'Fallback de chat acima de 35% nos últimos 60 minutos.',
+      message: 'Fallback de chat acima de 35% nos ultimos 60 minutos.',
     });
   }
 
@@ -177,7 +181,7 @@ function buildAlerts(summary60m: WindowSummary, summary24h: WindowSummary): Funn
     alerts.push({
       severity: 'medium',
       code: 'lead_success_zero_24h',
-      message: 'Houve tentativas de lead nas últimas 24h sem nenhum sucesso registrado.',
+      message: 'Houve tentativas de lead nas ultimas 24h sem nenhum sucesso registrado.',
     });
   }
 
@@ -185,7 +189,7 @@ function buildAlerts(summary60m: WindowSummary, summary24h: WindowSummary): Funn
     alerts.push({
       severity: 'low',
       code: 'funnel_stable',
-      message: 'Sem alerta crítico no recorte atual.',
+      message: 'Sem alerta critico no recorte atual.',
     });
   }
 

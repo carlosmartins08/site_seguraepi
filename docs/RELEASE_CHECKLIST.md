@@ -19,6 +19,7 @@ Use este checklist antes de qualquer deploy em producao.
 - [ ] Lead form: validacao, consentimento e redirecionamento funcionando
 - [ ] Chat: abertura, fallback e rastreio funcionando
 - [ ] Footer/Navbar: links criticos validados
+- [ ] Protocolo visual e fluxo executado (`docs/VISUAL_FLOW_QA_PROTOCOL.md`) com evidencia no PR
 
 ## 4) SEO e descoberta
 - [ ] `sitemap.xml` e `robots.txt` consistentes
@@ -34,5 +35,6 @@ Use este checklist antes de qualquer deploy em producao.
 ## 6) Pos-deploy (15-30 min)
 - [ ] Navegacao das rotas criticas em producao
 - [ ] Eventos de funil chegando (`/api/funnel/event` e summary)
-- [ ] Leads sem erro de webhook
+- [ ] Leads sem erro de webhook (`queued_for_retry` sob controle)
 - [ ] Sem erro critico no console/server logs
+- [ ] Runbook de alertas revisado (`docs/ALERTS_RUNBOOK.md`)

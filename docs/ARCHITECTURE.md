@@ -73,7 +73,7 @@ Observacao: `SUPPORTED_LOCALES` esta restrito a `['pt']` enquanto nao houver tra
 - API de lead: `app/api/lead/route.ts`
 - Armazenamento local: `data/leads.json` apenas em ambiente local
 - Producao: usar `LEAD_WEBHOOK_URL` para CRM/ERP
-- Producao sem `LEAD_WEBHOOK_URL`: endpoint `/api/lead` retorna `503` (fail-fast)
+- Producao sem `LEAD_WEBHOOK_URL`: endpoint `/api/lead` enfileira em `data/lead-fallback.ndjson` e retorna `202` para reprocessamento posterior
 - Rate limit em APIs criticas:
   - `/api/lead`: 20 req/min por IP (best-effort, memoria de processo)
   - `/api/funnel/event`: 120 req/min por IP (best-effort, memoria de processo)
