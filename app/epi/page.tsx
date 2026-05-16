@@ -27,7 +27,7 @@ const tableRows = [
 
 export default function GuiaEpiPage() {
   return (
-    <main id="main-content" className="min-h-screen bg-bg-surface">
+    <main id="main-content" className="min-h-screen bg-bg-surface overflow-x-hidden">
       <JsonLd data={buildTechArticleJsonLd({
         headline: 'Equipamentos de Proteção Individual | Guia Técnico',
         description: 'Entenda o que é EPI segundo a NR-06, categorias por área do corpo, responsabilidades legais e como validar o Certificado de Aprovação (CA).',

@@ -87,6 +87,9 @@ Helpers em `lib/seo/schema.ts` + componente `components/seo/JsonLd.tsx`:
 - `FAQPage` e `BreadcrumbList` nas paginas com FAQ
 
 ## Documentacao
+- `docs/MASTER_DOCUMENTATION.md` - mapa mestre e ordem oficial de leitura
+- `docs/DEVELOPER_GUIDE.md` - guia pratico de implementacao para devs
+- `docs/OPERATIONS_MANUAL.md` - manual operacional de release e incidente
 - `CONTRIBUTING.md` - fluxo de contribuicao, padrao de commit e regras de mudanca
 - `docs/HANDOFF.md` - passagem de bastao tecnica (estado atual + onde mexer)
 - `docs/ARCHITECTURE.md` - regras, padroes e guardrails

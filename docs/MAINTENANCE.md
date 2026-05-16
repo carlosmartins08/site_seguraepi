@@ -2,6 +2,11 @@
 
 Este documento orienta como atualizar conteudo, integracoes e configuracoes sem quebrar rotas ou o design system.
 
+## Ponto de entrada da documentacao
+- Mapa mestre: `docs/MASTER_DOCUMENTATION.md`
+- Guia de desenvolvimento: `docs/DEVELOPER_GUIDE.md`
+- Manual operacional: `docs/OPERATIONS_MANUAL.md`
+
 ## Variaveis de ambiente
 - `NEXT_PUBLIC_WBOT_TOKEN` - token do WBOT
 - `NEXT_PUBLIC_GA_ID` - Google Analytics (opcional)

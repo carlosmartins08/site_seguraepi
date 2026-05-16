@@ -12,7 +12,8 @@
     "lint:routes": "tsx tools/lint-routes.ts",
     "ops:replay-leads": "tsx tools/replay-lead-fallback.ts",
     "test:smoke": "playwright test tests/smoke.spec.ts --workers=1",
-    "test:api": "playwright test tests/api-contract.spec.ts"
+    "test:api": "playwright test tests/api-contract.spec.ts",
+    "test:seo-mobile": "playwright test tests/seo-mobile.spec.ts --workers=1"
   },
   "dependencies": {
     "animejs": "^4.3.6",

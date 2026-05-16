@@ -1,4 +1,4 @@
-# Handoff Tecnico (Passagem de Bastao)
+﻿# Handoff Tecnico (Passagem de Bastao)
 
 Este documento resume o estado atual para qualquer desenvolvedor continuar com contexto completo.
 
@@ -20,6 +20,7 @@ Este documento resume o estado atual para qualquer desenvolvedor continuar com c
 3. `npm run build`
 4. `npm run test:api`
 5. `npm run test:smoke`
+6. `npm run test:seo-mobile`
 
 Se tudo passar, a base esta consistente para evolucao.
 
@@ -38,11 +39,12 @@ Se tudo passar, a base esta consistente para evolucao.
 - Design lint: `tools/lint-design.ts`
 - Testes de contrato: `tests/api-contract.spec.ts`
 - Testes de smoke: `tests/smoke.spec.ts`
+- Testes SEO/mobile: `tests/seo-mobile.spec.ts`
 
 ## 5) Sequencia recomendada para evoluir sem retrabalho
-1. Leia `docs/ARCHITECTURE.md`.
-2. Leia `docs/DESIGN_IMPLEMENTATION_CONTRACT.md`.
-3. Leia `docs/MAINTENANCE.md` e `docs/RELEASE_CHECKLIST.md`.
-4. Faça mudanca pequena com teste.
-5. Abra PR com template completo.
-
+1. Leia `docs/MASTER_DOCUMENTATION.md`.
+2. Leia `docs/DEVELOPER_GUIDE.md`.
+3. Leia `docs/ARCHITECTURE.md` e `docs/DESIGN_IMPLEMENTATION_CONTRACT.md`.
+4. Leia `docs/OPERATIONS_MANUAL.md` e `docs/RELEASE_CHECKLIST.md`.
+5. Faca mudanca pequena com teste.
+6. Abra PR com template completo.
